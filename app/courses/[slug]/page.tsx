@@ -34,6 +34,7 @@ import { StandardsStrip } from "@/components/StandardsStrip";
 import { Transformations } from "@/components/Transformations";
 import { FAQ } from "@/components/FAQ";
 import { TestimonialStrip } from "@/components/TestimonialStrip";
+import { OptInForm } from "@/components/OptInForm";
 import { COURSES, getCourse } from "@/lib/courses";
 import { BRAND, FOUNDER } from "@/lib/credentials";
 import { getTestimonialsForCourse } from "@/lib/testimonials";
@@ -302,8 +303,16 @@ export default async function CourseDetailPage({
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.3} className="flex flex-wrap gap-3 sm:gap-4">
+            {/* Free tasters get a native AU-styled OptInForm rendered
+                below; their primary "Get instant access" button just
+                anchors down to it. Paid + waitlist courses still link
+                to Kartra (course.kartraUrl) until Phase 5 wires Stripe. */}
             <Button
-              href={course.kartraUrl}
+              href={
+                course.price === undefined && !isWaitlist
+                  ? "#opt-in"
+                  : course.kartraUrl
+              }
               variant="pink"
               size="sm"
               price={course.price}
@@ -314,6 +323,39 @@ export default async function CourseDetailPage({
               See curriculum
             </Button>
           </ScrollReveal>
+
+          {/* ============================================================
+              NATIVE OPT-IN FORM — only for free tasters. Posts to
+              /api/subscribe which forwards to Kartra. User never sees
+              a Kartra page; existing Kartra automation still fires.
+              ============================================================ */}
+          {course.price === undefined && !isWaitlist && (
+            <ScrollReveal delay={0.4} className="mt-10 sm:mt-12">
+              <div id="opt-in" className="scroll-mt-24">
+                <p
+                  className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] mb-3"
+                  style={{ color: "var(--color-au-pink)" }}
+                >
+                  Free instant access
+                </p>
+                <h2
+                  className="font-display font-black text-au-charcoal mb-6"
+                  style={{
+                    fontSize: "clamp(1.5rem, 3.5vw, 2rem)",
+                    lineHeight: 1.1,
+                    letterSpacing: "var(--tracking-tight-display)",
+                  }}
+                >
+                  Tell me where to send it.
+                </h2>
+                <OptInForm
+                  courseSlug={course.slug}
+                  courseTitle={course.title}
+                  submitLabel="Get instant access"
+                />
+              </div>
+            </ScrollReveal>
+          )}
         </PosterBlock>
 
         {/* ============================================================
