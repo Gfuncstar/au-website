@@ -34,6 +34,14 @@ export const metadata: Metadata = {
   title: "Courses — Aesthetics Unlocked®",
   description:
     "All AU courses — free tasters, clinical (NICE-aligned), and the 12-week business programme. Education for UK aesthetic practitioners by Bernadette Tobin RN, MSc.",
+  alternates: { canonical: "/courses" },
+  openGraph: {
+    title: "Courses — Aesthetics Unlocked®",
+    description:
+      "Six courses, one framework. Free tasters, NICE-aligned clinical decoders, the 4-week regulatory pathway, and the 12-week business programme.",
+    url: "/courses",
+    type: "website",
+  },
 };
 
 /**

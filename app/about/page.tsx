@@ -35,6 +35,14 @@ export const metadata: Metadata = {
   title: "About Bernadette Tobin — Educator of the Year 2026 Nominee",
   description:
     "I started nursing at 17 and never really stopped. Twenty years on, I lead the clinical workforce for an NHS Trust, run a busy aesthetics clinic, lecture postgraduate clinicians, and write about how to build a practice that doesn't burn the practitioner alive.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Bernadette Tobin — Educator of the Year 2026 Nominee",
+    description:
+      "Bernadette Tobin RN, MSc — founder of Aesthetics Unlocked, Best Non-Surgical Aesthetics Clinic 2026 (Essex), and Educator of the Year 2026 Nominee.",
+    url: "/about",
+    type: "profile",
+  },
 };
 
 const STATS = [

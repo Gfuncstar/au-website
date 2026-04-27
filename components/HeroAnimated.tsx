@@ -178,7 +178,7 @@ export function HeroAnimated() {
         //   - +100px per "PADDING MOVE TEXT UP 100 PIX" call.
         //   - −40px per "move down 40px" call (justify-end flex, so smaller
         //     pb shifts the type block downwards toward the bottom edge).
-        className="relative z-20 h-full flex flex-col justify-end px-[35px] sm:px-10 md:px-14 pb-[120px] sm:pb-[160px] md:pb-[180px]"
+        className="relative z-20 h-full flex flex-col justify-end px-[35px] sm:px-10 md:px-14 pb-[90px] sm:pb-[130px] md:pb-[150px]"
       >
         <div className="md:max-w-3xl">
           {/* Awards rail — leads the hero. "Strategic Education" eyebrow

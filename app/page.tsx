@@ -38,7 +38,6 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import {
   PillarsIllustration,
-  AudienceIllustration,
   CoursesIllustration,
 } from "@/components/SectionIllustration";
 import { BRAND, AWARDS, PERSON_AWARDS_JSONLD } from "@/lib/credentials";

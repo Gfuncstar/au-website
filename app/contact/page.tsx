@@ -28,6 +28,14 @@ export const metadata: Metadata = {
   title: "Contact — Aesthetics Unlocked®",
   description:
     "Get in touch with Aesthetics Unlocked — the strategic education platform for UK aesthetic practitioners. Email hello@aunlock.co.uk.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact — Aesthetics Unlocked®",
+    description:
+      "Get in touch with Aesthetics Unlocked. Email hello@aunlock.co.uk.",
+    url: "/contact",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {
