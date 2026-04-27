@@ -33,8 +33,10 @@ import { AwardsPanel } from "@/components/AwardsPanel";
 import { StandardsStrip } from "@/components/StandardsStrip";
 import { Transformations } from "@/components/Transformations";
 import { FAQ } from "@/components/FAQ";
+import { TestimonialStrip } from "@/components/TestimonialStrip";
 import { COURSES, getCourse } from "@/lib/courses";
 import { BRAND, FOUNDER } from "@/lib/credentials";
+import { getTestimonialsForCourse } from "@/lib/testimonials";
 
 type Params = { slug: string };
 
@@ -80,6 +82,7 @@ export default async function CourseDetailPage({
   if (!course) notFound();
 
   const isWaitlist = course.availability === "waitlist";
+  const courseTestimonials = getTestimonialsForCourse(course.slug);
   const priceLabel =
     course.price === undefined
       ? "Free"
@@ -202,6 +205,24 @@ export default async function CourseDetailPage({
       }
     : null;
 
+  // Review schema — emitted only for testimonials marked as non-
+  // placeholder (i.e. real, consented student feedback). Placeholders
+  // never appear in structured data so search engines never see them
+  // as marketing claims, even if they're visible during staging.
+  const reviewNodes = courseTestimonials
+    .filter((t) => !t.placeholder)
+    .map((t) => ({
+      "@type": "Review",
+      "@id": `${courseUrl}#review-${t.id}`,
+      itemReviewed: { "@id": `${courseUrl}#course` },
+      author: {
+        "@type": "Person",
+        name: t.name,
+        ...(t.role ? { jobTitle: t.role } : {}),
+      },
+      reviewBody: t.quote,
+    }));
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -209,6 +230,7 @@ export default async function CourseDetailPage({
       breadcrumbNode,
       ...(faqNode ? [faqNode] : []),
       ...(productNode ? [productNode] : []),
+      ...reviewNodes,
     ],
   };
 
@@ -321,6 +343,31 @@ export default async function CourseDetailPage({
               ]}
             />
             <Transformations transformations={course.transformations} />
+          </PosterBlock>
+        )}
+
+        {/* ============================================================
+            TESTIMONIALS — student voices for this specific course.
+            Hidden when no testimonials exist for the slug.
+            ⚠️ Currently uses PLACEHOLDER entries — see
+            lib/testimonials.ts for replacement protocol.
+            ============================================================ */}
+        {courseTestimonials.length > 0 && (
+          <PosterBlock tone="white" contained>
+            <TestimonialStrip
+              testimonials={courseTestimonials}
+              eyebrow={`From ${course.title} students`}
+              headline={
+                <>
+                  What practitioners{" "}
+                  <span style={{ color: "var(--color-au-pink)" }}>
+                    take away
+                  </span>
+                  .
+                </>
+              }
+              tone="white"
+            />
           </PosterBlock>
         )}
 

@@ -36,6 +36,8 @@ import { PressStrip } from "@/components/PressStrip";
 import { BookSection } from "@/components/BookSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
+import { TestimonialStrip } from "@/components/TestimonialStrip";
+import { TESTIMONIALS } from "@/lib/testimonials";
 import {
   PillarsIllustration,
   CoursesIllustration,
@@ -237,6 +239,29 @@ export default function Home() {
               <span aria-hidden="true">→</span>
             </Link>
           </ScrollReveal>
+        </PosterBlock>
+
+        {/* ============================================================
+            TESTIMONIALS — student-voice strip. Sits between courses
+            and standards as social proof bridge.
+            ⚠️ Currently uses PLACEHOLDER testimonials — see
+            lib/testimonials.ts for the consent + replacement protocol.
+            ============================================================ */}
+        <PosterBlock tone="white" contained>
+          <TestimonialStrip
+            testimonials={TESTIMONIALS}
+            eyebrow="From the cohort"
+            headline={
+              <>
+                Practitioners who took{" "}
+                <span style={{ color: "var(--color-au-pink)" }}>
+                  the work
+                </span>{" "}
+                forward.
+              </>
+            }
+            tone="white"
+          />
         </PosterBlock>
 
         {/* ============================================================

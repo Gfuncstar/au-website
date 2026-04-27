@@ -30,6 +30,8 @@ import { RevealHeadline } from "@/components/RevealHeadline";
 import { STANDARDS } from "@/lib/standards";
 import { LOCATIONS, getLocationsByKind } from "@/lib/locations";
 import { BRAND, FOUNDER } from "@/lib/credentials";
+import { TESTIMONIALS } from "@/lib/testimonials";
+import { TestimonialQuote } from "@/components/TestimonialQuote";
 
 export const metadata: Metadata = {
   title:
@@ -354,9 +356,31 @@ export default function RegulationPage() {
         </PosterBlock>
 
         {/* ============================================================
+            STUDENT VOICE — single anchored testimonial mid-pillar.
+            Pulls a regulation-relevant testimonial (RAG Pathway).
+            ⚠️ PLACEHOLDER content — see lib/testimonials.ts.
+            ============================================================ */}
+        {(() => {
+          const ragTestimonial = TESTIMONIALS.find(
+            (t) => t.courseSlug === "rag-pathway",
+          );
+          return ragTestimonial ? (
+            <PosterBlock tone="white" contained>
+              <TestimonialQuote
+                testimonial={ragTestimonial}
+                eyebrow="From a RAG Pathway student"
+              />
+            </PosterBlock>
+          ) : null;
+        })()}
+
+        {/* ============================================================
             THE EIGHT REGULATORS
             ============================================================ */}
         <PosterBlock tone="white" contained id="regulators">
+          {/* Tone stays white. Two whites in a row (testimonial + this)
+              are acceptable here because the testimonial uses a much
+              tighter centred composition that reads visually distinct. */}
           <ScrollReveal className="max-w-3xl mb-10">
             <Eyebrow className="mb-6">The eight regulators</Eyebrow>
             <h2
