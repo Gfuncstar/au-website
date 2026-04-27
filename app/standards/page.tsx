@@ -43,7 +43,7 @@ export default function StandardsIndexPage() {
         {/* HERO */}
         <PosterBlock tone="cream" contained>
           <ScrollReveal className="max-w-4xl">
-            <Eyebrow className="mb-6">The framework AU teaches against</Eyebrow>
+            <Eyebrow className="mb-6">The framework I teach against</Eyebrow>
           </ScrollReveal>
           <RevealHeadline
             as="h1"
@@ -66,10 +66,10 @@ export default function StandardsIndexPage() {
           />
           <ScrollReveal delay={0.15}>
             <p className="max-w-2xl text-[1.0625rem] sm:text-[1.125rem] md:text-[1.25rem] text-au-charcoal/85 leading-relaxed">
-              Every AU course is anchored to UK regulators and professional
-              bodies. Click through any standard for a full read-out of who
-              they are, what they regulate, and how the curriculum teaches
-              against them.
+              Every course I teach is anchored to UK regulators and
+              professional bodies. Click through any standard for a full
+              read-out of who they are, what they regulate, and how I
+              teach against them.
             </p>
           </ScrollReveal>
         </PosterBlock>

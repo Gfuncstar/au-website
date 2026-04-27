@@ -234,7 +234,7 @@ export default async function StandardPage({
             ============================================================ */}
         <PosterBlock tone="cream" contained>
           <ScrollReveal className="max-w-4xl">
-            <Eyebrow className="mb-6">How AU teaches against it</Eyebrow>
+            <Eyebrow className="mb-6">How I teach against it</Eyebrow>
           </ScrollReveal>
           <RevealHeadline
             className="font-display font-black text-au-charcoal mb-12 sm:mb-14"

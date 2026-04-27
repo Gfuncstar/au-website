@@ -800,7 +800,7 @@ export const COURSES: readonly Course[] = [
     availability: "waitlist",
     bgImage: "/backgrounds/pink-fade-charcoal-2.png",
     promise:
-      "Twelve weeks. Twelve modules. The UNLOCK PROFIT™ Framework Bernadette built her own award-winning clinic on — translated for practitioners who want consistent £5K+ months without burning out.",
+      "Twelve weeks. Twelve modules. The UNLOCK PROFIT™ Framework I built my own award-winning clinic on — translated for practitioners who want consistent £5K+ months without burning out.",
     transformations: [
       {
         before:
