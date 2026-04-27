@@ -35,6 +35,7 @@ const FOOTER_LINKS = [
     title: "Aesthetics Unlocked",
     items: [
       { href: "/about", label: "About Bernadette" },
+      { href: "/regulation", label: "UK aesthetics regulation" },
       { href: "/standards", label: "Standards we teach against" },
       { href: "/for", label: "By UK nation & city" },
       { href: "/contact", label: "Contact" },

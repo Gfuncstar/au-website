@@ -275,7 +275,7 @@ export const COURSES: readonly Course[] = [
     title: "Acne Decoded",
     summary:
       "Stop guessing. Learn what drives acne and how to treat it properly.",
-    body: "Most acne treatment plans are educated guesses. Same protocols, same disappointed clients, same results that don't hold. Acne Decoded is the science. What drives breakouts at the cellular level. How to assess severity correctly. How to treat without over-treating. NICE guidance translated into clinical decisions you can defend. One course. £79. No upsells.",
+    body: "Most acne treatment plans are educated guesses. Same protocols, same disappointed clients, same results that don't hold. I built Acne Decoded as the science behind the condition. What drives breakouts at the cellular level. How to assess severity correctly. How to treat without over-treating. NICE guidance translated into clinical decisions you can defend. One course. £79. No upsells.",
     voiceQuote:
       "Acne is not simply a cosmetic concern. It is a complex, chronic inflammatory skin condition that affects individuals physically, psychologically, and socially.",
     bullets: [
@@ -463,7 +463,7 @@ export const COURSES: readonly Course[] = [
     title: "Rosacea Beyond Redness",
     summary:
       "Pathophysiology, barrier integrity, microbiome, NICE-aligned management — the rosacea course UK practitioners have been waiting for.",
-    body: "Rosacea is rarely just about redness. This course unpacks the four subtypes, the barrier story, the microbiome, and the long-term management strategy NICE backs. For practitioners who want to stop reaching for the same flare-management tool and start treating the condition. One course. £79. No upsells.",
+    body: "Rosacea is rarely just about redness. I built this course to unpack the four subtypes, the barrier story, the microbiome, and the long-term management strategy NICE backs. For practitioners who want to stop reaching for the same flare-management tool and start treating the condition. One course. £79. No upsells.",
     voiceQuote:
       "Build knowledge, confidence, and safe decision-making when working with clients who may present with rosacea.",
     bullets: [
@@ -587,7 +587,7 @@ export const COURSES: readonly Course[] = [
     title: "From Regulation to Reputation™ — The RAG Pathway",
     summary:
       "The structured 4-week, educator-led RAG Pathway. For England-based practitioners who want to practise safely, ethically, and defensibly.",
-    body: "Aesthetics isn't unregulated. It's misunderstood — and that's where careers, confidence, and reputations get lost. From Regulation to Reputation™ is the RAG Pathway in full: a 4-week, educator-led programme for England-based practitioners. Without fear. Without guesswork. Without cutting corners. This isn't a “how to inject” course. It's the framework that keeps you compliant, in business, and building a reputation that compounds.",
+    body: "Aesthetics isn't unregulated. It's misunderstood — and that's where careers, confidence, and reputations get lost. From Regulation to Reputation™ is the RAG Pathway in full: a 4-week, educator-led programme I designed for England-based practitioners. Without fear. Without guesswork. Without cutting corners. This isn't a “how to inject” course. It's the framework that keeps you compliant, in business, and building a reputation that compounds — the same one I run my own award-winning clinic on.",
     voiceQuote:
       "As your mentor on this journey, my role is to help you move beyond confusion and fear around regulation and instead use it as a strategic advantage.",
     bullets: [
@@ -718,7 +718,7 @@ export const COURSES: readonly Course[] = [
     title: "The 5K+ Formula™",
     summary:
       "Consistent £5K+ months. Without chasing clients, discounting, or doing more treatments.",
-    body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Waitlist open. Launch discount included. Small first cohort.",
+    body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Waitlist open. Launch discount included. Small first cohort.",
     voiceQuote:
       "You're not here to learn generic business tips — you're here to master the art of building a profitable, personal, and professional aesthetics brand.",
     bullets: [
