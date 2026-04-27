@@ -21,23 +21,23 @@ export const GENERAL_FAQS: readonly FAQGroup[] = [
     items: [
       {
         q: "Who is Aesthetics Unlocked for?",
-        a: "Aesthetics Unlocked is for UK aesthetic practitioners and clinic owners — injectors, advanced practitioners, skin specialists, aesthetic nurses, and the doctors who lead them. The free tasters suit anyone exploring the field; the clinical and business courses suit practitioners who are already qualified and want to operate at a higher standard.",
+        a: "I built it for UK aesthetic practitioners and clinic owners — injectors, advanced practitioners, skin specialists, aesthetic nurses, and the doctors who lead them. The free tasters suit anyone exploring the field; the clinical and business courses suit practitioners who are already qualified and want to operate at a higher standard.",
       },
       {
         q: "Who is Bernadette Tobin?",
-        a: "Bernadette is the founder of Aesthetics Unlocked. She is an Advanced Nurse Practitioner with an MSc Advanced Practice (Level 7), NMC registered (verifiable on the public register), a member of the Royal College of Nursing, Senior Lecturer to postgraduate clinicians, Head of Clinical Workforce at an NHS Trust, and founder of Visage Aesthetics — Best Non-Surgical Aesthetics Clinic 2026 (Essex). She is also the Beauty & Aesthetics Awards Educator of the Year 2026 Nominee.",
+        a: "I'm the founder of Aesthetics Unlocked. I'm an Advanced Nurse Practitioner with an MSc Advanced Practice (Level 7), NMC registered (verifiable on the public register), a member of the Royal College of Nursing, Senior Lecturer to postgraduate clinicians, Head of Clinical Workforce at an NHS Trust, and founder of Visage Aesthetics — Best Non-Surgical Aesthetics Clinic 2026 (Essex). I'm also a Beauty & Aesthetics Awards Educator of the Year 2026 Nominee.",
       },
       {
         q: "Why should I learn from Bernadette?",
-        a: "Because the framework she teaches has been tested under real fee pressure inside her own award-winning clinic, and is taught at postgraduate level inside the NHS — not invented for an Instagram audience. Aesthetics Unlocked is the only UK platform where the educator is registered, regulated, and clinically accountable for what she teaches.",
+        a: "Because the framework I teach has been tested under real fee pressure inside my own award-winning clinic, and at postgraduate level inside the NHS — not invented for an Instagram audience. Aesthetics Unlocked is the only UK platform where the educator is registered, regulated, and clinically accountable for what she teaches.",
       },
       {
         q: "Is Aesthetics Unlocked regulated?",
-        a: "Aesthetics Unlocked is an education brand, not a clinical service — so it sits outside CQC registration. The educator (Bernadette) is statutorily regulated by the NMC and a member of the Royal College of Nursing. The course content is anchored to NICE, JCCP, CPSA, MHRA, CQC, RCN and ASA standards. See /standards for the full read-out.",
+        a: "Aesthetics Unlocked is an education brand, not a clinical service — so it sits outside CQC registration. I'm statutorily regulated by the NMC and a member of the Royal College of Nursing. The course content is anchored to NICE, JCCP, CPSA, MHRA, CQC, RCN and ASA standards. See /standards for the full read-out.",
       },
       {
         q: "What does “unlocking your profit potential” actually mean?",
-        a: "Aesthetics Unlocked exists to unlock three things, in this order: clinical confidence, regulatory clarity, and profitable practice. Most practitioners are stuck on one of those three. The framework moves you across all three so the next chapter of your practice — the higher fees, the better clients, the calmer week — becomes possible.",
+        a: "I designed the courses to unlock three things, in this order: clinical confidence, regulatory clarity, and profitable practice. Most practitioners are stuck on one of those three. The framework moves you across all three so the next chapter of your practice — the higher fees, the better clients, the calmer week — becomes possible.",
       },
     ],
   },
@@ -46,7 +46,7 @@ export const GENERAL_FAQS: readonly FAQGroup[] = [
     items: [
       {
         q: "How do the courses work?",
-        a: "Courses are hosted in Kartra, the secure Aesthetics Unlocked members area. After enrolment you'll receive a login email; courses are then accessible 24/7 from any device. Self-paced courses can be taken at your own speed; cohort-based programmes (the 12-week 5K+ Formula and the 4-week RAG Pathway) follow a release schedule.",
+        a: "Courses are hosted in Kartra, the secure Aesthetics Unlocked members area. After you enrol I'll send you a login email; courses are then accessible 24/7 from any device. Self-paced courses can be taken at your own speed; cohort-based programmes (the 12-week 5K+ Formula and the 4-week RAG Pathway) follow a release schedule.",
       },
       {
         q: "Are the courses self-paced or live?",
@@ -75,7 +75,7 @@ export const GENERAL_FAQS: readonly FAQGroup[] = [
       },
       {
         q: "What's the refund policy?",
-        a: "Aesthetics Unlocked offers a 14-day money-back guarantee on paid courses, no questions asked, provided you've completed less than 30% of the modules. Email hello@aunlock.co.uk to request a refund.",
+        a: "I offer a 14-day money-back guarantee on every paid course, no questions asked, provided you've completed less than 30% of the modules. Email hello@aunlock.co.uk to request a refund.",
       },
       {
         q: "How long do I have access for?",
@@ -83,7 +83,7 @@ export const GENERAL_FAQS: readonly FAQGroup[] = [
       },
       {
         q: "How do I get in touch?",
-        a: "Email hello@aunlock.co.uk. Monday to Friday, 09:00–17:30 GMT. We reply within one working day.",
+        a: "Email hello@aunlock.co.uk. Monday to Friday, 09:00–17:30 GMT. I reply within one working day.",
       },
     ],
   },

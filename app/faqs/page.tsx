@@ -82,7 +82,7 @@ export default function FAQsPage() {
               >
                 {BRAND.email}
               </a>{" "}
-              and we&rsquo;ll come back within one working day.
+              and I&rsquo;ll come back within one working day.
             </p>
           </ScrollReveal>
         </PosterBlock>

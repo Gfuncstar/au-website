@@ -164,7 +164,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     whyBernadette:
-      "Bernadette built her own award-winning clinic (Best Non-Surgical Aesthetics Clinic 2026, Essex) using this exact reset. The 5K+ Formula™ is her playbook — refined over twelve years of running a real clinic at real fee pressure. The Mini is the front door.",
+      "I built my own clinic — Visage Aesthetics — using this exact reset. It went on to win Best Non-Surgical Aesthetics Clinic 2026 (Essex). The 5K+ Formula™ is my playbook, refined over twelve years of running a real clinic under real fee pressure. The Mini is the front door.",
     includes: [
       "Three short daily lessons released over 3 days",
       "Lifetime access — revisit any time",
@@ -243,7 +243,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     whyBernadette:
-      "Bernadette is NMC-registered (verifiable on the public register) and an MSc Advanced Practice nurse. She lectures postgraduate clinicians on regulation, leads clinical workforce governance for an NHS Trust, and built her clinic to JCCP / CPSA-aligned standards. The Traffic Light System she teaches isn't theory — it's how regulators already think.",
+      "I'm NMC-registered (verifiable on the public register) and an MSc Advanced Practice nurse. I lecture postgraduate clinicians on regulation, lead clinical workforce governance for an NHS Trust, and I built my own clinic to JCCP / CPSA-aligned standards. The Traffic Light System I teach isn't theory — it's how regulators already think.",
     includes: [
       "Two short lessons released over 2 days",
       "The full Traffic Light System (Red / Amber / Green)",
@@ -428,7 +428,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     whyBernadette:
-      "Bernadette holds an MSc Advanced Practice (Level 7), is NMC registered, lectures postgraduate clinicians, and runs an award-winning aesthetics clinic. Acne Decoded is built on the same NICE pathways the NHS uses — translated for private clinic practice by a nurse who's spent twenty years inside the system that wrote them.",
+      "I hold an MSc Advanced Practice (Level 7), I'm NMC registered, I lecture postgraduate clinicians, and I run an award-winning aesthetics clinic — Visage Aesthetics, which won Best Non-Surgical Aesthetics Clinic 2026 (Essex). I built Acne Decoded on the same NICE pathways the NHS uses — translated for private clinic practice by a nurse who's spent twenty years inside the system that wrote them.",
     includes: [
       "11 sections covering pathophysiology, assessment, and treatment",
       "NICE-aligned consultation framework + severity scoring",
@@ -552,7 +552,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     whyBernadette:
-      "Bernadette is an Advanced Nurse Practitioner with twenty years' clinical experience and twelve in aesthetics. Her clinic — Best Non-Surgical Aesthetics Clinic 2026 (Essex) — sees rosacea every week. The course is built on the NICE pathway, the RCN's clinical guidance, and the realities of treating rosacea inside a private clinic at premium fees.",
+      "I'm an Advanced Nurse Practitioner with twenty years' clinical experience and twelve in aesthetics. My clinic — Visage Aesthetics, Best Non-Surgical Aesthetics Clinic 2026 (Essex) — sees rosacea every week. I built this course on the NICE pathway, the RCN's clinical guidance, and the realities of treating rosacea inside a private clinic at premium fees.",
     includes: [
       "12 sections covering subtypes, assessment, and treatment ladders",
       "Barrier-first vs anti-inflammatory-first decision framework",
@@ -682,7 +682,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     whyBernadette:
-      "Bernadette leads clinical workforce governance for an NHS Trust with oversight of over 1,000 nurses. She lectures postgraduate clinicians on advanced practice, regulation, and clinical governance — at the same level the rules in this course were designed for. The RAG Pathway distils what she teaches inside the NHS into a framework private aesthetic practitioners can actually use.",
+      "I lead clinical workforce governance for an NHS Trust with oversight of over 1,000 nurses. I lecture postgraduate clinicians on advanced practice, regulation, and clinical governance — at the same level the rules in this course were designed for. The RAG Pathway is what I distilled from teaching inside the NHS into a framework private aesthetic practitioners can actually use — and it's how I run my own clinic.",
     includes: [
       "8 modules across 4 weeks · educator-led",
       "The full Traffic Light System decision framework",
@@ -834,7 +834,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     whyBernadette:
-      "Bernadette built Visage Aesthetics — winner of Best Non-Surgical Aesthetics Clinic 2026 (Essex, Health, Beauty & Wellness Awards) — using the UNLOCK PROFIT™ Framework. She's been refining it for twelve years, in real clinic, at real fee pressure. This is the system, taught by the practitioner who proved it works.",
+      "I built Visage Aesthetics — winner of Best Non-Surgical Aesthetics Clinic 2026 (Essex, Health, Beauty & Wellness Awards) — using the UNLOCK PROFIT™ Framework. I've been refining it for twelve years, in real clinic, at real fee pressure. This is the system — taught by the practitioner who proved it works.",
     includes: [
       "12 modules across 12 weeks · rolling release",
       "The complete UNLOCK PROFIT™ Framework",

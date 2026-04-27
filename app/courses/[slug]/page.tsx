@@ -475,7 +475,7 @@ export default async function CourseDetailPage({
         <PosterBlock tone="pink" contained>
           <ScrollReveal>
             <Eyebrow color="black" className="mb-6">
-              Why Bernadette teaches this
+              Why I teach this
             </Eyebrow>
             <h2
               className="font-display font-black text-au-black mb-4 sm:mb-5"
@@ -485,7 +485,7 @@ export default async function CourseDetailPage({
                 lineHeight: 1.1,
               }}
             >
-              Bernadette Tobin RN, MSc.
+              I&rsquo;m Bernadette Tobin — RN, MSc.
             </h2>
             <p className="text-au-black/90 text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] leading-relaxed mb-3 sm:mb-4 max-w-3xl font-bold">
               Advanced Nurse Practitioner. Senior Lecturer. Head of Clinical
@@ -495,7 +495,7 @@ export default async function CourseDetailPage({
             </p>
             <p className="text-au-black/85 text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] leading-relaxed mb-8 max-w-3xl">
               {course.whyBernadette ??
-                "Twenty years on the ward, twelve in aesthetics. Every framework AU teaches has been tested under real fee pressure inside her own award-winning clinic."}
+                "Twenty years on the ward, twelve in aesthetics. Every framework I teach here has been tested under real fee pressure inside my own clinic — Visage Aesthetics, winner of Best Non-Surgical Aesthetics Clinic 2026 (Essex)."}
             </p>
             <AwardsPanel variant="compact" tone="pink" />
             <div className="mt-8">

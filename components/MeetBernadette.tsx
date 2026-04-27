@@ -96,7 +96,7 @@ export function MeetBernadette() {
         >
           {[
             "Advanced Nurse Practitioner",
-            "Working clinic owner",
+            "Award-winning clinic owner (Visage Aesthetics)",
             "Senior Lecturer (postgraduate clinicians)",
             "Head of Clinical Workforce, NHS Trust",
             <>

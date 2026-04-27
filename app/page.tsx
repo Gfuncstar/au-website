@@ -212,9 +212,9 @@ export default function Home() {
               ]}
             />
             <p className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/85 leading-relaxed">
-              Two free tasters, two NICE-aligned clinical decoders, the 4-week
-              regulatory pathway, and the 12-week business programme. Click
-              any line for the full curriculum.
+              Two free tasters to start, two NICE-aligned clinical decoders, my
+              4-week regulatory pathway, and the 12-week business programme I
+              teach to clinic owners. Click any line for the full curriculum.
             </p>
           </ScrollReveal>
 
@@ -273,7 +273,7 @@ export default function Home() {
               keeps you in business.
             </>
           }
-          buttonText="Browse the courses"
+          buttonText="Start with my courses"
           buttonHref="/courses"
           tone="black"
         />

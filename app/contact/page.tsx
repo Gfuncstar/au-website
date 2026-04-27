@@ -59,7 +59,7 @@ export default function ContactPage() {
               letterSpacing: "var(--tracking-tight-display)",
             }}
             lines={[
-              <Fragment key="0">Talk to us.</Fragment>,
+              <Fragment key="0">Talk to me.</Fragment>,
               <Fragment key="1">
                 <span style={{ color: "var(--color-au-pink)" }}>One inbox</span>
                 , one human.
@@ -69,7 +69,8 @@ export default function ContactPage() {
           <ScrollReveal delay={0.15}>
             <p className="max-w-2xl text-[1.0625rem] sm:text-[1.125rem] md:text-[1.25rem] text-au-charcoal/85 leading-relaxed">
               Course questions, partnership enquiries, press, speaking. Email
-              the team and we&rsquo;ll come back to you within two working days.
+              me directly and I&rsquo;ll come back to you within two working
+              days.
             </p>
           </ScrollReveal>
         </PosterBlock>
@@ -92,7 +93,7 @@ export default function ContactPage() {
                 {BRAND.email}
               </a>
               <p className="text-au-charcoal/70 mt-3 leading-relaxed">
-                The fastest route. We read every message.
+                The fastest route. I read every message myself.
               </p>
             </ScrollReveal>
 
@@ -102,8 +103,7 @@ export default function ContactPage() {
                 className="text-au-charcoal leading-relaxed mb-4"
                 style={{ fontSize: "clamp(1rem, 2.2vw, 1.125rem)" }}
               >
-                Already enrolled? Log in to your courses on the AU members
-                portal.
+                Already enrolled? Log in to your courses on my members portal.
               </p>
               <Button
                 href={MEMBERS_URL}
