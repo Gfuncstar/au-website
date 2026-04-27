@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>You finished {course_title}</title>
+
+  <!--
+    COURSE COMPLETION TEMPLATE
+    Fires when a student earns the "{course} Complete" tag in Kartra.
+    Three jobs:
+      1. Acknowledge the work (real, not generic)
+      2. Hand over the Certificate of Completion
+      3. Soft cross-sell to the natural next step
+
+    Required to fill in:
+      {course_title}             — the course just completed
+      {certificate_url}          — link to download the cert PDF
+      {next_course_title}        — recommended follow-on course
+      {next_course_url}          — link to that course's sales page
+  -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Lato:wght@400;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
+
+  <style type="text/css">
+    @media only screen and (max-width: 600px) {
+      .container { width: 100% !important; }
+      .px { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-h1 { font-size: 28px !important; line-height: 1.1 !important; }
+      .body-p { font-size: 16px !important; line-height: 1.6 !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#FAF6F1;font-family:'Lato',Helvetica,Arial,sans-serif;color:#212121;-webkit-font-smoothing:antialiased;">
+
+  <div style="display:none;font-size:1px;color:#FAF6F1;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+    {first_name} &mdash; you finished {course_title}. Your certificate&rsquo;s ready.
+  </div>
+
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FAF6F1;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" class="container" style="width:600px;max-width:600px;background-color:#FFFFFF;border-radius:5px;overflow:hidden;">
+
+          <!-- HEADER -->
+          <tr>
+            <td style="background-color:#212121;padding:32px 40px 28px 40px;" class="px">
+              <div style="width:48px;height:3px;background-color:#EE5A8E;margin-bottom:18px;line-height:3px;font-size:0;">&nbsp;</div>
+              <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:900;font-size:22px;letter-spacing:-0.5px;line-height:1.1;color:#FFFFFF;">
+                <span style="color:#EE5A8E;">aesthetics</span><br />
+                unlocked.
+              </div>
+            </td>
+          </tr>
+
+          <!-- HERO -->
+          <tr>
+            <td style="padding:48px 40px 24px 40px;" class="px">
+              <p style="margin:0 0 18px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:#EE5A8E;line-height:1;">
+                You finished it
+              </p>
+              <h1 class="hero-h1" style="margin:0;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:900;font-size:32px;line-height:1.1;letter-spacing:-1px;color:#212121;">
+                That&rsquo;s the work, <span style="color:#EE5A8E;">{first_name}</span>.
+              </h1>
+            </td>
+          </tr>
+
+          <!-- BODY -->
+          <tr>
+            <td style="padding:0 40px 24px 40px;" class="px">
+              <p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">
+                You&rsquo;ve completed {course_title}. That puts you in a
+                small minority &mdash; most people who buy a course never
+                finish it. You did.
+              </p>
+              <p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">
+                Your Certificate of Completion is ready below. Use it for
+                CPD, NMC revalidation reflective practice, or your portfolio
+                &mdash; whatever&rsquo;s useful.
+              </p>
+            </td>
+          </tr>
+
+          <!-- CERTIFICATE CTA -->
+          <tr>
+            <td align="left" style="padding:0 40px 32px 40px;" class="px">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td bgcolor="#EE5A8E" style="border-radius:5px;">
+                    <a href="{certificate_url}" target="_blank"
+                       style="display:inline-block;padding:14px 28px;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border-radius:5px;">
+                      Download your certificate &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- NEXT STEP — soft cross-sell -->
+          <tr>
+            <td style="padding:0 40px 40px 40px;" class="px">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FAF6F1;border-left:3px solid #EE5A8E;">
+                <tr>
+                  <td style="padding:24px 28px;">
+                    <p style="margin:0 0 8px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#EE5A8E;line-height:1;">
+                      A natural next step
+                    </p>
+                    <p style="margin:0 0 12px 0;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:800;font-size:20px;line-height:1.2;letter-spacing:-0.5px;color:#212121;">
+                      {next_course_title}
+                    </p>
+                    <p class="body-p" style="margin:0 0 14px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#212121;opacity:0.85;">
+                      [REPLACE PER COURSE &mdash; one sentence on why
+                      this is the natural follow-on from {course_title}.]
+                    </p>
+                    <a href="{next_course_url}" target="_blank" style="font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#EE5A8E;text-decoration:none;">
+                      See {next_course_title} &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- SIGN-OFF -->
+          <tr>
+            <td style="padding:0 40px 48px 40px;" class="px">
+              <p class="body-p" style="margin:0 0 6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#212121;">
+                Genuinely well done,
+              </p>
+              <p style="margin:0;font-family:Georgia,'Spectral',serif;font-style:italic;font-size:24px;line-height:1.2;color:#EE5A8E;">
+                Bernadette
+              </p>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="background-color:#212121;padding:32px 40px;" class="px">
+              <p style="margin:0 0 12px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#EE5A8E;line-height:1.4;">
+                Aesthetics Unlocked&reg;
+              </p>
+              <p style="margin:0 0 12px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#FFFFFF;opacity:0.55;">
+                Aesthetics Unlocked, [Postal address pending]
+              </p>
+              <p style="margin:0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;opacity:0.55;">
+                <a href="{unsubscribe_link}" style="color:#FFFFFF;text-decoration:underline;">Unsubscribe</a>
+                &nbsp;&middot;&nbsp;
+                <a href="{site_url}/privacy" style="color:#FFFFFF;text-decoration:underline;">Privacy</a>
+                &nbsp;&middot;&nbsp;
+                <a href="{site_url}" style="color:#FFFFFF;text-decoration:underline;">aestheticsunlocked.co.uk</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

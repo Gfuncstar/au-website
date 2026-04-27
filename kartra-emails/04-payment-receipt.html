@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Your enrolment is confirmed</title>
+
+  <!--
+    PAYMENT RECEIPT TEMPLATE
+    Sent immediately after a successful Stripe payment for any paid
+    course (Acne Decoded, Rosacea, RAG Pathway, 5K+ Formula).
+    Doubles as both a confirmation and a UK-VAT-compliant receipt.
+
+    Required to fill in (per send):
+      {course_title}     — name of the purchased course
+      {course_url}       — deep link to start the course
+      {transaction_id}   — Kartra / Stripe transaction reference
+      {amount_paid}      — formatted GBP amount (e.g. £79.00)
+      {amount_vat}       — VAT amount if registered, else "N/A"
+      {payment_date}     — date of payment, dd Mon yyyy
+
+    If Bernadette isn't VAT-registered, delete the VAT row from
+    the receipt block.
+  -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Lato:wght@400;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
+
+  <style type="text/css">
+    @media only screen and (max-width: 600px) {
+      .container { width: 100% !important; }
+      .px { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-h1 { font-size: 28px !important; line-height: 1.1 !important; }
+      .body-p { font-size: 16px !important; line-height: 1.6 !important; }
+      .receipt-row td { font-size: 14px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#FAF6F1;font-family:'Lato',Helvetica,Arial,sans-serif;color:#212121;-webkit-font-smoothing:antialiased;">
+
+  <div style="display:none;font-size:1px;color:#FAF6F1;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
+    {first_name}, you&rsquo;re enrolled in {course_title}. Receipt + access link inside.
+  </div>
+
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FAF6F1;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" class="container" style="width:600px;max-width:600px;background-color:#FFFFFF;border-radius:5px;overflow:hidden;">
+
+          <!-- HEADER -->
+          <tr>
+            <td style="background-color:#212121;padding:32px 40px 28px 40px;" class="px">
+              <div style="width:48px;height:3px;background-color:#EE5A8E;margin-bottom:18px;line-height:3px;font-size:0;">&nbsp;</div>
+              <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:900;font-size:22px;letter-spacing:-0.5px;line-height:1.1;color:#FFFFFF;">
+                <span style="color:#EE5A8E;">aesthetics</span><br />
+                unlocked.
+              </div>
+            </td>
+          </tr>
+
+          <!-- HERO -->
+          <tr>
+            <td style="padding:48px 40px 24px 40px;" class="px">
+              <p style="margin:0 0 18px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:#EE5A8E;line-height:1;">
+                You&rsquo;re enrolled
+              </p>
+              <h1 class="hero-h1" style="margin:0;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:900;font-size:32px;line-height:1.1;letter-spacing:-1px;color:#212121;">
+                Welcome to <span style="color:#EE5A8E;">{course_title}</span>, {first_name}.
+              </h1>
+            </td>
+          </tr>
+
+          <!-- BODY -->
+          <tr>
+            <td style="padding:0 40px 24px 40px;" class="px">
+              <p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">
+                Your payment has been received and your enrolment is now
+                live. The course is yours for life &mdash; revisit any
+                lesson, any time.
+              </p>
+              <p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">
+                A short suggestion: block out a clear hour for Module 1
+                rather than picking it up between consults. The framework
+                lands harder when you give it room.
+              </p>
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td align="left" style="padding:0 40px 32px 40px;" class="px">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td bgcolor="#EE5A8E" style="border-radius:5px;">
+                    <a href="{course_url}" target="_blank"
+                       style="display:inline-block;padding:14px 28px;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border-radius:5px;">
+                      Start the course &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- RECEIPT BLOCK -->
+          <tr>
+            <td style="padding:0 40px 32px 40px;" class="px">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FAF6F1;border-radius:5px;">
+                <tr>
+                  <td style="padding:24px 28px;">
+                    <p style="margin:0 0 16px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#EE5A8E;line-height:1;">
+                      Receipt
+                    </p>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" class="receipt-row">
+                      <tr>
+                        <td style="padding:6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:15px;color:#212121;opacity:0.7;">Course</td>
+                        <td align="right" style="padding:6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-weight:700;font-size:15px;color:#212121;">{course_title}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:15px;color:#212121;opacity:0.7;">Date</td>
+                        <td align="right" style="padding:6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:15px;color:#212121;">{payment_date}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:15px;color:#212121;opacity:0.7;">Reference</td>
+                        <td align="right" style="padding:6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:13px;color:#212121;opacity:0.7;">{transaction_id}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" style="border-top:1px solid #21212122;padding:0;line-height:0;font-size:0;">&nbsp;</td>
+                      </tr>
+                      <!-- VAT row — delete if Bernadette isn't VAT-registered -->
+                      <tr>
+                        <td style="padding:10px 0 6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:15px;color:#212121;opacity:0.7;">VAT (20%)</td>
+                        <td align="right" style="padding:10px 0 6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:15px;color:#212121;">{amount_vat}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:6px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-weight:700;font-size:17px;color:#212121;">Total paid</td>
+                        <td align="right" style="padding:6px 0;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:900;font-size:20px;color:#EE5A8E;">{amount_paid}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:14px 0 0 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:13px;line-height:1.5;color:#212121;opacity:0.6;">
+                Keep this email as your VAT receipt. Aesthetics Unlocked
+                VAT registration: [VAT number pending].
+              </p>
+            </td>
+          </tr>
+
+          <!-- REFUND POLICY NOTE -->
+          <tr>
+            <td style="padding:0 40px 40px 40px;" class="px">
+              <p class="body-p" style="margin:0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#212121;opacity:0.7;">
+                14-day money-back guarantee on every paid course, no
+                questions asked, provided you&rsquo;ve completed less
+                than 30% of the modules. Email
+                <a href="mailto:hello@aunlock.co.uk" style="color:#EE5A8E;text-decoration:underline;">hello@aunlock.co.uk</a>
+                if anything&rsquo;s wrong.
+              </p>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="background-color:#212121;padding:32px 40px;" class="px">
+              <p style="margin:0 0 12px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#EE5A8E;line-height:1.4;">
+                Aesthetics Unlocked&reg;
+              </p>
+              <p style="margin:0 0 12px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#FFFFFF;opacity:0.55;">
+                Aesthetics Unlocked, [Postal address pending]<br />
+                Company / VAT details: [Pending]
+              </p>
+              <p style="margin:0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;opacity:0.55;">
+                <a href="{unsubscribe_link}" style="color:#FFFFFF;text-decoration:underline;">Unsubscribe</a>
+                &nbsp;&middot;&nbsp;
+                <a href="{site_url}/privacy" style="color:#FFFFFF;text-decoration:underline;">Privacy</a>
+                &nbsp;&middot;&nbsp;
+                <a href="{site_url}/terms" style="color:#FFFFFF;text-decoration:underline;">Terms</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
