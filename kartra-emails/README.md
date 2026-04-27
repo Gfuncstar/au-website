@@ -7,14 +7,36 @@ use one of these as the base instead of Kartra's 2017-default chrome.
 
 ## What's in here
 
-| File | When to use it | Sequence step |
-|---|---|---|
-| `01-welcome-free-taster.html` | Immediate after free-taster opt-in | Step 1 of welcome sequence |
-| `02-broadcast.html` | One-off newsletter / announcement | Standalone |
-| `03-course-module-released.html` | Drip emails: "your next module is ready" | Cohort drip |
-| `04-payment-receipt.html` | Immediately after paid course purchase | Post-Stripe webhook |
-| `05-course-completion.html` | When a student finishes a course | Triggered by completion tag |
-| `06-winback.html` | Re-engagement for inactive subscribers | 30+ day silent |
+Every template carries a banner comment at the very top stating the
+**Source file** and the **Kartra name** it should be saved as. Use the
+exact name shown there — that's what the upload map below depends on.
+
+### Upload map (the sync ledger)
+
+When a file in this folder changes, find the matching saved template
+in Kartra by name and paste the new HTML over it. Don't rename in
+Kartra — that breaks the sync ledger.
+
+| Repo file | → Kartra → My Templates name | When the email fires | Has cross-sell? |
+|---|---|---|---|
+| `01-welcome-free-taster.html` | **AU - Welcome - Free Taster** | Step 1 of welcome sequence (free taster opt-in) | ✓ 3-course strip |
+| `02-broadcast.html` | **AU - Broadcast (base)** | Standalone — duplicate this for each one-off send | — |
+| `03-course-module-released.html` | **AU - Course Module Released** | Cohort drip ("your next module unlocks") | — |
+| `04-payment-receipt.html` | **AU - Payment Receipt** | Post-Stripe webhook on paid enrolment | ✓ 2-course strip |
+| `05-course-completion.html` | **AU - Course Completion** | Triggered by `*Complete` tag in Kartra | ✓ Primary next-step + 2-course strip |
+| `06-winback.html` | **AU - Win-back** | 30+ day silent re-engagement | ✓ 3-angles strip |
+
+### Sync rule
+
+1. **Source of truth lives here in the repo.** Edit the `.html` file,
+   commit + push. Don't make significant edits inside Kartra's editor.
+2. **Open the matching saved Kartra template** by the name in the table.
+3. **HTML mode → paste over the existing body → Save.** Never use the
+   visual editor mode after upload — Kartra rewrites HTML and breaks
+   inline styles, table layouts, and the cross-sell tables.
+4. **Don't rename the Kartra template.** The repo banner comment uses
+   the saved Kartra name as the join key. If you rename in Kartra,
+   update the banner comment in the matching `.html` to match.
 
 ## How to upload to Kartra
 
