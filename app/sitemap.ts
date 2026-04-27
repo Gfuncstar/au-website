@@ -12,6 +12,7 @@
 import type { MetadataRoute } from "next";
 import { COURSES } from "@/lib/courses";
 import { STANDARDS } from "@/lib/standards";
+import { LOCATIONS } from "@/lib/locations";
 import { BRAND } from "@/lib/credentials";
 
 const SITE_URL = `https://${BRAND.domain}`;
@@ -24,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/courses`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/standards`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${SITE_URL}/for`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/faqs`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
@@ -45,5 +47,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticRoutes, ...courseRoutes, ...standardRoutes];
+  // Geo landing pages — nations get higher priority than cities since
+  // they carry the unique nation-level regulatory content.
+  const locationRoutes: MetadataRoute.Sitemap = LOCATIONS.map((l) => ({
+    url: `${SITE_URL}/for/${l.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: l.kind === "nation" ? 0.7 : 0.6,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...courseRoutes,
+    ...standardRoutes,
+    ...locationRoutes,
+  ];
 }

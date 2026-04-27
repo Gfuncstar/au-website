@@ -36,6 +36,7 @@ const FOOTER_LINKS = [
     items: [
       { href: "/about", label: "About Bernadette" },
       { href: "/standards", label: "Standards we teach against" },
+      { href: "/for", label: "By UK nation & city" },
       { href: "/contact", label: "Contact" },
     ],
   },
