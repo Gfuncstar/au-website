@@ -27,6 +27,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Button } from "@/components/Button";
+import { MEMBERS_URL } from "@/lib/links";
 
 /* ============================================================
    Small animated award icons for the hero awards rail.
@@ -178,7 +179,7 @@ export function HeroAnimated() {
         //   - +100px per "PADDING MOVE TEXT UP 100 PIX" call.
         //   - −40px per "move down 40px" call (justify-end flex, so smaller
         //     pb shifts the type block downwards toward the bottom edge).
-        className="relative z-20 h-full flex flex-col justify-end px-[35px] sm:px-10 md:px-14 pb-[40px] sm:pb-[80px] md:pb-[100px]"
+        className="relative z-20 h-full flex flex-col justify-end px-[35px] sm:px-10 md:px-14 pb-[80px] sm:pb-[110px] md:pb-[130px]"
       >
         <div className="md:max-w-3xl">
           {/* Awards rail — leads the hero. "Strategic Education" eyebrow
@@ -230,37 +231,46 @@ export function HeroAnimated() {
             </motion.span>
           </h1>
 
-          {/* Hero description — Giles-supplied copy. Positions AU directly
-              as the platform, naming the audience (practitioners + clinic
-              owners) and the promise (clarity, structure, confidence). */}
+          {/* Hero description — first-person, written in Bernadette's voice
+              per Giles' "rewrite in first person, quietly upsell" call.
+              Weaves the clinic proof in lightly: this isn't theory, it's
+              what I run inside a real clinic that won its category. */}
           <motion.p
             variants={itemVariants}
             className="mt-7 sm:mt-9 max-w-xl text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-white/85 leading-relaxed"
           >
-            An education platform built to help{" "}
+            I built this for{" "}
             <span style={{ color: "var(--color-au-pink)" }}>
               aesthetic practitioners and clinic owners
             </span>{" "}
-            scale with{" "}
+            who want to scale with{" "}
             <span style={{ color: "var(--color-au-pink)" }}>
               clarity, structure, and confidence
-            </span>
-            .
+            </span>{" "}
+            — using the same frameworks I run inside my own clinic.
           </motion.p>
 
           <motion.div
             variants={itemVariants}
             className="mt-8 sm:mt-10 flex flex-wrap gap-3 sm:gap-4"
           >
-            {/* Primary — solid AU pink. Conversion CTA per AU brand rule.
-                Size dropped to `sm` per Giles' "reduce by 50%" call —
-                the hero CTAs are now ~half the previous footprint. */}
             <Button href="/courses" variant="pink" size="sm">
-              Browse the courses
+              See my courses
             </Button>
-            {/* Secondary — glass / nurture CTA. */}
             <Button href="/about" variant="glass" size="sm">
-              Why Bernadette
+              About me
+            </Button>
+            {/* Members login — external, opens the Kartra members area
+                in a new tab. Matches the Members link in the Nav. */}
+            <Button
+              href={MEMBERS_URL}
+              variant="glass"
+              size="sm"
+              target="_blank"
+              rel="noopener noreferrer"
+              arrow={false}
+            >
+              Members ↗
             </Button>
           </motion.div>
         </div>

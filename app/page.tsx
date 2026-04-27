@@ -162,11 +162,11 @@ export default function Home() {
           <ScrollReveal delay={0.15}>
             <p className="max-w-2xl text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-white/85 leading-relaxed mb-12 sm:mb-14">
               At the regulator&rsquo;s office, the bank, and the consultation
-              room. Three lenses every AU course teaches through —{" "}
+              room. Three lenses I teach through in every course —{" "}
               <span style={{ color: "var(--color-au-pink)" }}>
                 clinical identity, regulatory safety, and profit & systems
               </span>
-              .
+              . The same three I run my own clinic against.
             </p>
           </ScrollReveal>
           <ThreePillars />

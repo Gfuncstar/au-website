@@ -80,13 +80,13 @@ export function MeetBernadette() {
           nursing.
         </motion.h2>
 
-        {/* Credentials list — converted from a single paragraph to bullets
-            per Giles' "more bulleted" call. Easier to scan; each line is
-            its own piece of authority. */}
+        {/* Identity line — first-person, "Hi, I'm Bernadette" framing
+            per Giles' "rewrite in first person" call. */}
         <motion.p
           variants={itemVariants}
           className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/85 leading-relaxed mb-4 sm:mb-5"
         >
+          Hi, I&rsquo;m{" "}
           <strong className="font-bold">Bernadette Tobin</strong> —{" "}
           <span className="text-au-charcoal/70">RN, MSc Advanced Practice.</span>
         </motion.p>
@@ -127,15 +127,21 @@ export function MeetBernadette() {
           variants={itemVariants}
           className="text-[1rem] sm:text-[1.0625rem] text-au-charcoal/75 leading-relaxed mb-8 sm:mb-9"
         >
-          She built Aesthetics Unlocked because the gap she saw wasn&rsquo;t
-          clinical. The practitioners she knew were technically excellent —
-          they were just{" "}
+          I built Aesthetics Unlocked because the gap I kept seeing wasn&rsquo;t
+          clinical. The practitioners I knew were technically excellent — they
+          were just{" "}
           <span style={{ color: "var(--color-au-pink)" }}>
             exhausted, undercharging, and quietly unsure if they were actually
             compliant
           </span>
-          . AU is the framework she wishes someone had handed her when she
-          started.
+          . AU is the framework I wish someone had handed me when I started —
+          the same one I run inside{" "}
+          <strong className="font-bold">Visage Aesthetics</strong>, my own
+          clinic, which won{" "}
+          <span style={{ color: "var(--color-au-pink)" }}>
+            Best Non-Surgical Aesthetics Clinic 2026 (Essex)
+          </span>
+          . What I teach isn&rsquo;t theory. It&rsquo;s what I do.
         </motion.p>
 
         {/* Stat strip — verified credentials only. */}
@@ -164,7 +170,10 @@ export function MeetBernadette() {
 
         <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
           <Button href="/about" variant="pink" size="sm">
-            Why Bernadette
+            More about me
+          </Button>
+          <Button href="/courses" variant="black" size="sm">
+            See the courses
           </Button>
         </motion.div>
       </div>

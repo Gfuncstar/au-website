@@ -77,7 +77,7 @@ export function BookSection() {
             letterSpacing: "var(--tracking-tight-display)",
           }}
         >
-          She literally{" "}
+          I literally{" "}
           <span style={{ color: "var(--color-au-pink)" }}>wrote the book</span>{" "}
           on it.
         </motion.h2>
@@ -89,17 +89,15 @@ export function BookSection() {
           <em className="font-bold">
             Regulation to Reputation: mastering successful aesthetic practice
           </em>{" "}
-          — the published reference Bernadette wrote for UK aesthetic
-          practitioners who want to practise safely, ethically, and defensibly.
-          Available on Amazon UK.
+          — the reference I wrote for UK aesthetic practitioners who want to
+          practise safely, ethically, and defensibly. Available on Amazon UK.
         </motion.p>
 
         <motion.p
           variants={itemVariants}
           className="text-[0.9375rem] sm:text-[1rem] text-au-charcoal/70 leading-relaxed mb-7 sm:mb-8 max-w-md"
         >
-          The frameworks taught across every Aesthetics Unlocked course —
-          including the{" "}
+          Every framework I teach inside the courses — including the{" "}
           <span style={{ color: "var(--color-au-pink)" }}>
             Traffic Light System
           </span>{" "}
@@ -107,8 +105,10 @@ export function BookSection() {
           <span style={{ color: "var(--color-au-pink)" }}>
             UNLOCK PROFIT™ Framework
           </span>{" "}
-          — are anchored to the same clinical and regulatory reasoning the book
-          puts on the record.
+          — is anchored to the same clinical and regulatory reasoning I put on
+          the record in the book. If you want the long-form, the book is the
+          start. If you want me walking you through it module by module, the
+          courses are the next step.
         </motion.p>
 
         <motion.a
