@@ -247,7 +247,11 @@ export function HeroAnimated() {
             <span style={{ color: "var(--color-au-pink)" }}>
               clarity, structure, and confidence
             </span>{" "}
-            — using the same frameworks I run inside my own clinic.
+            — using the same frameworks I run inside my own{" "}
+            <span style={{ color: "var(--color-au-pink)" }}>
+              award-winning
+            </span>{" "}
+            clinic.
           </motion.p>
 
           <motion.div
