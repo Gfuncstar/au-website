@@ -29,7 +29,8 @@ import { QuotePoster } from "@/components/QuotePoster";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import { AwardsPanel } from "@/components/AwardsPanel";
-import { FOUNDER, AWARDS } from "@/lib/credentials";
+import { BRAND, FOUNDER, AWARDS, PERSON_AWARDS_JSONLD } from "@/lib/credentials";
+import { BOOK_AMAZON_URL, INSTAGRAM_URL, NMC_REGISTER_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "About Bernadette Tobin — Educator of the Year 2026 Nominee",
@@ -113,6 +114,87 @@ const CREDENTIALS = [
 ] as const;
 
 export default function AboutPage() {
+  // Person schema with full E-E-A-T surface — credentials, awards (incl.
+  // Educator of the Year 2026 nominee), the book on Amazon, NMC public
+  // register, social profiles. Per seo-audit.md the Person schema is
+  // the lead authority signal for an education brand.
+  const aboutUrl = `https://${BRAND.domain}/about`;
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `https://${BRAND.domain}/#person`,
+        name: FOUNDER.fullName,
+        givenName: FOUNDER.firstName,
+        familyName: FOUNDER.lastName,
+        honorificSuffix: FOUNDER.shortCredentials,
+        jobTitle: "Founder, Aesthetics Unlocked",
+        description:
+          "RN, MSc Advanced Practice. Twenty years in nursing. Twelve in aesthetics. Author of Regulation to Reputation. Educator of the Year 2026 Nominee.",
+        url: aboutUrl,
+        award: PERSON_AWARDS_JSONLD,
+        knowsAbout: [
+          "UK aesthetics regulation",
+          "JCCP standards",
+          "MHRA compliance",
+          "NICE clinical pathways",
+          "Acne management",
+          "Rosacea management",
+          "Aesthetics business strategy",
+          "Clinic profitability",
+        ],
+        worksFor: {
+          "@type": "Organization",
+          name: BRAND.name,
+          url: `https://${BRAND.domain}`,
+        },
+        sameAs: [INSTAGRAM_URL, NMC_REGISTER_URL],
+        hasCredential: [
+          {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "degree",
+            name: "MSc Advanced Practice (Level 7)",
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: "license",
+            name: "Registered Nurse (NMC)",
+            recognizedBy: {
+              "@type": "Organization",
+              name: "Nursing and Midwifery Council",
+              url: "https://www.nmc.org.uk",
+            },
+            identifier: FOUNDER.nmcPin,
+          },
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `https://${BRAND.domain}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About Bernadette",
+            item: aboutUrl,
+          },
+        ],
+      },
+      {
+        "@type": "Book",
+        name: "Regulation to Reputation: mastering successful aesthetic practice",
+        author: { "@id": `https://${BRAND.domain}/#person` },
+        url: BOOK_AMAZON_URL,
+      },
+    ],
+  };
+
   return (
     <>
       <Nav forceLight />
@@ -462,6 +544,11 @@ export default function AboutPage() {
         />
       </main>
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
     </>
   );
 }

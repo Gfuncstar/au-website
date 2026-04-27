@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
     "Terms of use governing access to Aesthetics Unlocked® courses, content, and the AU members portal.",
+  alternates: { canonical: "/terms" },
+  robots: { index: true, follow: true },
 };
 
 const SECTIONS: LegalSection[] = [

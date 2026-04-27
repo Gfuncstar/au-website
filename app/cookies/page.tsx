@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   title: "Cookie Policy",
   description:
     "What cookies Aesthetics Unlocked® uses, what they do, and how to control them.",
+  alternates: { canonical: "/cookies" },
+  robots: { index: true, follow: true },
 };
 
 const SECTIONS: LegalSection[] = [

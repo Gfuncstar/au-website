@@ -94,6 +94,7 @@ export function Nav({ forceLight = false }: Props) {
   }, [open]);
 
   return (
+    <>
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-[background-color,border-color] duration-300 ${headerBg}`}
     >
@@ -150,29 +151,37 @@ export function Nav({ forceLight = false }: Props) {
           className="md:hidden h-12 w-12 flex flex-col items-center justify-center gap-[5px] -mr-2 z-10"
         >
           <span
-            className={`h-px w-6 transition-all ${barColour} ${
+            className={`h-[2px] w-7 transition-all ${barColour} ${
               open ? "translate-y-[3px] rotate-45" : ""
             }`}
           />
           <span
-            className={`h-px w-6 transition-opacity ${barColour} ${
+            className={`h-[2px] w-7 transition-opacity ${barColour} ${
               open ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`h-px w-6 transition-all ${barColour} ${
+            className={`h-[2px] w-7 transition-all ${barColour} ${
               open ? "-translate-y-[5px] -rotate-45" : ""
             }`}
           />
         </button>
       </div>
+    </header>
 
       {/* ============================================================
           MOBILE DRAWER — full-screen panel with course depth surfaced.
+          Rendered as a sibling of <header> (not inside it) so the
+          header's `backdrop-blur` doesn't establish a containing block
+          for this fixed-position drawer — without that, the drawer's
+          `bottom: 0` was resolving to the bottom of the 64px-tall
+          header instead of the viewport, collapsing the drawer to ~1px.
+          z-40 so it sits below the header's z-50 (logo + close button
+          must remain clickable above the drawer).
           ============================================================ */}
       <div
         id="mobile-nav"
-        className={`md:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-au-white border-t border-au-charcoal/10 overflow-y-auto transition-[opacity,transform] duration-300 ease-out ${
+        className={`md:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 z-40 bg-au-charcoal text-au-white border-t border-au-white/10 overflow-y-auto transition-[opacity,transform] duration-300 ease-out ${
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-2 pointer-events-none"
@@ -197,7 +206,7 @@ export function Nav({ forceLight = false }: Props) {
                 return (
                   <li
                     key={c.slug}
-                    className="border-b border-au-charcoal/15 first:border-t"
+                    className="border-b border-au-white/15 first:border-t"
                   >
                     <Link
                       href={`/courses/${c.slug}`}
@@ -205,12 +214,12 @@ export function Nav({ forceLight = false }: Props) {
                       className="grid grid-cols-[1fr_auto] gap-4 items-baseline py-4"
                     >
                       <div className="min-w-0">
-                        <p className="font-section font-semibold uppercase tracking-[0.15em] text-[0.625rem] text-au-charcoal/55 mb-1">
+                        <p className="font-section font-semibold uppercase tracking-[0.15em] text-[0.625rem] text-au-white/55 mb-1">
                           {c.category} · {c.format}
                           {c.availability === "waitlist" && " · Waitlist"}
                         </p>
                         <h3
-                          className="font-display font-bold leading-tight text-au-charcoal"
+                          className="font-display font-bold leading-tight text-au-white"
                           style={{
                             fontSize: "1.125rem",
                             letterSpacing: "var(--tracking-tight-display)",
@@ -237,7 +246,7 @@ export function Nav({ forceLight = false }: Props) {
             <Link
               href="/courses"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center gap-2 font-section font-semibold uppercase tracking-[0.15em] text-[0.75rem] text-au-charcoal hover:text-[var(--color-au-pink)] transition-colors mt-5"
+              className="inline-flex items-center gap-2 font-section font-semibold uppercase tracking-[0.15em] text-[0.75rem] text-au-white hover:text-[var(--color-au-pink)] transition-colors mt-5"
             >
               See all courses in detail <span aria-hidden="true">→</span>
             </Link>
@@ -252,37 +261,37 @@ export function Nav({ forceLight = false }: Props) {
               The educator
             </p>
             <ul className="flex flex-col">
-              <li className="border-b border-au-charcoal/15 first:border-t">
+              <li className="border-b border-au-white/15 first:border-t">
                 <Link
                   href="/about"
                   onClick={() => setOpen(false)}
                   className="block py-4"
                 >
                   <h3
-                    className="font-display font-bold leading-tight text-au-charcoal mb-1"
+                    className="font-display font-bold leading-tight text-au-white mb-1"
                     style={{ fontSize: "1.125rem" }}
                   >
                     About Bernadette
                   </h3>
-                  <p className="text-[0.875rem] text-au-charcoal/65 leading-snug">
+                  <p className="text-[0.875rem] text-au-white/65 leading-snug">
                     RN, MSc Advanced Practice. Twenty years on the ward. Twelve
                     in aesthetics. Educator of the Year 2026 Nominee.
                   </p>
                 </Link>
               </li>
-              <li className="border-b border-au-charcoal/15">
+              <li className="border-b border-au-white/15">
                 <Link
                   href="/standards"
                   onClick={() => setOpen(false)}
                   className="block py-4"
                 >
                   <h3
-                    className="font-display font-bold leading-tight text-au-charcoal mb-1"
+                    className="font-display font-bold leading-tight text-au-white mb-1"
                     style={{ fontSize: "1.125rem" }}
                   >
                     Standards we teach against
                   </h3>
-                  <p className="text-[0.875rem] text-au-charcoal/65 leading-snug">
+                  <p className="text-[0.875rem] text-au-white/65 leading-snug">
                     NICE · JCCP · CPSA · MHRA · CQC · NMC · RCN · ASA. Eight
                     bodies. Every course anchored.
                   </p>
@@ -300,53 +309,53 @@ export function Nav({ forceLight = false }: Props) {
               Connect
             </p>
             <ul className="flex flex-col">
-              <li className="border-b border-au-charcoal/15 first:border-t">
+              <li className="border-b border-au-white/15 first:border-t">
                 <Link
                   href="/faqs"
                   onClick={() => setOpen(false)}
-                  className="block py-4 font-display font-bold text-au-charcoal hover:text-[var(--color-au-pink)] transition-colors"
+                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
                   style={{ fontSize: "1.125rem" }}
                 >
                   FAQs
                 </Link>
               </li>
-              <li className="border-b border-au-charcoal/15">
+              <li className="border-b border-au-white/15">
                 <Link
                   href="/contact"
                   onClick={() => setOpen(false)}
-                  className="block py-4 font-display font-bold text-au-charcoal hover:text-[var(--color-au-pink)] transition-colors"
+                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
                   style={{ fontSize: "1.125rem" }}
                 >
                   Contact
                 </Link>
               </li>
-              <li className="border-b border-au-charcoal/15">
+              <li className="border-b border-au-white/15">
                 <a
                   href={`mailto:${BRAND.email}`}
-                  className="block py-4 font-display font-bold text-au-charcoal hover:text-[var(--color-au-pink)] transition-colors"
+                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
                   style={{ fontSize: "1.125rem" }}
                 >
                   Email · {BRAND.email}
                 </a>
               </li>
-              <li className="border-b border-au-charcoal/15">
+              <li className="border-b border-au-white/15">
                 <a
                   href={BRAND.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block py-4 font-display font-bold text-au-charcoal hover:text-[var(--color-au-pink)] transition-colors"
+                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
                   style={{ fontSize: "1.125rem" }}
                 >
                   Instagram · @{BRAND.instagram.handle}{" "}
                   <span aria-hidden="true">↗</span>
                 </a>
               </li>
-              <li className="border-b border-au-charcoal/15">
+              <li className="border-b border-au-white/15">
                 <a
                   href={MEMBERS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block py-4 font-display font-bold text-au-charcoal hover:text-[var(--color-au-pink)] transition-colors"
+                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
                   style={{ fontSize: "1.125rem" }}
                 >
                   Members log-in <span aria-hidden="true">↗</span>
@@ -356,8 +365,8 @@ export function Nav({ forceLight = false }: Props) {
           </section>
 
           {/* CREDENTIAL STRIP — drives home the educator's authority. */}
-          <section className="border-t border-au-charcoal/15 pt-6">
-            <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.625rem] text-au-charcoal/55 mb-2">
+          <section className="border-t border-au-white/15 pt-6">
+            <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.625rem] text-au-white/55 mb-2">
               Built and taught by
             </p>
             <p
@@ -370,7 +379,7 @@ export function Nav({ forceLight = false }: Props) {
             >
               {FOUNDER.fullName}, {FOUNDER.shortCredentials}.
             </p>
-            <p className="text-[0.8125rem] text-au-charcoal/75 leading-relaxed mb-2">
+            <p className="text-[0.8125rem] text-au-white/75 leading-relaxed mb-2">
               NMC Pin{" "}
               <a
                 href={NMC_REGISTER_URL}
@@ -383,13 +392,13 @@ export function Nav({ forceLight = false }: Props) {
               </a>
               {" "}· Registered with the Royal College of Nursing
             </p>
-            <p className="text-[0.8125rem] text-au-charcoal/65 leading-relaxed">
+            <p className="text-[0.8125rem] text-au-white/65 leading-relaxed">
               Educator of the Year 2026 Nominee. MSc Advanced Practice. Author,
               lecturer, working clinic owner.
             </p>
           </section>
         </div>
       </div>
-    </header>
+    </>
   );
 }

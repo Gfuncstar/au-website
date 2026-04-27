@@ -23,9 +23,31 @@ export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
     "Everything you might be wondering about Aesthetics Unlocked — courses, payments, certificates, NMC revalidation, refunds, and more.",
+  alternates: { canonical: "/faqs" },
+  openGraph: {
+    title: "Frequently Asked Questions — Aesthetics Unlocked®",
+    description:
+      "Common questions about Aesthetics Unlocked courses, eligibility, certification, refunds, and Bernadette Tobin's teaching approach.",
+    url: "/faqs",
+    type: "website",
+  },
 };
 
 export default function FAQsPage() {
+  // FAQPage JSON-LD — flatten every group's items into one mainEntity
+  // array so Google can surface the questions as rich-result accordions.
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: GENERAL_FAQS.flatMap((group) =>
+      group.items.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    ),
+  };
+
   return (
     <>
       <Nav forceLight />
@@ -104,6 +126,11 @@ export default function FAQsPage() {
         />
       </main>
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
     </>
   );
 }

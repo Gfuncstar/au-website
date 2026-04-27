@@ -33,6 +33,7 @@ import {
   ProfitBarsMark,
 } from "@/components/CourseMarks";
 import { STANDARDS, getStandard, getRelatedCourses } from "@/lib/standards";
+import { BRAND } from "@/lib/credentials";
 
 const COURSE_MARKS: Record<string, React.ReactNode> = {
   "free-3-day-startup": NicheMark,
@@ -61,6 +62,13 @@ export async function generateMetadata({
   return {
     title: `${standard.abbrev} — ${standard.name}`,
     description: standard.what,
+    alternates: { canonical: `/standards/${standard.slug}` },
+    openGraph: {
+      title: `${standard.abbrev} — ${standard.name}`,
+      description: standard.what,
+      url: `/standards/${standard.slug}`,
+      type: "article",
+    },
   };
 }
 
@@ -74,6 +82,58 @@ export default async function StandardPage({
   if (!standard) notFound();
 
   const relatedCourses = getRelatedCourses(standard);
+
+  // JSON-LD — describes the regulator/professional body as a referenced
+  // Organization plus a Breadcrumb (Home → Standards → [Body]). Boosts
+  // E-E-A-T by surfacing the regulator AU is teaching against as a
+  // first-class entity Google can resolve to its real Wikidata page.
+  const standardUrl = `https://${BRAND.domain}/standards/${standard.slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${standardUrl}#article`,
+        headline: `${standard.abbrev} — ${standard.name}`,
+        description: standard.what,
+        url: standardUrl,
+        author: {
+          "@type": "Organization",
+          name: BRAND.name,
+          url: `https://${BRAND.domain}`,
+        },
+        about: {
+          "@type": "Organization",
+          name: standard.name,
+          alternateName: standard.abbrev,
+          url: standard.url,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `https://${BRAND.domain}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Standards",
+            item: `https://${BRAND.domain}/standards`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: standard.abbrev,
+            item: standardUrl,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
@@ -287,6 +347,11 @@ export default async function StandardPage({
         />
       </main>
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }

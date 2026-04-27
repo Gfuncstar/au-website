@@ -92,16 +92,32 @@ export default async function CourseDetailPage({
         ? "regulatory"
         : "business";
 
-  // Schema.org Course markup.
-  const jsonLd = {
-    "@context": "https://schema.org",
+  // Schema.org Course markup. Per seo-audit.md Tier 1 — every course
+  // page surfaces Course schema with provider, instructor, offers
+  // (price + currency + availability), courseMode, and hasCourseInstance.
+  // FAQPage and BreadcrumbList graph nodes are bundled into the same
+  // JSON-LD payload so the page emits one structured-data block.
+  const courseUrl = `https://${BRAND.domain}/courses/${course.slug}`;
+  const courseImage = course.bgImage
+    ? `https://${BRAND.domain}${course.bgImage}`
+    : undefined;
+
+  const courseNode: Record<string, unknown> = {
     "@type": "Course",
+    "@id": `${courseUrl}#course`,
     name: course.title,
     description: course.summary,
+    url: courseUrl,
     provider: {
       "@type": "Organization",
       name: BRAND.name,
       url: `https://${BRAND.domain}`,
+    },
+    instructor: {
+      "@type": "Person",
+      name: FOUNDER.fullName,
+      jobTitle: "Founder, Aesthetics Unlocked",
+      honorificSuffix: FOUNDER.shortCredentials,
     },
     offers: {
       "@type": "Offer",
@@ -110,12 +126,82 @@ export default async function CourseDetailPage({
       availability: isWaitlist
         ? "https://schema.org/PreOrder"
         : "https://schema.org/InStock",
+      url: courseUrl,
     },
-    instructor: {
-      "@type": "Person",
-      name: FOUNDER.fullName,
-      jobTitle: "Founder, Aesthetics Unlocked",
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "online",
+      courseWorkload: course.format,
     },
+  };
+  if (courseImage) courseNode.image = courseImage;
+
+  // Breadcrumb — Home → Courses → [Course title].
+  const breadcrumbNode = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `https://${BRAND.domain}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Courses",
+        item: `https://${BRAND.domain}/courses`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: course.title,
+        item: courseUrl,
+      },
+    ],
+  };
+
+  // FAQPage — only emitted when the course has its own faqs array.
+  const faqNode = course.faqs && course.faqs.length > 0
+    ? {
+        "@type": "FAQPage",
+        mainEntity: course.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+
+  // Product schema — emitted when the course has a public price (paid
+  // self-paced courses like Acne Decoded). Surfaces the price in
+  // Google product-rich-results.
+  const productNode = course.price !== undefined && !isWaitlist
+    ? {
+        "@type": "Product",
+        name: course.title,
+        description: course.summary,
+        url: courseUrl,
+        ...(courseImage ? { image: courseImage } : {}),
+        brand: { "@type": "Brand", name: BRAND.name },
+        offers: {
+          "@type": "Offer",
+          price: course.price,
+          priceCurrency: "GBP",
+          availability: "https://schema.org/InStock",
+          url: courseUrl,
+        },
+      }
+    : null;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      courseNode,
+      breadcrumbNode,
+      ...(faqNode ? [faqNode] : []),
+      ...(productNode ? [productNode] : []),
+    ],
   };
 
   return (

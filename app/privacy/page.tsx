@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "How Aesthetics Unlocked® handles your personal data under UK GDPR and the Data Protection Act 2018.",
+  alternates: { canonical: "/privacy" },
+  robots: { index: true, follow: true },
 };
 
 const SECTIONS: LegalSection[] = [
