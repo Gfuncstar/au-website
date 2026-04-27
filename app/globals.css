@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   Aesthetics Unlocked® — design tokens
+   ========================================================================== */
+
+@theme {
+  /* Brand colour system */
+  --color-au-pink: #e697b7;
+  --color-au-pink-soft: #f3c9d8;
+  --color-au-black: #000000;
+  --color-au-charcoal: #212121;
+  --color-au-body: #333333;
+  --color-au-mid: #666666;
+  --color-au-cream: #faf6f1;
+  --color-au-white: #ffffff;
+
+  /* Page background defaults */
+  --color-background: var(--color-au-white);
+  --color-foreground: var(--color-au-charcoal);
+
+  /* Type families — wired in layout.tsx via next/font */
+  --font-sans: var(--font-lato), system-ui, sans-serif;
+  --font-display: var(--font-montserrat), system-ui, sans-serif;
+  --font-section: var(--font-oswald), system-ui, sans-serif;
+  --font-quote: var(--font-spectral), Georgia, serif;
+
+  /* Type scale — fluid, mobile-first.
+     --text-hero:
+       - +35% on the fluid value and ceiling per Giles' "increase h1 by 35%" call.
+       - Floor lifted to 3.7rem per "this text 30% bigger on mobile" — this only
+         takes effect below ~487px viewport (where 12.15vw drops under 3.7rem),
+         so tablet and desktop sizes are unchanged.
+     Original: clamp(2rem, 9vw, 9rem). */
+  --text-hero: clamp(3.7rem, 12.15vw, 12.15rem);
+  /* --text-poster:
+     - +30% on the fluid value and ceiling per "text 30% bigger" call.
+     - Floor lifted +30% (2.4375 → 3.17rem) per "font 30% larger on mobile"
+       call. Only takes effect below ~557px viewport (where 9.1vw drops
+       under 3.17rem); tablet and desktop renders unchanged.
+     Original: clamp(1.875rem, 7vw, 6rem). */
+  --text-poster: clamp(3.17rem, 9.1vw, 7.8rem);
+  --text-section: clamp(1.5rem, 4vw, 2.5rem);
+  --text-subhead: 1.5rem;
+  --text-body: 1.0625rem;
+  /* --text-quote bumped per Giles' "larger site wide" call on the
+     pull-quote. Drives every QuotePoster instance across the site. */
+  --text-quote: clamp(1.75rem, 5vw, 3rem);
+  --text-eyebrow: 0.75rem;
+  --text-stat: clamp(2.75rem, 6vw, 5.5rem);
+  --text-stat-label: 0.75rem;
+  --text-caption: 0.75rem;
+
+  /* Letter spacing */
+  --tracking-tight-display: -0.04em;
+  --tracking-eyebrow: 0.18em;
+  --tracking-stat-label: 0.15em;
+  --tracking-button: 0.05em;
+
+  /* Line heights */
+  --leading-display: 0.92;
+  --leading-poster: 0.95;
+  --leading-body: 1.55;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ==========================================================================
+   Base
+   ========================================================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-au-white);
+  color: var(--color-au-body);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  /* Body weight bumped 400 → 500 per Giles' "slightly bolder site wide"
+     call. Lato doesn't ship a 500 — browsers pick the closest available
+     (typically 400) but the intent is recorded; if the user wants more
+     punch we'll swap the body font for one with full weight coverage. */
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.h-screen-safe {
+  height: 100vh;
+  height: 100svh;
+}
+
+.min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+::selection {
+  background: var(--color-au-pink);
+  color: var(--color-au-black);
+}
+
+.text-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
 }
