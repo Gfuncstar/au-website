@@ -145,10 +145,18 @@ export type AddLeadInput = {
   email: string;
   firstName?: string;
   lastName?: string;
-  /** Optional list IDs to add the lead to. */
-  listIds?: readonly string[];
-  /** Optional tag IDs to apply. */
-  tagIds?: readonly string[];
+  /**
+   * Lists to subscribe the lead to. Use the exact list NAME as it
+   * appears in Kartra (Lists tab) — Kartra's API expects names,
+   * not numeric IDs (verified empirically: list_id was silently
+   * ignored, list_name worked).
+   */
+  listNames?: readonly string[];
+  /**
+   * Tags to apply to the lead. Same convention as listNames —
+   * exact tag name from the Kartra Tags tab.
+   */
+  tagNames?: readonly string[];
 };
 
 /**
@@ -158,6 +166,15 @@ export type AddLeadInput = {
  * The lists and tags applied here trigger any Kartra automation
  * sequences attached to those lists/tags (welcome emails, course
  * access, etc.). All those sequences continue to live in Kartra.
+ *
+ * Kartra request shape (verified empirically):
+ *   lead[email]=...
+ *   lead[first_name]=...
+ *   actions[0][cmd]=create_lead                    ← required first action
+ *   actions[1][cmd]=subscribe_lead_to_list
+ *   actions[1][list_name]=My List
+ *   actions[2][cmd]=assign_tag
+ *   actions[2][tag_name]=My Tag
  */
 export async function addLead(
   input: AddLeadInput,
@@ -169,28 +186,34 @@ export async function addLead(
   if (input.firstName) params["lead[first_name]"] = input.firstName;
   if (input.lastName) params["lead[last_name]"] = input.lastName;
 
-  // Build the actions array. Kartra's API accepts:
-  //   actions[N][cmd] = "subscribe_lead_to_list" | "assign_tag" | ...
-  //   actions[N][list_id] / actions[N][tag_id]
+  // First action is always create_lead — without it, Kartra treats
+  // the lead[email] field as a get_lead query and returns "No lead
+  // found" instead of creating one.
   let actionIndex = 0;
-  for (const listId of input.listIds ?? []) {
+  params[`actions[${actionIndex}][cmd]`] = "create_lead";
+  actionIndex++;
+
+  for (const listName of input.listNames ?? []) {
     params[`actions[${actionIndex}][cmd]`] = "subscribe_lead_to_list";
-    params[`actions[${actionIndex}][list_id]`] = listId;
+    params[`actions[${actionIndex}][list_name]`] = listName;
     actionIndex++;
   }
-  for (const tagId of input.tagIds ?? []) {
+  for (const tagName of input.tagNames ?? []) {
     params[`actions[${actionIndex}][cmd]`] = "assign_tag";
-    params[`actions[${actionIndex}][tag_id]`] = tagId;
+    params[`actions[${actionIndex}][tag_name]`] = tagName;
     actionIndex++;
   }
 
   const result = await kartraRequest(params);
   if (!result.ok) return result;
 
-  // Kartra often returns the lead_id inside data.actions; surface it
-  // if present, otherwise just signal success.
-  const data = result.data as { lead_id?: string } | undefined;
-  return { ok: true, data: { leadId: data?.lead_id } };
+  // Kartra returns per-action results inside data.actions[]. Pull the
+  // lead_id from the create_lead action if present.
+  const data = result.data as
+    | { actions?: Array<{ create_lead?: { lead_details?: { id?: string } } }> }
+    | undefined;
+  const leadId = data?.actions?.[0]?.create_lead?.lead_details?.id;
+  return { ok: true, data: { leadId } };
 }
 
 /**
@@ -231,31 +254,32 @@ export async function getLeadByEmail(
 }
 
 /**
- * Apply a single tag to a lead by email. Used by Stripe webhook on
- * successful payment to mark the lead as "Acne Decoded Purchased" etc.
+ * Apply a single tag to an existing lead by email. Used by Stripe
+ * webhook on successful payment to mark the lead as "Acne Decoded
+ * Purchased" etc. Pass the exact tag name from the Kartra Tags tab.
  */
 export async function assignTag(
   email: string,
-  tagId: string,
+  tagName: string,
 ): Promise<KartraResult> {
   return kartraRequest({
     "lead[email]": email,
     "actions[0][cmd]": "assign_tag",
-    "actions[0][tag_id]": tagId,
+    "actions[0][tag_name]": tagName,
   });
 }
 
 /**
- * Remove a tag from a lead by email. Used by Stripe webhook on
- * subscription cancellation, refund, or chargeback to revoke access.
+ * Remove a tag from an existing lead by email. Used by Stripe webhook
+ * on subscription cancellation, refund, or chargeback to revoke access.
  */
 export async function removeTag(
   email: string,
-  tagId: string,
+  tagName: string,
 ): Promise<KartraResult> {
   return kartraRequest({
     "lead[email]": email,
     "actions[0][cmd]": "remove_tag",
-    "actions[0][tag_id]": tagId,
+    "actions[0][tag_name]": tagName,
   });
 }

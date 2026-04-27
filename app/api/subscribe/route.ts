@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
   }
 
   const mapping = getKartraMapping(courseSlug);
-  if (!mapping?.optInListId) {
+  if (!mapping?.optInListName) {
     return NextResponse.json(
       {
         ok: false,
@@ -98,18 +98,19 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Build the lists/tags to apply. Both fields are optional in the
-  // wrapper; we always pass the list, plus the tag if one is mapped.
-  const listIds = [mapping.optInListId];
-  const tagIds = mapping.optInTagId ? [mapping.optInTagId] : undefined;
+  // Build the lists/tags to apply. Kartra wants NAMES (verified
+  // empirically). Both fields are optional in the wrapper; we
+  // always pass the list, plus the tag if one is mapped.
+  const listNames = [mapping.optInListName];
+  const tagNames = mapping.optInTagName ? [mapping.optInTagName] : undefined;
 
   let result;
   try {
     result = await addLead({
       email,
       firstName,
-      listIds,
-      tagIds,
+      listNames,
+      tagNames,
     });
   } catch (err) {
     // Most likely cause: missing env vars (KARTRA_APP_ID etc.).
