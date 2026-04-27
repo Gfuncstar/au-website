@@ -42,6 +42,12 @@ export const metadata: Metadata = {
     url: "/courses",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Courses — Aesthetics Unlocked®",
+    description:
+      "Six courses by Bernadette Tobin RN, MSc — Educator of the Year 2026 Nominee. Free tasters, NICE-aligned clinical, 4-week regulatory, 12-week business.",
+  },
 };
 
 /**

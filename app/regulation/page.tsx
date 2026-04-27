@@ -59,6 +59,13 @@ export const metadata: Metadata = {
     url: "/regulation",
     type: "article",
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "UK aesthetics regulation 2026 — decoded",
+    description:
+      "JCCP, CPSA, MHRA, CQC, NICE, NMC, RCN, ASA — and the licensing scheme. The map, in one place. By Bernadette Tobin RN, MSc.",
+  },
 };
 
 const TOC = [

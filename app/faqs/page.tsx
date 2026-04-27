@@ -31,6 +31,12 @@ export const metadata: Metadata = {
     url: "/faqs",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQs — Aesthetics Unlocked®",
+    description:
+      "Courses, certification, NMC revalidation, refunds, and Bernadette's teaching approach — answered.",
+  },
 };
 
 export default function FAQsPage() {

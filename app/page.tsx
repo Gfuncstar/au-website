@@ -57,6 +57,13 @@ export const metadata: Metadata = {
     url: "/",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Aesthetics Unlocked® — Educator of the Year 2026 Nominee",
+    description:
+      "UK aesthetics education by Bernadette Tobin RN, MSc — working clinic owner, NHS leader, MSc Advanced Practice. NICE-aligned, JCCP-aware.",
+  },
 };
 
 export default function Home() {

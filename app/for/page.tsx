@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     url: "/for",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "For UK practitioners — by nation & city",
+    description:
+      "Tailored aesthetics education for England, Scotland, Wales, Northern Ireland — and London, Manchester, Birmingham, Edinburgh.",
+  },
 };
 
 export default function ForIndexPage() {

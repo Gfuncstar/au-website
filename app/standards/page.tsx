@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     url: "/standards",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Standards we teach against — Aesthetics Unlocked®",
+    description:
+      "Eight UK regulators, one defensible practice. NICE, JCCP, CPSA, MHRA, CQC, NMC, RCN, ASA.",
+  },
 };
 
 export default function StandardsIndexPage() {

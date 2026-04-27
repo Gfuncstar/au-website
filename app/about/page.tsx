@@ -44,6 +44,12 @@ export const metadata: Metadata = {
     url: "/about",
     type: "profile",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Bernadette Tobin RN, MSc",
+    description:
+      "Founder of Aesthetics Unlocked. RN, MSc Advanced Practice. Working clinic owner. Educator of the Year 2026 Nominee.",
+  },
 };
 
 const STATS = [
