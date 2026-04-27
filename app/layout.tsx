@@ -143,6 +143,16 @@ export default function RootLayout({
       className={`${montserrat.variable} ${oswald.variable} ${lato.variable} ${spectral.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-au-white text-au-body">
+        {/* Skip-to-content link for keyboard / screen-reader users.
+            Hidden visually until focused, when it pops to the top-left
+            with the AU brand. WCAG 2.1 AA compliance + a small SEO
+            signal that the site is built with accessibility in mind. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-au-charcoal focus:text-au-white focus:rounded-[3px] focus:font-section focus:font-semibold focus:text-[0.8125rem]"
+        >
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

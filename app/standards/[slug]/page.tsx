@@ -69,6 +69,11 @@ export async function generateMetadata({
       url: `/standards/${standard.slug}`,
       type: "article",
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${standard.abbrev} — ${standard.name}`,
+      description: standard.what,
+    },
   };
 }
 
@@ -138,7 +143,7 @@ export default async function StandardPage({
   return (
     <>
       <Nav forceLight />
-      <main className="pt-16 sm:pt-20">
+      <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
             HERO — abbreviation as the giant poster headline.
             ============================================================ */}

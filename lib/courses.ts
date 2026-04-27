@@ -1,7 +1,12 @@
 /**
  * lib/courses.ts
  *
- * SINGLE SOURCE OF TRUTH for AU's six courses. Drives:
+ * SINGLE SOURCE OF TRUTH for AU's courses. The catalogue is open-ended —
+ * add a Course entry to the COURSES array and every consumer (homepage
+ * grid, /courses index, /courses/[slug] detail, sitemap, schema, OG
+ * images, Nav drawer, geo-page recommended sections) updates automatically.
+ *
+ * Drives:
  *   - Homepage course grid (CourseCard tiles)
  *   - /courses index
  *   - /courses/[slug] detail pages

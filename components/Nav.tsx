@@ -11,7 +11,7 @@
  * Mobile drawer rebuilt per Giles' "burger menu needs to convey the depth
  * of pages, very educational, people need to see at a glance the scale of
  * learning" call. The drawer now lists:
- *   - All 6 courses with category + format + price
+ *   - Every course with category + format + price (grows with the catalogue)
  *   - The About page
  *   - The /standards index (8 regulators AU teaches against)
  *   - Contact

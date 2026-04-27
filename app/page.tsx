@@ -96,7 +96,7 @@ export default function Home() {
       <Nav />
       {/* No top padding on main — the transparent nav floats over the
           full-bleed dark hero. */}
-      <main>
+      <main id="main">
         {/* ============================================================
             HERO — typographic editorial poster + Bernadette video bg.
             ============================================================ */}
@@ -193,8 +193,8 @@ export default function Home() {
             where the marketing depth belongs.
             ============================================================ */}
         <PosterBlock tone="white" contained>
-          {/* Six course-card grid illustration — echo of the actual six
-              courses listed below. */}
+          {/* Course-card grid illustration — echoes the courses listed
+              below. Stays accurate as the catalogue grows. */}
           <CoursesIllustration
             className="float-right ml-4 sm:ml-5 -mt-1 w-[88px] h-[88px] sm:w-[112px] sm:h-[112px] md:w-[132px] md:h-[132px]"
           />
@@ -208,7 +208,7 @@ export default function Home() {
                 letterSpacing: "var(--tracking-tight-display)",
               }}
               lines={[
-                <Fragment key="0">Six courses.</Fragment>,
+                <Fragment key="0">Every course.</Fragment>,
                 <Fragment key="1">
                   One{" "}
                   <span style={{ color: "var(--color-au-pink)" }}>
@@ -219,9 +219,10 @@ export default function Home() {
               ]}
             />
             <p className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/85 leading-relaxed">
-              Two free tasters to start, two NICE-aligned clinical decoders, my
-              4-week regulatory pathway, and the 12-week business programme I
-              teach to clinic owners. Click any line for the full curriculum.
+              Free tasters to start, NICE-aligned clinical decoders, my
+              regulatory pathway, and the business programme I teach to clinic
+              owners — with more on the way as the catalogue grows. Click any
+              line for the full curriculum.
             </p>
           </ScrollReveal>
 

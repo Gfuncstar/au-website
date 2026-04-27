@@ -204,7 +204,7 @@ export default function AboutPage() {
   return (
     <>
       <Nav forceLight />
-      <main className="pt-16 sm:pt-20">
+      <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
             HERO — light, type-led.
             ============================================================ */}

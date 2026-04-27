@@ -158,7 +158,7 @@ export default function RegulationPage() {
   return (
     <>
       <Nav forceLight />
-      <main className="pt-16 sm:pt-20">
+      <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
             HERO
             ============================================================ */}

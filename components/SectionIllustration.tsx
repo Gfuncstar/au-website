@@ -244,14 +244,14 @@ export function AudienceIllustration({
   );
 }
 
-/** Stack of six course cards — for the courses section. */
+/** Stack of course cards — for the courses section. */
 export function CoursesIllustration({
   className = "",
 }: {
   className?: string;
 }) {
   return (
-    <IllustrationWrap className={className} ariaLabel="Six courses">
+    <IllustrationWrap className={className} ariaLabel="Courses">
       <motion.rect
         x="14"
         y="18"

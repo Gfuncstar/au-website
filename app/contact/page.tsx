@@ -25,7 +25,7 @@ import { BRAND } from "@/lib/credentials";
 import { MEMBERS_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
-  title: "Contact — Aesthetics Unlocked®",
+  title: "Contact",
   description:
     "Get in touch with Aesthetics Unlocked — the strategic education platform for UK aesthetic practitioners. Email hello@aunlock.co.uk.",
   alternates: { canonical: "/contact" },
@@ -42,7 +42,7 @@ export default function ContactPage() {
   return (
     <>
       <Nav forceLight />
-      <main className="pt-16 sm:pt-20">
+      <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
             HERO
             ============================================================ */}

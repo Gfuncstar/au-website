@@ -55,7 +55,15 @@ export async function generateMetadata({
   return {
     title: course.title,
     description: course.summary,
+    alternates: { canonical: `/courses/${course.slug}` },
     openGraph: {
+      title: `${course.title} — Aesthetics Unlocked®`,
+      description: course.summary,
+      url: `/courses/${course.slug}`,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
       title: `${course.title} — Aesthetics Unlocked®`,
       description: course.summary,
     },
@@ -207,7 +215,7 @@ export default async function CourseDetailPage({
   return (
     <>
       <Nav forceLight />
-      <main className="pt-16 sm:pt-20">
+      <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
             HERO — cream, copy-led.
             ============================================================ */}

@@ -1,13 +1,14 @@
 /**
  * /courses — index of every AU course.
  *
- * Lists all 5 courses using the same CourseCard pattern as the homepage,
- * grouped by category (Free taster / Clinical / Business). Each tile
- * links through to `/courses/[slug]` for the full sales page.
+ * Renders every course in lib/courses.ts as a CourseCard tile, grouped
+ * by category (Free taster / Clinical / Regulatory / Business). The
+ * catalogue is intentionally future-proof — adding a course to
+ * lib/courses.ts is enough; nothing in this page hard-codes a count.
  *
  * Layout (mobile-first):
  *   1. Light hero — eyebrow + line-by-line headline + opener
- *   2. Tile grid (5 courses, brand-colour cards, marks in top-right)
+ *   2. Tile grid (one per course, brand-colour cards, marks top-right)
  *   3. Final CTA
  */
 
@@ -31,14 +32,14 @@ import { RevealHeadline } from "@/components/RevealHeadline";
 import { COURSES } from "@/lib/courses";
 
 export const metadata: Metadata = {
-  title: "Courses — Aesthetics Unlocked®",
+  title: "Courses",
   description:
-    "All AU courses — free tasters, clinical (NICE-aligned), and the 12-week business programme. Education for UK aesthetic practitioners by Bernadette Tobin RN, MSc.",
+    "Strategic education for UK aesthetic practitioners by Bernadette Tobin RN, MSc — free tasters, NICE-aligned clinical decoders, regulatory and business programmes. A growing catalogue from an Educator of the Year 2026 Nominee.",
   alternates: { canonical: "/courses" },
   openGraph: {
     title: "Courses — Aesthetics Unlocked®",
     description:
-      "Six courses, one framework. Free tasters, NICE-aligned clinical decoders, the 4-week regulatory pathway, and the 12-week business programme.",
+      "Every course, one framework. Free tasters, NICE-aligned clinical decoders, regulatory and business programmes — a growing catalogue.",
     url: "/courses",
     type: "website",
   },
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Courses — Aesthetics Unlocked®",
     description:
-      "Six courses by Bernadette Tobin RN, MSc — Educator of the Year 2026 Nominee. Free tasters, NICE-aligned clinical, 4-week regulatory, 12-week business.",
+      "Strategic education for UK aesthetic practitioners by Bernadette Tobin RN, MSc — Educator of the Year 2026 Nominee.",
   },
 };
 
@@ -67,7 +68,7 @@ export default function CoursesIndexPage() {
   return (
     <>
       <Nav forceLight />
-      <main className="pt-16 sm:pt-20">
+      <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
             HERO
             ============================================================ */}
@@ -94,9 +95,10 @@ export default function CoursesIndexPage() {
           />
           <ScrollReveal delay={0.15}>
             <p className="max-w-2xl text-[1.0625rem] sm:text-[1.125rem] md:text-[1.25rem] text-au-charcoal/85 leading-relaxed">
-              Five courses. Two free tasters, two NICE-aligned clinical
-              decoders, and the 12-week business programme. Built and taught by
-              Bernadette Tobin RN, MSc — Educator of the Year 2026 Nominee.
+              Free tasters to start. NICE-aligned clinical decoders. A 4-week
+              regulatory pathway. A 12-week business programme. And more on
+              the way as the catalogue grows. Built and taught by Bernadette
+              Tobin RN, MSc — Educator of the Year 2026 Nominee.
             </p>
           </ScrollReveal>
         </PosterBlock>
