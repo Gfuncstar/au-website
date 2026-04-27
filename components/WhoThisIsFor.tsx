@@ -27,6 +27,7 @@
 import { motion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import { Eyebrow } from "./Eyebrow";
+import { AudienceIllustration } from "./SectionIllustration";
 
 type Bullet = {
   num: string;
@@ -126,6 +127,12 @@ export function WhoThisIsFor() {
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
     >
+      {/* Concentric audience target — float-right so eyebrow + headline
+          + bullets wrap around it. */}
+      <AudienceIllustration
+        className="float-right ml-4 sm:ml-5 -mt-1 w-[88px] h-[88px] sm:w-[112px] sm:h-[112px] md:w-[132px] md:h-[132px]"
+      />
+
       {/* Eyebrow */}
       <motion.div variants={eyebrowVariants}>
         <Eyebrow className="mb-6">Who this is for</Eyebrow>

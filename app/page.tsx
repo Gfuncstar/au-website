@@ -36,6 +36,11 @@ import { PressStrip } from "@/components/PressStrip";
 import { BookSection } from "@/components/BookSection";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
+import {
+  PillarsIllustration,
+  AudienceIllustration,
+  CoursesIllustration,
+} from "@/components/SectionIllustration";
 import { BRAND, AWARDS, PERSON_AWARDS_JSONLD } from "@/lib/credentials";
 import { Fragment } from "react";
 
@@ -122,6 +127,12 @@ export default function Home() {
           bgImage="/backgrounds/pink-grunge-deep.png"
           bgOverlay={0.72}
         >
+          {/* Pillars illustration — float-right so the eyebrow, headline
+              lines, and intro paragraph wrap around it. Lives at the top
+              of the section so it draws first as the user scrolls in. */}
+          <PillarsIllustration
+            className="float-right ml-4 sm:ml-6 -mt-1 w-[100px] h-[100px] sm:w-[128px] sm:h-[128px] md:w-[152px] md:h-[152px]"
+          />
           <ScrollReveal className="max-w-4xl mb-8">
             <Eyebrow color="pink">The framework</Eyebrow>
           </ScrollReveal>
@@ -167,6 +178,11 @@ export default function Home() {
             where the marketing depth belongs.
             ============================================================ */}
         <PosterBlock tone="white" contained>
+          {/* Six course-card grid illustration — echo of the actual six
+              courses listed below. */}
+          <CoursesIllustration
+            className="float-right ml-4 sm:ml-5 -mt-1 w-[88px] h-[88px] sm:w-[112px] sm:h-[112px] md:w-[132px] md:h-[132px]"
+          />
           <ScrollReveal className="max-w-3xl mb-10 sm:mb-12">
             <Eyebrow className="mb-6">The courses</Eyebrow>
             <RevealHeadline

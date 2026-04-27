@@ -15,6 +15,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Eyebrow } from "./Eyebrow";
+import { PrinciplesIllustration } from "./SectionIllustration";
 
 const PRINCIPLES = [
   {
@@ -82,6 +83,11 @@ export function EducationalApproach() {
           letterSpacing: "var(--tracking-tight-display)",
         }}
       >
+        {/* Three connected principles — visual echo of the three numbered
+            principles below. */}
+        <PrinciplesIllustration
+          className="float-right ml-4 sm:ml-5 -mt-1 w-[88px] h-[88px] sm:w-[112px] sm:h-[112px] md:w-[132px] md:h-[132px]"
+        />
         Calm, clinical,{" "}
         <span style={{ color: "var(--color-au-pink)" }}>defensible</span>.
       </motion.h2>

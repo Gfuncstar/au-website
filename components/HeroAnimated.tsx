@@ -181,13 +181,27 @@ export function HeroAnimated() {
         className="relative z-20 h-full flex flex-col justify-end px-[35px] sm:px-10 md:px-14 pb-[120px] sm:pb-[160px] md:pb-[180px]"
       >
         <div className="md:max-w-3xl">
-          {/* Eyebrow removed per Giles' "remove" call — the rotating
-              credentials line above the headline is gone; the headline now
-              leads the hero directly. */}
+          {/* Awards rail — leads the hero. "Strategic Education" eyebrow
+              was removed per Giles' "remove" call; the two award lines now
+              sit at the top on their own. */}
+          <motion.ul
+            variants={itemVariants}
+            className="flex flex-wrap items-center gap-x-4 gap-y-1 font-section font-semibold uppercase text-[0.6875rem] sm:text-[0.75rem] tracking-[0.22em] text-au-white/85"
+            aria-label="Awards"
+          >
+            <li className="flex items-center gap-2">
+              <HeroLaurelIcon />
+              <span>Educator of the Year 2026 · Nominee</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <HeroTrophyIcon />
+              <span>Best Non-Surgical Clinic 2026 · Essex</span>
+            </li>
+          </motion.ul>
 
           {/* Headline — line-by-line cascade */}
           <h1
-            className="font-display font-black text-au-white"
+            className="mt-7 sm:mt-9 font-display font-black text-au-white"
             style={{
               fontSize: "var(--text-hero)",
               lineHeight: "var(--leading-display)",
@@ -249,36 +263,6 @@ export function HeroAnimated() {
               Why Bernadette
             </Button>
           </motion.div>
-
-          {/* Lead identity chip — "STRATEGIC EDUCATION". The supporting
-              "For UK Aesthetic Practitioners / NICE-Aligned / Evidence-Led"
-              items were removed per Giles' "remove" call; that depth now
-              lives on the dedicated /standards page. */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-7 sm:mt-9 font-section font-semibold uppercase text-[0.6875rem] sm:text-[0.75rem] tracking-[0.22em]"
-            style={{ color: "var(--color-au-pink)" }}
-          >
-            Strategic Education
-          </motion.div>
-
-          {/* Awards rail — small animated illustrations + award copy.
-              Per Giles' "Add awards with animated illustrations. Small."
-              call. Sits beneath the brand identity rail. */}
-          <motion.ul
-            variants={itemVariants}
-            className="mt-4 sm:mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-section font-semibold uppercase text-[0.6875rem] sm:text-[0.75rem] tracking-[0.22em] text-au-white/85"
-            aria-label="Awards"
-          >
-            <li className="flex items-center gap-2">
-              <HeroLaurelIcon />
-              <span>Educator of the Year 2026 · Nominee</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <HeroTrophyIcon />
-              <span>Best Non-Surgical Clinic 2026 · Essex</span>
-            </li>
-          </motion.ul>
         </div>
       </motion.div>
     </section>

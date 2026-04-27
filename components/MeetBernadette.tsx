@@ -17,6 +17,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Eyebrow } from "./Eyebrow";
 import { Button } from "./Button";
+import { ClinicalIllustration } from "./SectionIllustration";
 
 const STATS = [
   { num: "20+", label: "Years nursing" },
@@ -67,6 +68,13 @@ export function MeetBernadette() {
             letterSpacing: "var(--tracking-tight-display)",
           }}
         >
+          {/* Stethoscope sits to the right of the headline. `float-right`
+              lets the title text wrap around it on every viewport without
+              needing a separate column. Sized small on mobile, larger on
+              desktop. */}
+          <ClinicalIllustration
+            className="float-right ml-4 sm:ml-5 -mt-1 w-[88px] h-[88px] sm:w-[112px] sm:h-[112px] md:w-[132px] md:h-[132px]"
+          />
           Twelve years in clinic.{" "}
           <span style={{ color: "var(--color-au-pink)" }}>Twenty</span> in
           nursing.
