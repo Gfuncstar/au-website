@@ -47,7 +47,16 @@ export const metadata: Metadata = {
   title:
     "Aesthetics Unlocked® — UK Aesthetics Education · Educator of the Year 2026 Nominee",
   description:
-    "Where clinical confidence meets a business that actually works. The only UK education platform built and taught by a working clinician, NHS leader, and clinic owner — for practitioners who want to grow safely, ethically, and on their own terms.",
+    "UK aesthetics education by Bernadette Tobin RN MSc — a working clinic owner, NHS clinical leader, MSc Advanced Practice clinician, published author, and Educator of the Year 2026 Nominee. NICE-aligned clinical decoders, JCCP-aware regulation courses, and the clinic-owner profit framework most aesthetics training never teaches.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title:
+      "Aesthetics Unlocked® — UK Aesthetics Education · Educator of the Year 2026 Nominee",
+    description:
+      "Education for UK aesthetic practitioners by Bernadette Tobin RN, MSc — Educator of the Year 2026 Nominee. The only platform built by a working clinician, NHS leader, and clinic owner.",
+    url: "/",
+    type: "website",
+  },
 };
 
 export default function Home() {

@@ -54,19 +54,37 @@ export const metadata: Metadata = {
     template: "%s — Aesthetics Unlocked®",
   },
   description:
-    "Education for UK aesthetic practitioners by Bernadette Tobin RN MSc — Beauty & Aesthetics Awards Educator of the Year 2026 Nominee. NICE-aligned, evidence-led courses on regulation, profit, and clinical practice.",
+    "Education for UK aesthetic practitioners by Bernadette Tobin RN MSc — working clinic owner, NHS clinical leader, and Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards. NICE-aligned, JCCP-aware, evidence-led courses on regulation, profit, and clinical practice.",
   keywords: [
+    // Core brand + educator
     "aesthetics education UK",
     "aesthetic practitioner training",
-    "clinic growth",
-    "aesthetics business",
     "Bernadette Tobin",
+    "MSc Advanced Practice aesthetics",
     "Educator of the Year 2026",
+    "Beauty & Aesthetics Awards",
+    // Business / clinic-owner queries (competitor gap per research)
+    "aesthetics business course UK",
+    "clinic owner profit framework",
+    "aesthetic clinic pricing strategy UK",
+    "from NHS nurse to aesthetics clinic owner",
+    // Regulation queries (competitor gap)
+    "aesthetics regulation course UK",
+    "JCCP-aligned business training",
+    "CQC compliance aesthetic clinic",
+    "MHRA aesthetics",
+    // AU's trademarked frameworks (own the IP terms)
     "RAG Pathway",
-    "5K Formula",
-    "Acne Decoded",
+    "Traffic Light System aesthetics",
+    "5K+ Formula",
+    "UNLOCK PROFIT framework",
+    // Clinical (NICE-aligned)
+    "Acne Decoded NICE-aligned",
     "Rosacea Beyond Redness",
+    "NICE-aligned acne treatment pathway clinic",
+    // Standards
     "JCCP",
+    "CPSA",
     "MHRA",
     "NICE",
   ],
