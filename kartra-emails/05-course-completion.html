@@ -108,9 +108,12 @@
             </td>
           </tr>
 
-          <!-- NEXT STEP — soft cross-sell -->
+          <!-- NEXT STEP — primary recommended cross-sell, framed as an
+               anchored next step (cream block with pink left rule). The
+               three default course cards below this block are secondary
+               recommendations; the primary one stays visually distinct. -->
           <tr>
-            <td style="padding:0 40px 40px 40px;" class="px">
+            <td style="padding:0 40px 28px 40px;" class="px">
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FAF6F1;border-left:3px solid #EE5A8E;">
                 <tr>
                   <td style="padding:24px 28px;">
@@ -127,6 +130,73 @@
                     <a href="{next_course_url}" target="_blank" style="font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#EE5A8E;text-decoration:none;">
                       See {next_course_title} &rarr;
                     </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ============================================================
+               SECONDARY CROSS-SELL: other courses
+               Two more recommendations alongside the primary next-step
+               above, so completers see the breadth of the catalogue.
+               Edit these per-completion when sending from a sequence —
+               default is "the other clinical course + the regulatory
+               pathway" which works for most graduates of any course.
+               ============================================================ -->
+          <tr>
+            <td style="padding:0 40px 32px 40px;" class="px">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-top:1px solid #21212115;">
+                <tr>
+                  <td style="padding:24px 0 4px 0;">
+                    <p style="margin:0 0 16px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#212121;opacity:0.55;line-height:1;">
+                      Or, also worth a look
+                    </p>
+
+                    <!-- Course row 1 -->
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-bottom:1px solid #21212115;">
+                      <tr>
+                        <td style="padding:14px 0;">
+                          <a href="{site_url}/courses/acne-decoded" target="_blank" style="display:block;text-decoration:none;color:#212121;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                              <tr>
+                                <td style="padding-right:12px;">
+                                  <p style="margin:0 0 3px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#EE5A8E;line-height:1;">Clinical &middot; NICE-aligned</p>
+                                  <p style="margin:0 0 4px 0;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:800;font-size:16px;line-height:1.2;letter-spacing:-0.3px;color:#212121;">Acne Decoded</p>
+                                  <p style="margin:0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:13px;line-height:1.4;color:#212121;opacity:0.7;">The science behind acne. Severity grading, treatment ladder, defensible plans.</p>
+                                </td>
+                                <td align="right" valign="top" style="white-space:nowrap;padding-top:18px;">
+                                  <span style="font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:900;font-size:18px;letter-spacing:-0.5px;color:#EE5A8E;">&pound;79</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Course row 2 -->
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                      <tr>
+                        <td style="padding:14px 0;">
+                          <a href="{site_url}/courses/5k-formula" target="_blank" style="display:block;text-decoration:none;color:#212121;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                              <tr>
+                                <td style="padding-right:12px;">
+                                  <p style="margin:0 0 3px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#EE5A8E;line-height:1;">Business &middot; 12 weeks &middot; Educator-led</p>
+                                  <p style="margin:0 0 4px 0;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:800;font-size:16px;line-height:1.2;letter-spacing:-0.3px;color:#212121;">The 5K+ Formula&trade;</p>
+                                  <p style="margin:0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:13px;line-height:1.4;color:#212121;opacity:0.7;">Niche, signature offers, confident pricing &mdash; the system I built my own clinic on.</p>
+                                </td>
+                                <td align="right" valign="top" style="white-space:nowrap;padding-top:18px;">
+                                  <span style="font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#212121;opacity:0.65;">Waitlist</span>
+                                </td>
+                              </tr>
+                            </table>
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
                   </td>
                 </tr>
               </table>
