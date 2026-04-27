@@ -36,7 +36,7 @@ function LaurelMark() {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { duration: 1.1, ease: "easeOut", delay: 0.15 + i * 0.06 },
+        pathLength: { duration: 1.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.15 + i * 0.06 },
         opacity: { duration: 0.4, delay: 0.15 + i * 0.06 },
       },
     }),
@@ -115,7 +115,7 @@ function TrophyMark() {
       pathLength: 1,
       opacity: 1,
       transition: {
-        pathLength: { duration: 1.1, ease: "easeOut", delay: 0.15 + i * 0.08 },
+        pathLength: { duration: 1.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.15 + i * 0.08 },
         opacity: { duration: 0.4, delay: 0.15 + i * 0.08 },
       },
     }),

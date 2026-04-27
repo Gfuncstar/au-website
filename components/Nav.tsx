@@ -26,6 +26,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BRAND, FOUNDER } from "@/lib/credentials";
 import { COURSES } from "@/lib/courses";
+import { MEMBERS_URL, NMC_REGISTER_URL } from "@/lib/links";
 
 const PRIMARY_LINKS = [
   { href: "/courses", label: "Courses" },
@@ -33,8 +34,6 @@ const PRIMARY_LINKS = [
   { href: "/standards", label: "Standards" },
   { href: "/contact", label: "Contact" },
 ] as const;
-
-const MEMBERS_URL = `https://${BRAND.membersDomain}`;
 
 type Props = {
   /** Force the light state regardless of scroll position. */
@@ -374,7 +373,7 @@ export function Nav({ forceLight = false }: Props) {
             <p className="text-[0.8125rem] text-au-charcoal/75 leading-relaxed mb-2">
               NMC Pin{" "}
               <a
-                href="https://www.nmc.org.uk/registration/search-the-register/"
+                href={NMC_REGISTER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold hover:underline transition-colors"

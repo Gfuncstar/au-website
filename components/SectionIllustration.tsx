@@ -22,7 +22,7 @@ const drawIcon: Variants = {
     pathLength: 1,
     opacity: 1,
     transition: {
-      pathLength: { duration: 1.0, ease: "easeOut", delay: 0.15 + i * 0.08 },
+      pathLength: { duration: 1.0, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 0.15 + i * 0.08 },
       opacity: { duration: 0.3, delay: 0.15 + i * 0.08 },
     },
   }),
@@ -33,7 +33,7 @@ const popIn: Variants = {
   visible: (i: number) => ({
     scale: 1,
     opacity: 1,
-    transition: { duration: 0.4, delay: 0.5 + i * 0.1, ease: "backOut" },
+    transition: { duration: 0.4, delay: 0.5 + i * 0.1, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number] },
   }),
 };
 

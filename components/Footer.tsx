@@ -17,6 +17,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AWARDS, BRAND, FOUNDER } from "@/lib/credentials";
+import { NMC_REGISTER_URL } from "@/lib/links";
 
 const FOOTER_LINKS = [
   {
@@ -112,7 +113,7 @@ export function Footer() {
           <span className="text-au-white/85">
             NMC Pin{" "}
             <a
-              href="https://www.nmc.org.uk/registration/search-the-register/"
+              href={NMC_REGISTER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[var(--color-au-pink)] transition-colors"

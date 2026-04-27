@@ -39,7 +39,7 @@ const drawIcon: Variants = {
     pathLength: 1,
     opacity: 1,
     transition: {
-      pathLength: { duration: 0.9, ease: "easeOut", delay: 1.0 + i * 0.05 },
+      pathLength: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay: 1.0 + i * 0.05 },
       opacity: { duration: 0.3, delay: 1.0 + i * 0.05 },
     },
   }),
@@ -68,7 +68,7 @@ function HeroLaurelIcon() {
       <motion.circle cx="12" cy="11" r="2" fill="currentColor" stroke="none"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.4, ease: "backOut", delay: 1.5 }}
+        transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1], delay: 1.5 }}
         style={{ originX: "12px", originY: "11px" }}
       />
     </motion.svg>

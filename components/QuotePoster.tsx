@@ -59,7 +59,7 @@ export function QuotePoster({
                 alt={attribution ?? "Bernadette Tobin"}
                 width={180}
                 height={70}
-                className="h-12 sm:h-14 w-auto opacity-90"
+                className="h-[72px] sm:h-[84px] w-auto opacity-90"
               />
             )}
             {attribution && (

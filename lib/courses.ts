@@ -14,6 +14,8 @@
  * RULE: never duplicate course copy in pages or components. Import from here.
  */
 
+import { courseKartraPlaceholder } from "./links";
+
 export type CourseTone = "black" | "charcoal" | "pink" | "pink-soft" | "cream";
 
 export type CourseModule = {
@@ -60,6 +62,14 @@ export type Course = {
   price?: number;
   /** CTA label for tiles. */
   ctaText: string;
+  /**
+   * Kartra destination for this course's primary CTA (enrol now, join
+   * waitlist, or free opt-in form). PLACEHOLDER until Bernadette
+   * provides the real URL — see `courseKartraPlaceholder()` in
+   * lib/links.ts. Search the codebase for `TODO_KARTRA_course_` to
+   * find every unfilled course CTA.
+   */
+  kartraUrl: string;
   /** AU palette tone driving the tile background. */
   tone: CourseTone;
   /** Audience tag — "Free taster", "Clinical", "Business", "Regulatory". */
@@ -125,6 +135,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     ctaText: "Get instant access",
+    kartraUrl: courseKartraPlaceholder("free-3-day-startup"),
     tone: "black",
     category: "Free taster",
     format: "3 days · self-paced",
@@ -203,6 +214,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     ctaText: "Get instant access",
+    kartraUrl: courseKartraPlaceholder("free-2-day-rag"),
     tone: "pink",
     category: "Free taster",
     format: "2 days · self-paced",
@@ -381,6 +393,7 @@ export const COURSES: readonly Course[] = [
     ],
     price: 79,
     ctaText: "View course",
+    kartraUrl: courseKartraPlaceholder("acne-decoded"),
     tone: "charcoal",
     category: "Clinical",
     format: "Self-paced · 11 sections",
@@ -504,6 +517,7 @@ export const COURSES: readonly Course[] = [
     ],
     price: 79,
     ctaText: "View course",
+    kartraUrl: courseKartraPlaceholder("rosacea-beyond-redness"),
     tone: "pink-soft",
     category: "Clinical",
     format: "Self-paced · 12 sections",
@@ -627,6 +641,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     ctaText: "Join the waitlist",
+    kartraUrl: courseKartraPlaceholder("rag-pathway"),
     tone: "pink",
     category: "Regulatory",
     format: "8 modules · 4 weeks · educator-led",
@@ -778,6 +793,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     ctaText: "Join the waitlist",
+    kartraUrl: courseKartraPlaceholder("5k-formula"),
     tone: "black",
     category: "Business",
     format: "12 modules · 12 weeks · educator-led",

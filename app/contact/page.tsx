@@ -22,6 +22,7 @@ import { CTAPoster } from "@/components/CTAPoster";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import { BRAND } from "@/lib/credentials";
+import { MEMBERS_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "Contact — Aesthetics Unlocked®",
@@ -97,7 +98,7 @@ export default function ContactPage() {
                 portal.
               </p>
               <Button
-                href={`https://${BRAND.membersDomain}`}
+                href={MEMBERS_URL}
                 variant="pink"
                 size="sm"
               >

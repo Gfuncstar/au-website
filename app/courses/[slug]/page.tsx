@@ -187,7 +187,7 @@ export default async function CourseDetailPage({
           </ScrollReveal>
           <ScrollReveal delay={0.3} className="flex flex-wrap gap-3 sm:gap-4">
             <Button
-              href={isWaitlist ? "#waitlist" : "#enrol"}
+              href={course.kartraUrl}
               variant="pink"
               size="sm"
               price={course.price}
@@ -562,7 +562,7 @@ export default async function CourseDetailPage({
             </>
           }
           buttonText={primaryCtaText}
-          buttonHref={isWaitlist ? "#waitlist" : "#enrol"}
+          buttonHref={course.kartraUrl}
           buttonPrice={course.price}
           tone="black"
         />

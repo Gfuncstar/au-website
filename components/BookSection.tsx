@@ -14,6 +14,7 @@
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { Eyebrow } from "./Eyebrow";
+import { BOOK_AMAZON_URL } from "@/lib/links";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -112,7 +113,7 @@ export function BookSection() {
 
         <motion.a
           variants={itemVariants}
-          href="https://www.amazon.co.uk/Regulation-Reputation-mastering-successful-aesthetic/dp/B0FWX5RN5T/"
+          href={BOOK_AMAZON_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 self-start font-section font-semibold uppercase tracking-[0.15em] text-[0.8125rem] text-au-charcoal hover:text-[var(--color-au-pink)] transition-colors"
