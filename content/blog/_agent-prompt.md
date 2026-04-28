@@ -71,6 +71,20 @@ The post **does not ship** unless these are all true:
 - If two sources don't agree on the central claim, **skip this run**.
   Better silent than wrong.
 
+### Reader-facing, not editor-facing
+
+**Posts speak to the topic, never to the editorial process.** The
+reader doesn't care about source rules, publishing cadence, what's
+allowed in the Journal, or what isn't. Don't write sentences like
+"every claim is referenced", "if two sources don't agree we don't
+ship", "three pieces a week", "the Journal reports — practitioners
+practise". That's editor talk. Cut it.
+
+Source-referencing happens via inline links and the Sources block at
+the foot of the post — never as topic-of-conversation. The reader
+sees the citations and infers the standard. Saying it out loud is
+unnecessary and breaks the calm-and-confident tone.
+
 ### Voice and style
 
 Aesthetics Unlocked marketing voice. The brand-voice doc lives at

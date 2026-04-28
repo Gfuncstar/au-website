@@ -2,7 +2,7 @@
 title: "Why this exists. What you'll get from it."
 slug: "welcome-to-the-journal"
 date: "2026-04-28"
-excerpt: "Three short reads a week for working clinicians. The studies that matter, the regulation that's changing, and the claims that don't survive a primary source."
+excerpt: "The studies that matter. The regulation that's changing. The claims that don't survive a primary source — for working clinicians."
 topic: "other"
 sources: []
 author: "Bernadette Tobin RN, MSc"
@@ -27,13 +27,5 @@ Three pieces a week. Sunday, Tuesday, Thursday. Each drawn from one of five cate
 - **Regulation** — JCCP, MHRA, FDA, EMA, the UK licensing scheme.
 - **Studies worth reading** — peer-reviewed papers, summarised in plain English.
 - **Myths, quietly corrected** — claims that don't survive primary sources.
-
-## What you won't find
-
-- No off-label injectable advice.
-- No "miracle" or "must-have" anything.
-- No specific dosing or technique. The Journal reports — practitioners practise.
-- No naming individual practitioners or clinics in passing.
-- No before-and-afters without provenance.
 
 — Bernadette
