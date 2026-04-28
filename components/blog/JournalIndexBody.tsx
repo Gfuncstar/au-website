@@ -1,21 +1,20 @@
 /**
- * JournalIndexBody — client-side body of /blog.
+ * JournalIndexBody — body of /blog.
  *
- * Renders three things:
- *   1. A featured "Latest" hero card for the newest piece.
- *   2. A search input that filters the list (and hides the featured
- *      card while filtering, so the result set stays a single flat
- *      list).
- *   3. The remaining posts as the standard editorial list.
+ * Renders two things:
+ *   1. A featured "Latest" hero card (dark mode) for the newest piece.
+ *   2. The remaining posts as the standard editorial list, under an
+ *      "Earlier pieces" label.
  *
- * Splits out from the server component so the search interaction can
- * run client-side. The page itself stays statically generated; this
- * component hydrates after first paint.
+ * Search was removed for now per Giles' call (2026-04-28). Re-add by
+ * restoring the useState-driven filter and the search-field block from
+ * git history if/when wanted.
+ *
+ * Currently no client-side interactivity is needed, but the file stays
+ * in `components/blog/` and remains a separate component so adding
+ * search back later is a single-file change.
  */
 
-"use client";
-
-import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Eyebrow } from "@/components/Eyebrow";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -30,26 +29,6 @@ type Props = {
 };
 
 export function JournalIndexBody({ posts }: Props) {
-  const [query, setQuery] = useState("");
-
-  const trimmed = query.trim().toLowerCase();
-  const filtering = trimmed.length > 0;
-
-  const filtered = useMemo(() => {
-    if (!filtering) return posts;
-    return posts.filter((p) => {
-      const haystack = [
-        p.title,
-        p.excerpt,
-        TOPIC_LABELS[p.topic],
-        p.topic,
-      ]
-        .join(" ")
-        .toLowerCase();
-      return haystack.includes(trimmed);
-    });
-  }, [posts, trimmed, filtering]);
-
   if (posts.length === 0) {
     return (
       <ScrollReveal className="max-w-2xl">
@@ -65,58 +44,11 @@ export function JournalIndexBody({ posts }: Props) {
   return (
     <>
       {/* ============================================================
-          SEARCH BAR — pink-soft pill field with a pink magnifier and
-          a darker pink ring on focus. Reads as a deliberate editorial
-          accent rather than a generic search input.
-          ============================================================ */}
-      <ScrollReveal className="max-w-4xl mb-12 sm:mb-14">
-        <label htmlFor="journal-search" className="sr-only">
-          Search the Journal
-        </label>
-        <div
-          className="relative rounded-[3px] border transition-colors focus-within:border-[color:var(--color-au-pink)]"
-          style={{
-            backgroundColor: "color-mix(in srgb, var(--color-au-pink-soft) 35%, white)",
-            borderColor: "color-mix(in srgb, var(--color-au-pink) 35%, transparent)",
-          }}
-        >
-          {/* Magnifier glyph — Unicode "⌕" is right-shaped for a search
-              affordance and avoids pulling in an icon library. */}
-          <span
-            aria-hidden="true"
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-[1.375rem] leading-none pointer-events-none"
-            style={{ color: "var(--color-au-pink)" }}
-          >
-            ⌕
-          </span>
-          <input
-            id="journal-search"
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search topics — JCCP, retinoids, MHRA, polynucleotides…"
-            className="w-full bg-transparent border-0 py-4 pl-11 pr-4 font-display text-[1rem] sm:text-[1.0625rem] text-au-charcoal placeholder:text-au-charcoal/45 focus:outline-none"
-          />
-        </div>
-        {filtering && (
-          <p className="font-section uppercase tracking-[0.15em] text-[0.6875rem] text-au-charcoal/60 mt-3">
-            {filtered.length === 0
-              ? `No matches for “${query}”.`
-              : `${filtered.length} ${
-                  filtered.length === 1 ? "piece" : "pieces"
-                } matching “${query}”.`}
-          </p>
-        )}
-      </ScrollReveal>
-
-      {/* ============================================================
           FEATURED — dark-mode poster card. Charcoal background,
           white type, pink accents. Sets the latest piece visually
           apart from the cream hero above and the white list below.
-          Only shown when not filtering, so the search result set
-          always reads as one flat list.
           ============================================================ */}
-      {!filtering && featured && (
+      {featured && (
         <ScrollReveal className="max-w-4xl mb-14 sm:mb-16">
           <Link
             href={`/blog/${featured.slug}`}
@@ -160,19 +92,15 @@ export function JournalIndexBody({ posts }: Props) {
       )}
 
       {/* ============================================================
-          LIST — when filtering, this is the full filtered set.
-          When not filtering, this is everything below the featured
-          card.
+          EARLIER PIECES
           ============================================================ */}
-      {(filtering ? filtered : rest).length > 0 && (
+      {rest.length > 0 && (
         <>
-          {!filtering && (
-            <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] text-au-charcoal/55 mb-6">
-              Earlier pieces
-            </p>
-          )}
+          <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] text-au-charcoal/55 mb-6">
+            Earlier pieces
+          </p>
           <ul className="flex flex-col max-w-4xl">
-            {(filtering ? filtered : rest).map((p, i) => (
+            {rest.map((p, i) => (
               <li
                 key={p.slug}
                 className={`${
