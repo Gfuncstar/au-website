@@ -57,38 +57,57 @@ export default async function CourseOverviewPage({
   if (!course || lessons.length === 0) notFound();
 
   return (
-    <div className="space-y-8 sm:space-y-10">
-      <header>
-        <Link
-          href="/members/courses"
-          className="font-section font-semibold uppercase tracking-[0.18em] text-[0.65rem] text-au-mid hover:text-au-pink transition-colors inline-flex items-center gap-1.5 mb-5"
-        >
-          <span aria-hidden="true">←</span> All courses
-        </Link>
-        <div className="flex items-start gap-5">
-          <div className="min-w-0 flex-1">
-            <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.7rem] text-au-mid mb-3">
-              {course.category} · {course.format}
-            </p>
-            <h1
-              className="font-display font-black text-au-charcoal leading-[0.95]"
-              style={{
-                fontSize: "clamp(1.75rem, 5.5vw, 3.5rem)",
-                letterSpacing: "var(--tracking-tight-display)",
-              }}
-            >
-              {course.title}
-            </h1>
-            {course.summary && (
-              <p className="mt-4 text-[1rem] sm:text-[1.0625rem] text-au-body max-w-[60ch] leading-relaxed">
-                {course.summary}
+    <>
+      {/* ============================================================
+          Dark course-overview header — full-bleed charcoal poster
+          (same family as the lesson hero and Part dividers). Per
+          Giles' "needs to be in dark mode" rule, applied course-wide.
+          ============================================================ */}
+      <header className="relative bg-au-charcoal text-au-white overflow-hidden -mx-4 sm:-mx-8 lg:-mx-12 -mt-5 sm:-mt-8 lg:-mt-10 mb-8 sm:mb-10">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-25 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(70% 100% at 100% 0%, var(--color-au-pink) 0%, transparent 60%)",
+          }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute -right-10 -top-10 w-px h-[180%] bg-au-pink/30 rotate-[18deg] origin-top-right pointer-events-none"
+        />
+        <div className="relative px-4 sm:px-8 lg:px-12 pt-8 sm:pt-10 pb-10 sm:pb-12 max-w-[1100px]">
+          <Link
+            href="/members/courses"
+            className="font-section font-semibold uppercase tracking-[0.18em] text-[0.65rem] text-au-white/55 hover:text-au-pink transition-colors inline-flex items-center gap-1.5 mb-5"
+          >
+            <span aria-hidden="true">←</span> All courses
+          </Link>
+          <div className="flex items-start gap-5">
+            <div className="min-w-0 flex-1">
+              <p className="font-section font-semibold uppercase tracking-[0.22em] text-[0.65rem] text-au-pink mb-3">
+                {course.category} · {course.format}
               </p>
-            )}
+              <h1
+                className="font-display font-black text-au-white leading-[0.95]"
+                style={{
+                  fontSize: "clamp(1.75rem, 5.5vw, 3.5rem)",
+                  letterSpacing: "var(--tracking-tight-display)",
+                }}
+              >
+                {course.title}
+              </h1>
+              {course.summary && (
+                <p className="mt-4 text-[1rem] sm:text-[1.0625rem] text-au-white/85 max-w-[60ch] leading-relaxed">
+                  {course.summary}
+                </p>
+              )}
+            </div>
+            <CourseIllustrationFor
+              slug={course.slug}
+              className="hidden sm:block shrink-0 w-20 h-20 lg:w-24 lg:h-24"
+            />
           </div>
-          <CourseIllustrationFor
-            slug={course.slug}
-            className="hidden sm:block shrink-0 w-20 h-20 lg:w-24 lg:h-24"
-          />
         </div>
       </header>
 
@@ -97,6 +116,6 @@ export default async function CourseOverviewPage({
         lessons={lessons}
         parts={parts}
       />
-    </div>
+    </>
   );
 }
