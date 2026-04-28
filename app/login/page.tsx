@@ -32,6 +32,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState("");
+
+  function focusEmail() {
+    const el = document.getElementById("login-email") as HTMLInputElement | null;
+    el?.focus();
+    el?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 
   function onSignIn(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -44,7 +51,12 @@ export default function LoginPage() {
   }
 
   function onSendMagicLink() {
-    if (!email.trim()) return;
+    if (!email.trim()) {
+      setEmailError("Enter your email first to send a magic link.");
+      focusEmail();
+      return;
+    }
+    setEmailError("");
     setSubmitting(true);
     setTimeout(() => {
       setMode("sent-magic");
@@ -54,7 +66,12 @@ export default function LoginPage() {
 
   function onForgotSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim()) {
+      setEmailError("Enter your email first.");
+      focusEmail();
+      return;
+    }
+    setEmailError("");
     setSubmitting(true);
     setTimeout(() => {
       setMode("sent-reset");
@@ -117,11 +134,15 @@ export default function LoginPage() {
 
               <form onSubmit={onSignIn} className="space-y-7">
                 <DarkField
+                  id="login-email"
                   label="Email address"
                   type="email"
                   autoComplete="email"
                   value={email}
-                  onChange={setEmail}
+                  onChange={(v) => {
+                    setEmail(v);
+                    if (emailError) setEmailError("");
+                  }}
                   placeholder="you@yourclinic.co.uk"
                   required
                 />
@@ -186,15 +207,27 @@ export default function LoginPage() {
                 <span className="flex-1 h-px bg-au-white/15" />
               </div>
 
+              <p className="mt-5 text-[0.875rem] text-au-white/70 leading-relaxed max-w-[36ch]">
+                Enter your email above, then tap the magic link button below
+                — we&apos;ll email you a one-time sign-in link.
+              </p>
+
               <button
                 type="button"
                 onClick={onSendMagicLink}
-                disabled={!email.trim() || submitting}
-                className="mt-6 w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-au-white/25 hover:border-au-pink hover:text-au-pink font-section font-semibold uppercase tracking-[0.1em] rounded-[5px] px-6 py-3 min-h-[44px] text-[0.75rem] text-au-white/85 transition-colors disabled:opacity-40"
-                title={!email.trim() ? "Enter your email first" : "Send me a one-time sign-in link"}
+                disabled={submitting}
+                className="mt-4 w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-au-white/25 hover:border-au-pink hover:text-au-pink font-section font-semibold uppercase tracking-[0.1em] rounded-[5px] px-6 py-3 min-h-[44px] text-[0.75rem] text-au-white/85 transition-colors disabled:opacity-40"
               >
                 Send me a magic login link instead →
               </button>
+              {emailError && (
+                <p
+                  role="alert"
+                  className="mt-3 font-section font-semibold uppercase tracking-[0.1em] text-[0.7rem] text-[#FF1F8F]"
+                >
+                  {emailError}
+                </p>
+              )}
 
               <p className="mt-9 font-section font-semibold uppercase tracking-[0.1em] text-[0.625rem] text-au-white/45">
                 Trouble signing in?{" "}
@@ -229,11 +262,15 @@ export default function LoginPage() {
 
               <form onSubmit={onForgotSubmit} className="space-y-7">
                 <DarkField
+                  id="login-email"
                   label="Email address"
                   type="email"
                   autoComplete="email"
                   value={email}
-                  onChange={setEmail}
+                  onChange={(v) => {
+                    setEmail(v);
+                    if (emailError) setEmailError("");
+                  }}
                   placeholder="you@yourclinic.co.uk"
                   required
                 />
@@ -354,6 +391,7 @@ export default function LoginPage() {
    Transparent bg + 2px pink underline that brightens on focus.
    ============================================================ */
 function DarkField({
+  id,
   label,
   type = "text",
   value,
@@ -363,6 +401,7 @@ function DarkField({
   required = false,
   trailing,
 }: {
+  id?: string;
   label: string;
   type?: string;
   value: string;
@@ -373,12 +412,13 @@ function DarkField({
   trailing?: React.ReactNode;
 }) {
   return (
-    <label className="block">
+    <label className="block" htmlFor={id}>
       <span className="block font-section font-semibold uppercase tracking-[0.12em] text-[0.7rem] text-au-white/55 mb-2">
         {label}
       </span>
       <div className="relative flex items-center border-b-2 border-au-pink/40 focus-within:border-au-pink transition-colors">
         <input
+          id={id}
           type={type}
           autoComplete={autoComplete}
           required={required}

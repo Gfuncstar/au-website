@@ -60,7 +60,7 @@ export function CourseListCompact() {
           >
             <Link
               href={`/courses/${c.slug}`}
-              className="group block py-7 sm:py-8 px-5 -mx-5 grid grid-cols-[1fr_auto_auto] gap-x-4 sm:gap-x-7 items-center transition-colors hover:bg-au-charcoal"
+              className="group block py-7 sm:py-8 px-5 -mx-5 grid grid-cols-[1fr_auto_auto] gap-x-4 sm:gap-x-7 items-start transition-colors hover:bg-au-charcoal"
             >
               {/* Left column — eyebrow + title + summary. Text flips
                   white when the row hovers on AU charcoal. */}
@@ -89,18 +89,21 @@ export function CourseListCompact() {
                 </p>
               </div>
 
-              {/* Middle column — animated thematic illustration. Hidden on
-                  the very narrowest screens so the title can breathe. */}
-              <CourseIllustrationFor
-                slug={c.slug}
-                className="block w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24"
-              />
+              {/* Middle column — FREE stamp for free courses, animated
+                  thematic course illustration otherwise. They never both
+                  render, so the column stays visually balanced. */}
+              {isFree ? (
+                <FreeBadge className="block w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24" />
+              ) : (
+                <CourseIllustrationFor
+                  slug={c.slug}
+                  className="block w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24"
+                />
+              )}
 
-              {/* Right column — Free stamp OR price + arrow. */}
+              {/* Right column — price (paid only) + arrow. */}
               <div className="flex flex-col items-end gap-2 shrink-0">
-                {isFree ? (
-                  <FreeBadge className="w-12 h-12 sm:w-14 sm:h-14" />
-                ) : (
+                {priceLabel && (
                   <span
                     className="font-display font-black leading-none whitespace-nowrap"
                     style={{
