@@ -34,9 +34,16 @@ const TODO_KARTRA = (label: string) => `#TODO_KARTRA_${label}`;
    GLOBAL EXTERNAL LINKS — referenced by Nav, Footer, multiple pages.
    ============================================================ */
 
-/** Members area (Kartra). DNS-mapped subdomain — final landing TBD by
- *  Bernadette. Currently points at the AU members subdomain placeholder. */
+/** Members area (Kartra). DNS-mapped subdomain — kept here for reference
+ *  / fallback only. Customer-facing "Members" / "Log in" CTAs use the
+ *  internal LOGIN_URL below now that AU has its own on-brand login page. */
 export const MEMBERS_URL = `https://${BRAND.membersDomain}`;
+
+/** Internal members login page. All customer-facing "Members" / "Log in"
+ *  CTAs route here. The /login page itself authenticates via Kartra
+ *  (server-side `kartra.searchLead` + magic link) before routing into
+ *  the on-brand /members dashboard. */
+export const LOGIN_URL = "/login";
 
 /** Contact destination. Until a Kartra-embedded form is wired, this is
  *  the AU brand inbox. */

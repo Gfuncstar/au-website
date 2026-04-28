@@ -18,6 +18,8 @@
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { COURSES } from "@/lib/courses";
+import { CourseIllustrationFor } from "@/components/CourseIllustration";
+import { FreeBadge } from "@/components/FreeBadge";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -46,8 +48,8 @@ export function CourseListCompact() {
       viewport={{ once: true, margin: "-80px" }}
     >
       {COURSES.map((c) => {
-        const priceLabel =
-          c.price === undefined ? "Free" : `£${c.price.toLocaleString("en-GB")}`;
+        const isFree = c.price === undefined;
+        const priceLabel = isFree ? null : `£${c.price.toLocaleString("en-GB")}`;
 
         return (
           <motion.li
@@ -57,7 +59,7 @@ export function CourseListCompact() {
           >
             <Link
               href={`/courses/${c.slug}`}
-              className="group block py-7 sm:py-8 px-5 -mx-5 grid grid-cols-[1fr_auto] gap-x-5 sm:gap-x-9 items-start transition-colors hover:bg-au-charcoal"
+              className="group block py-7 sm:py-8 px-5 -mx-5 grid grid-cols-[1fr_auto_auto] gap-x-4 sm:gap-x-7 items-center transition-colors hover:bg-au-charcoal"
             >
               {/* Left column — eyebrow + title + summary. Text flips
                   white when the row hovers on AU charcoal. */}
@@ -86,18 +88,29 @@ export function CourseListCompact() {
                 </p>
               </div>
 
-              {/* Right column — price + arrow. */}
+              {/* Middle column — animated thematic illustration. Hidden on
+                  the very narrowest screens so the title can breathe. */}
+              <CourseIllustrationFor
+                slug={c.slug}
+                className="block w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24"
+              />
+
+              {/* Right column — Free stamp OR price + arrow. */}
               <div className="flex flex-col items-end gap-2 shrink-0">
-                <span
-                  className="font-display font-black leading-none whitespace-nowrap"
-                  style={{
-                    fontSize: "clamp(1rem, 2.4vw, 1.25rem)",
-                    color: "var(--color-au-pink)",
-                    letterSpacing: "var(--tracking-tight-display)",
-                  }}
-                >
-                  {priceLabel}
-                </span>
+                {isFree ? (
+                  <FreeBadge className="w-12 h-12 sm:w-14 sm:h-14" />
+                ) : (
+                  <span
+                    className="font-display font-black leading-none whitespace-nowrap"
+                    style={{
+                      fontSize: "clamp(1rem, 2.4vw, 1.25rem)",
+                      color: "var(--color-au-pink)",
+                      letterSpacing: "var(--tracking-tight-display)",
+                    }}
+                  >
+                    {priceLabel}
+                  </span>
+                )}
                 <span
                   aria-hidden="true"
                   className="font-display font-black text-au-charcoal/40 group-hover:text-[var(--color-au-pink)] group-hover:translate-x-0.5 transition-all leading-none"

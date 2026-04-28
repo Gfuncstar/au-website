@@ -22,7 +22,7 @@ import { CTAPoster } from "@/components/CTAPoster";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import { BRAND } from "@/lib/credentials";
-import { MEMBERS_URL } from "@/lib/links";
+import { LOGIN_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 Already enrolled? Log in to your courses on my members portal.
               </p>
               <Button
-                href={MEMBERS_URL}
+                href={LOGIN_URL}
                 variant="pink"
                 size="sm"
               >

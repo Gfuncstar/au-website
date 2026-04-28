@@ -27,7 +27,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Button } from "@/components/Button";
-import { MEMBERS_URL } from "@/lib/links";
+import { LOGIN_URL } from "@/lib/links";
 
 /* ============================================================
    Small animated award icons for the hero awards rail.
@@ -52,7 +52,7 @@ function HeroLaurelIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="3.5"
       strokeLinecap="round"
       aria-hidden="true"
       className="w-5 h-5 sm:w-[1.375rem] sm:h-[1.375rem] shrink-0"
@@ -82,7 +82,7 @@ function HeroTrophyIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="3.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -264,17 +264,15 @@ export function HeroAnimated() {
             <Button href="/about" variant="glass" size="sm">
               About me
             </Button>
-            {/* Members login — external, opens the Kartra members area
-                in a new tab. Matches the Members link in the Nav. */}
+            {/* Members login — internal /login page (custom on-brand
+                sign-in). Matches the Members link in the Nav. */}
             <Button
-              href={MEMBERS_URL}
+              href={LOGIN_URL}
               variant="glass"
               size="sm"
-              target="_blank"
-              rel="noopener noreferrer"
               arrow={false}
             >
-              Members ↗
+              Members log-in
             </Button>
           </motion.div>
         </div>

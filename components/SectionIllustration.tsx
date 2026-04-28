@@ -53,7 +53,7 @@ function IllustrationWrap({
       viewBox="0 0 100 100"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="3.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       role="img"

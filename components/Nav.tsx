@@ -26,7 +26,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BRAND, FOUNDER } from "@/lib/credentials";
 import { COURSES } from "@/lib/courses";
-import { MEMBERS_URL, NMC_REGISTER_URL } from "@/lib/links";
+import { LOGIN_URL, NMC_REGISTER_URL } from "@/lib/links";
 
 const PRIMARY_LINKS = [
   { href: "/courses", label: "Courses" },
@@ -131,14 +131,12 @@ export function Nav({ forceLight = false }: Props) {
               {l.label}
             </Link>
           ))}
-          <a
-            href={MEMBERS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={LOGIN_URL}
             className={`text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${membersColour}`}
           >
-            Members ↗
-          </a>
+            Members log-in
+          </Link>
         </nav>
 
         {/* Mobile menu trigger */}
@@ -351,15 +349,14 @@ export function Nav({ forceLight = false }: Props) {
                 </a>
               </li>
               <li className="border-b border-au-white/15">
-                <a
-                  href={MEMBERS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={LOGIN_URL}
+                  onClick={() => setOpen(false)}
                   className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
                   style={{ fontSize: "1.125rem" }}
                 >
-                  Members log-in <span aria-hidden="true">↗</span>
-                </a>
+                  Members log-in
+                </Link>
               </li>
             </ul>
           </section>
