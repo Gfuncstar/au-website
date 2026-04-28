@@ -103,7 +103,7 @@ export function MembersNav({ firstName, lastName, email }: MembersNavProps) {
 
         <div className="px-5 pb-7 pt-5 border-t border-au-white/10">
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-au-pink text-au-charcoal font-section font-semibold text-[0.75rem] tracking-[0.05em]">
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-[5px] bg-au-pink text-au-charcoal font-section font-semibold text-[0.75rem] tracking-[0.05em]">
               {initials(firstName, lastName)}
             </span>
             <div className="min-w-0 flex-1">
@@ -138,7 +138,7 @@ export function MembersNav({ firstName, lastName, email }: MembersNavProps) {
             />
           </Link>
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-au-pink text-au-charcoal font-section font-semibold text-[0.7rem] tracking-[0.05em]">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-[5px] bg-au-pink text-au-charcoal font-section font-semibold text-[0.7rem] tracking-[0.05em]">
               {initials(firstName, lastName)}
             </span>
             <button

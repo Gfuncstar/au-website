@@ -39,7 +39,7 @@ export function MembersStatusStrip({ lead }: Props) {
   return (
     <section
       aria-label="Account at a glance"
-      className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-au-charcoal/15 rounded-[6px] overflow-hidden"
+      className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-au-charcoal/15 rounded-[5px] overflow-hidden"
     >
       <Cell
         icon={<CoursesIcon />}

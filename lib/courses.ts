@@ -105,6 +105,11 @@ export type Course = {
   includes?: readonly string[];
   /** Course-specific FAQs. Generic ones live in lib/faqs.ts. */
   faqs?: readonly { q: string; a: string }[];
+  /** Exact `membership_name` Kartra returns for this course in
+   *  `lead.memberships[]`. Used by the members-area launchpad to
+   *  resolve "owned memberships → owned courses". Co-located here so
+   *  adding a course only touches this file (no external mapping). */
+  kartraMembershipName?: string;
 };
 
 export const COURSES: readonly Course[] = [
@@ -113,6 +118,7 @@ export const COURSES: readonly Course[] = [
      ============================================================ */
   {
     slug: "free-3-day-startup",
+    kartraMembershipName: "The 5K+ Formula™ Mini",
     eyebrow: "Free · 3 days",
     title: "The 5K+ Formula™ Mini",
     summary:
@@ -193,6 +199,7 @@ export const COURSES: readonly Course[] = [
   },
   {
     slug: "free-2-day-rag",
+    kartraMembershipName: "From Regulation to Reputation™ Mini",
     eyebrow: "Free · 2 days",
     title: "From Regulation to Reputation™ Mini",
     summary:
@@ -276,6 +283,7 @@ export const COURSES: readonly Course[] = [
      ============================================================ */
   {
     slug: "acne-decoded",
+    kartraMembershipName: "Acne Decoded",
     eyebrow: "Clinical · £79",
     title: "Acne Decoded",
     summary:
@@ -464,6 +472,7 @@ export const COURSES: readonly Course[] = [
   },
   {
     slug: "rosacea-beyond-redness",
+    kartraMembershipName: "Rosacea Beyond Redness",
     eyebrow: "Clinical · £79",
     title: "Rosacea Beyond Redness",
     summary:
@@ -588,6 +597,7 @@ export const COURSES: readonly Course[] = [
      ============================================================ */
   {
     slug: "rag-pathway",
+    kartraMembershipName: "From Regulation to Reputation™ — The RAG Pathway",
     eyebrow: "Regulatory · 4 weeks · waitlist",
     title: "From Regulation to Reputation™ — The RAG Pathway",
     summary:
@@ -719,6 +729,7 @@ export const COURSES: readonly Course[] = [
   },
   {
     slug: "5k-formula",
+    kartraMembershipName: "The 5K+ Formula™",
     eyebrow: "Business · 12 weeks · waitlist",
     title: "The 5K+ Formula™",
     summary:
@@ -878,4 +889,13 @@ export const COURSES: readonly Course[] = [
 /** Look-up helper used by `/courses/[slug]/page.tsx`. */
 export function getCourse(slug: string): Course | undefined {
   return COURSES.find((c) => c.slug === slug);
+}
+
+/** Resolve a Kartra `lead.memberships[].membership_name` back to its
+ *  Course entry. Returns undefined if no course matches that name —
+ *  which is the right behaviour for a stale or misspelt mapping. */
+export function getCourseByMembershipName(
+  membershipName: string,
+): Course | undefined {
+  return COURSES.find((c) => c.kartraMembershipName === membershipName);
 }

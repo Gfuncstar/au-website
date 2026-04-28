@@ -227,8 +227,8 @@ export default async function AccountPage() {
                   defaultChecked={list.active}
                   className="sr-only peer"
                 />
-                <span className="w-11 h-6 bg-au-charcoal/20 peer-checked:bg-au-pink rounded-full relative transition-colors">
-                  <span className="absolute top-0.5 left-0.5 w-5 h-5 bg-au-white rounded-full transition-transform peer-checked:translate-x-5"></span>
+                <span className="w-11 h-6 bg-au-charcoal/20 peer-checked:bg-au-pink rounded-[3px] relative transition-colors">
+                  <span className="absolute top-0.5 left-0.5 w-5 h-5 bg-au-white rounded-[2px] transition-transform peer-checked:translate-x-5"></span>
                 </span>
               </label>
             </li>

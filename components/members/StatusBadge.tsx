@@ -41,7 +41,7 @@ export function StatusBadge({
       aria-label={typeof children === "string" ? children : undefined}
       className={
         "inline-flex items-center font-section font-semibold uppercase " +
-        "tracking-[0.1em] text-[0.6875rem] px-2.5 py-1 rounded-full " +
+        "tracking-[0.1em] text-[0.6875rem] px-2.5 py-1 rounded-[3px] " +
         "leading-none " +
         STYLES[status]
       }

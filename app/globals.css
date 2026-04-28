@@ -61,6 +61,18 @@
   --leading-display: 0.92;
   --leading-poster: 0.95;
   --leading-body: 1.55;
+
+  /* Members-area chrome heights — used by sticky elements inside the
+     course player so they offset by the right amount on each viewport.
+     The mobile dashboard topbar only renders below `lg` (1024px).
+     The desktop left rail doesn't push content vertically, so the
+     sticky offset is 0px from `lg` upwards. */
+  --members-topbar-h: 60px;
+}
+@media (min-width: 1024px) {
+  :root {
+    --members-topbar-h: 0px;
+  }
 }
 
 /* ==========================================================================
@@ -329,7 +341,7 @@ body {
   width: 0.4rem;
   height: 0.4rem;
   background: var(--color-au-pink);
-  border-radius: 999px;
+  border-radius: 1px;
   margin-right: 0.6em;
   vertical-align: 0.18em;
 }
@@ -338,7 +350,7 @@ body {
   overflow-x: auto;
   margin: 1.6em 0;
   -webkit-overflow-scrolling: touch;
-  border-radius: 6px;
+  border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 .lesson-body__table-wrap table {
@@ -350,7 +362,7 @@ body {
 .lesson-body table {
   font-size: 0.9375rem;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 6px;
+  border-radius: 5px;
   overflow: hidden;
 }
 .lesson-body thead {
@@ -434,7 +446,7 @@ body {
   color: var(--color-au-charcoal);
   padding: 1.4rem 1.5rem 1.4rem 4.25rem;
   margin: 2rem 0;
-  border-radius: 6px;
+  border-radius: 5px;
   border-left: 3px solid var(--color-au-charcoal);
   overflow: hidden;
 }
@@ -550,7 +562,7 @@ body {
   width: 0.45rem;
   height: 0.45rem;
   background: var(--color-au-pink);
-  border-radius: 999px;
+  border-radius: 1px;
   margin-right: 0.6em;
 }
 
@@ -596,7 +608,7 @@ body {
   position: relative;
   background: var(--color-au-charcoal);
   color: var(--color-au-white);
-  border-radius: 6px;
+  border-radius: 5px;
   overflow: hidden;
   margin: 2.4em 0 1.6em;
 }
@@ -670,7 +682,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: 5px;
   background: var(--color-au-charcoal);
   color: var(--color-au-pink);
   font-family: var(--font-section);
@@ -761,7 +773,7 @@ body {
   .lesson-body tr {
     background: var(--color-au-white);
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 6px;
+    border-radius: 5px;
     margin-bottom: 0.75rem;
     padding: 0.4rem 0;
   }

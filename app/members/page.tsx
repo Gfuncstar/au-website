@@ -61,10 +61,14 @@ export default async function MembersHomePage() {
           Welcome back · {today.toUpperCase()}
         </p>
         <p
-          className="font-quote italic text-au-pink mt-2.5 sm:mt-4 leading-snug"
-          style={{ fontSize: "clamp(1.25rem, 3.4vw, 2.25rem)" }}
+          className="font-display font-black text-au-charcoal mt-2.5 sm:mt-4 leading-[1.05]"
+          style={{
+            fontSize: "clamp(1.625rem, 5vw, 3rem)",
+            letterSpacing: "var(--tracking-tight-display)",
+          }}
         >
-          {lead.first_name} — picking up where you left off.
+          {lead.first_name} —{" "}
+          <span className="text-au-pink">picking up where you left off.</span>
         </p>
 
         {ownedCourses.length > 0 && (
@@ -233,7 +237,7 @@ export default async function MembersHomePage() {
             {lead.tags.map((tag) => (
               <li
                 key={tag.tag_name}
-                className="inline-flex items-center font-section font-semibold uppercase tracking-[0.1em] text-[0.6875rem] px-3 py-1.5 rounded-full bg-au-pink-soft/40 text-au-charcoal border border-au-pink/30"
+                className="inline-flex items-center font-section font-semibold uppercase tracking-[0.1em] text-[0.6875rem] px-3 py-1.5 rounded-[5px] bg-au-pink-soft/40 text-au-charcoal border border-au-pink/30"
               >
                 {tag.tag_name}
               </li>

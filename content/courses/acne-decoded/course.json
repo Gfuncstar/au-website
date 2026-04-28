@@ -1,0 +1,23 @@
+{
+  "$comment": "Course-level metadata. Lessons live in NN-<slug>.md files alongside this file. The `parts` array drives the editorial dividers on the course overview chapter ledger; each entry's `startOrder` matches the `order` field in the first lesson of that arc. Edit here, not inside lesson markdown.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "The science of acne",
+      "body": "What acne is, how it forms, and why it persists.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "Reading the skin in front of you",
+      "body": "Causes, risks, and the NICE-aligned assessment workflow.",
+      "startOrder": 4
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Treatment and applied practice",
+      "body": "Pathways, real cases, NHS guidance, and your certificate.",
+      "startOrder": 7
+    }
+  ]
+}

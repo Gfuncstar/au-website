@@ -16,36 +16,26 @@ import { FreeBadge } from "@/components/FreeBadge";
 import { StatusBadge } from "@/components/members/StatusBadge";
 import { MembersStatusStrip } from "@/components/members/MembersStatusStrip";
 import { Reveal } from "@/components/members/Reveal";
-import { COURSES, getCourse } from "@/lib/courses";
+import { COURSES, getCourseByMembershipName } from "@/lib/courses";
+import { hasNativeCourse } from "@/lib/courseLessons";
 import { formatDate } from "@/lib/format";
-
-const SLUG_BY_MEMBERSHIP_NAME: Record<string, string> = {
-  "Acne Decoded": "acne-decoded",
-  "Rosacea Beyond Redness": "rosacea-beyond-redness",
-  "From Regulation to Reputation™ Mini": "free-2-day-rag",
-  "From Regulation to Reputation™ — The RAG Pathway": "rag-pathway",
-  "The 5K+ Formula™ Mini": "free-3-day-startup",
-  "The 5K+ Formula™": "5k-formula",
-};
 
 export default async function CoursesPage() {
   const lead = await kartra.getLead("");
   if (!lead) return null;
 
-  const ownedSlugs = new Set(
-    lead.memberships
-      .filter((m) => m.active)
-      .map((m) => SLUG_BY_MEMBERSHIP_NAME[m.membership_name])
-      .filter(Boolean),
-  );
-
+  // Resolve each active Kartra membership to its Course entry via the
+  // `kartraMembershipName` field on lib/courses.ts. Co-located lookup
+  // means adding a course only touches that one file.
   const owned = lead.memberships
     .filter((m) => m.active)
     .map((m) => ({
       membership: m,
-      course: getCourse(SLUG_BY_MEMBERSHIP_NAME[m.membership_name] ?? ""),
+      course: getCourseByMembershipName(m.membership_name),
     }))
-    .filter((x) => x.course);
+    .filter((x): x is { membership: typeof x.membership; course: NonNullable<typeof x.course> } => !!x.course);
+
+  const ownedSlugs = new Set(owned.map((x) => x.course.slug));
 
   const recommendations = COURSES.filter((c) => !ownedSlugs.has(c.slug)).slice(
     0,
@@ -121,7 +111,13 @@ export default async function CoursesPage() {
                 )}
                 <div className="flex items-center justify-between gap-4 mt-auto">
                   <Link
-                    href={course ? `/courses/${course.slug}` : "#"}
+                    href={
+                      course
+                        ? hasNativeCourse(course.slug)
+                          ? `/members/courses/${course.slug}`
+                          : `/courses/${course.slug}`
+                        : "#"
+                    }
                     className="bg-au-pink hover:bg-au-black text-au-white font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-5 py-2.5 min-h-[40px] text-[0.8125rem] transition-colors inline-flex items-center gap-2"
                   >
                     Open course
