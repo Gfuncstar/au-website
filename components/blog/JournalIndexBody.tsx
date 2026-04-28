@@ -74,9 +74,9 @@ export function JournalIndexBody({ posts }: Props) {
           Search the Journal
         </label>
         <div
-          className="relative rounded-full border transition-colors focus-within:bg-[color:var(--color-au-pink-soft)] focus-within:border-[color:var(--color-au-pink)]"
+          className="relative rounded-[3px] border transition-colors focus-within:border-[color:var(--color-au-pink)]"
           style={{
-            backgroundColor: "color-mix(in srgb, var(--color-au-pink-soft) 45%, white)",
+            backgroundColor: "color-mix(in srgb, var(--color-au-pink-soft) 35%, white)",
             borderColor: "color-mix(in srgb, var(--color-au-pink) 35%, transparent)",
           }}
         >
@@ -84,7 +84,7 @@ export function JournalIndexBody({ posts }: Props) {
               affordance and avoids pulling in an icon library. */}
           <span
             aria-hidden="true"
-            className="absolute left-5 top-1/2 -translate-y-1/2 text-[1.375rem] leading-none pointer-events-none"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-[1.375rem] leading-none pointer-events-none"
             style={{ color: "var(--color-au-pink)" }}
           >
             ⌕
@@ -95,11 +95,11 @@ export function JournalIndexBody({ posts }: Props) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search topics — JCCP, retinoids, MHRA, polynucleotides…"
-            className="w-full bg-transparent border-0 py-4 pl-12 pr-6 font-display text-[1rem] sm:text-[1.0625rem] text-au-charcoal placeholder:text-au-charcoal/45 focus:outline-none"
+            className="w-full bg-transparent border-0 py-4 pl-11 pr-4 font-display text-[1rem] sm:text-[1.0625rem] text-au-charcoal placeholder:text-au-charcoal/45 focus:outline-none"
           />
         </div>
         {filtering && (
-          <p className="font-section uppercase tracking-[0.15em] text-[0.6875rem] text-au-charcoal/60 mt-3 ml-5">
+          <p className="font-section uppercase tracking-[0.15em] text-[0.6875rem] text-au-charcoal/60 mt-3">
             {filtered.length === 0
               ? `No matches for “${query}”.`
               : `${filtered.length} ${
