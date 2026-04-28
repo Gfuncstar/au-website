@@ -1,0 +1,29 @@
+{
+  "$comment": "Course-level metadata for The 5K+ Formula. Lessons live in NN-<slug>.md files alongside this file. The `parts` array drives the editorial dividers on the course overview chapter ledger; each entry's `startOrder` matches the `order` field in the first lesson of that arc. Edit here, not inside lesson markdown.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "Foundations",
+      "body": "Welcome, onboarding, and clarifying your Clinical Core (Niche).",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "Brand and client experience",
+      "body": "Branding, leveraging your service suite, and the 5-star client journey.",
+      "startOrder": 4
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Authority and growth",
+      "body": "Content authority, becoming fully booked, pricing mastery, and ethical sales.",
+      "startOrder": 7
+    },
+    {
+      "eyebrow": "Part 04",
+      "title": "Operations, scale and reflection",
+      "body": "Operations, forecasting, long-term strategy, the Compound Effect, and your reflection.",
+      "startOrder": 11
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$comment": "Course-level metadata. Lessons live in NN-<slug>.md files alongside this file. The `parts` array drives the editorial dividers on the course overview chapter ledger; each entry's `startOrder` matches the `order` field in the first lesson of that arc. Edit here, not inside lesson markdown.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "Pause and orient",
+      "body": "A gentle reset before the 3-day arc — why awareness comes before strategy.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "Three days of clarity",
+      "body": "Niche, brand energy, and profit awareness — the three pillars of the 5K Formula.",
+      "startOrder": 2
+    }
+  ]
+}

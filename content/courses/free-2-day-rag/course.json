@@ -1,0 +1,17 @@
+{
+  "$comment": "Course-level metadata. Lessons live in NN-<slug>.md files alongside this file. The `parts` array drives the editorial dividers on the course overview chapter ledger; each entry's `startOrder` matches the `order` field in the first lesson of that arc. Edit here, not inside lesson markdown.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "Day 1 — Regulation",
+      "body": "Why aesthetics is not retail, and the regulatory landscape that shapes every decision you make.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "Day 2 — Reputation",
+      "body": "The Traffic Light System, the seven core takeaways, and where to go from awareness to professional structure.",
+      "startOrder": 3
+    }
+  ]
+}

@@ -13,17 +13,8 @@ import { CourseIllustrationFor } from "@/components/CourseIllustration";
 import { FreeBadge } from "@/components/FreeBadge";
 import { MembersStatusStrip } from "@/components/members/MembersStatusStrip";
 import { Reveal } from "@/components/members/Reveal";
-import { COURSES, getCourse } from "@/lib/courses";
+import { COURSES, getCourse, getCourseByMembershipName } from "@/lib/courses";
 import { formatDateLong, formatDate, formatGBP } from "@/lib/format";
-
-const SLUG_BY_MEMBERSHIP_NAME: Record<string, string> = {
-  "Acne Decoded": "acne-decoded",
-  "Rosacea Beyond Redness": "rosacea-beyond-redness",
-  "From Regulation to Reputation™ Mini": "free-2-day-rag",
-  "From Regulation to Reputation™ — The RAG Pathway": "rag-pathway",
-  "The 5K+ Formula™ Mini": "free-3-day-startup",
-  "The 5K+ Formula™": "5k-formula",
-};
 
 export default async function MembersHomePage() {
   const lead = await kartra.getLead("");
@@ -31,12 +22,10 @@ export default async function MembersHomePage() {
 
   const today = formatDateLong(new Date().toISOString());
   const activeMemberships = lead.memberships.filter((m) => m.active);
-  const ownedSlugs = activeMemberships
-    .map((m) => SLUG_BY_MEMBERSHIP_NAME[m.membership_name])
-    .filter(Boolean);
-  const ownedCourses = ownedSlugs
-    .map((slug) => getCourse(slug))
+  const ownedCourses = activeMemberships
+    .map((m) => getCourseByMembershipName(m.membership_name))
     .filter((c): c is NonNullable<ReturnType<typeof getCourse>> => Boolean(c));
+  const ownedSlugs = ownedCourses.map((c) => c.slug);
 
   const recentTransactions = [...lead.transactions]
     .sort(
@@ -130,8 +119,8 @@ export default async function MembersHomePage() {
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {activeMemberships.map((m) => {
-            const slug = SLUG_BY_MEMBERSHIP_NAME[m.membership_name];
-            const course = slug ? getCourse(slug) : undefined;
+            const course = getCourseByMembershipName(m.membership_name);
+            const slug = course?.slug;
             return (
               <li
                 key={m.membership_id}

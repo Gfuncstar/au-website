@@ -1,0 +1,23 @@
+{
+  "$comment": "Course-level metadata for From Regulation to Reputation - The RAG Pathway. Lessons live in NN-<slug>.md files alongside this file. The `parts` array drives the editorial dividers on the course overview chapter ledger; each entry's `startOrder` matches the `order` field in the first lesson of that arc. Edit here, not inside lesson markdown.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "Foundations",
+      "body": "The reality of practising aesthetics in England, and where you currently sit.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "Building reputation",
+      "body": "The Traffic Light System, legal essentials, clinic set-up, and clinical governance.",
+      "startOrder": 3
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Becoming the trusted authority",
+      "body": "Advertising safely, training and CPD, and integrating it all into a defensible practice.",
+      "startOrder": 7
+    }
+  ]
+}
