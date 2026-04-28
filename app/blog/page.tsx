@@ -11,15 +11,15 @@
  */
 
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { PosterBlock } from "@/components/PosterBlock";
 import { Eyebrow } from "@/components/Eyebrow";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
+import { JournalIndexBody } from "@/components/blog/JournalIndexBody";
 import { Fragment } from "react";
-import { getAllPosts, formatPostDate, TOPIC_LABELS } from "@/lib/blog";
+import { getAllPosts } from "@/lib/blog";
 import { BRAND, FOUNDER } from "@/lib/credentials";
 
 export const metadata: Metadata = {
@@ -107,57 +107,12 @@ export default async function BlogIndexPage() {
         </PosterBlock>
 
         {/* ============================================================
-            POST LIST
+            FEATURED + SEARCH + LIST — split into a client component
+            so the search filter can run interactively. The static page
+            still pre-renders the full list as initial state.
             ============================================================ */}
         <PosterBlock tone="white" contained>
-          {posts.length === 0 ? (
-            <ScrollReveal className="max-w-2xl">
-              <p className="text-[1.0625rem] text-au-charcoal/75 leading-relaxed">
-                First piece, Sunday.
-              </p>
-            </ScrollReveal>
-          ) : (
-            <ul className="flex flex-col max-w-4xl">
-              {posts.map((p, i) => (
-                <li
-                  key={p.slug}
-                  className={`${
-                    i === 0 ? "border-y" : "border-b"
-                  } border-au-charcoal/15`}
-                >
-                  <Link
-                    href={`/blog/${p.slug}`}
-                    className="block py-7 sm:py-9 group"
-                  >
-                    <div className="flex items-baseline justify-between gap-6 mb-3">
-                      <p
-                        className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem]"
-                        style={{ color: "var(--color-au-pink)" }}
-                      >
-                        {TOPIC_LABELS[p.topic]}
-                      </p>
-                      <p className="font-section uppercase tracking-[0.15em] text-[0.6875rem] text-au-charcoal/55 whitespace-nowrap">
-                        {formatPostDate(p.date)}
-                      </p>
-                    </div>
-                    <h2
-                      className="font-display font-black text-au-charcoal mb-3 group-hover:text-[var(--color-au-pink)] transition-colors"
-                      style={{
-                        fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)",
-                        lineHeight: 1.05,
-                        letterSpacing: "var(--tracking-tight-display)",
-                      }}
-                    >
-                      {p.title}
-                    </h2>
-                    <p className="text-[0.9375rem] sm:text-[1rem] text-au-charcoal/75 leading-relaxed max-w-2xl">
-                      {p.excerpt}
-                    </p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
+          <JournalIndexBody posts={posts} />
         </PosterBlock>
       </main>
       <Footer />

@@ -1,7 +1,7 @@
 ---
 title: "Why this exists. What you'll get from it."
 slug: "welcome-to-the-journal"
-date: "2026-04-28"
+date: "2026-04-27"
 excerpt: "The studies that matter. The regulation that's changing. The claims that don't survive a primary source — for working clinicians."
 topic: "other"
 sources: []
