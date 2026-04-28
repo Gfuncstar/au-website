@@ -32,6 +32,7 @@ const PRIMARY_LINKS = [
   { href: "/courses", label: "Courses" },
   { href: "/about", label: "About" },
   { href: "/standards", label: "Standards" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -43,6 +44,22 @@ type Props = {
 export function Nav({ forceLight = false }: Props) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  // Mobile-drawer accordions. Each section starts collapsed every time
+  // the drawer opens, so the user lands on a compact, scannable index
+  // and chooses what to expand.
+  const [coursesOpen, setCoursesOpen] = useState(false);
+  const [educatorOpen, setEducatorOpen] = useState(false);
+  const [connectOpen, setConnectOpen] = useState(false);
+
+  // When the drawer closes, reset every accordion so the next open is
+  // collapsed-by-default.
+  useEffect(() => {
+    if (!open) {
+      setCoursesOpen(false);
+      setEducatorOpen(false);
+      setConnectOpen(false);
+    }
+  }, [open]);
 
   useEffect(() => {
     if (forceLight) {
@@ -186,183 +203,291 @@ export function Nav({ forceLight = false }: Props) {
         }`}
         aria-hidden={!open}
       >
-        <div className="px-[35px] py-8 flex flex-col gap-10">
-          {/* COURSES — surfaced with full depth */}
-          <section>
-            <p
-              className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] mb-4"
-              style={{ color: "var(--color-au-pink)" }}
+        <div className="px-[35px] py-4 flex flex-col">
+          {/* COURSES — collapsible accordion. Default collapsed. Burger-menu
+              style: display-font heading, dividers between sections. */}
+          <section className="border-b border-au-white/15 first:border-t">
+            <button
+              type="button"
+              aria-expanded={coursesOpen}
+              aria-controls="mobile-nav-courses"
+              onClick={() => setCoursesOpen((v) => !v)}
+              className="w-full flex items-center justify-between gap-4 py-5"
             >
-              Courses · {COURSES.length} programmes
-            </p>
-            <ul className="flex flex-col">
-              {COURSES.map((c) => {
-                const priceLabel =
-                  c.price === undefined
-                    ? "Free"
-                    : `£${c.price.toLocaleString("en-GB")}`;
-                return (
-                  <li
-                    key={c.slug}
-                    className="border-b border-au-white/15 first:border-t"
-                  >
-                    <Link
-                      href={`/courses/${c.slug}`}
-                      onClick={() => setOpen(false)}
-                      className="grid grid-cols-[1fr_auto] gap-4 items-baseline py-4"
+              <span
+                className="font-display font-bold text-au-white text-left"
+                style={{
+                  fontSize: "1.125rem",
+                  letterSpacing: "var(--tracking-tight-display)",
+                }}
+              >
+                Courses
+                <span className="text-au-white/55 font-medium">
+                  {" · "}
+                  {COURSES.length} programmes
+                </span>
+              </span>
+              <span
+                aria-hidden="true"
+                className={`inline-block text-au-white/65 text-[1.125rem] leading-none transition-transform duration-300 ${
+                  coursesOpen ? "rotate-180" : ""
+                }`}
+              >
+                ⌄
+              </span>
+            </button>
+            <div
+              id="mobile-nav-courses"
+              hidden={!coursesOpen}
+              className={`${coursesOpen ? "pb-4" : ""}`}
+            >
+              <ul className="flex flex-col">
+                {COURSES.map((c) => {
+                  const priceLabel =
+                    c.price === undefined
+                      ? "Free"
+                      : `£${c.price.toLocaleString("en-GB")}`;
+                  return (
+                    <li
+                      key={c.slug}
+                      className="border-b border-au-white/15 first:border-t"
                     >
-                      <div className="min-w-0">
-                        <p className="font-section font-semibold uppercase tracking-[0.15em] text-[0.625rem] text-au-white/55 mb-1">
-                          {c.category} · {c.format}
-                          {c.availability === "waitlist" && " · Waitlist"}
-                        </p>
-                        <h3
-                          className="font-display font-bold leading-tight text-au-white"
+                      <Link
+                        href={`/courses/${c.slug}`}
+                        onClick={() => setOpen(false)}
+                        className="grid grid-cols-[1fr_auto] gap-4 items-baseline py-4"
+                      >
+                        <div className="min-w-0">
+                          <p className="font-section font-semibold uppercase tracking-[0.15em] text-[0.625rem] text-au-white/55 mb-1">
+                            {c.category} · {c.format}
+                            {c.availability === "waitlist" && " · Waitlist"}
+                          </p>
+                          <h3
+                            className="font-display font-bold leading-tight text-au-white"
+                            style={{
+                              fontSize: "1.125rem",
+                              letterSpacing: "var(--tracking-tight-display)",
+                            }}
+                          >
+                            {c.title}
+                          </h3>
+                        </div>
+                        <span
+                          className="font-display font-black leading-none whitespace-nowrap"
                           style={{
-                            fontSize: "1.125rem",
+                            fontSize: "1rem",
+                            color: "var(--color-au-pink)",
                             letterSpacing: "var(--tracking-tight-display)",
                           }}
                         >
-                          {c.title}
-                        </h3>
-                      </div>
-                      <span
-                        className="font-display font-black leading-none whitespace-nowrap"
-                        style={{
-                          fontSize: "1rem",
-                          color: "var(--color-au-pink)",
-                          letterSpacing: "var(--tracking-tight-display)",
-                        }}
-                      >
-                        {priceLabel}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-            <Link
-              href="/courses"
-              onClick={() => setOpen(false)}
-              className="inline-flex items-center gap-2 font-section font-semibold uppercase tracking-[0.15em] text-[0.75rem] text-au-white hover:text-[var(--color-au-pink)] transition-colors mt-5"
+                          {priceLabel}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              <Link
+                href="/courses"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center gap-2 font-section font-semibold uppercase tracking-[0.15em] text-[0.75rem] text-au-white hover:text-[var(--color-au-pink)] transition-colors mt-5"
+              >
+                See all courses in detail <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </section>
+
+          {/* THE EDUCATOR — collapsible accordion. Default collapsed. */}
+          <section className="border-b border-au-white/15">
+            <button
+              type="button"
+              aria-expanded={educatorOpen}
+              aria-controls="mobile-nav-educator"
+              onClick={() => setEducatorOpen((v) => !v)}
+              className="w-full flex items-center justify-between gap-4 py-5"
             >
-              See all courses in detail <span aria-hidden="true">→</span>
+              <span
+                className="font-display font-bold text-au-white text-left"
+                style={{
+                  fontSize: "1.125rem",
+                  letterSpacing: "var(--tracking-tight-display)",
+                }}
+              >
+                More about me
+              </span>
+              <span
+                aria-hidden="true"
+                className={`inline-block text-au-white/65 text-[1.125rem] leading-none transition-transform duration-300 ${
+                  educatorOpen ? "rotate-180" : ""
+                }`}
+              >
+                ⌄
+              </span>
+            </button>
+            <div
+              id="mobile-nav-educator"
+              hidden={!educatorOpen}
+              className={`${educatorOpen ? "pb-4" : ""}`}
+            >
+              <ul className="flex flex-col">
+                <li className="border-b border-au-white/15 first:border-t">
+                  <Link
+                    href="/about"
+                    onClick={() => setOpen(false)}
+                    className="block py-4"
+                  >
+                    <h3
+                      className="font-display font-bold leading-tight text-au-white mb-1"
+                      style={{ fontSize: "1.125rem" }}
+                    >
+                      About Bernadette
+                    </h3>
+                    <p className="text-[0.875rem] text-au-white/65 leading-snug">
+                      RN, MSc Advanced Practice. Twenty years on the ward.
+                      Twelve in aesthetics. Educator of the Year 2026 Nominee.
+                    </p>
+                  </Link>
+                </li>
+                <li className="border-b border-au-white/15">
+                  <Link
+                    href="/standards"
+                    onClick={() => setOpen(false)}
+                    className="block py-4"
+                  >
+                    <h3
+                      className="font-display font-bold leading-tight text-au-white mb-1"
+                      style={{ fontSize: "1.125rem" }}
+                    >
+                      Standards we teach against
+                    </h3>
+                    <p className="text-[0.875rem] text-au-white/65 leading-snug">
+                      NICE · JCCP · CPSA · MHRA · CQC · NMC · RCN · ASA. Eight
+                      bodies. Every course anchored.
+                    </p>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          {/* JOURNAL — top-level direct link. Not collapsible — single
+              tap navigates to /blog (the Aesthetics Unlocked Journal). */}
+          <section className="border-b border-au-white/15">
+            <Link
+              href="/blog"
+              onClick={() => setOpen(false)}
+              className="w-full flex items-center justify-between gap-4 py-5"
+            >
+              <span
+                className="font-display font-bold text-au-white text-left"
+                style={{
+                  fontSize: "1.125rem",
+                  letterSpacing: "var(--tracking-tight-display)",
+                }}
+              >
+                Blog
+              </span>
+              <span
+                aria-hidden="true"
+                className="inline-block text-au-white/65 text-[1.125rem] leading-none"
+              >
+                →
+              </span>
             </Link>
           </section>
 
-          {/* LEARN ABOUT — about / standards */}
-          <section>
-            <p
-              className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] mb-4"
-              style={{ color: "var(--color-au-pink)" }}
+          {/* CONNECT — collapsible accordion. Default collapsed. */}
+          <section className="border-b border-au-white/15">
+            <button
+              type="button"
+              aria-expanded={connectOpen}
+              aria-controls="mobile-nav-connect"
+              onClick={() => setConnectOpen((v) => !v)}
+              className="w-full flex items-center justify-between gap-4 py-5"
             >
-              The educator
-            </p>
-            <ul className="flex flex-col">
-              <li className="border-b border-au-white/15 first:border-t">
-                <Link
-                  href="/about"
-                  onClick={() => setOpen(false)}
-                  className="block py-4"
-                >
-                  <h3
-                    className="font-display font-bold leading-tight text-au-white mb-1"
+              <span
+                className="font-display font-bold text-au-white text-left"
+                style={{
+                  fontSize: "1.125rem",
+                  letterSpacing: "var(--tracking-tight-display)",
+                }}
+              >
+                Connect
+              </span>
+              <span
+                aria-hidden="true"
+                className={`inline-block text-au-white/65 text-[1.125rem] leading-none transition-transform duration-300 ${
+                  connectOpen ? "rotate-180" : ""
+                }`}
+              >
+                ⌄
+              </span>
+            </button>
+            <div
+              id="mobile-nav-connect"
+              hidden={!connectOpen}
+              className={`${connectOpen ? "pb-4" : ""}`}
+            >
+              <ul className="flex flex-col">
+                <li className="border-b border-au-white/15 first:border-t">
+                  <Link
+                    href="/faqs"
+                    onClick={() => setOpen(false)}
+                    className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
                     style={{ fontSize: "1.125rem" }}
                   >
-                    About Bernadette
-                  </h3>
-                  <p className="text-[0.875rem] text-au-white/65 leading-snug">
-                    RN, MSc Advanced Practice. Twenty years on the ward. Twelve
-                    in aesthetics. Educator of the Year 2026 Nominee.
-                  </p>
-                </Link>
-              </li>
-              <li className="border-b border-au-white/15">
-                <Link
-                  href="/standards"
-                  onClick={() => setOpen(false)}
-                  className="block py-4"
-                >
-                  <h3
-                    className="font-display font-bold leading-tight text-au-white mb-1"
+                    FAQs
+                  </Link>
+                </li>
+                <li className="border-b border-au-white/15">
+                  <Link
+                    href="/contact"
+                    onClick={() => setOpen(false)}
+                    className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
                     style={{ fontSize: "1.125rem" }}
                   >
-                    Standards we teach against
-                  </h3>
-                  <p className="text-[0.875rem] text-au-white/65 leading-snug">
-                    NICE · JCCP · CPSA · MHRA · CQC · NMC · RCN · ASA. Eight
-                    bodies. Every course anchored.
-                  </p>
-                </Link>
-              </li>
-            </ul>
+                    Contact
+                  </Link>
+                </li>
+                <li className="border-b border-au-white/15">
+                  <a
+                    href={`mailto:${BRAND.email}`}
+                    className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
+                    style={{ fontSize: "1.125rem" }}
+                  >
+                    Email · {BRAND.email}
+                  </a>
+                </li>
+                <li className="border-b border-au-white/15">
+                  <a
+                    href={BRAND.instagram.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
+                    style={{ fontSize: "1.125rem" }}
+                  >
+                    Instagram · @{BRAND.instagram.handle}{" "}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </section>
 
-          {/* CONNECT */}
-          <section>
-            <p
-              className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] mb-4"
-              style={{ color: "var(--color-au-pink)" }}
-            >
-              Connect
-            </p>
-            <ul className="flex flex-col">
-              <li className="border-b border-au-white/15 first:border-t">
-                <Link
-                  href="/faqs"
-                  onClick={() => setOpen(false)}
-                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
-                  style={{ fontSize: "1.125rem" }}
-                >
-                  FAQs
-                </Link>
-              </li>
-              <li className="border-b border-au-white/15">
-                <Link
-                  href="/contact"
-                  onClick={() => setOpen(false)}
-                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
-                  style={{ fontSize: "1.125rem" }}
-                >
-                  Contact
-                </Link>
-              </li>
-              <li className="border-b border-au-white/15">
-                <a
-                  href={`mailto:${BRAND.email}`}
-                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
-                  style={{ fontSize: "1.125rem" }}
-                >
-                  Email · {BRAND.email}
-                </a>
-              </li>
-              <li className="border-b border-au-white/15">
-                <a
-                  href={BRAND.instagram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
-                  style={{ fontSize: "1.125rem" }}
-                >
-                  Instagram · @{BRAND.instagram.handle}{" "}
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </li>
-              <li className="border-b border-au-white/15">
-                <Link
-                  href={LOGIN_URL}
-                  onClick={() => setOpen(false)}
-                  className="block py-4 font-display font-bold text-au-white hover:text-[var(--color-au-pink)] transition-colors"
-                  style={{ fontSize: "1.125rem" }}
-                >
-                  Members log-in
-                </Link>
-              </li>
-            </ul>
-          </section>
+          {/* MEMBERS LOG-IN — promoted from the Connect list to a
+              top-level CTA button. Pink-filled per the AU brand: pink
+              is the activating accent across the site. */}
+          <Link
+            href={LOGIN_URL}
+            onClick={() => setOpen(false)}
+            className="mt-8 inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-[3px] font-section font-semibold uppercase tracking-[0.15em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
+          >
+            Members log-in
+            <span aria-hidden="true">→</span>
+          </Link>
 
           {/* CREDENTIAL STRIP — drives home the educator's authority. */}
-          <section className="border-t border-au-white/15 pt-6">
+          <section className="pt-8">
             <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.625rem] text-au-white/55 mb-2">
               Built and taught by
             </p>
@@ -370,7 +495,7 @@ export function Nav({ forceLight = false }: Props) {
               className="font-display font-black leading-tight mb-3"
               style={{
                 fontSize: "1.25rem",
-                color: "var(--color-au-charcoal)",
+                color: "var(--color-au-pink)",
                 letterSpacing: "var(--tracking-tight-display)",
               }}
             >

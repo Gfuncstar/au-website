@@ -116,3 +116,155 @@ body {
   text-orientation: mixed;
   transform: rotate(180deg);
 }
+
+/* ==========================================================================
+   .prose-au — markdown body styling for blog posts.
+   Renders the HTML output of `lib/blog.ts` (remark → HTML) using the AU
+   editorial type system. Headings in Montserrat, body in Lato, brand pink
+   on links and ::marker.
+   ========================================================================== */
+
+.prose-au {
+  /* Body copy matches the site's standard body sizing exactly — the
+     same scale used in /regulation body blocks, BookSection, etc.
+     Mirrors `text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem]
+     text-au-charcoal/85 leading-relaxed`. */
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.625;
+  font-weight: 500;
+  color: rgb(33 33 33 / 0.85);
+}
+@media (min-width: 640px) {
+  .prose-au {
+    font-size: 1.0625rem;
+  }
+}
+@media (min-width: 768px) {
+  .prose-au {
+    font-size: 1.125rem;
+  }
+}
+/* Sibling spacing — needs higher specificity than `.prose-au p` below
+   so the per-element resets don't override it. Doubling the class
+   selector bumps specificity from (0,1,0) to (0,2,0). */
+.prose-au.prose-au > * + * {
+  margin-top: 1.4em;
+}
+.prose-au h2 {
+  /* Article-body subheads — calmer than the site's poster-headline
+     h2s. Display family, bold (700), not black (900) — at this scale
+     900 reads as chunky inside running prose. Charcoal, not pink, to
+     keep the body grounded; pink is reserved for inline emphasis. */
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-tight-display);
+  color: var(--color-au-charcoal);
+  margin-top: 2.4em;
+  margin-bottom: 0.6em;
+}
+.prose-au h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-tight-display);
+  color: var(--color-au-charcoal);
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+}
+.prose-au p {
+  margin: 0;
+}
+.prose-au a {
+  color: var(--color-au-pink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.2s;
+}
+.prose-au a:hover {
+  opacity: 0.75;
+}
+.prose-au strong {
+  /* Inline emphasis lifts to brand pink — the same treatment the rest
+     of the site uses for the activating word in a sentence ("the
+     defining brand colour" per brand.md). Bold weight + pink reads as
+     a confident editorial accent without overwhelming the body. */
+  font-weight: 700;
+  color: var(--color-au-pink);
+}
+.prose-au em {
+  font-family: var(--font-quote);
+  font-style: italic;
+}
+/* Lists — Tailwind v4's preflight strips list-style by default, which
+   was hiding the bullets. Re-enable explicitly and colour the markers
+   pink so they read as a deliberate editorial flourish. */
+.prose-au ul,
+.prose-au ol {
+  padding-left: 1.5em;
+  margin: 1em 0;
+}
+.prose-au ul {
+  list-style: disc;
+}
+.prose-au ol {
+  list-style: decimal;
+}
+.prose-au ul > li,
+.prose-au ol > li {
+  margin: 0.55em 0;
+  padding-left: 0.35em;
+}
+.prose-au ul > li::marker {
+  color: var(--color-au-pink);
+  font-size: 1.1em;
+}
+.prose-au ol > li::marker {
+  color: var(--color-au-pink);
+  font-weight: 700;
+}
+.prose-au blockquote {
+  font-family: var(--font-quote);
+  font-style: italic;
+  font-size: clamp(1.25rem, 3vw, 1.625rem);
+  line-height: 1.4;
+  color: var(--color-au-charcoal);
+  border-left: 3px solid var(--color-au-pink);
+  padding-left: 1.25em;
+  margin: 1.6em 0;
+}
+.prose-au code {
+  font-size: 0.9em;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+.prose-au hr {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 2em 0;
+}
+.prose-au table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  margin: 1.6em 0;
+}
+.prose-au th,
+.prose-au td {
+  text-align: left;
+  padding: 0.65em 0.85em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.prose-au th {
+  font-family: var(--font-section);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  color: var(--color-au-charcoal);
+}

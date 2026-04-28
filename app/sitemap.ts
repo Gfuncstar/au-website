@@ -14,10 +14,11 @@ import { COURSES } from "@/lib/courses";
 import { STANDARDS } from "@/lib/standards";
 import { LOCATIONS } from "@/lib/locations";
 import { BRAND } from "@/lib/credentials";
+import { getAllPosts } from "@/lib/blog";
 
 const SITE_URL = `https://${BRAND.domain}`;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -29,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/for`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/faqs`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/cookies`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
@@ -57,10 +59,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: l.kind === "nation" ? 0.7 : 0.6,
   }));
 
+  // Blog posts — picked up automatically as the publishing agent commits
+  // new markdown files into `content/blog/`.
+  const posts = await getAllPosts();
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((p) => ({
+    url: `${SITE_URL}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...courseRoutes,
     ...standardRoutes,
     ...locationRoutes,
+    ...blogRoutes,
   ];
 }
