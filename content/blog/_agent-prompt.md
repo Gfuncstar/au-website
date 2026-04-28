@@ -132,12 +132,18 @@ date prefix MUST match the frontmatter `date`.
 
 1. `gh repo clone Gfuncstar/au-website /tmp/aesthetics-unlocked && cd /tmp/aesthetics-unlocked`
 2. `git pull origin main`
-3. Decide topic. Verify two sources. If you can't, exit cleanly with
+3. **Read `content/blog/_brand-voice.md` for the full Aesthetics
+   Unlocked brand-voice doc. Use Voice 1 (marketing voice) — calm,
+   direct, short sentence pairs. The motifs and recurring phrases in
+   that file are the brand's verbal fingerprints — work them in.**
+4. **Read the last ~10 files in `content/blog/`** to make sure the
+   topic isn't a repeat.
+5. Decide topic. Verify two sources. If you can't, exit cleanly with
    a log message and **do not commit anything**.
-4. Write the markdown file at the path above. Verify each source URL
+6. Write the markdown file at the path above. Verify each source URL
    returns HTTP 200 before committing.
-5. Commit: `git add content/blog/<file> && git commit -m "blog: <slug>"`
-6. Push: `git push origin main`
+7. Commit: `git add content/blog/<file> && git commit -m "journal: <slug>"`
+8. Push: `git push origin main`
 
 Vercel auto-deploys. The post is live within ~2 minutes.
 
