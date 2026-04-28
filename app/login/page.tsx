@@ -207,9 +207,9 @@ export default function LoginPage() {
                 <span className="flex-1 h-px bg-au-white/15" />
               </div>
 
-              <p className="mt-5 text-[0.875rem] text-au-white/70 leading-relaxed max-w-[36ch]">
-                Enter your email above, then tap the magic link button below
-                — we&apos;ll email you a one-time sign-in link.
+              <p className="mt-5 font-section font-semibold uppercase tracking-[0.12em] text-[0.7rem] text-au-white/55 leading-relaxed max-w-[40ch]">
+                Enter your email above, then tap the magic link button below —
+                we&apos;ll email you a one-time sign-in link.
               </p>
 
               <button
