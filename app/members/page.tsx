@@ -54,14 +54,16 @@ export default async function MembersHomePage() {
   return (
     <div className="space-y-10 sm:space-y-14">
       {/* ============================================================
-          Personal hero — tight on mobile, generous on desktop
+          Personal hero — dark-mode editorial poster, sympathetic to the
+          /login dark surface so members feel they're in the private
+          portal. White type on charcoal with the pink accent intact.
           ============================================================ */}
-      <section>
-        <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.65rem] sm:text-[0.7rem] text-au-mid">
+      <section className="bg-au-charcoal text-au-white rounded-[5px] px-5 py-7 sm:px-8 sm:py-9">
+        <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.65rem] sm:text-[0.7rem] text-au-white/55">
           Welcome back · {today.toUpperCase()}
         </p>
         <p
-          className="font-display font-black text-au-charcoal mt-2.5 sm:mt-4 leading-[1.05]"
+          className="font-display font-black text-au-white mt-2.5 sm:mt-4 leading-[1.05]"
           style={{
             fontSize: "clamp(1.625rem, 5vw, 3rem)",
             letterSpacing: "var(--tracking-tight-display)",
@@ -72,14 +74,14 @@ export default async function MembersHomePage() {
         </p>
 
         {ownedCourses.length > 0 && (
-          <p className="mt-3 sm:mt-5 max-w-[60ch] text-[0.9375rem] sm:text-[1.0625rem] text-au-body leading-relaxed">
+          <p className="mt-3 sm:mt-5 max-w-[60ch] text-[0.9375rem] sm:text-[1.0625rem] text-au-white/75 leading-relaxed">
             You have{" "}
-            <span className="font-bold text-au-charcoal">
+            <span className="font-bold text-au-white">
               {activeMemberships.length}{" "}
               {activeMemberships.length === 1 ? "course" : "courses"}
             </span>{" "}
             on your shelf — most recently{" "}
-            <span className="font-bold text-au-charcoal">
+            <span className="font-bold text-au-white">
               {ownedCourses[0].title}
             </span>
             .
@@ -89,7 +91,7 @@ export default async function MembersHomePage() {
         {ownedCourses.length > 0 && (
           <Link
             href={`/courses/${ownedCourses[0].slug}`}
-            className="group mt-5 sm:mt-7 inline-flex items-center gap-2 bg-au-pink hover:bg-au-black text-au-white font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-6 sm:px-7 py-3 sm:py-3.5 min-h-[44px] sm:min-h-[48px] text-[0.875rem] sm:text-[0.9375rem] transition-colors"
+            className="group mt-5 sm:mt-7 inline-flex items-center gap-2 bg-au-pink hover:bg-au-white hover:text-au-charcoal text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-6 sm:px-7 py-3 sm:py-3.5 min-h-[44px] sm:min-h-[48px] text-[0.875rem] sm:text-[0.9375rem] transition-colors"
           >
             <span>Continue learning</span>
             <span
