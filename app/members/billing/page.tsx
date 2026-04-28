@@ -42,24 +42,24 @@ export default async function BillingPage() {
 
   return (
     <div className="space-y-8 sm:space-y-12">
-      <header>
-        <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.7rem] text-au-mid mb-3">
+      <section className="bg-au-charcoal text-au-white -mx-4 sm:-mx-8 lg:-mx-12 -mt-5 sm:-mt-8 lg:-mt-10 px-4 sm:px-8 lg:px-12 py-8 sm:py-10 lg:py-12">
+        <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.7rem] text-au-white/55 mb-3">
           Billing
         </p>
         <h1
-          className="font-display font-black text-au-charcoal leading-[0.95]"
+          className="font-display font-black text-au-white leading-[0.95]"
           style={{
             fontSize: "clamp(1.625rem, 5.5vw, 3.5rem)",
             letterSpacing: "var(--tracking-tight-display)",
           }}
         >
-          Billing.
+          <span className="text-au-pink">Billing</span>.
         </h1>
-        <p className="mt-3 sm:mt-4 text-[0.9375rem] sm:text-[1.0625rem] text-au-body max-w-[60ch] leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-[0.9375rem] sm:text-[1.0625rem] text-au-white/75 max-w-[60ch] leading-relaxed">
           Every course you&apos;ve bought — single one-off payments, no
           recurring fees, no surprises.
         </p>
-      </header>
+      </section>
 
       <MembersStatusStrip lead={lead} />
 
