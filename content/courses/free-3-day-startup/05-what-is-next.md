@@ -1,30 +1,37 @@
 ---
-title: "What is Next?"
+title: "What is next"
 order: 5
 icon: signpost
 duration: "5 min"
-summary: "If these three days have shifted something, here's where the full system is ready when you are."
+summary: "What you've named in three days, and the work that picks up where this one ends."
 ---
 
-Three days of awareness can begin to change the way you see your work — your niche, your brand energy, your profit potential — but awareness is only the first layer.
+You've spent three days noticing things you may not have allowed yourself to look at directly before — your natural niche, the energy your brand actually carries, and where your time and skills are quietly leaking profit.
 
-If something has shifted in you over these three days, that quiet shift is the signal. It's the moment most practitioners overlook, because it doesn't feel dramatic. It just feels true.
+That noticing is the work. Most practitioners never do it. They stay busy, busy, busy — and busy is not the same as building.
 
-## From awareness to architecture
+## What you've named
 
-This mini course gave you a glimpse into the foundations of the 5K Formula. The full programme is the architecture — the structure that turns these early insights into a clinic, a client base, and a business that grows around who you actually are.
+Take a quiet moment with these three sentences. If any of them feels true, that's the signal.
 
-**The 5K+ Formula** is the 12-week paid programme that picks up exactly where these three days end. It takes the same identity-first approach and expands it into:
+- **Niche.** You've started to see where you naturally belong, instead of where you've been told to fit.
+- **Brand energy.** You've felt the difference between performing for the algorithm and showing up as yourself.
+- **Profit.** You've seen that earning more is rarely about doing more — it's about deciding more clearly.
 
-- A clearly defined niche you can confidently lead with
-- A brand energy that attracts the clients you're meant to work with
-- A pricing and service model built on alignment, not guesswork
-- The systems that make your first consistent 5K months feel inevitable rather than effortful
+These are the foundations. They are not the whole house.
+
+## Where the work goes from here
+
+The 5K+ Formula™ is the 12-week paid programme that picks up exactly where these three days end. Same identity-first principle, expanded into the structure of an actual aesthetics business — the **UNLOCK PROFIT™ Framework**.
+
+Across twelve modules you'll move from clarity into clinical core, brand, content, sales, pricing, operations, and the long arc that takes a practitioner to consistent £5K+ months without burning the practice down to get there.
+
+It's not for everyone, and that's the point. It's for the practitioner who has felt these three days land — and is ready to give that quiet shift a structure to grow inside.
 
 ## When you're ready
 
-The full programme is open when you are. There's no urgency in this work — only readiness.
+There's no countdown on this. The full programme opens when you're ready to do the work.
 
-If these three days have given you the first taste of clarity, the 5K+ Formula is where you build the rest.
+If these three days have given you something to hold on to, take it with you. And when you're ready for the rest, you'll know where to come.
 
 **You're not here to fit into the industry. You're here to find your place within it.**
