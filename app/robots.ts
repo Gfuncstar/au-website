@@ -16,6 +16,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        // Members-area is paid course content. Disallow until the
+        // Supabase Auth + Kartra entitlement gate is wired (matches
+        // the noindex meta in app/members/layout.tsx).
+        disallow: ["/members", "/members/", "/login", "/login/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

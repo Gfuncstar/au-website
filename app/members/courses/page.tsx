@@ -4,9 +4,10 @@
  * Tile grid of every membership the user holds + a quieter "you might
  * also like" upsell strip for catalogue items they don't own.
  *
- * v1: each "Open course" CTA links to the public course page (which
- * houses the Kartra hand-off URL today). v2 swaps to a native lesson
- * player at /members/courses/<slug>/<lesson>.
+ * Each "Open course" CTA routes to the native lesson player at
+ * /members/courses/<slug> if the course has lesson markdown in
+ * content/courses/<slug>/, falling back to the public sales page
+ * otherwise.
  */
 
 import Link from "next/link";

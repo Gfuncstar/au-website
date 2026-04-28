@@ -14,7 +14,17 @@ import { FreeBadge } from "@/components/FreeBadge";
 import { MembersStatusStrip } from "@/components/members/MembersStatusStrip";
 import { Reveal } from "@/components/members/Reveal";
 import { COURSES, getCourse, getCourseByMembershipName } from "@/lib/courses";
+import { hasNativeCourse } from "@/lib/courseLessons";
 import { formatDateLong, formatDate, formatGBP } from "@/lib/format";
+
+/** Resolve the right destination for a course: the native lesson
+ *  player overview if we have lesson markdown for it, otherwise the
+ *  public sales page (which today still hands off to Kartra). */
+function courseHref(slug: string): string {
+  return hasNativeCourse(slug)
+    ? `/members/courses/${slug}`
+    : `/courses/${slug}`;
+}
 
 export default async function MembersHomePage() {
   const lead = await kartra.getLead("");
@@ -79,7 +89,7 @@ export default async function MembersHomePage() {
 
         {ownedCourses.length > 0 && (
           <Link
-            href={`/courses/${ownedCourses[0].slug}`}
+            href={courseHref(ownedCourses[0].slug)}
             className="group mt-5 sm:mt-7 inline-flex items-center gap-2 bg-au-pink hover:bg-au-white hover:text-au-charcoal text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-6 sm:px-7 py-3 sm:py-3.5 min-h-[44px] sm:min-h-[48px] text-[0.875rem] sm:text-[0.9375rem] transition-colors"
           >
             <span>Continue learning</span>
@@ -148,7 +158,7 @@ export default async function MembersHomePage() {
                   </p>
                 )}
                 <Link
-                  href={course ? `/courses/${course.slug}` : "/members/courses"}
+                  href={course ? courseHref(course.slug) : "/members/courses"}
                   className="font-section font-semibold uppercase tracking-[0.1em] text-[0.75rem] text-au-pink group-hover:text-au-charcoal transition-colors"
                 >
                   Open course →

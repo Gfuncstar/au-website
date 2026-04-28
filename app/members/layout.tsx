@@ -12,8 +12,27 @@
  * server-side getUser() check + redirect-to-/login lives.
  */
 
+import type { Metadata } from "next";
 import { kartra } from "@/lib/kartra/client";
 import { MembersNav } from "@/components/members/MembersNav";
+
+/** Until Supabase Auth + the Kartra entitlement gate are wired, the
+ *  members area runs against MOCK_LEAD with no session check — anyone
+ *  with the URL can read paid course content. Disallow indexing on
+ *  the entire `/members/*` tree so Google doesn't crawl it before
+ *  the auth wiring lands. */
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noimageindex: true,
+    },
+  },
+};
 
 export default async function MembersLayout({
   children,
