@@ -24,8 +24,10 @@ import {
   getPostBySlug,
   formatPostDate,
   TOPIC_LABELS,
+  RELATED_LINKS_BY_TOPIC,
 } from "@/lib/blog";
-import { BRAND, FOUNDER } from "@/lib/credentials";
+import { BRAND, FOUNDER, AWARDS } from "@/lib/credentials";
+import { NMC_REGISTER_URL } from "@/lib/links";
 
 export const dynamic = "force-static";
 
@@ -88,10 +90,21 @@ export default async function BlogPostPage({
         dateModified: post.date,
         url: pageUrl,
         mainEntityOfPage: pageUrl,
+        wordCount: post.wordCount,
+        timeRequired: `PT${post.readingTimeMinutes}M`,
+        articleSection: TOPIC_LABELS[post.topic],
+        inLanguage: "en-GB",
         author: {
           "@type": "Person",
+          "@id": `${siteUrl}/#person`,
           name: post.author,
-          honorificSuffix: FOUNDER.shortCredentials,
+          honorificSuffix: FOUNDER.longCredentials,
+          jobTitle: "Founder, Aesthetics Unlocked",
+          alumniOf: "MSc Advanced Practice (Level 7)",
+          identifier: `NMC PIN ${FOUNDER.nmcPin}`,
+          url: `${siteUrl}/about`,
+          sameAs: [NMC_REGISTER_URL],
+          award: AWARDS.map((a) => a.long),
         },
         publisher: {
           "@type": "Organization",
@@ -144,6 +157,8 @@ export default async function BlogPostPage({
               <Eyebrow>{TOPIC_LABELS[post.topic]}</Eyebrow>
               <p className="font-section uppercase tracking-[0.15em] text-[0.6875rem] text-au-charcoal/60">
                 {formatPostDate(post.date)}
+                <span className="mx-2 text-au-charcoal/30">·</span>
+                {post.readingTimeMinutes} min read
               </p>
             </div>
             <h1
@@ -211,9 +226,52 @@ export default async function BlogPostPage({
         )}
 
         {/* ============================================================
-            BACK
+            CONTINUE — internal links per topic. Drives readers (and
+            search engines) into the deeper site: courses, the
+            regulation pillar, the standards index. Three tailored
+            links per topic, defined in lib/blog.ts.
             ============================================================ */}
         <PosterBlock tone="white" contained>
+          <ScrollReveal className="max-w-3xl">
+            <Eyebrow className="mb-6">Continue your reading</Eyebrow>
+            <ul className="flex flex-col">
+              {RELATED_LINKS_BY_TOPIC[post.topic].map((link, i) => (
+                <li
+                  key={link.href}
+                  className={`${
+                    i === 0 ? "border-y" : "border-b"
+                  } border-au-charcoal/15`}
+                >
+                  <Link
+                    href={link.href}
+                    className="block py-5 group flex items-center justify-between gap-4"
+                  >
+                    <span
+                      className="font-display font-bold text-au-charcoal group-hover:text-[var(--color-au-pink)] transition-colors"
+                      style={{
+                        fontSize: "1.0625rem",
+                        letterSpacing: "var(--tracking-tight-display)",
+                      }}
+                    >
+                      {link.label}
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="text-au-charcoal/55 group-hover:text-[var(--color-au-pink)] transition-colors"
+                    >
+                      →
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </ScrollReveal>
+        </PosterBlock>
+
+        {/* ============================================================
+            BACK
+            ============================================================ */}
+        <PosterBlock tone="cream" contained>
           <Link
             href="/blog"
             className="font-section font-semibold uppercase tracking-[0.15em] text-[0.8125rem] text-au-charcoal hover:text-[var(--color-au-pink)] transition-colors"

@@ -69,6 +69,52 @@ export type PostMeta = {
 export type Post = PostMeta & {
   /** Rendered HTML body (markdown → HTML, GFM-enabled). */
   html: string;
+  /** Word count of the body (frontmatter excluded). */
+  wordCount: number;
+  /** Estimated reading time in minutes at 225 wpm. */
+  readingTimeMinutes: number;
+};
+
+/**
+ * Suggested internal links per topic — surfaced at the foot of every
+ * post under "Continue your reading" to send readers (and Google) into
+ * the deeper site. Keep these in lockstep with the actual routes that
+ * exist in `app/`.
+ */
+export const RELATED_LINKS_BY_TOPIC: Record<
+  Topic,
+  ReadonlyArray<{ href: string; label: string }>
+> = {
+  "ingredient-science": [
+    { href: "/courses/acne-decoded", label: "Acne Decoded — the NICE-aligned acne course" },
+    { href: "/courses/rosacea-beyond-redness", label: "Rosacea Beyond Redness" },
+    { href: "/regulation", label: "UK aesthetics regulation, decoded" },
+  ],
+  treatments: [
+    { href: "/courses/rag-pathway", label: "The RAG Pathway — the four-week regulation programme" },
+    { href: "/regulation", label: "UK aesthetics regulation, decoded" },
+    { href: "/courses", label: "All Aesthetics Unlocked courses" },
+  ],
+  regulation: [
+    { href: "/regulation", label: "UK aesthetics regulation, decoded" },
+    { href: "/courses/rag-pathway", label: "The RAG Pathway — the four-week regulation programme" },
+    { href: "/standards", label: "The eight regulators we teach against" },
+  ],
+  studies: [
+    { href: "/regulation", label: "UK aesthetics regulation, decoded" },
+    { href: "/courses/rag-pathway", label: "The RAG Pathway — the four-week regulation programme" },
+    { href: "/about", label: "About Bernadette Tobin RN, MSc" },
+  ],
+  myths: [
+    { href: "/regulation", label: "UK aesthetics regulation, decoded" },
+    { href: "/standards", label: "The eight regulators we teach against" },
+    { href: "/courses", label: "All Aesthetics Unlocked courses" },
+  ],
+  other: [
+    { href: "/courses", label: "All Aesthetics Unlocked courses" },
+    { href: "/regulation", label: "UK aesthetics regulation, decoded" },
+    { href: "/about", label: "About Bernadette Tobin RN, MSc" },
+  ],
 };
 
 function readDir(): string[] {
@@ -94,6 +140,21 @@ async function renderMarkdown(md: string): Promise<string> {
     .use(remarkHtml, { sanitize: false })
     .process(md);
   return String(file);
+}
+
+function countWords(md: string): number {
+  // Strip code fences, frontmatter-leftovers, then split on whitespace.
+  const stripped = md
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`[^`]*`/g, "")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1");
+  const words = stripped.trim().split(/\s+/).filter(Boolean);
+  return words.length;
+}
+
+function readingTime(words: number): number {
+  return Math.max(1, Math.ceil(words / 225));
 }
 
 export async function getAllPosts(): Promise<PostMeta[]> {
@@ -123,6 +184,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   const raw = fs.readFileSync(path.join(BLOG_DIR, match), "utf8");
   const { data, content } = matter(raw);
   const html = await renderMarkdown(content);
+  const wordCount = countWords(content);
   return {
     slug: (data.slug as string | undefined) ?? fileToSlug(match),
     title: (data.title as string) ?? "Untitled",
@@ -132,6 +194,8 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     sources: (data.sources as Source[]) ?? [],
     author: (data.author as string) ?? "Bernadette Tobin RN, MSc",
     html,
+    wordCount,
+    readingTimeMinutes: readingTime(wordCount),
   };
 }
 
