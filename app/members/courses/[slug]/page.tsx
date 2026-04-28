@@ -13,7 +13,7 @@
  */
 
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import {
   getCourseLessonsMeta,
@@ -22,6 +22,7 @@ import {
   hasNativeCourse,
 } from "@/lib/courseLessons";
 import { getCourse } from "@/lib/courses";
+import { checkCourseEntitlement } from "@/lib/entitlements";
 import { CourseOverviewChapters } from "@/components/members/CourseOverviewChapters";
 import { CourseIllustrationFor } from "@/components/CourseIllustration";
 
@@ -55,6 +56,14 @@ export default async function CourseOverviewPage({
   const lessons = getCourseLessonsMeta(slug);
   const parts = getCoursePartsConfig(slug);
   if (!course || lessons.length === 0) notFound();
+
+  // Entitlement gate — signed-in members who don't own this course
+  // bounce to the public sales page (auth gate has already happened
+  // in middleware.ts so we're guaranteed a session here when LIVE).
+  const entitlement = await checkCourseEntitlement(slug);
+  if (!entitlement.entitled) {
+    redirect(`/courses/${slug}`);
+  }
 
   return (
     <>

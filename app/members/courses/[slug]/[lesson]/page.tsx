@@ -21,7 +21,7 @@
  */
 
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
   getCourseLessonsMeta,
   getLesson,
@@ -31,6 +31,7 @@ import {
   hasNativeCourse,
 } from "@/lib/courseLessons";
 import { getCourse } from "@/lib/courses";
+import { checkCourseEntitlement } from "@/lib/entitlements";
 import {
   CourseChapterStrip,
   CourseChapterPills,
@@ -78,6 +79,14 @@ export default async function LessonPage({
 }) {
   const { slug, lesson } = await params;
   if (!hasNativeCourse(slug)) notFound();
+
+  // Entitlement gate — bounce signed-in members who don't own this
+  // course to its public sales page. Auth-not-signed-in is already
+  // handled by middleware.ts upstream when LIVE.
+  const entitlement = await checkCourseEntitlement(slug);
+  if (!entitlement.entitled) {
+    redirect(`/courses/${slug}`);
+  }
 
   const course = getCourse(slug);
   const lessonsMeta = getCourseLessonsMeta(slug);
