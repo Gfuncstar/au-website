@@ -304,7 +304,7 @@ export default async function MembersHomePage() {
                     >
                       Browse course →
                     </Link>
-                    {isFree ? (
+                    {c.price === undefined ? (
                       <FreeBadge className="w-12 h-12 sm:w-14 sm:h-14" />
                     ) : (
                       <span className="font-display font-black text-au-charcoal text-[0.875rem] tabular-nums">

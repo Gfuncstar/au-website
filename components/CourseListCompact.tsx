@@ -49,7 +49,8 @@ export function CourseListCompact() {
     >
       {COURSES.map((c) => {
         const isFree = c.price === undefined;
-        const priceLabel = isFree ? null : `£${c.price.toLocaleString("en-GB")}`;
+        const priceLabel =
+          c.price === undefined ? null : `£${c.price.toLocaleString("en-GB")}`;
 
         return (
           <motion.li
