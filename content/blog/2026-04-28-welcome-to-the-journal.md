@@ -36,10 +36,4 @@ Three pieces a week. Sunday, Tuesday, Thursday. Each drawn from one of five cate
 - No naming individual practitioners or clinics in passing.
 - No before-and-afters without provenance.
 
-## The standard
-
-Every claim is referenced. **If two reputable sources don't agree, the piece does not ship.**
-
-That is the bar.
-
 — Bernadette
