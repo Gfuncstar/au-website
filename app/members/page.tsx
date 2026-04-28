@@ -58,7 +58,7 @@ export default async function MembersHomePage() {
           /login dark surface so members feel they're in the private
           portal. White type on charcoal with the pink accent intact.
           ============================================================ */}
-      <section className="bg-au-charcoal text-au-white rounded-[5px] px-5 py-7 sm:px-8 sm:py-9">
+      <section className="bg-au-charcoal text-au-white -mx-4 sm:-mx-8 lg:-mx-12 -mt-5 sm:-mt-8 lg:-mt-10 px-4 sm:px-8 lg:px-12 py-8 sm:py-10 lg:py-12">
         <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.65rem] sm:text-[0.7rem] text-au-white/55">
           Welcome back · {today.toUpperCase()}
         </p>
