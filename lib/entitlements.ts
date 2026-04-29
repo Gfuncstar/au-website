@@ -30,7 +30,10 @@ export type EntitlementResult =
  *  course. The owner of the platform — used so Giles / Bernadette can
  *  preview unreleased course content on the holding site without
  *  having to seed membership rows in Supabase. */
-const OWNER_EMAILS = ["giles@hieb.co.uk"];
+const OWNER_EMAILS = [
+  "giles@hieb.co.uk",
+  "ber.parsons@outlook.com",
+];
 
 /** Cookie name set by middleware when a request arrives with a valid
  *  `?preview=<AU_PREVIEW_TOKEN>` query param. Recognised here so
