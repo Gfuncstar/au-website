@@ -61,10 +61,10 @@ export function CourseChapterStrip({
           </p>
         </div>
 
-        <p className="font-section font-black uppercase tracking-[0.22em] text-[0.7rem] sm:text-[0.75rem] text-au-pink mb-1.5">
+        <p className="font-display font-black uppercase tracking-[0.04em] text-[1.0625rem] sm:text-[1.25rem] leading-[1.1] text-au-pink mb-1.5">
           {courseTitle}
         </p>
-        <p className="font-display font-bold uppercase tracking-[0.04em] text-[0.95rem] sm:text-[1.05rem] text-au-white/85">
+        <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.7rem] sm:text-[0.75rem] text-au-white/70">
           Chapter {String(currentIndex + 1).padStart(2, "0")} of{" "}
           {String(totalCount).padStart(2, "0")}
         </p>

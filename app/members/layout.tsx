@@ -15,6 +15,7 @@
 import type { Metadata } from "next";
 import { kartra } from "@/lib/kartra/client";
 import { MembersNav } from "@/components/members/MembersNav";
+import { Footer } from "@/components/Footer";
 
 /** Until Supabase Auth + the Kartra entitlement gate are wired, the
  *  members area runs against MOCK_LEAD with no session check — anyone
@@ -56,6 +57,7 @@ export default async function MembersLayout({
         <div className="px-4 sm:px-8 lg:px-12 pt-5 sm:pt-8 lg:pt-10 pb-12 lg:pb-16 max-w-[1100px]">
           {children}
         </div>
+        <Footer />
       </main>
     </div>
   );
