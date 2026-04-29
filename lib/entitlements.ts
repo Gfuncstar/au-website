@@ -25,6 +25,12 @@ export type EntitlementResult =
   | { entitled: true }
   | { entitled: false; reason: "not_signed_in" | "no_membership" };
 
+/** Emails that bypass the memberships check and get access to every
+ *  course. The owner of the platform — used so Giles / Bernadette can
+ *  preview unreleased course content on the holding site without
+ *  having to seed membership rows in Supabase. */
+const OWNER_EMAILS = ["giles@hieb.co.uk"];
+
 export async function checkCourseEntitlement(
   courseSlug: string,
 ): Promise<EntitlementResult> {
@@ -38,6 +44,10 @@ export async function checkCourseEntitlement(
       data: { user },
     } = await supabase.auth.getUser();
     if (!user) return { entitled: false, reason: "not_signed_in" };
+
+    if (user.email && OWNER_EMAILS.includes(user.email.toLowerCase())) {
+      return { entitled: true };
+    }
 
     const { data: membership } = await supabase
       .from("memberships")
