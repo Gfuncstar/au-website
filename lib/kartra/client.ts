@@ -28,6 +28,7 @@ import type {
 import { MOCK_LEAD } from "./mock";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
+import { isOwnerEmail } from "@/lib/owner-emails";
 import {
   cancelSubscription,
   editLead as kartraEditLead,
@@ -97,7 +98,7 @@ async function getLeadFromSupabase(): Promise<Lead | null> {
   // for non-Kartra-synced rows, so synthesise from the slug. The
   // dashboard only uses `membership_name` + `level_name` + `active`
   // for routing, so this is enough.
-  const leadMemberships: LeadMembership[] = (memberships ?? []).map(
+  let leadMemberships: LeadMembership[] = (memberships ?? []).map(
     (m, i) => ({
       membership_id: m.kartra_membership_id ?? `${user.id}:${m.course_slug}`,
       membership_name: m.course_slug, // overridden by SLUG_TO_NAME below
@@ -115,6 +116,28 @@ async function getLeadFromSupabase(): Promise<Lead | null> {
   for (const lm of leadMemberships) {
     const course = COURSES.find((c) => c.slug === lm.membership_name);
     if (course?.kartraMembershipName) lm.membership_name = course.kartraMembershipName;
+  }
+
+  // OWNER OVERRIDE — Giles + Bernadette (per `lib/owner-emails.ts`)
+  // get a synthesised membership for EVERY course in the catalogue,
+  // active and full-access. This ensures the members dashboard
+  // surfaces every paid + waitlist + free course tile so the platform
+  // owners can preview, QA, and walk through any lesson without
+  // needing rows in the Supabase memberships table.
+  //
+  // Any course added to lib/courses.ts in future automatically appears
+  // on the owner dashboards on next page load — no manual data step.
+  if (isOwnerEmail(email)) {
+    leadMemberships = COURSES.filter((c) => c.kartraMembershipName).map(
+      (c, i) => ({
+        membership_id: `owner:${c.slug}`,
+        membership_name: c.kartraMembershipName ?? c.slug,
+        level_id: `owner:${c.slug}:${i}`,
+        level_name: "Owner access",
+        active: true,
+        granted_at: new Date().toISOString(),
+      }),
+    );
   }
 
   return {

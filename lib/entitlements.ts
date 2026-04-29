@@ -21,19 +21,11 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 import { kartra } from "@/lib/kartra/client";
 import { getCourseByMembershipName } from "@/lib/courses";
+import { isOwnerEmail } from "@/lib/owner-emails";
 
 export type EntitlementResult =
   | { entitled: true }
   | { entitled: false; reason: "not_signed_in" | "no_membership" };
-
-/** Emails that bypass the memberships check and get access to every
- *  course. The owner of the platform — used so Giles / Bernadette can
- *  preview unreleased course content on the holding site without
- *  having to seed membership rows in Supabase. */
-const OWNER_EMAILS = [
-  "giles@hieb.co.uk",
-  "ber.parsons@outlook.com",
-];
 
 /** Cookie name set by middleware when a request arrives with a valid
  *  `?preview=<AU_PREVIEW_TOKEN>` query param. Recognised here so
@@ -67,7 +59,7 @@ export async function checkCourseEntitlement(
     } = await supabase.auth.getUser();
     if (!user) return { entitled: false, reason: "not_signed_in" };
 
-    if (user.email && OWNER_EMAILS.includes(user.email.toLowerCase())) {
+    if (isOwnerEmail(user.email)) {
       return { entitled: true };
     }
 
