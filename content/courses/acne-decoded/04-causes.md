@@ -10,6 +10,8 @@ Acne develops as a result of multiple interacting causes, rather than a single t
 
 This module focuses on the core biological causes of acne, alongside key influencing factors.
 
+![seven interlocking causes — hormones drive, six others amplify.](/illustrations/acne-decoded/04-causes/01-dna-helix.png)
+
 ## 1. Hormonal influence (primary cause)
 
 Hormones play a central role in acne development, particularly androgens.
@@ -24,6 +26,8 @@ Hormones play a central role in acne development, particularly androgens.
   - Perimenopause and menopause
 
 **Clinical relevance:** Hormonal acne often presents on the jawline, chin, and neck, tends to be inflammatory, and may be persistent or cyclical.
+
+![Three-step cascade from rising androgens through sebaceous gland enlargement to sebum overproduction, with the five most common hormonal triggers — puberty, menstrual cycle, PCOS, pregnancy, perimenopause — surfaced underneath.](/illustrations/acne-decoded/04-causes/02-hormonal-pathway.svg)
 
 ## 2. Excess sebum production
 

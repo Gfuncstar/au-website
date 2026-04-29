@@ -6,6 +6,8 @@ duration: "10 min"
 summary: "Two UK case studies — teenage moderate acne and adult hormonal acne — with management approaches and reflection prompts."
 ---
 
+![same condition, different patterns — two real UK case presentations.](/illustrations/acne-decoded/08-case-studies/01-profile-cards.png)
+
 ## Case Study 1 — Teenage moderate acne (UK secondary school student)
 
 **Client profile**

@@ -8,6 +8,8 @@ summary: "Why NICE guidance matters, how it shapes severity assessment, and when
 
 In the UK, acne management follows national clinical guidance produced by **NICE**. Understanding this guidance is essential for safe, ethical, and effective acne treatment, particularly when working with clients who may be at risk of scarring or emotional distress.
 
+![NICE-aligned, defensible practice — built on national clinical guidance.](/illustrations/acne-decoded/09-nhs-guidance/01-document.png)
+
 ## 1. Why NICE guidance matters
 
 NICE guidance:

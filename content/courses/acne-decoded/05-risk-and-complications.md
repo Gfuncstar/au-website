@@ -10,6 +10,8 @@ Acne carries both **short-term risks and long-term complications**. Persistent i
 
 The risks of acne relate to what may occur during the active phase of the condition, particularly when acne is severe, persistent, or improperly managed.
 
+![earlier intervention reduces every downstream risk.](/illustrations/acne-decoded/05-risk-and-complications/01-shield.png)
+
 ## 1. Risk of persistent inflammation
 
 - Ongoing inflammation damages surrounding skin tissue

@@ -18,6 +18,8 @@ This course has been created to move beyond surface-level explanations and gener
 
 Acne (medically termed *acne vulgaris*) is a chronic inflammatory disorder of the **pilosebaceous unit**, which consists of the hair follicle and its associated sebaceous (oil) gland.
 
+![the science underneath every breakout, brought into focus.](/illustrations/acne-decoded/02-what-is-acne/01-magnifying-glass.png)
+
 It is characterised by the formation of:
 
 - Open comedones (blackheads)

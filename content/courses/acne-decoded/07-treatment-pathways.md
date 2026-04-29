@@ -12,6 +12,8 @@ Alpha Hydroxy Acids (AHAs) and Beta Hydroxy Acids (BHAs) are **chemical exfolian
 
 When used correctly, AHAs and BHAs support acne treatment by targeting follicular blockage, inflammation, and post-acne marks.
 
+![AHAs and BHAs — two molecules, two layers, one defensible plan.](/illustrations/acne-decoded/07-treatment-pathways/01-pill-bottle.png)
+
 ## What are AHAs?
 
 **Definition:** AHAs are water-soluble acids that work primarily on the surface of the skin. They exfoliate the upper layers of the epidermis and improve skin texture and tone.

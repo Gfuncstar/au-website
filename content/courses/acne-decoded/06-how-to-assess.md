@@ -8,6 +8,8 @@ summary: "An eight-step NICE-aligned workflow for confirming acne, grading sever
 
 Based on **NICE guidance for acne vulgaris**.
 
+![NICE-aligned assessment, eight steps, defensible on paper.](/illustrations/acne-decoded/06-how-to-assess/01-clipboard.png)
+
 ## 1. Confirm it is acne vulgaris
 
 Before grading severity, confirm the diagnosis.
