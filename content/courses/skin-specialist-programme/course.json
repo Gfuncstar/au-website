@@ -1,0 +1,23 @@
+{
+  "$comment": "The Skin Specialist Programme — comprehensive multi-condition clinical programme. 10 modules. NICE-aligned. Lessons live in NN-<slug>.md files alongside this file.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "Foundations + the consultation",
+      "body": "Skin biology and the structured clinical conversation that anchors every plan.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "The conditions",
+      "body": "Acne, rosacea, pigmentation, barrier, photodamage, scarring — clinical reasoning per condition.",
+      "startOrder": 3
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Integration + certification",
+      "body": "Combination therapy, self-audit, certificate.",
+      "startOrder": 9
+    }
+  ]
+}

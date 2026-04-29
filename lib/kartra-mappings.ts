@@ -93,6 +93,27 @@ export const COURSE_KARTRA: Record<string, CourseKartraMapping> = {
     enrolledTagName: "Rosacea Enrolled",
     completedTagName: "Rosacea Complete",
   },
+  "skin-specialist-programme": {
+    // TODO: confirm with Bernadette — these names need to be created
+    // in Kartra before launch. Recommend matching the existing
+    // condition-decoder naming convention so automation patterns
+    // stay consistent.
+    purchaseListName: "Skin Specialist Programme Buyers",
+    purchaseTagName: "Skin Specialist Purchased",
+    abandonedCartTagName: "Skin Specialist Abandoned Cart",
+    enrolledTagName: "Skin Specialist Enrolled",
+    completedTagName: "Skin Specialist Complete",
+  },
+  "free-skin-specialist-mini": {
+    // TODO: confirm with Bernadette — needs a dedicated Kartra list
+    // ("The Skin Specialist Mini") and tag ("Skin Specialist Mini
+    // Opted In") created before launch. The opt-in should drop the
+    // lead into a 7–10 email nurture sequence pointing to the paid
+    // Skin Specialist Programme.
+    optInListName: "The Skin Specialist Mini",
+    optInTagName: "Skin Specialist Mini Opted In",
+    completedTagName: "Skin Specialist Mini Complete",
+  },
 
   // ──────────────────────────────────────────────────────────
   // WAITLIST — opt-in now, purchase later

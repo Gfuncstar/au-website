@@ -61,8 +61,10 @@ const MARKS: Record<string, React.ReactNode> = {
   "free-2-day-rag": TrafficLightMark,
   "free-acne-decoded": HexMark,
   "free-rosacea-beyond-redness": BarrierMark,
+  "free-skin-specialist-mini": HexMark,
   "acne-decoded": HexMark,
   "rosacea-beyond-redness": BarrierMark,
+  "skin-specialist-programme": HexMark,
   "5k-formula": ProfitBarsMark,
 };
 

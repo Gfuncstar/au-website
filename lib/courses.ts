@@ -768,14 +768,334 @@ export const COURSES: readonly Course[] = [
   },
 
   /* ============================================================
+     PREMIUM CLINICAL — multi-condition specialist programme
+     ============================================================ */
+  {
+    slug: "skin-specialist-programme",
+    kartraMembershipName: "The Skin Specialist™ Programme",
+    freeTasterSlug: "free-skin-specialist-mini",
+    eyebrow: "Clinical · 10 modules · £399",
+    title: "The Skin Specialist™ Programme",
+    price: 399,
+    summary:
+      "From single-condition uncertainty to multi-condition skin specialism. A 10-module clinical-reasoning programme — NICE-aligned, evidence-led.",
+    body: "The course Bernadette wishes had existed when she was learning. A self-paced 10-module clinical programme that takes a generalist beauty or aesthetic practitioner to a confident, multi-condition skin specialist — anchored in NICE-aligned clinical reasoning rather than borrowed protocols. Covers the consultation framework, acne, rosacea, pigmentation, barrier dysfunction, photodamage, scarring, treatment planning, and the documentation that makes every plan defensible. Self-paced. Lifetime access. £399. Certificate of Completion for CPD evidence.",
+    voiceQuote:
+      "Most skin plans don't fail because the practitioner is careless. They fail because the consultation skipped the question that would have changed the plan.",
+    bullets: [
+      "The structured skin consultation",
+      "Multi-condition treatment planning",
+      "NICE-aligned clinical reasoning",
+      "Pigmentation, barrier, photodamage, scarring",
+      "Defensible documentation",
+      "Treatment escalation & referral pathways",
+    ],
+    stats: ["10 modules", "Self-paced", "£399"],
+    modules: [
+      {
+        num: "01",
+        title: "Module 1 — Foundations of skin health",
+        body: "Skin biology, barrier function, the microbiome, the immune system at the surface. The mental model every skin plan rests on.",
+        topics: [
+          "Skin layers + cellular detail",
+          "Barrier function & TEWL",
+          "The skin microbiome",
+          "Innate immune response in skin",
+          "Skin types vs skin conditions — the difference",
+        ],
+      },
+      {
+        num: "02",
+        title: "Module 2 — The Skin Specialist consultation",
+        body: "The structured consultation framework that anchors every condition module that follows. NICE-aligned, defensible, repeatable.",
+        topics: [
+          "Pre-consultation intake",
+          "Structured history-taking",
+          "Examination + photography protocol",
+          "Lesion / pattern classification",
+          "Setting expectations + cooling-off period",
+          "Consent + capacity considerations",
+        ],
+      },
+      {
+        num: "03",
+        title: "Module 3 — Acne, in depth",
+        body: "The clinical-reasoning approach to acne — building on the Acne Decoded course with hormonal pathways, scarring risk, and treatment escalation.",
+        topics: [
+          "Four mechanisms revisited",
+          "Hormonal acne in adult women",
+          "Severity grading + escalation triggers",
+          "AHAs, BHAs, retinoids — sequencing",
+          "Post-acne pigmentation + scarring risk",
+          "When to refer to GP / dermatology",
+        ],
+      },
+      {
+        num: "04",
+        title: "Module 4 — Rosacea, in depth",
+        body: "Beyond redness — the four NICE-recognised subtypes, barrier-first treatment, and the trigger-mapping protocol clients will actually follow.",
+        topics: [
+          "Erythematotelangiectatic, papulopustular, phymatous, ocular",
+          "Vascular, neurological, immunological mechanisms",
+          "Barrier-first vs anti-inflammatory-first",
+          "Topical metronidazole, ivermectin, azelaic acid pathway",
+          "Trigger-mapping protocol",
+          "When to refer to ophthalmology",
+        ],
+      },
+      {
+        num: "05",
+        title: "Module 5 — Pigmentation disorders",
+        body: "Melasma, post-inflammatory hyperpigmentation (PIH), sun damage. Skin-tone-aware approach with realistic outcomes and ethical bleaching alternatives.",
+        topics: [
+          "Melanin biology + Fitzpatrick assessment",
+          "Melasma vs PIH vs lentigines",
+          "Hydroquinone vs alternatives (kojic, azelaic, tranexamic)",
+          "Photoprotection as treatment",
+          "Skin-of-colour considerations",
+          "Risk of rebound + ethical practice",
+        ],
+      },
+      {
+        num: "06",
+        title: "Module 6 — Barrier dysfunction & sensitised skin",
+        body: "The most-misunderstood condition in the clinic. Barrier repair pathway, ceramide science, microbiome-friendly actives.",
+        topics: [
+          "Functional vs structural barrier impairment",
+          "TEWL measurement + interpretation",
+          "Ceramides, fatty acids, cholesterol — the lipid trio",
+          "Sequencing actives without crashing the barrier",
+          "Sensitised vs sensitive skin — diagnostic difference",
+          "Recovery timeline + client communication",
+        ],
+      },
+      {
+        num: "07",
+        title: "Module 7 — Photodamage & ageing skin",
+        body: "Intrinsic vs extrinsic ageing, sun-damage assessment, anti-ageing treatment hierarchy. What works, what's marketing, what's both.",
+        topics: [
+          "Intrinsic vs extrinsic ageing biology",
+          "Sun damage assessment (Glogau, Fitzpatrick)",
+          "Retinoids, vitamin C, niacinamide — evidence + sequencing",
+          "Photoprotection as the foundation",
+          "In-clinic adjuncts (peels, microneedling, light)",
+          "Setting realistic outcomes",
+        ],
+      },
+      {
+        num: "08",
+        title: "Module 8 — Scarring & post-inflammatory change",
+        body: "Atrophic, hypertrophic, keloid scars + post-inflammatory pigmentation/erythema. Classification, treatment options, realistic outcomes.",
+        topics: [
+          "Scar classification (ice-pick, boxcar, rolling, hypertrophic)",
+          "PIH vs PIE — different problems, different solutions",
+          "Microneedling, peels, light-based options",
+          "When to refer (deep dermal scarring, keloid risk)",
+          "Photographic documentation of progress",
+          "Setting realistic timelines (12 months+)",
+        ],
+      },
+      {
+        num: "09",
+        title: "Module 9 — Treatment planning & combination therapy",
+        body: "How to combine modalities safely. The decision tree for stacking actives, peels, microneedling, and light. Risk management for the practitioner who wants to do more than one thing.",
+        topics: [
+          "Single-modality vs combination thinking",
+          "Active sequencing rules",
+          "Stacking peels, microneedling, light",
+          "Recovery timelines + downtime planning",
+          "Risk hierarchy (post-inflammatory pigmentation, barrier crash, infection)",
+          "Documentation across multi-modal plans",
+        ],
+      },
+      {
+        num: "10",
+        title: "Module 10 — Integration, certification & next steps",
+        body: "Pulling the framework into a sustainable clinical practice. Case study presentation. Self-audit. Certificate of Completion. Where to go next.",
+        topics: [
+          "Case study presentation framework",
+          "Self-audit against NICE alignment",
+          "Documentation file build-out",
+          "CPD reflection prompts",
+          "Certificate of Completion",
+          "Bridging to The 5K+ Formula™",
+        ],
+      },
+    ],
+    ctaText: "Enrol now",
+    kartraUrl: courseKartraPlaceholder("skin-specialist-programme"),
+    tone: "charcoal",
+    category: "Clinical",
+    format: "Self-paced · 10 modules",
+    availability: "available",
+    bgImage: "/backgrounds/pink-grunge-mid.png",
+    promise:
+      "Stop guessing across conditions. Start consulting like a skin specialist — with NICE-aligned clinical reasoning you can defend on paper.",
+    transformations: [
+      {
+        before:
+          "Confident in one or two conditions. Unsure or improvising on the rest.",
+        after:
+          "Multi-condition clinical reasoning across acne, rosacea, pigmentation, barrier, photodamage, and scarring — anchored in NICE-aligned thinking.",
+      },
+      {
+        before:
+          "Borrowing protocols from social media. Hoping the next plan holds.",
+        after:
+          "A structured consultation framework that surfaces the real driver — and a treatment plan you can defend to a GP, an insurer, or a complaint reviewer.",
+      },
+      {
+        before:
+          "Charging skin-therapy prices for clinical-level work because the documentation doesn't yet justify the premium.",
+        after:
+          "A defensible consultation, photographic baseline, and treatment plan that justifies premium fees — and the reputation that follows.",
+      },
+      {
+        before:
+          "Single-condition courses (Acne, Rosacea) as one-off CPD ticks.",
+        after:
+          "An integrated skin-specialist identity — the practitioner clients refer their friends to.",
+      },
+    ],
+    whyBernadette:
+      "I'm an Advanced Nurse Practitioner with twenty years on the ward, twelve in aesthetics, and I run an NHS Trust's clinical workforce governance for over 1,000 nurses. I'm NMC registered, MSc Advanced Practice, and lecture postgraduate clinicians on this exact pathway. The Skin Specialist Programme is the curriculum I distilled from teaching inside the NHS — translated for private clinic practice, NICE-aligned end-to-end, built by a senior clinician who treats skin every week.",
+    includes: [
+      "10 self-paced modules covering foundations, consultation, six conditions, and integration",
+      "The structured Skin Specialist consultation framework",
+      "NICE-aligned treatment-planning decision tree per condition",
+      "Photographic documentation protocol",
+      "Multi-modal combination-therapy guidance",
+      "Real UK case study walkthroughs",
+      "Certificate of Completion for CPD evidence",
+      "Lifetime access — including future clinical updates",
+    ],
+    faqs: [
+      {
+        q: "How is this different from Acne Decoded and Rosacea Beyond Redness?",
+        a: "The £79 decoders are deep dives on a single condition. The Skin Specialist Programme is the integrated, multi-condition pathway — including the consultation framework, pigmentation, barrier dysfunction, photodamage, and scarring (none of which are covered in the single-condition courses). If you've already taken Acne Decoded or Rosacea Beyond Redness, this extends — it doesn't repeat.",
+      },
+      {
+        q: "Is this CPD-accredited?",
+        a: "Designed to count toward CPD evidence and appropriate as NMC revalidation reflective practice. The Certificate of Completion gives you the documentation to attach to your portfolio.",
+      },
+      {
+        q: "Will this teach me to inject?",
+        a: "No. This is clinical reasoning around skin — assessment, treatment planning, multi-modal pathways, when to escalate, defensible documentation. Hands-on injectable training requires a separate insured pathway.",
+      },
+      {
+        q: "Do I need a clinical background?",
+        a: "No, but you should be already working with skin in a professional capacity (aesthetician, advanced facialist, beauty therapist, clinical nurse, prescribing clinician). The programme assumes you know how to perform treatments — the work is on the clinical reasoning underneath them.",
+      },
+      {
+        q: "Is £399 a one-off or a subscription?",
+        a: "One-off, lifetime access — including future updates as clinical guidance evolves. No recurring fees, no upsells inside the course.",
+      },
+      {
+        q: "How long does it take?",
+        a: "Self-paced. Most practitioners complete one module per week (~10 weeks) but you can move faster or slower. Each module is approximately 2 hours of learning + reflection.",
+      },
+    ],
+  },
+
+  /* ============================================================
+     PREMIUM CLINICAL — free taster
+     ============================================================ */
+  {
+    slug: "free-skin-specialist-mini",
+    kartraMembershipName: "The Skin Specialist™ Mini",
+    upsellsTo: "skin-specialist-programme",
+    eyebrow: "Free · 4 lessons",
+    title: "The Skin Specialist™ Mini",
+    summary:
+      "A free 4-lesson taster of the consultation framework that anchors every defensible skin plan.",
+    body: "Free, 30-minute taster of the full Skin Specialist Programme. Four short lessons that reframe skin consultations from a tick-box exercise into the structured clinical conversation that decides whether a plan holds. The Skin Specialist consultation is the foundation underneath every condition module in the full course — and the most differentiating skill a practitioner can develop. NICE-aligned. Honest. Yours to keep.",
+    voiceQuote:
+      "If you cannot justify it on paper, you cannot defend it in practice — and the consultation is where the paper trail starts.",
+    bullets: [
+      "Why most skin plans fail",
+      "The structured consultation framework",
+      "What separates a skin therapist from a skin specialist",
+    ],
+    stats: ["4 lessons", "Self-paced", "Free"],
+    modules: [
+      {
+        num: "01",
+        title: "Welcome",
+        body: "Why this short course exists, who it's for, and what you'll walk away with.",
+      },
+      {
+        num: "02",
+        title: "Why most skin plans fail",
+        body: "The consultation gap — the question most plans skip, and why it's the question that decides whether the plan holds.",
+      },
+      {
+        num: "03",
+        title: "The Skin Specialist consultation",
+        body: "The structured framework — pre-consultation intake, history, examination, classification, expectations, consent. The same flow used inside the full programme.",
+      },
+      {
+        num: "04",
+        title: "Where to go from here",
+        body: "What's missing, and the full Skin Specialist Programme that picks up exactly where this Mini ends.",
+      },
+    ],
+    ctaText: "Get instant access",
+    kartraUrl: courseKartraPlaceholder("free-skin-specialist-mini"),
+    tone: "cream",
+    category: "Free taster",
+    format: "4 lessons · self-paced",
+    availability: "available",
+    bgImage: "/backgrounds/cream-halftone.png",
+    promise:
+      "Thirty minutes. The consultation framework underneath every defensible skin plan — yours to keep, whether or not you ever take the full programme.",
+    transformations: [
+      {
+        before:
+          "Skin consultations as a tick-box exercise before the treatment.",
+        after:
+          "The structured clinical conversation that decides whether the plan holds — and gives you the paper trail to defend it.",
+      },
+      {
+        before:
+          "Plans that look great on paper and fall apart by week six.",
+        after:
+          "A consultation that surfaces the real driver — so the plan you write is the plan that holds.",
+      },
+    ],
+    whyBernadette:
+      "The consultation framework taught here is the same one I use inside Visage Aesthetics — the clinic that won Best Non-Surgical Aesthetics Clinic 2026 (Essex). It's the foundation underneath every condition module in the full Skin Specialist Programme. The Mini is the front door.",
+    includes: [
+      "Four short lessons (~30 minutes total)",
+      "The structured Skin Specialist consultation framework",
+      "Lifetime access — revisit any time",
+      "A clear next step if you want the full clinical pathway",
+    ],
+    faqs: [
+      {
+        q: "Is this really free?",
+        a: "Yes. Four lessons, fully free. No credit card. The consultation framework is yours to keep — whether or not you ever take the paid programme.",
+      },
+      {
+        q: "Will it sell me on the paid course?",
+        a: "Lesson 4 is a clear pointer to the full Skin Specialist Programme if you want to keep going — but no pressure. Many practitioners take the Mini, integrate the consultation framework, and never enrol in the paid programme.",
+      },
+      {
+        q: "How is this different from the Acne or Rosacea Mini?",
+        a: "The Acne and Rosacea Minis are condition-specific tasters. The Skin Specialist Mini is the consultation framework that sits underneath every condition — applicable whether you treat acne, rosacea, pigmentation, or anything else. Take all three if it helps; they don't repeat.",
+      },
+    ],
+  },
+
+  /* ============================================================
      BUSINESS / REGULATORY (PAID, WAITLIST)
      ============================================================ */
   {
     slug: "rag-pathway",
     kartraMembershipName: "From Regulation to Reputation™ — The RAG Pathway",
     freeTasterSlug: "free-2-day-rag",
-    eyebrow: "Regulatory · 4 weeks · waitlist",
+    eyebrow: "Regulatory · 4 weeks · £499",
     title: "From Regulation to Reputation™ — The RAG Pathway",
+    price: 499,
     summary:
       "The structured 4-week, educator-led RAG Pathway. For England-based practitioners who want to practise safely, ethically, and defensibly.",
     body: "Aesthetics isn't unregulated. It's misunderstood — and that's where careers, confidence, and reputations get lost. From Regulation to Reputation™ is the RAG Pathway in full: a 4-week, educator-led programme I designed for England-based practitioners. Without fear. Without guesswork. Without cutting corners. This isn't a “how to inject” course. It's the framework that keeps you compliant, in business, and building a reputation that compounds — the same one I run my own award-winning clinic on.",
@@ -788,7 +1108,7 @@ export const COURSES: readonly Course[] = [
       "ASA-safe marketing",
       "Defensible documentation",
     ],
-    stats: ["8 modules", "4 weeks", "Waitlist"],
+    stats: ["8 modules", "4 weeks", "£499"],
     modules: [
       {
         num: "01",
@@ -831,12 +1151,12 @@ export const COURSES: readonly Course[] = [
         body: "Pulling the framework into a sustainable practice rhythm. Certificate of Completion.",
       },
     ],
-    ctaText: "Join the waitlist",
+    ctaText: "Enrol now",
     kartraUrl: courseKartraPlaceholder("rag-pathway"),
     tone: "pink",
     category: "Regulatory",
     format: "8 modules · 4 weeks · educator-led",
-    availability: "waitlist",
+    availability: "available",
     bgImage: "/backgrounds/pink-fade-charcoal.png",
     promise:
       "Four weeks. Eight modules. The structured framework that turns regulation from a source of anxiety into a strategic advantage you can defend in any room.",
@@ -879,15 +1199,14 @@ export const COURSES: readonly Course[] = [
       "The full Traffic Light System decision framework",
       "Documentation, governance, and audit templates",
       "ASA-safe content frameworks (what you can and can't claim)",
-      "Small first cohort with live touch-points",
-      "Launch discount (waitlist priority)",
+      "Live touch-points throughout the 4-week programme",
       "Certificate of Completion for CPD + revalidation",
       "Lifetime access — including future regulatory updates",
     ],
     faqs: [
       {
-        q: "When does the next cohort run?",
-        a: "Cohort dates are released to the waitlist first. Waitlist members get priority enrolment plus a launch discount before public release.",
+        q: "When can I start?",
+        a: "Immediately. The RAG Pathway is self-paced — you can begin Module 1 the day you enrol and work through the eight modules at the pace that fits your clinic.",
       },
       {
         q: "Is this a one-off or a subscription?",
@@ -912,7 +1231,7 @@ export const COURSES: readonly Course[] = [
     price: 1199,
     summary:
       "Consistent £5K+ months. Without chasing clients, discounting, or doing more treatments.",
-    body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Waitlist open. Launch discount included. Small first cohort.",
+    body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Self-paced. Lifetime access. £1,199.",
     voiceQuote:
       "You're not here to learn generic business tips — you're here to master the art of building a profitable, personal, and professional aesthetics brand.",
     bullets: [
@@ -986,12 +1305,12 @@ export const COURSES: readonly Course[] = [
         body: "Integration & reflection. Why the practitioners who stay still eventually win. Certificate of Completion.",
       },
     ],
-    ctaText: "Join the waitlist",
+    ctaText: "Enrol now",
     kartraUrl: courseKartraPlaceholder("5k-formula"),
     tone: "black",
     category: "Business",
     format: "12 modules · 12 weeks · educator-led",
-    availability: "waitlist",
+    availability: "available",
     bgImage: "/backgrounds/pink-fade-charcoal-2.png",
     promise:
       "Twelve weeks. Twelve modules. The UNLOCK PROFIT™ Framework I built my own award-winning clinic on — translated for practitioners who want consistent £5K+ months without burning out.",
@@ -1033,16 +1352,14 @@ export const COURSES: readonly Course[] = [
       "12 modules across 12 weeks · rolling release",
       "The complete UNLOCK PROFIT™ Framework",
       "Niche · branding · pricing · systems modules",
-      "Live touch-points throughout the cohort",
-      "Small first cohort (limited seats)",
-      "Launch discount (waitlist priority)",
+      "Live touch-points throughout the programme",
       "Certificate of Completion",
       "Lifetime access — including future updates",
     ],
     faqs: [
       {
-        q: "When does the next cohort run?",
-        a: "Cohort dates are released to the waitlist first. Waitlist members get priority enrolment plus a launch discount before doors open publicly.",
+        q: "When can I start?",
+        a: "Immediately. The 5K+ Formula™ is self-paced — you can begin Module 1 the day you enrol and work through the twelve weeks at the pace that fits your clinic.",
       },
       {
         q: "What if I already have a busy clinic?",

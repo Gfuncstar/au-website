@@ -1,0 +1,23 @@
+{
+  "$comment": "Free taster of The Skin Specialist Programme. Four short lessons that demonstrate the consultation framework underneath every condition module in the full course. Lesson 04 is the soft transition into the paid programme.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "The taster",
+      "body": "What you'll get out of these four short lessons.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "The consultation that anchors every plan",
+      "body": "Why most skin plans fail at the consultation, and the structured framework that prevents it.",
+      "startOrder": 2
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Where to go from here",
+      "body": "The full Skin Specialist Programme, and how it picks up where this Mini ends.",
+      "startOrder": 4
+    }
+  ]
+}
