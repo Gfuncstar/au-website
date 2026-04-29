@@ -16,6 +16,7 @@
  * "not signed in" vs "signed in but not entitled".
  */
 
+import { cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 import { kartra } from "@/lib/kartra/client";
@@ -31,9 +32,27 @@ export type EntitlementResult =
  *  having to seed membership rows in Supabase. */
 const OWNER_EMAILS = ["giles@hieb.co.uk"];
 
+/** Cookie name set by middleware when a request arrives with a valid
+ *  `?preview=<AU_PREVIEW_TOKEN>` query param. Recognised here so
+ *  preview-link visitors skip the membership check too. */
+const PREVIEW_COOKIE = "au_preview_ok";
+
 export async function checkCourseEntitlement(
   courseSlug: string,
 ): Promise<EntitlementResult> {
+  // Local dev → unrestricted. Matches the middleware bypass so the
+  // entire `/members/*` surface is editable on localhost without auth.
+  if (process.env.NODE_ENV === "development") {
+    return { entitled: true };
+  }
+
+  // Preview-link bypass — set by middleware on a valid `?preview=<TOKEN>`
+  // hit. Does not require sign-in.
+  const cookieStore = await cookies();
+  if (cookieStore.get(PREVIEW_COOKIE)?.value === "1") {
+    return { entitled: true };
+  }
+
   // LIVE: Supabase configured → check session + memberships table.
   if (isSupabaseConfigured()) {
     const supabase = await createSupabaseServerClient();

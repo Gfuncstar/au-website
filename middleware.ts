@@ -25,7 +25,46 @@ import {
 
 const PROTECTED_PREFIX = "/members";
 
+/** Preview-link mechanism. Anyone hitting any URL with
+ *  `?preview=<AU_PREVIEW_TOKEN>` is given a 7-day cookie that bypasses
+ *  the auth redirect here AND the entitlement gate inside the lesson
+ *  pages. Designed for sharing pre-launch course content with reviewers
+ *  who don't have Supabase / Kartra accounts. If `AU_PREVIEW_TOKEN` is
+ *  unset, this code path is dead — preview-link access is fully
+ *  opt-in. */
+const PREVIEW_PARAM = "preview";
+const PREVIEW_COOKIE = "au_preview_ok";
+const PREVIEW_COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
+
 export async function middleware(request: NextRequest) {
+  // Local dev → no auth ever. Lets us iterate on lesson rendering at
+  // `localhost:3000/members/courses/...` without signing in.
+  if (process.env.NODE_ENV === "development") {
+    return NextResponse.next();
+  }
+
+  // Preview-link grant: query-string token → set cookie → strip param.
+  const previewToken = request.nextUrl.searchParams.get(PREVIEW_PARAM);
+  const expectedToken = process.env.AU_PREVIEW_TOKEN ?? "";
+  if (expectedToken && previewToken && previewToken === expectedToken) {
+    const url = request.nextUrl.clone();
+    url.searchParams.delete(PREVIEW_PARAM);
+    const response = NextResponse.redirect(url);
+    response.cookies.set(PREVIEW_COOKIE, "1", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: PREVIEW_COOKIE_MAX_AGE,
+    });
+    return response;
+  }
+
+  // Already-cookied preview viewer → skip middleware auth checks.
+  if (request.cookies.get(PREVIEW_COOKIE)?.value === "1") {
+    return NextResponse.next();
+  }
+
   // No env vars → MOCK mode. Let everything through unmodified.
   if (!isSupabaseConfigured()) {
     return NextResponse.next();

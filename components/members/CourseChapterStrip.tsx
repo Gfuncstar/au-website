@@ -61,7 +61,7 @@ export function CourseChapterStrip({
           </p>
         </div>
 
-        <p className="font-section font-semibold uppercase tracking-[0.22em] text-[0.7rem] text-au-pink mb-1.5">
+        <p className="font-section font-black uppercase tracking-[0.22em] text-[0.7rem] sm:text-[0.75rem] text-au-pink mb-1.5">
           {courseTitle}
         </p>
         <p className="font-display font-bold uppercase tracking-[0.04em] text-[0.95rem] sm:text-[1.05rem] text-au-white/85">
