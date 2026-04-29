@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aesthetics Unlocked — au-website
 
-## Getting Started
+The members platform for **Aesthetics Unlocked**, the UK aesthetics-education brand built by Bernadette Tobin RN MSc — Educator of the Year 2026 Nominee.
 
-First, run the development server:
+This Next.js 16 app powers:
+
+- The public marketing site (`/`, `/courses`, `/about`, `/blog`, etc.)
+- 10 course landing pages with structured-data SEO
+- Email opt-in capture for free tasters with Kartra automation
+- Magic-link / OTP sign-in for paid members (Supabase Auth)
+- The native course-lesson player at `/members/courses/<slug>/<lesson>`
+- Per-course entitlement gating with two backdoor mechanisms (owner allowlist + preview token)
+- Privacy-friendly conversion tracking via Plausible
+
+**Live holding site:** https://au-website-one.vercel.app
+**Repo:** https://github.com/Gfuncstar/au-website (auto-deploys main on push)
+
+---
+
+## Quick start
 
 ```bash
+cd au-website
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Without env vars set, the dashboard runs in **MOCK mode** against `lib/kartra/mock.ts` (a realistic fixture for a UK aesthetic practitioner). The moment you set the Supabase + Kartra env vars (see [SETUP.md](./SETUP.md)), the app flips to LIVE mode.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Course catalogue
 
-## Learn More
+Currently on the platform — all live, all rendering at `/courses/<slug>`:
 
-To learn more about Next.js, take a look at the following resources:
+| Course | Slug | Price | Status |
+|---|---|---|---|
+| Acne Decoded | `acne-decoded` | £79 | Available |
+| Rosacea Beyond Redness | `rosacea-beyond-redness` | £79 | Available |
+| The Skin Specialist™ Programme | `skin-specialist-programme` | £399 | Available |
+| The RAG Pathway (From Regulation to Reputation™) | `rag-pathway` | £499 *(placeholder)* | Available |
+| The 5K+ Formula™ | `5k-formula` | £1,199 | Available |
+| Free 3-Day Startup Mini *(5K+ taster)* | `free-3-day-startup` | Free | Available |
+| Free 2-Day RAG Mini *(RAG taster)* | `free-2-day-rag` | Free | Available |
+| Free Acne Decoded Mini | `free-acne-decoded` | Free | Available |
+| Free Rosacea Beyond Redness Mini | `free-rosacea-beyond-redness` | Free | Available |
+| The Skin Specialist™ Mini | `free-skin-specialist-mini` | Free | Available |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The single source of truth is `lib/courses.ts`. Adding a course means adding one entry to the `COURSES` array and dropping markdown into `content/courses/<slug>/`. Every consumer (catalogue, individual sales page, sitemap, schema, OG image, members launchpad) updates automatically.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Where the lesson content lives
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Two sources, kept in sync:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. `au-website/content/courses/<slug>/NN-<lesson-slug>.md` — what the deployed site reads
+2. `clone-aesthetics-unlocked/content/courses/<slug>/NN-<lesson-slug>.md` — the authoring source-of-truth (sibling repo)
+
+Edits should be made in the clone repo first, then synced into au-website. The lesson player reads the .md frontmatter for title / order / icon / duration / summary and renders the body through `remark` + custom transforms in `lib/courseLessons.ts`.
+
+---
+
+## Owner access (backdoor mechanisms)
+
+**Owner email allowlist** — `lib/owner-emails.ts` lists `giles@hieb.co.uk` and `ber.parsons@outlook.com`. When either signs in, they:
+
+- Bypass the per-course entitlement check (read any lesson)
+- Get a synthesised full-catalogue membership list on the dashboard (every course tile visible)
+
+**Preview-link token** — set `AU_PREVIEW_TOKEN` in Vercel env. Anyone with `?preview=<TOKEN>` on a URL gets a 7-day cookie that bypasses both auth and entitlement. Used to share previews with reviewers who don't have accounts.
+
+See [PROJECT-STATE.md](./PROJECT-STATE.md) for the full story on access mechanisms.
+
+---
+
+## Going to production
+
+See [SETUP.md](./SETUP.md) for the full launch sequence — Supabase setup, Kartra credentials + IPN webhook, SMTP via Resend, member backfill, and Plausible analytics.
+
+---
+
+## Key conventions
+
+- **Never abbreviate Aesthetics Unlocked to AU** in user-facing copy or comments
+- **No rounded-full corners anywhere** — max `rounded-[5px]`
+- **Lesson hero is always dark mode** (charcoal poster with white type)
+- **No drop caps in lesson body**
+- **Lato body, Spectral italic for pull quotes** — but never Spectral italic on white inside the course player
+- **No gradients, drop shadows, or glassmorphism** in any component or illustration
+- **Pink #e697b7 is the brand accent** — used sparingly, never as background
+
+These conventions are documented in `clone-aesthetics-unlocked/brand.md` and the user's memory file. Apply them to every new component, page, or piece of copy.
+
+---
+
+## Repository structure
+
+```
+au-website/
+├── app/                          # Next.js App Router
+│   ├── courses/
+│   │   ├── [slug]/page.tsx       # Course sales/landing pages
+│   │   └── [slug]/thanks/page.tsx# Post opt-in / post purchase confirmation
+│   ├── members/
+│   │   ├── layout.tsx            # Members area shell (nav + footer)
+│   │   ├── page.tsx              # Dashboard launchpad
+│   │   └── courses/[slug]/[lesson]/page.tsx  # Lesson player
+│   ├── api/
+│   │   ├── subscribe/route.ts    # Free-taster opt-in → Kartra addLead
+│   │   ├── auth/                 # Supabase OTP login + verify
+│   │   └── kartra/ipn/route.ts   # Kartra IPN webhook
+│   ├── login/page.tsx
+│   └── layout.tsx                # Root layout + PlausibleScript
+├── components/
+│   ├── OptInForm.tsx             # Email capture for free tasters
+│   ├── PlausibleScript.tsx       # Analytics script loader
+│   ├── members/                  # Members-area chrome
+│   └── ...
+├── content/
+│   └── courses/<slug>/NN-*.md   # Lesson markdown
+├── lib/
+│   ├── courses.ts                # COURSES catalogue (source of truth)
+│   ├── courseLessons.ts          # Markdown → HTML rendering
+│   ├── kartra.ts                 # Server-side Kartra API client
+│   ├── kartra/                   # Lead/membership types + mock fixture
+│   ├── kartra-mappings.ts        # Course slug → Kartra list/tag names
+│   ├── owner-emails.ts           # Platform-owner allowlist
+│   ├── entitlements.ts           # Per-course access check
+│   ├── analytics.ts              # Plausible track() + trackServer()
+│   └── supabase/                 # Auth + admin client helpers
+├── middleware.ts                 # Auth gate + preview-token mechanism
+├── public/
+│   └── illustrations/            # Course illustrations + prompts.md
+├── scripts/
+│   └── backfill-memberships.ts   # One-off Kartra → Supabase migration
+├── supabase/
+│   ├── migrations/0001_init.sql  # Schema (members, memberships, lesson_progress)
+│   └── email-templates/magic-link.html  # AU-branded magic-link email
+├── .claude/
+│   └── skills/au-course-illustrations/SKILL.md  # Illustration prompt skill
+├── PROJECT-STATE.md              # Full state-of-build documentation
+├── SETUP.md                      # Production launch instructions
+├── README.md                     # This file
+├── AGENTS.md                     # Next.js 16 quirks for agents
+└── CLAUDE.md                     # Claude Code project context
+```
+
+For the full state of every course, every backdoor, every pending task, see [PROJECT-STATE.md](./PROJECT-STATE.md).

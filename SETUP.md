@@ -7,6 +7,44 @@ env vars in step 2, it flips to **LIVE mode** automatically.
 
 Estimated total time: **30–45 minutes**.
 
+For the **full state of every course, every backdoor, every pending
+task**, see [`PROJECT-STATE.md`](./PROJECT-STATE.md).
+For repo overview + conventions, see [`README.md`](./README.md).
+For Claude project context, see [`CLAUDE.md`](./CLAUDE.md).
+
+---
+
+## Current course catalogue (10 courses)
+
+All 10 are live on the holding site, all rendering at `/courses/<slug>`:
+
+| Course | Price | Status |
+|---|---|---|
+| Acne Decoded | £79 | ✅ Available |
+| Rosacea Beyond Redness | £79 | ✅ Available |
+| The Skin Specialist™ Programme | £399 | ✅ Available |
+| The RAG Pathway | £499 *(placeholder)* | ✅ Available |
+| The 5K+ Formula™ | £1,199 | ✅ Available |
+| 5 free tasters (one per paid course) | Free | ✅ All available |
+
+The catalogue is data-driven from `lib/courses.ts` — adding a course is one entry there + lesson markdown in `content/courses/<slug>/`.
+
+## Required env vars (full list)
+
+| Variable | Required for | Notes |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | LIVE auth | Step 3 |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | LIVE auth | Step 3 |
+| `SUPABASE_SERVICE_ROLE_KEY` | IPN webhook + backfill | Step 3 |
+| `KARTRA_APP_ID` | Kartra API | Step 5 |
+| `KARTRA_API_KEY` | Kartra API | Step 5 |
+| `KARTRA_API_PASSWORD` | Kartra API | Step 5 |
+| `KARTRA_IPN_SECRET` | IPN webhook | Step 5 |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Conversion tracking | Step 7 (optional) |
+| `AU_PREVIEW_TOKEN` | Preview-link backdoor | Optional — see PROJECT-STATE.md §4 |
+
+---
+
 ---
 
 ## Step 1 — create a Supabase project (5 min)
