@@ -14,11 +14,11 @@
  *              Returns MOCK_LEAD so dev / previews still render the
  *              full dashboard.
  *
- * The `searchLead` / `editLead` / `cancelRecurringSubscription` /
- * `toggleListSubscription` methods stay mock-only at v1 — they need
- * a real Kartra API call to be useful, and the dashboard surface for
- * those (account edit, billing) doesn't ship until the kartra-API
- * client lands. Account edits stored in Supabase only at v1.
+ * `searchLead`, `editLead`, `cancelRecurringSubscription`,
+ * `toggleListSubscription` are wired to real Kartra API calls when
+ * Kartra credentials are present in env. They short-circuit to a
+ * silent no-op (logged) when Kartra isn't configured so dev still
+ * works against MOCK_LEAD without crashes.
  */
 
 import type {
@@ -28,6 +28,22 @@ import type {
 import { MOCK_LEAD } from "./mock";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
+import {
+  cancelSubscription,
+  editLead as kartraEditLead,
+  leadExists as kartraLeadExists,
+  setListSubscription,
+} from "@/lib/kartra";
+
+/** True when Kartra credentials are present in env. Used to gate the
+ *  real-API methods so dev environments without Kartra still work. */
+function isKartraConfigured(): boolean {
+  return Boolean(
+    process.env.KARTRA_APP_ID &&
+      process.env.KARTRA_API_KEY &&
+      process.env.KARTRA_API_PASSWORD,
+  );
+}
 
 export interface KartraClient {
   searchLead(email: string): Promise<{ exists: boolean; id?: string }>;
@@ -143,11 +159,20 @@ async function getLeadFromSupabase(): Promise<Lead | null> {
 
 export const kartra: KartraClient = {
   async searchLead(email) {
+    // LIVE: query Kartra. Calm "always show check-your-inbox" UX —
+    // even on errors, return exists:true so we don't leak which emails
+    // belong to members.
+    if (isKartraConfigured()) {
+      const r = await kartraLeadExists(email);
+      if (r.ok) {
+        return { exists: r.data.exists, id: r.data.leadId };
+      }
+      // Fall through to safe default on error.
+    }
+    // MOCK / fallback — calm UX, no information leak.
     if (email.toLowerCase() === MOCK_LEAD.email.toLowerCase()) {
       return { exists: true, id: MOCK_LEAD.id };
     }
-    // Calm "always show check-your-inbox" UX so we don't leak which
-    // emails belong to members.
     return { exists: true, id: MOCK_LEAD.id };
   },
 
@@ -163,15 +188,53 @@ export const kartra: KartraClient = {
     return MOCK_LEAD;
   },
 
-  async cancelRecurringSubscription() {
-    return;
+  async cancelRecurringSubscription(subscriptionId) {
+    if (!isKartraConfigured()) {
+      console.warn(
+        "[kartra.cancelRecurringSubscription] Kartra not configured — no-op",
+      );
+      return;
+    }
+    const result = await cancelSubscription(subscriptionId);
+    if (!result.ok) {
+      throw new Error(`Kartra cancel failed: ${result.error}`);
+    }
   },
 
-  async toggleListSubscription() {
-    return;
+  async toggleListSubscription(email, listName, subscribe) {
+    if (!isKartraConfigured()) {
+      console.warn(
+        "[kartra.toggleListSubscription] Kartra not configured — no-op",
+      );
+      return;
+    }
+    const result = await setListSubscription(email, listName, subscribe);
+    if (!result.ok) {
+      throw new Error(`Kartra list update failed: ${result.error}`);
+    }
   },
 
-  async editLead() {
-    return;
+  async editLead(email, patch) {
+    if (!isKartraConfigured()) {
+      console.warn("[kartra.editLead] Kartra not configured — no-op");
+      return;
+    }
+    // Map the Lead-shaped patch fields onto the Kartra patch shape.
+    const result = await kartraEditLead(email, {
+      firstName: patch.first_name,
+      lastName: patch.last_name,
+      phone: patch.phone,
+      phoneCountryCode: patch.phone_country_code,
+      company: patch.company,
+      address: patch.address,
+      city: patch.city,
+      state: patch.state,
+      zip: patch.zip,
+      country: patch.country,
+      website: patch.website,
+    });
+    if (!result.ok) {
+      throw new Error(`Kartra edit failed: ${result.error}`);
+    }
   },
 };

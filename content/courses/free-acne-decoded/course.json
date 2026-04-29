@@ -1,0 +1,23 @@
+{
+  "$comment": "Free taster of Acne Decoded. Three short lessons that give the practitioner a clear taste of the clinical-reasoning approach taught in the paid course — without giving away the full pathway. Lesson 03 is the soft transition into the paid version.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "The taster",
+      "body": "What you'll get out of these three short lessons.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "The science under the skin",
+      "body": "A clear, science-led look at what acne actually is — and why most plans treat the symptom, not the driver.",
+      "startOrder": 2
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Where to go from here",
+      "body": "The full Acne Decoded course, and how it picks up where this one ends.",
+      "startOrder": 3
+    }
+  ]
+}

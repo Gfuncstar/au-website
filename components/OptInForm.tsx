@@ -23,6 +23,7 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
+import { track } from "@/lib/analytics";
 
 type Props = {
   /** Course slug — must match a slug in lib/courses.ts. */
@@ -67,6 +68,11 @@ export function OptInForm({
     setStatus("submitting");
     setErrorMsg(null);
 
+    // Conversion event — fired before the network call so we still
+    // capture intent even if the request fails. Pair-event below
+    // (`opt_in_success`) only fires on a confirmed Kartra success.
+    track("opt_in_submit", { course: courseSlug });
+
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
@@ -93,6 +99,7 @@ export function OptInForm({
         return;
       }
 
+      track("opt_in_success", { course: courseSlug });
       setStatus("success");
     } catch {
       setStatus("error");

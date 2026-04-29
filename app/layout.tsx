@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Oswald, Lato, Spectral } from "next/font/google";
+import { PlausibleScript } from "@/components/PlausibleScript";
 import "./globals.css";
 
 /* ==========================================================================
@@ -154,6 +155,7 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+        <PlausibleScript />
       </body>
     </html>
   );

@@ -78,14 +78,49 @@ In **Authentication → Providers → Email**:
 In **Authentication → Email Templates → Magic Link**:
 
 - Replace Supabase's default template with the AU-branded version
-  *(I can write you the HTML if you want — it should be short and
-  match the dashboard's dark-poster aesthetic)*
-- **From**: decide between `noreply@aestheticsunlocked.co.uk` and
-  `hello@aunlock.co.uk`. Then in Supabase → Project Settings → SMTP
-  point Supabase at your sending provider (Postmark / SendGrid /
-  Mailgun — Supabase's default sender is fine for first 3 emails/hr
-  but rate-limits hard, so you'll want a real SMTP provider before
-  launch).
+  in [`supabase/email-templates/magic-link.html`](supabase/email-templates/magic-link.html)
+  — short, dark-poster aesthetic, single CTA. Copy-paste into the
+  Supabase template editor.
+- Set **Subject heading** to `Your Aesthetics Unlocked sign-in link`
+
+### SMTP — REQUIRED before launch
+
+Supabase's built-in mailer rate-limits at **3 emails/hour** — fine
+for setup, but a single launch broadcast or a busy day of opt-ins
+will blow through it instantly. Wire a real SMTP provider before
+the doors open.
+
+**Recommended: Resend.** Cleanest DX for Next.js + Vercel projects,
+3,000 emails/month free, then ~£15/mo for 50k. UK-friendly, fast
+deliverability, and the API surface Supabase Auth speaks to is just
+SMTP credentials — no app code changes required.
+
+1. Sign up at [resend.com](https://resend.com) and verify your
+   sending domain (`aestheticsunlocked.co.uk` — needs SPF + DKIM +
+   DMARC DNS records they provide; takes ~10 minutes including
+   propagation).
+2. In Resend → **API Keys → Create API Key**, name it
+   `supabase-auth-smtp`. Copy the key (starts `re_...`).
+3. In Supabase dashboard → **Project Settings → Auth → SMTP Settings**,
+   toggle **Enable Custom SMTP** and enter:
+
+   ```
+   Sender email:   hello@aunlock.co.uk
+   Sender name:    Aesthetics Unlocked
+   Host:           smtp.resend.com
+   Port:           587
+   Username:       resend
+   Password:       <your re_... API key>
+   Minimum interval: 60 seconds (default is fine)
+   ```
+
+4. Click **Save**. Send yourself a magic-link sign-in to confirm
+   delivery in under 10 seconds.
+
+**Alternatives:** Postmark (£10/mo, best deliverability for
+transactional, slower onboarding) or Mailgun (cheapest at scale,
+clunkier dashboard). Resend is the lowest-friction choice — switch
+later if you outgrow it.
 
 ## Step 5 — Kartra credentials + IPN webhook (10 min)
 
@@ -121,12 +156,58 @@ table — your row should be there with `active = true`.
 
 If Bernadette has existing paying members in Kartra, the IPN
 webhook only catches *future* events. To populate `memberships`
-with existing entitlements, run a one-off backfill script.
+with existing entitlements, run the backfill script:
 
-I'll write that script when you're ready — it iterates Kartra's
-`get_lead` for each member email and fires synthetic
-`membership_granted` events into the IPN endpoint. Tell me when
-you want it.
+1. In Kartra, export the customer list (any list with `email` column
+   works) to CSV, save anywhere readable.
+2. Make sure `.env.local` in `au-website/` has all of:
+   `KARTRA_APP_ID`, `KARTRA_API_KEY`, `KARTRA_API_PASSWORD`,
+   `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`.
+3. Dry-run first (no writes):
+
+   ```bash
+   cd au-website
+   npm install        # picks up tsx if not already installed
+   npm run backfill -- ~/Downloads/kartra-leads.csv --dry-run
+   ```
+
+4. Review the output. If it looks right, drop `--dry-run`:
+
+   ```bash
+   npm run backfill -- ~/Downloads/kartra-leads.csv
+   ```
+
+The script throttles to 1 request/sec (well under Kartra's 60/min
+cap), is idempotent (safe to re-run), and skips members who
+haven't yet signed in via Supabase Auth — those land via the
+trigger on first sign-in.
+
+## Step 7 — analytics (5 min, optional but strongly recommended)
+
+Conversion tracking is wired into Plausible. Without it set up, the
+funnel stages (opt-in submit, opt-in success, sign-in, lesson
+view, course purchase, course revoke) all silently no-op — the
+code is there, just dormant.
+
+1. Sign up at [plausible.io](https://plausible.io) (~£9/mo flat,
+   UK-friendly, no cookie banner needed). Add your domain
+   (`aestheticsunlocked.co.uk`).
+2. In Vercel → Project Settings → Environment Variables, add:
+
+   ```
+   NEXT_PUBLIC_PLAUSIBLE_DOMAIN=aestheticsunlocked.co.uk
+   ```
+
+3. Redeploy. Plausible's script auto-loads, custom events start
+   firing on the next user interaction.
+4. In the Plausible dashboard, set up custom-event goals for:
+   `opt_in_submit`, `opt_in_success`, `sign_in_success`,
+   `lesson_view`, `course_purchase`. The funnel breakdown then
+   surfaces conversion rates between each stage.
+
+If you'd rather use PostHog or Google Analytics, the call sites
+already exist (search `track(` or `trackServer(`) — swap the
+implementation in `lib/analytics.ts` and you're done.
 
 ## Step 7 — first end-to-end test
 

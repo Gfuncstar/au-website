@@ -1,0 +1,23 @@
+{
+  "$comment": "Free taster of Rosacea Beyond Redness. Three short lessons that teach the practitioner to see rosacea as a barrier-and-microbiome condition rather than a redness problem. Lesson 03 is the soft transition into the paid version.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "The taster",
+      "body": "What you'll get out of these three short lessons.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "Beneath the redness",
+      "body": "The four subtypes, the barrier story, and why anti-redness regimens miss the underlying condition.",
+      "startOrder": 2
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Where to go from here",
+      "body": "The full Rosacea Beyond Redness course, and how it picks up where this one ends.",
+      "startOrder": 3
+    }
+  ]
+}

@@ -57,6 +57,24 @@ export const COURSE_KARTRA: Record<string, CourseKartraMapping> = {
     optInListName: "5K Formula Prelaunch Trigger",
     optInTagName: "5K_Prelaunch_Start",
   },
+  "free-acne-decoded": {
+    // TODO: confirm with Bernadette — needs a dedicated Kartra list
+    // ("Acne Decoded Mini") and a tag ("Acne Mini Opted In") created
+    // before launch. The opt-in should drop the lead into a 7–10
+    // email nurture sequence pointing to the paid Acne Decoded course.
+    optInListName: "Acne Decoded Mini",
+    optInTagName: "Acne Mini Opted In",
+    completedTagName: "Acne Mini Complete",
+  },
+  "free-rosacea-beyond-redness": {
+    // TODO: confirm with Bernadette — needs a dedicated Kartra list
+    // ("Rosacea Beyond Redness Mini") and a tag ("Rosacea Mini Opted In")
+    // created before launch. The opt-in should drop the lead into a
+    // 7–10 email nurture sequence pointing to the paid Rosacea course.
+    optInListName: "Rosacea Beyond Redness Mini",
+    optInTagName: "Rosacea Mini Opted In",
+    completedTagName: "Rosacea Mini Complete",
+  },
 
   // ──────────────────────────────────────────────────────────
   // PAID SELF-PACED — Stripe webhook fires the purchase tag

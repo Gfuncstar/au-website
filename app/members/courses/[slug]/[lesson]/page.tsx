@@ -47,6 +47,7 @@ import { LessonByline } from "@/components/members/LessonByline";
 import { AudioIntroPill } from "@/components/members/AudioIntroPill";
 import { OnThisPageNav } from "@/components/members/OnThisPageNav";
 import { LessonKeyboardNav } from "@/components/members/LessonKeyboardNav";
+import { LessonViewTracker } from "@/components/members/LessonViewTracker";
 
 type Params = { slug: string; lesson: string };
 
@@ -110,6 +111,9 @@ export default async function LessonPage({
         prevHref={prev ? `/members/courses/${slug}/${prev.slug}` : null}
         nextHref={next ? `/members/courses/${slug}/${next.slug}` : null}
       />
+
+      {/* Conversion event — fires once on lesson render. */}
+      <LessonViewTracker courseSlug={slug} lessonSlug={current.slug} />
 
       {/* All lesson chrome + body inside one wrapper so the sticky pill
           row stays in view through the whole lesson. */}

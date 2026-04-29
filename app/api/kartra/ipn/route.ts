@@ -34,6 +34,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getCourseByMembershipName } from "@/lib/courses";
+import { trackServer } from "@/lib/analytics";
 
 const IPN_SECRET = process.env.KARTRA_IPN_SECRET ?? "";
 
@@ -151,6 +152,13 @@ export async function POST(request: NextRequest) {
           { onConflict: "member_id,course_slug" },
         );
       }
+      // Conversion event — fire even if existingMember was null (the
+      // grant still happened in Kartra, the Supabase row just lands
+      // on first sign-in). Tracks the actual revenue moment.
+      await trackServer("course_purchase", request, {
+        course: course.slug,
+        level: details.level_name ?? "",
+      });
       // If !existingMember, the member hasn't signed in via magic link
       // yet. The grant lands in `pending_memberships` once that table
       // is added — for v1 we accept the event and rely on Bernadette
@@ -169,6 +177,10 @@ export async function POST(request: NextRequest) {
         .update({ active: false })
         .eq("member_id", existingMember.id)
         .eq("course_slug", course.slug);
+      await trackServer("course_revoke", request, {
+        course: course.slug,
+        action: payload.action,
+      });
       break;
     }
 

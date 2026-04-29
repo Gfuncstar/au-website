@@ -29,6 +29,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useState, type FormEvent } from "react";
+import { track } from "@/lib/analytics";
 
 function LoginForm() {
   const router = useRouter();
@@ -76,6 +77,7 @@ function LoginForm() {
         setSubmitting(false);
         return;
       }
+      track("sign_in_request");
       setMode("code");
       setSubmitting(false);
     } catch {
@@ -112,6 +114,7 @@ function LoginForm() {
         setSubmitting(false);
         return;
       }
+      track("sign_in_success");
       // Hard navigation so the new session cookie is read by the
       // server on /members.
       window.location.href = next;

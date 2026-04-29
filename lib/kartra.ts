@@ -254,6 +254,96 @@ export async function getLeadByEmail(
 }
 
 /**
+ * Fetch a lead by email with full detail — tags + memberships + lists.
+ * Used by the backfill script to migrate existing Kartra members into
+ * the Supabase memberships table on first deploy. Returns null when
+ * the email isn't in Kartra.
+ *
+ * Kartra's `get_lead` returns the full lead object including
+ * `memberships[]`. Each membership has `membership_id`,
+ * `membership_name`, `level_id`, `level_name`, `active`, `granted_at`.
+ */
+export type KartraLeadDetail = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  leadId: string | null;
+  tagIds: readonly string[];
+  tagNames: readonly string[];
+  memberships: ReadonlyArray<{
+    membershipId: string;
+    membershipName: string;
+    levelId: string;
+    levelName: string;
+    active: boolean;
+    grantedAt: string;
+  }>;
+};
+
+export async function getLeadDetail(
+  email: string,
+): Promise<KartraResult<KartraLeadDetail | null>> {
+  const result = await kartraRequest({
+    "get_lead[email]": email,
+  });
+
+  if (!result.ok) {
+    if (
+      typeof result.error === "string" &&
+      result.error.toLowerCase().includes("no lead found")
+    ) {
+      return { ok: true, data: null };
+    }
+    return result;
+  }
+
+  const data = result.data as
+    | {
+        lead?: {
+          id?: string;
+          email?: string;
+          first_name?: string;
+          last_name?: string;
+          tags?: Array<{ tag_id?: string; tag_name?: string }>;
+          memberships?: Array<{
+            membership_id?: string;
+            membership_name?: string;
+            level_id?: string;
+            level_name?: string;
+            active?: boolean | string;
+            granted_at?: string;
+          }>;
+        };
+      }
+    | undefined;
+
+  if (!data?.lead) return { ok: true, data: null };
+
+  const tags = data.lead.tags ?? [];
+  const memberships = (data.lead.memberships ?? []).map((m) => ({
+    membershipId: m.membership_id ?? "",
+    membershipName: m.membership_name ?? "",
+    levelId: m.level_id ?? "",
+    levelName: m.level_name ?? "",
+    active: m.active === true || m.active === "true" || m.active === "1",
+    grantedAt: m.granted_at ?? "",
+  }));
+
+  return {
+    ok: true,
+    data: {
+      email: data.lead.email ?? email,
+      firstName: data.lead.first_name ?? "",
+      lastName: data.lead.last_name ?? "",
+      leadId: data.lead.id ?? null,
+      tagIds: tags.map((t) => t.tag_id ?? "").filter(Boolean),
+      tagNames: tags.map((t) => t.tag_name ?? "").filter(Boolean),
+      memberships,
+    },
+  };
+}
+
+/**
  * Apply a single tag to an existing lead by email. Used by Stripe
  * webhook on successful payment to mark the lead as "Acne Decoded
  * Purchased" etc. Pass the exact tag name from the Kartra Tags tab.
@@ -282,4 +372,129 @@ export async function removeTag(
     "actions[0][cmd]": "remove_tag",
     "actions[0][tag_name]": tagName,
   });
+}
+
+/**
+ * Subscribe or unsubscribe an existing lead from a Kartra list. Used
+ * by the members-area communications-preferences UI to honour opt-out
+ * choices (or re-opt-in if a member explicitly asks to be added back
+ * to a sequence).
+ *
+ * Pass the EXACT list name from the Kartra Lists tab — same naming
+ * rule as `addLead`.
+ */
+export async function setListSubscription(
+  email: string,
+  listName: string,
+  subscribe: boolean,
+): Promise<KartraResult> {
+  return kartraRequest({
+    "lead[email]": email,
+    "actions[0][cmd]": subscribe
+      ? "subscribe_lead_to_list"
+      : "unsubscribe_lead_from_list",
+    "actions[0][list_name]": listName,
+  });
+}
+
+/**
+ * Edit a lead's profile fields (first_name, last_name, phone, address,
+ * etc.). Wired so the members-area "Account" page can sync edits back
+ * to Kartra after writing them to Supabase.
+ *
+ * Patches are applied as `lead[<field>]=...` form fields, mirroring
+ * the addLead shape. Only the fields present in the patch object are
+ * sent — Kartra leaves untouched fields unchanged.
+ */
+export type EditLeadPatch = {
+  firstName?: string;
+  lastName?: string;
+  phone?: string;
+  phoneCountryCode?: string;
+  company?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+  country?: string;
+  website?: string;
+};
+
+export async function editLead(
+  email: string,
+  patch: EditLeadPatch,
+): Promise<KartraResult> {
+  const params: Record<string, string> = {
+    "lead[email]": email,
+    "actions[0][cmd]": "edit_lead",
+  };
+  // Map camelCase patch fields to Kartra's snake_case form fields.
+  const fieldMap: Record<keyof EditLeadPatch, string> = {
+    firstName: "first_name",
+    lastName: "last_name",
+    phone: "phone",
+    phoneCountryCode: "phone_country_code",
+    company: "company",
+    address: "address",
+    city: "city",
+    state: "state",
+    zip: "zip",
+    country: "country",
+    website: "website",
+  };
+  for (const [key, val] of Object.entries(patch)) {
+    if (val !== undefined && val !== null && val !== "") {
+      const kartraKey = fieldMap[key as keyof EditLeadPatch];
+      if (kartraKey) params[`lead[${kartraKey}]`] = val;
+    }
+  }
+  return kartraRequest(params);
+}
+
+/**
+ * Cancel a recurring subscription by its Kartra subscription_id. Used
+ * by the members-area billing page when a member explicitly cancels.
+ *
+ * The subscription_id comes from the `recurring_subscriptions[]`
+ * array on the lead — each entry has its own id.
+ */
+export async function cancelSubscription(
+  subscriptionId: string,
+): Promise<KartraResult> {
+  return kartraRequest({
+    "actions[0][cmd]": "cancel_recurring",
+    "actions[0][subscription_id]": subscriptionId,
+  });
+}
+
+/**
+ * Check whether a lead exists in Kartra by email. Used by the sign-in
+ * flow to render a "check your inbox" state without leaking which
+ * emails belong to members. Returns `{ exists: false }` when the lead
+ * isn't in Kartra (mapped from Kartra's "No lead found" error).
+ *
+ * Calm UX rule: callers SHOULD show "check your inbox" regardless of
+ * the result, so a brute-force enumeration attack can't distinguish
+ * existing members from new emails.
+ */
+export async function leadExists(
+  email: string,
+): Promise<KartraResult<{ exists: boolean; leadId?: string }>> {
+  const result = await kartraRequest({
+    "get_lead[email]": email,
+  });
+  if (!result.ok) {
+    if (
+      typeof result.error === "string" &&
+      result.error.toLowerCase().includes("no lead found")
+    ) {
+      return { ok: true, data: { exists: false } };
+    }
+    return result;
+  }
+  const data = result.data as { lead?: { id?: string } } | undefined;
+  return {
+    ok: true,
+    data: { exists: Boolean(data?.lead), leadId: data?.lead?.id },
+  };
 }

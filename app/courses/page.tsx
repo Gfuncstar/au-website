@@ -59,6 +59,8 @@ export const metadata: Metadata = {
 const MARKS: Record<string, React.ReactNode> = {
   "free-3-day-startup": NicheMark,
   "free-2-day-rag": TrafficLightMark,
+  "free-acne-decoded": HexMark,
+  "free-rosacea-beyond-redness": BarrierMark,
   "acne-decoded": HexMark,
   "rosacea-beyond-redness": BarrierMark,
   "5k-formula": ProfitBarsMark,

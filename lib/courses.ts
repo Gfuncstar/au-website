@@ -110,6 +110,16 @@ export type Course = {
    *  resolve "owned memberships → owned courses". Co-located here so
    *  adding a course only touches this file (no external mapping). */
   kartraMembershipName?: string;
+  /** Slug of the **paid** course this free taster is the lead-magnet
+   *  front-door for. Drives the upsell rail rendered inside the free
+   *  course and the "if you've taken the Mini" continuity language on
+   *  the paid sales page. Only set on free tasters. */
+  upsellsTo?: string;
+  /** Slug of the **free** taster that fronts this paid course. Inverse
+   *  of `upsellsTo`. Drives the "have you taken the Mini?" CTA on paid
+   *  sales pages and the parentCourse link inside the free Mini's
+   *  members-area chrome. */
+  freeTasterSlug?: string;
 };
 
 export const COURSES: readonly Course[] = [
@@ -119,6 +129,7 @@ export const COURSES: readonly Course[] = [
   {
     slug: "free-3-day-startup",
     kartraMembershipName: "The 5K+ Formula™ Mini",
+    upsellsTo: "5k-formula",
     eyebrow: "Free · 3 days",
     title: "The 5K+ Formula™ Mini",
     summary:
@@ -200,6 +211,7 @@ export const COURSES: readonly Course[] = [
   {
     slug: "free-2-day-rag",
     kartraMembershipName: "From Regulation to Reputation™ Mini",
+    upsellsTo: "rag-pathway",
     eyebrow: "Free · 2 days",
     title: "From Regulation to Reputation™ Mini",
     summary:
@@ -278,12 +290,174 @@ export const COURSES: readonly Course[] = [
     ],
   },
 
+  {
+    slug: "free-acne-decoded",
+    kartraMembershipName: "Acne Decoded Mini",
+    upsellsTo: "acne-decoded",
+    eyebrow: "Free · 3 lessons",
+    title: "Acne Decoded — The Mini",
+    summary:
+      "A free 3-lesson taster of the science underneath every breakout — and why most plans fail.",
+    body: "Free, 20-minute taster of the full Acne Decoded course. Three short lessons that reframe acne from a hygiene problem into a chronic inflammatory condition with four interlocking drivers — sebum, hyperkeratinisation, microbiome, inflammation — and show you why most plans fail by treating one or two of them. NICE-aligned. Honest. Yours to keep.",
+    voiceQuote:
+      "Acne is not simply a cosmetic concern. It is a complex, chronic inflammatory skin condition that affects individuals physically, psychologically, and socially.",
+    bullets: [
+      "Why acne isn't a hygiene problem",
+      "The four mechanisms underneath every breakout",
+      "Why most acne plans fail",
+    ],
+    stats: ["3 lessons", "Self-paced", "Free"],
+    modules: [
+      {
+        num: "01",
+        title: "Welcome",
+        body: "Why this short course exists, what you'll walk away with, and where it leads.",
+      },
+      {
+        num: "02",
+        title: "What acne actually is",
+        body: "A science-led definition, the four mechanisms behind every breakout, and why hygiene has nothing to do with it.",
+      },
+      {
+        num: "03",
+        title: "Where to go from here",
+        body: "What's missing, and the clinical pathway that picks up exactly where this Mini ends.",
+      },
+    ],
+    ctaText: "Get instant access",
+    kartraUrl: courseKartraPlaceholder("free-acne-decoded"),
+    tone: "cream",
+    category: "Free taster",
+    format: "3 lessons · self-paced",
+    availability: "available",
+    bgImage: "/backgrounds/cream-halftone.png",
+    promise:
+      "Twenty minutes. The science under every breakout — so the next acne consultation feels less like guessing and more like clinical reasoning.",
+    transformations: [
+      {
+        before:
+          "Treating acne as a hygiene problem with the same protocol every time.",
+        after:
+          "Treating acne as a chronic inflammatory condition with four interlocking drivers — and a plan that addresses all four.",
+      },
+      {
+        before:
+          "Plans that work for one client and not the next.",
+        after:
+          "A clear mental model of why some plans hold and some don't — even before you change a single product.",
+      },
+    ],
+    whyBernadette:
+      "I'm an Advanced Nurse Practitioner, MSc Advanced Practice, NMC registered, and I lecture postgraduate clinicians on conditions like this. The Mini distils the opening of the full Acne Decoded course — same NICE-aligned approach, no protocols borrowed from social media.",
+    includes: [
+      "Three short lessons (~20 minutes total)",
+      "Lifetime access — revisit any time",
+      "The four-mechanism model of acne",
+      "A clear next step if you want the full clinical pathway",
+    ],
+    faqs: [
+      {
+        q: "Is this really free?",
+        a: "Yes. Three lessons, fully free. No credit card. The science in Lesson 2 is yours to keep — whether you ever take the paid course or not.",
+      },
+      {
+        q: "Will it sell me on the paid course?",
+        a: "Lesson 3 is a clear pointer to the full course if you want to keep going — but no pressure. Many practitioners take the Mini, do the work, and never enrol in the paid programme.",
+      },
+      {
+        q: "Do I get a certificate?",
+        a: "The Mini doesn't include a Certificate of Completion — that sits with the full Acne Decoded course. The Mini is designed as a clarity reset, not a CPD module.",
+      },
+    ],
+  },
+  {
+    slug: "free-rosacea-beyond-redness",
+    kartraMembershipName: "Rosacea Beyond Redness Mini",
+    upsellsTo: "rosacea-beyond-redness",
+    eyebrow: "Free · 3 lessons",
+    title: "Rosacea Beyond Redness — The Mini",
+    summary:
+      "A free 3-lesson taster on why rosacea is a barrier-and-microbiome condition, not a redness problem.",
+    body: "Free, 20-minute taster of the full Rosacea Beyond Redness course. Three short lessons that reframe rosacea from a redness problem into a barrier-and-microbiome condition with four NICE-recognised subtypes — and show you why barrier-first treatment outperforms anti-inflammatory-first treatment in most cases. NICE-aligned. Honest. Yours to keep.",
+    voiceQuote:
+      "Build knowledge, confidence, and safe decision-making when working with clients who may present with rosacea.",
+    bullets: [
+      "Rosacea as a barrier-and-microbiome condition",
+      "The four NICE-recognised subtypes",
+      "Why barrier-first beats anti-redness-first",
+    ],
+    stats: ["3 lessons", "Self-paced", "Free"],
+    modules: [
+      {
+        num: "01",
+        title: "Welcome",
+        body: "Why this short course exists, who it's for, and what you'll walk away with.",
+      },
+      {
+        num: "02",
+        title: "What rosacea actually is",
+        body: "The four subtypes, why barrier matters more than anti-inflammatory, and what most plans miss.",
+      },
+      {
+        num: "03",
+        title: "Where to go from here",
+        body: "What's missing, and the clinical pathway that picks up exactly where this Mini ends.",
+      },
+    ],
+    ctaText: "Get instant access",
+    kartraUrl: courseKartraPlaceholder("free-rosacea-beyond-redness"),
+    tone: "pink-soft",
+    category: "Free taster",
+    format: "3 lessons · self-paced",
+    availability: "available",
+    bgImage: "/backgrounds/cream-halftone.png",
+    promise:
+      "Twenty minutes. The science underneath the redness — so the next rosacea consultation lands on the right pathway, not the textbook one.",
+    transformations: [
+      {
+        before:
+          "Reaching for the same anti-redness regimen on every rosacea presentation.",
+        after:
+          "Recognising the four NICE-recognised subtypes and knowing each one needs a different pathway.",
+      },
+      {
+        before:
+          "Plans that calm the surface but don't change the underlying condition.",
+        after:
+          "A barrier-first mental model that treats rosacea as the condition it actually is — not the symptom that's most visible.",
+      },
+    ],
+    whyBernadette:
+      "I'm an Advanced Nurse Practitioner, MSc Advanced Practice, NMC registered. My clinic — Visage Aesthetics, Best Non-Surgical Aesthetics Clinic 2026 (Essex) — sees rosacea every week. The Mini distils the opening of the full Rosacea Beyond Redness course.",
+    includes: [
+      "Three short lessons (~20 minutes total)",
+      "Lifetime access — revisit any time",
+      "The four-subtype model of rosacea",
+      "A clear next step if you want the full clinical pathway",
+    ],
+    faqs: [
+      {
+        q: "Is this really free?",
+        a: "Yes. Three lessons, fully free. No credit card. The science in Lesson 2 is yours to keep — whether you ever take the paid course or not.",
+      },
+      {
+        q: "Will it sell me on the paid course?",
+        a: "Lesson 3 is a clear pointer to the full course if you want to keep going — but no pressure. Many practitioners take the Mini, do the work, and never enrol in the paid programme.",
+      },
+      {
+        q: "Do I get a certificate?",
+        a: "The Mini doesn't include a Certificate of Completion — that sits with the full Rosacea Beyond Redness course. The Mini is designed as a clarity reset, not a CPD module.",
+      },
+    ],
+  },
+
   /* ============================================================
      CLINICAL CONDITION COURSES
      ============================================================ */
   {
     slug: "acne-decoded",
     kartraMembershipName: "Acne Decoded",
+    freeTasterSlug: "free-acne-decoded",
     eyebrow: "Clinical · £79",
     title: "Acne Decoded",
     summary:
@@ -473,6 +647,7 @@ export const COURSES: readonly Course[] = [
   {
     slug: "rosacea-beyond-redness",
     kartraMembershipName: "Rosacea Beyond Redness",
+    freeTasterSlug: "free-rosacea-beyond-redness",
     eyebrow: "Clinical · £79",
     title: "Rosacea Beyond Redness",
     summary:
@@ -598,6 +773,7 @@ export const COURSES: readonly Course[] = [
   {
     slug: "rag-pathway",
     kartraMembershipName: "From Regulation to Reputation™ — The RAG Pathway",
+    freeTasterSlug: "free-2-day-rag",
     eyebrow: "Regulatory · 4 weeks · waitlist",
     title: "From Regulation to Reputation™ — The RAG Pathway",
     summary:
@@ -730,6 +906,7 @@ export const COURSES: readonly Course[] = [
   {
     slug: "5k-formula",
     kartraMembershipName: "The 5K+ Formula™",
+    freeTasterSlug: "free-3-day-startup",
     eyebrow: "Business · 12 weeks · waitlist",
     title: "The 5K+ Formula™",
     summary:
