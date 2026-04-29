@@ -907,8 +907,9 @@ export const COURSES: readonly Course[] = [
     slug: "5k-formula",
     kartraMembershipName: "The 5K+ Formula™",
     freeTasterSlug: "free-3-day-startup",
-    eyebrow: "Business · 12 weeks · waitlist",
+    eyebrow: "Business · 12 weeks · £1,199",
     title: "The 5K+ Formula™",
+    price: 1199,
     summary:
       "Consistent £5K+ months. Without chasing clients, discounting, or doing more treatments.",
     body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Waitlist open. Launch discount included. Small first cohort.",
@@ -922,7 +923,7 @@ export const COURSES: readonly Course[] = [
       "Client journey mapping",
       "Monthly business rituals",
     ],
-    stats: ["12 modules", "12 weeks", "Waitlist"],
+    stats: ["12 modules", "12 weeks", "£1,199"],
     modules: [
       {
         num: "01",
