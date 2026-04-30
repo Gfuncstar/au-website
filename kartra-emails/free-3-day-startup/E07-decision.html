@@ -1,103 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB">
 <!--
-============================================================
-KARTRA-READY EMAIL: E07-decision.md
+  ============================================================
+  KARTRA-READY EMAIL: E07-decision.md
+  ============================================================
+  Configure these fields in Kartra (Sequence step or Broadcast):
 
-Configure these fields in Kartra (Sequence → Email):
+    Subject:    The honest one
+    Preheader:  Last note on The 5K+ Formula™, then I leave you in peace.
+    Sender:     Bernadette - Aesthetics Unlocked <hello@aunlock.co.uk>
+    Delay from previous email: 3 days
 
-  Subject:    The honest one
-  Preheader:  Last note on The 5K+ Formula™, then I leave you in peace.
-  Sender:     Bernadette - Aesthetics Unlocked <hello@aunlock.co.uk>
-  Delay from previous email: 3 days
-
-Then paste the contents of <body> below into Kartra's HTML editor.
-The brand styling (charcoal header, pink CTA, footer) is baked in.
-============================================================
+  Then paste the contents of this file (from <html> to </html>)
+  into Kartra → Email step → HTML editor. The brand styling is
+  baked in: charcoal header, pink CTA, sign-off, footer. Don't
+  switch to visual editor mode after pasting; Kartra will
+  rewrite the inline styles and break the layout.
+  ============================================================
 -->
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>The honest one</title>
+
+  <!-- Web fonts. Won't render in Outlook desktop; system fallbacks
+       are inlined on every text element. -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Lato:wght@400;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
+
+  <style type="text/css">
+    @media only screen and (max-width: 600px) {
+      .container { width: 100% !important; }
+      .px { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-h1 { font-size: 28px !important; line-height: 1.1 !important; }
+      .body-p { font-size: 16px !important; line-height: 1.6 !important; }
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #f5f1ec; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; color: #212121;">
-  <!-- Hidden preheader, shows in inbox preview -->
-  <div style="display: none; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; mso-hide: all;">
+<body style="margin:0;padding:0;background-color:#FAF6F1;font-family:'Lato',Helvetica,Arial,sans-serif;color:#212121;-webkit-font-smoothing:antialiased;">
+
+  <!-- Preheader: shows in inbox preview, hidden in body. -->
+  <div style="display:none;font-size:1px;color:#FAF6F1;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">
     Last note on The 5K+ Formula™, then I leave you in peace.
   </div>
 
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f5f1ec; padding: 48px 16px;">
+  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FAF6F1;">
     <tr>
-      <td align="center">
-        <table role="presentation" width="560" cellspacing="0" cellpadding="0" border="0" style="max-width: 560px; background-color: #ffffff; border-radius: 5px; overflow: hidden;">
+      <td align="center" style="padding:32px 16px;">
 
-          <!-- Charcoal header strip with pink eyebrow -->
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" class="container" style="width:600px;max-width:600px;background-color:#FFFFFF;border-radius:5px;overflow:hidden;">
+
+          <!-- HEADER: pink accent rule + AU wordmark -->
           <tr>
-            <td style="background-color: #212121; padding: 20px 40px;">
-              <p style="margin: 0; font-size: 11px; line-height: 1; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: #e697b7;">
-                Aesthetics Unlocked
-              </p>
+            <td style="background-color:#212121;padding:32px 40px 28px 40px;" class="px">
+              <div style="width:48px;height:3px;background-color:#EE5A8E;margin-bottom:18px;line-height:3px;font-size:0;">&nbsp;</div>
+              <a href="https://aestheticsunlocked.co.uk" target="_blank" style="display:inline-block;text-decoration:none;border:0;">
+                <img src="https://aestheticsunlocked.co.uk/brand/au-logo-pink-on-dark.png"
+                     width="180"
+                     height="65"
+                     alt="Aesthetics Unlocked"
+                     style="display:block;border:0;outline:none;text-decoration:none;height:65px;width:180px;max-width:180px;line-height:100%;-ms-interpolation-mode:bicubic;" />
+              </a>
             </td>
           </tr>
 
-          <!-- Body card -->
+          <!-- HERO: eyebrow + headline -->
           <tr>
-            <td style="padding: 40px;">
-              <div style="font-size: 16px; line-height: 1.6; color: #212121;">
-<p>Hi {first_name},</p>
-<p>This is the last email I'll send you about the full programme.</p>
-<p>The way I think about it is this. There's a version of your
+            <td style="padding:48px 40px 24px 40px;" class="px">
+              <p style="margin:0 0 18px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:#EE5A8E;line-height:1;">
+                Day 14
+              </p>
+              <h1 class="hero-h1" style="margin:0;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:900;font-size:32px;line-height:1.1;letter-spacing:-1px;color:#212121;">
+                The honest one
+              </h1>
+            </td>
+          </tr>
+
+          <!-- BODY -->
+          <tr>
+            <td style="padding:0 40px 24px 40px;" class="px">
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">Hi {first_name},</p>
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">This is the last email I'll send you about the full programme.</p>
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">The way I think about it is this. There's a version of your
 practice where you stay busy-not-paid. The diary keeps filling,
 the prices keep holding, the discounts keep slipping in to fill the
 quieter weeks. Three years from now the clinic looks roughly the
 same as it does today, and you're roughly as tired.</p>
-<p>There's another version where you decide to stop. Not stop
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">There's another version where you decide to stop. Not stop
 working, stop running. The niche gets decided. The brand gets one
 sentence underneath it. The pricing stops apologising. The numbers
 get a rhythm. The clients you actually want stay, and the ones who
 were never going to value the work go elsewhere quietly. The
 clinic finally pays you.</p>
-<p>The 5K+ Formula™ is the bridge between the two. £1,199, lifetime
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">The 5K+ Formula™ is the bridge between the two. £1,199, lifetime
 access, twelve modules, twelve weeks, including live touch-points
 through the cohort.</p>
-<p>If you'd rather wait, the taster stays in your members area. The
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">If you'd rather wait, the taster stays in your members area. The
 full programme is here when you want it.</p>
 
-      <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 28px 0;">
-        <tr>
-          <td style="background-color: #e697b7; border-radius: 5px;">
-            <a href="https://aestheticsunlocked.co.uk/courses/5k-formula" style="display: inline-block; padding: 14px 28px; font-size: 14px; font-weight: 700; line-height: 1; letter-spacing: 0.04em; color: #212121; text-decoration: none; border-radius: 5px;">
-              JOIN THE 5K+ FORMULA &rarr;
-            </a>
-          </td>
-        </tr>
-      </table>
-<p>Bernadette</p>
-<p><em>Bernadette - Aesthetics Unlocked</em></p>
-<p><em>If you'd prefer fewer emails from me, you can adjust your
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;">Bernadette</p>
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;"><em>Bernadette - Aesthetics Unlocked</em></p>
+<p class="body-p" style="margin:0 0 20px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:17px;line-height:1.65;color:#212121;"><em>If you'd prefer fewer emails from me, you can adjust your
 preferences from the link at the foot of any of mine. I'd rather
 you stayed because you wanted to.</em></p>
 
-              </div>
+            </td>
+          </tr>
 
-              <!-- Sign-off -->
-              <p style="margin: 28px 0 4px 0; font-size: 16px; line-height: 1.55; color: #212121;">Bernadette</p>
-              <p style="margin: 0; font-size: 13px; line-height: 1.55; color: #888888; font-style: italic;">
-                Bernadette &middot; Aesthetics Unlocked<br />
-                hello@aunlock.co.uk &middot; aestheticsunlocked.co.uk
+          <!-- CTA -->
+          <tr>
+            <td align="left" style="padding:0 40px 40px 40px;" class="px">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td bgcolor="#EE5A8E" style="border-radius:5px;">
+                    <a href="https://aestheticsunlocked.co.uk/courses/5k-formula" target="_blank"
+                       style="display:inline-block;padding:14px 28px;font-family:'Montserrat',Helvetica,Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border-radius:5px;">
+                      JOIN THE 5K+ FORMULA &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- SIGN-OFF -->
+          <tr>
+            <td style="padding:8px 40px 48px 40px;" class="px">
+              <p style="margin:0;font-family:Georgia,'Spectral',serif;font-style:italic;font-size:24px;line-height:1.2;color:#EE5A8E;">
+                Bernadette
+              </p>
+              <p style="margin:6px 0 0 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#212121;opacity:0.65;">
+                Bernadette Tobin RN, MSc &middot; Aesthetics Unlocked
               </p>
             </td>
           </tr>
 
-          <!-- Footer -->
+          <!-- FOOTER -->
           <tr>
-            <td style="border-top: 1px solid #eeeeee; padding: 20px 40px; background-color: #ffffff;">
-              <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #999999; letter-spacing: 0.06em;">
-                Aesthetics Unlocked &middot; Educator-led training for UK aesthetic practitioners.
+            <td style="background-color:#212121;padding:32px 40px;" class="px">
+              <p style="margin:0 0 12px 0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#EE5A8E;line-height:1.4;">
+                Aesthetics Unlocked&reg;
               </p>
-              <p style="margin: 8px 0 0 0; font-size: 11px; line-height: 1.5; color: #999999;">
-                Need help? Email
-                <a href="mailto:hello@aunlock.co.uk" style="color: #555555; text-decoration: underline;">hello@aunlock.co.uk</a>.
+              <p style="margin:0 0 14px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:#FFFFFF;opacity:0.8;">
+                Education for UK aesthetic practitioners by Bernadette Tobin
+                RN, MSc. Educator of the Year 2026 Nominee, Beauty &amp;
+                Aesthetics Awards.
+              </p>
+              <p style="margin:0 0 12px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:#FFFFFF;opacity:0.55;">
+                Aesthetics Unlocked, [Postal address pending]<br />
+                Replies welcome at
+                <a href="mailto:hello@aunlock.co.uk" style="color:#FFFFFF;text-decoration:underline;">hello@aunlock.co.uk</a>.
+              </p>
+              <p style="margin:0;font-family:'Oswald',Helvetica,Arial,sans-serif;font-weight:600;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;opacity:0.55;">
+                <a href="{unsubscribe_link}" style="color:#FFFFFF;text-decoration:underline;">Unsubscribe</a>
+                &nbsp;&middot;&nbsp;
+                <a href="https://aestheticsunlocked.co.uk/privacy" style="color:#FFFFFF;text-decoration:underline;">Privacy</a>
+                &nbsp;&middot;&nbsp;
+                <a href="https://aestheticsunlocked.co.uk" style="color:#FFFFFF;text-decoration:underline;">aestheticsunlocked.co.uk</a>
               </p>
             </td>
           </tr>
@@ -106,5 +165,6 @@ you stayed because you wanted to.</em></p>
       </td>
     </tr>
   </table>
+
 </body>
 </html>
