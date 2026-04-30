@@ -643,7 +643,7 @@ export function Nav({ forceLight = false }: Props) {
             </div>
           </section>
 
-          {/* INSIGHTS, Blog + FAQs together. Default collapsed. */}
+          {/* BLOG & FAQs accordion. Default collapsed. */}
           <section className="border-b border-au-white/15">
             <button
               type="button"
@@ -660,7 +660,7 @@ export function Nav({ forceLight = false }: Props) {
                   letterSpacing: "var(--tracking-tight-display)",
                 }}
               >
-                Insights &amp; answers
+                Blog &amp; FAQs
               </span>
               <span
                 aria-hidden="true"
