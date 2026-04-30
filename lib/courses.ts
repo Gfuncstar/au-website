@@ -1442,12 +1442,12 @@ export const COURSES: readonly Course[] = [
     slug: "5k-formula",
     kartraMembershipName: "The 5K+ Formula™",
     freeTasterSlug: "free-3-day-startup",
-    eyebrow: "Business · 12 weeks · £799",
+    eyebrow: "Business · 10 weeks · £799",
     title: "The 5K+ Formula™",
     price: 799,
     summary:
       "Consistent £5K+ months. Without chasing clients, discounting, or doing more treatments.",
-    body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Self-paced. Lifetime access. £799.",
+    body: "Twelve modules, ten weeks, the complete UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Self-paced. Lifetime access. £799.",
     voiceQuote:
       "You're not here to learn generic business tips, you're here to master the art of building a profitable, personal, and professional aesthetics brand.",
     bullets: [
@@ -1458,7 +1458,7 @@ export const COURSES: readonly Course[] = [
       "Client journey mapping",
       "Monthly business rituals",
     ],
-    stats: ["12 modules", "12 weeks", "£799"],
+    stats: ["12 modules", "10 weeks", "£799"],
     modules: [
       {
         num: "01",
@@ -1525,11 +1525,11 @@ export const COURSES: readonly Course[] = [
     kartraUrl: courseKartraPlaceholder("5k-formula"),
     tone: "black",
     category: "Business",
-    format: "12 modules · 12 weeks · educator-led",
+    format: "12 modules · 10 weeks · educator-led",
     availability: "available",
     bgImage: "/backgrounds/pink-fade-charcoal-2.png",
     promise:
-      "Twelve weeks. Twelve modules. The UNLOCK PROFIT™ Framework I built my own award-winning clinic on, translated for practitioners who want consistent £5K+ months without burning out.",
+      "Twelve modules across ten weeks. The complete UNLOCK PROFIT™ Framework I built my own award-winning clinic on, translated for practitioners who want consistent £5K+ months without burning out.",
     transformations: [
       {
         before:
@@ -1565,7 +1565,7 @@ export const COURSES: readonly Course[] = [
     whyBernadette:
       "I built Visage Aesthetics on the UNLOCK PROFIT™ Framework. The clinic went on to win Best Non-Surgical Aesthetics Clinic 2026 (Essex, Health, Beauty & Wellness Awards). I've spent twelve years refining the framework in real clinic, under real fee pressure. The 5K+ Formula™ is that system, taught by the practitioner who proved it works.",
     includes: [
-      "12 modules across 12 weeks · rolling release",
+      "12 modules across 10 weeks · rolling release",
       "The complete UNLOCK PROFIT™ Framework",
       "Niche · branding · pricing · systems modules",
       "Worksheets and templates inside every module",
@@ -1579,11 +1579,11 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "What if I already have a busy clinic?",
-        a: "The 5K+ Formula™ is built specifically for practitioners who are already in clinic but feel busy-not-paid. It assumes you've got the technical skills, the work is on niche, pricing, signature offers, and the systems that turn busy weeks into profitable ones.",
+        a: "The 5K+ Formula™ is built specifically for practitioners who are already in clinic but feel busy-not-paid. It assumes you've got the technical skills, the work is on niche, pricing, signature offers, and the systems that turn busy weeks into profitable ones. Twelve modules across ten weeks, designed to fit alongside a working clinic.",
       },
       {
         q: "How much time per week?",
-        a: "Plan for ~2 hours of module work + ~1 hour of weekly business rituals applied inside your clinic. The framework is designed to integrate into your week, not replace it.",
+        a: "Plan for ~3 hours of module work + ~1 hour of weekly business rituals applied inside your clinic. The framework is designed to integrate into your week, not replace it. Ten weeks total, twelve modules.",
       },
       {
         q: "Will it teach me marketing?",
@@ -1594,7 +1594,7 @@ export const COURSES: readonly Course[] = [
         a: "The 5K+ Formula™ is self-paced, not a live cohort. There are no group calls or director meetings inside the programme; the work is in the modules, the worksheets, and the framework you apply inside your own clinic. 1-1 support sits outside this programme, speak to us directly if you're looking for that.",
       },
     ],
-    weeklyHours: "≈ 3 hrs/wk · 12 wks",
+    weeklyHours: "≈ 3 hrs/wk · 10 wks",
     isCpdEvidence: true,
     valueAnchor: [
       "Equivalent 1-to-1 business mentoring with an aesthetics-specialist consultant runs £200–£400 per hour.",

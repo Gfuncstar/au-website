@@ -1,0 +1,29 @@
+{
+  "$comment": "Course-level metadata. Lessons live in NN-<slug>.md files alongside this file. The `parts` array drives the editorial dividers on the course overview chapter ledger; each entry's `startOrder` matches the `order` field in the first lesson of that arc. Edit here, not inside lesson markdown.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "The foundations",
+      "body": "Welcome, and the two compliance areas every English aesthetic clinic is legally expected to evidence first: Health & Safety, and licensing under the Special Treatments Licence regime.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "Clinical practice",
+      "body": "The four-document paperwork foundation underneath every defensible plan, plus infection control, sharps disposal, and the complication protocol you need before something happens.",
+      "startOrder": 4
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Data, policies, and supply",
+      "body": "ICO registration and GDPR, the policy file inspectors expect to find on day one, and the supply-chain audit that protects every treatment record above.",
+      "startOrder": 6
+    },
+    {
+      "eyebrow": "Part 04",
+      "title": "Aftercare and inspection-readiness",
+      "body": "Written aftercare protocols, follow-up plans, and the closing check that confirms the audit holds together end to end.",
+      "startOrder": 9
+    }
+  ]
+}
