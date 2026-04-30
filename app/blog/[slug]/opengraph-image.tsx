@@ -208,13 +208,23 @@ export default async function BlogOG({ params }: Props) {
           >
             <div
               style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
                 fontWeight: 700,
                 letterSpacing: 3,
                 textTransform: "uppercase",
                 fontSize: 20,
               }}
             >
-              <span style={{ color: PINK }}>★</span>{" "}
+              {/* Pink square as the byline glyph. We intentionally avoid
+                  unicode marks like ★ here because @vercel/og's Satori
+                  has to fetch a Google Font for any glyph outside the
+                  basic Latin set, and that fetch was 400-ing for the
+                  black-star codepoint, which crashed the whole render. */}
+              <div
+                style={{ width: 14, height: 14, background: PINK }}
+              />
               By Bernadette Tobin RN, MSc
             </div>
             <div style={{ fontSize: 17, opacity: 0.7 }}>

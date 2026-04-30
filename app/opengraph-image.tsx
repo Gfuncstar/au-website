@@ -113,7 +113,11 @@ export default async function OGImage() {
               textTransform: "uppercase",
             }}
           >
-            <span style={{ color: PINK }}>★</span>
+            {/* Pink square in place of the ★ unicode mark. Satori
+                must fetch a Google Font for any glyph outside the
+                basic Latin set, and the black-star codepoint 400s,
+                which would crash the OG render. */}
+            <div style={{ width: 14, height: 14, background: PINK }} />
             Educator of the Year 2026 Nominee · Beauty &amp; Aesthetics Awards
           </div>
           <div

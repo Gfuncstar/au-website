@@ -163,7 +163,12 @@ export default async function StandardOG({ params }: Props) {
               textTransform: "uppercase",
             }}
           >
-            <span style={{ color: PINK }}>★</span>
+            {/* Pink square as the byline glyph. Avoid unicode marks
+                like ★, because @vercel/og's Satori has to fetch a
+                Google Font for any glyph outside the basic Latin
+                set, and that fetch 400s for the black-star
+                codepoint, which crashes the whole render. */}
+            <div style={{ width: 14, height: 14, background: PINK }} />
             Aesthetics Unlocked · Bernadette Tobin RN, MSc
           </div>
           <div

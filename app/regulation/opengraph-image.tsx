@@ -110,7 +110,11 @@ export default async function RegulationOG() {
               textTransform: "uppercase",
             }}
           >
-            <span style={{ color: PINK }}>★</span>
+            {/* Pink square in place of the ★ unicode mark. Satori
+                must fetch a Google Font for any glyph outside the
+                basic Latin set, and the black-star codepoint 400s,
+                which would crash the OG render. */}
+            <div style={{ width: 14, height: 14, background: PINK }} />
             By Bernadette Tobin RN, MSc
           </div>
           <div

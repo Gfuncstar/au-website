@@ -265,13 +265,22 @@ export async function getLeadByEmail(
     return result;
   }
 
+  // Kartra wraps the get_lead result in `lead_details`, NOT `lead`
+  // (verified empirically via probe; tags appear there as
+  // [{tag_name}] without tag_id in the recent API response).
   const data = result.data as
-    | { lead?: { tags?: Array<{ tag_id: string }> } }
+    | {
+        lead_details?: {
+          tags?: Array<{ tag_id?: string; tag_name?: string }>;
+        };
+      }
     | undefined;
 
-  if (!data?.lead) return { ok: true, data: null };
+  if (!data?.lead_details) return { ok: true, data: null };
 
-  const tagIds = (data.lead.tags ?? []).map((t) => t.tag_id);
+  const tagIds = (data.lead_details.tags ?? [])
+    .map((t) => t.tag_id ?? t.tag_name ?? "")
+    .filter(Boolean);
   return { ok: true, data: { tagIds } };
 }
 
@@ -319,9 +328,13 @@ export async function getLeadDetail(
     return result;
   }
 
+  // Kartra wraps the get_lead result under `lead_details` at the top
+  // level (verified empirically by direct API probe 2026-04-30 — see
+  // PROJECT-STATE.md notes). Earlier code expected `data.lead` which
+  // never exists on the get_lead response.
   const data = result.data as
     | {
-        lead?: {
+        lead_details?: {
           id?: string;
           email?: string;
           first_name?: string;
@@ -339,10 +352,10 @@ export async function getLeadDetail(
       }
     | undefined;
 
-  if (!data?.lead) return { ok: true, data: null };
+  if (!data?.lead_details) return { ok: true, data: null };
 
-  const tags = data.lead.tags ?? [];
-  const memberships = (data.lead.memberships ?? []).map((m) => ({
+  const tags = data.lead_details.tags ?? [];
+  const memberships = (data.lead_details.memberships ?? []).map((m) => ({
     membershipId: m.membership_id ?? "",
     membershipName: m.membership_name ?? "",
     levelId: m.level_id ?? "",
@@ -354,10 +367,10 @@ export async function getLeadDetail(
   return {
     ok: true,
     data: {
-      email: data.lead.email ?? email,
-      firstName: data.lead.first_name ?? "",
-      lastName: data.lead.last_name ?? "",
-      leadId: data.lead.id ?? null,
+      email: data.lead_details.email ?? email,
+      firstName: data.lead_details.first_name ?? "",
+      lastName: data.lead_details.last_name ?? "",
+      leadId: data.lead_details.id ?? null,
       tagIds: tags.map((t) => t.tag_id ?? "").filter(Boolean),
       tagNames: tags.map((t) => t.tag_name ?? "").filter(Boolean),
       memberships,
@@ -514,9 +527,16 @@ export async function leadExists(
     }
     return result;
   }
-  const data = result.data as { lead?: { id?: string } } | undefined;
+  // Kartra returns the lead under `lead_details` on get_lead — see
+  // getLeadDetail above for the same correction.
+  const data = result.data as
+    | { lead_details?: { id?: string } }
+    | undefined;
   return {
     ok: true,
-    data: { exists: Boolean(data?.lead), leadId: data?.lead?.id },
+    data: {
+      exists: Boolean(data?.lead_details),
+      leadId: data?.lead_details?.id,
+    },
   };
 }
