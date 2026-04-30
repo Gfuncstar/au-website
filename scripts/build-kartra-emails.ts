@@ -49,12 +49,24 @@ const CHARCOAL = "#212121";
 const CREAM = "#FAF6F1";
 const WHITE = "#FFFFFF";
 
-// Logo and site URLs. Once DNS is pointed at Vercel, the email logo
-// renders from the production domain. Until then, this URL 404s in
-// inbox previews; that's acceptable because the sequences won't be
-// sent to real subscribers before launch.
+// SITE_URL is the brand-facing domain used for body links + footer
+// (homepage, /privacy, /courses/<slug>). Visible to recipients when
+// they click; should match the brand. Resolves to Vercel post-DNS-flip.
 const SITE_URL = "https://aestheticsunlocked.co.uk";
-const LOGO_URL = `${SITE_URL}/brand/au-logo-pink-on-dark.png`;
+
+// LOGO_URL is the static-asset URL for the email header wordmark. We
+// deliberately use the Vercel holding subdomain instead of SITE_URL
+// for two reasons:
+//   1. It works today (DNS still on Kartra means the brand domain
+//      doesn't yet serve /brand/* assets).
+//   2. It continues to work after DNS flips, because Vercel keeps
+//      the project's holding URL alive permanently alongside any
+//      added custom domain.
+// Recipients never see this URL in the visible UI; it only appears
+// in <img src>. Using the holding subdomain is the most reliable
+// path with no rebuild needed at launch.
+const LOGO_URL =
+  "https://au-website-one.vercel.app/brand/au-logo-pink-on-dark.png";
 
 type Frontmatter = {
   sequence?: string;
