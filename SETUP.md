@@ -100,9 +100,11 @@ After this step, the next deploy will run in LIVE mode.
 
 In Supabase dashboard → **Authentication → URL Configuration**:
 
-- **Site URL**: `https://au-website-one.vercel.app`
-  *(or your custom domain when you point one at the Vercel project)*
-- **Redirect URLs** (add both):
+- **Site URL**: `https://aestheticsunlocked.co.uk`
+  *(production target. Until DNS is pointed at Vercel, temporarily use
+  `https://au-website-one.vercel.app`.)*
+- **Redirect URLs** (add all three):
+  - `https://aestheticsunlocked.co.uk/api/auth/callback`
   - `https://au-website-one.vercel.app/api/auth/callback`
   - `http://localhost:3000/api/auth/callback`
 
@@ -133,17 +135,23 @@ the doors open.
 deliverability, and the API surface Supabase Auth speaks to is just
 SMTP credentials — no app code changes required.
 
-1. Sign up at [resend.com](https://resend.com) and verify your
-   sending domain (`aestheticsunlocked.co.uk` — needs SPF + DKIM +
-   DMARC DNS records they provide; takes ~10 minutes including
-   propagation).
+1. Sign up at [resend.com](https://resend.com) and verify the
+   `aunlock.co.uk` sending domain. **Important:** the website lives on
+   `aestheticsunlocked.co.uk` but Bernadette sends email from
+   `hello@aunlock.co.uk` (shorter, easier to say). The `aunlock.co.uk`
+   domain is **already verified and sending from Kartra**, so you're
+   adding Resend's DKIM selector + SPF include alongside Kartra's
+   existing records, not setting up cold. Multiple SPF includes in one
+   TXT record are valid; DKIM uses different selectors so Kartra and
+   Resend coexist. Takes ~10 minutes including propagation. No sender
+   warm-up window required.
 2. In Resend → **API Keys → Create API Key**, name it
    `supabase-auth-smtp`. Copy the key (starts `re_...`).
 3. In Supabase dashboard → **Project Settings → Auth → SMTP Settings**,
    toggle **Enable Custom SMTP** and enter:
 
    ```
-   Sender email:   hello@aestheticsunlocked.co.uk
+   Sender email:   hello@aunlock.co.uk
    Sender name:    Aesthetics Unlocked
    Host:           smtp.resend.com
    Port:           587
@@ -151,6 +159,10 @@ SMTP credentials — no app code changes required.
    Password:       <your re_... API key>
    Minimum interval: 60 seconds (default is fine)
    ```
+
+   The two-domain split is intentional: descriptive website
+   (`aestheticsunlocked.co.uk`), memorable email (`aunlock.co.uk`).
+   See PROJECT-STATE.md §1.
 
 4. Click **Save**. Send yourself a magic-link sign-in to confirm
    delivery in under 10 seconds.

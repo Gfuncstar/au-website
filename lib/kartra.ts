@@ -157,6 +157,19 @@ export type AddLeadInput = {
    * exact tag name from the Kartra Tags tab.
    */
   tagNames?: readonly string[];
+  /**
+   * Custom-field values to set on the lead. Each key is the Kartra
+   * custom-field internal name (e.g. `magic_link_url`); each value is
+   * the literal string Kartra stores against the lead.
+   *
+   * Prerequisite: the field must already exist in Kartra under
+   * Settings → Lead Custom Fields. If it doesn't, Kartra silently
+   * ignores the value.
+   *
+   * Used to pass the auto-enrol Supabase magic-link into Kartra so the
+   * welcome-email template can reference it via `{magic_link_url}`.
+   */
+  customFields?: Readonly<Record<string, string>>;
 };
 
 /**
@@ -185,6 +198,15 @@ export async function addLead(
 
   if (input.firstName) params["lead[first_name]"] = input.firstName;
   if (input.lastName) params["lead[last_name]"] = input.lastName;
+
+  // Custom fields — Kartra accepts them as `lead[<field_internal_name>]`
+  // identical to first_name / last_name. The field must be defined in
+  // the Kartra account settings first; otherwise Kartra ignores it.
+  for (const [key, val] of Object.entries(input.customFields ?? {})) {
+    if (typeof val === "string" && val.length > 0) {
+      params[`lead[${key}]`] = val;
+    }
+  }
 
   // First action is always create_lead — without it, Kartra treats
   // the lead[email] field as a get_lead query and returns "No lead

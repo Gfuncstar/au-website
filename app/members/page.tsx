@@ -13,6 +13,7 @@ import { CourseIllustrationFor } from "@/components/CourseIllustration";
 import { FreeBadge } from "@/components/FreeBadge";
 import { MembersStatusStrip } from "@/components/members/MembersStatusStrip";
 import { Reveal } from "@/components/members/Reveal";
+import { StartFreeCourseButton } from "@/components/members/StartFreeCourseButton";
 import { COURSES, getCourse, getCourseByMembershipName } from "@/lib/courses";
 import { hasNativeCourse } from "@/lib/courseLessons";
 import { formatDateLong, formatDate, formatGBP } from "@/lib/format";
@@ -303,12 +304,16 @@ export default async function MembersHomePage() {
                     {c.summary}
                   </p>
                   <div className="flex items-center justify-between gap-3 mt-auto">
-                    <Link
-                      href={`/courses/${c.slug}`}
-                      className="font-section font-semibold uppercase tracking-[0.1em] text-[0.6875rem] text-au-pink group-hover:text-au-charcoal transition-colors"
-                    >
-                      Browse course →
-                    </Link>
+                    {c.price === undefined ? (
+                      <StartFreeCourseButton courseSlug={c.slug} />
+                    ) : (
+                      <Link
+                        href={`/courses/${c.slug}`}
+                        className="font-section font-semibold uppercase tracking-[0.1em] text-[0.6875rem] text-au-pink group-hover:text-au-charcoal transition-colors"
+                      >
+                        Browse course →
+                      </Link>
+                    )}
                     {c.price === undefined ? (
                       <FreeBadge className="w-12 h-12 sm:w-14 sm:h-14" />
                     ) : (

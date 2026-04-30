@@ -44,7 +44,7 @@ export function OptInForm({
   courseSlug,
   courseTitle,
   submitLabel = "Get instant access",
-  successHeadline = "Check your inbox.",
+  successHeadline = "Lesson 1 is on its way.",
   tone = "light",
 }: Props) {
   const [email, setEmail] = useState("");
@@ -143,9 +143,10 @@ export function OptInForm({
             dark ? "text-au-white/85" : "text-au-charcoal/80"
           }`}
         >
-          I&rsquo;ve sent the {courseTitle} welcome email to{" "}
-          <strong>{email}</strong>. If it&rsquo;s not in your inbox in the
-          next few minutes, check your spam, and add{" "}
+          I&rsquo;ve sent a one-click access link for {courseTitle} to{" "}
+          <strong>{email}</strong>. Open the email, click through, and
+          you&rsquo;ll be reading the first lesson in seconds. If it&rsquo;s
+          not in your inbox in a few minutes, check spam and add{" "}
           <code className="text-[0.875rem]">hello@aunlock.co.uk</code> to
           your safe senders.
         </p>

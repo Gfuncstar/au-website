@@ -14,12 +14,16 @@ For repo overview + conventions, see [`README.md`](./README.md).
 
 | Surface | URL |
 |---|---|
-| Holding site (production) | https://au-website-one.vercel.app |
+| Production website (target) | https://aestheticsunlocked.co.uk *(DNS not yet pointed)* |
+| Holding site (current) | https://au-website-one.vercel.app |
+| Email sender domain | `hello@aunlock.co.uk` *(already verified, sends from Kartra; shorter / easier to say than the website domain)* |
 | Repo | https://github.com/Gfuncstar/au-website |
 | Vercel project | https://vercel.com/giles-projects-b3d2a63d/au-website |
 | Clone authoring source | `~/Dropbox/CLAUDE/01 AESTHETICS UNLOCKED/clone-aesthetics-unlocked/` |
 
 Push to `main` → Vercel auto-deploys in ~90 seconds.
+
+**Two-domain split is intentional:** descriptive website (`aestheticsunlocked.co.uk`), memorable email (`aunlock.co.uk`). Magic-link emails go FROM `aunlock.co.uk` and link TO `aestheticsunlocked.co.uk`. Both domains need clean SPF/DKIM; DMARC alignment only matters for the sender domain.
 
 ---
 
@@ -337,7 +341,7 @@ The Kartra client methods `searchLead`, `editLead`, `cancelRecurringSubscription
 5. **Real Kartra checkout URLs** for all 5 paid courses — `kartraUrl` in `lib/courses.ts` is currently a placeholder per course.
 6. **Email nurture sequences** for the 5 free tasters — ~35-50 emails total to be authored inside Kartra.
 7. **Course illustrations** — generate PNGs for each lesson using the prompts in `public/illustrations/acne-decoded/prompts.md` (acne course only so far). Other 9 courses don't yet have prompts written.
-8. **Domain pointing** — the holding URL `au-website-one.vercel.app` will eventually move to `aestheticsunlocked.co.uk` (or similar). Configure DNS + Vercel custom domain.
+8. **Domain pointing** — point `aestheticsunlocked.co.uk` apex/www at Vercel; update Supabase Site URL + redirect URLs to match. Email sender stays on `aunlock.co.uk` (already verified, no warm-up needed).
 9. **GSC / SEO verification token** — currently commented out in `app/layout.tsx`. Add Google Search Console verification token once the production domain is pointed.
 
 ---
@@ -349,3 +353,92 @@ The Kartra client methods `searchLead`, `editLead`, `cancelRecurringSubscription
 - **Renaming a Kartra list/tag:** update the relevant entry in `lib/kartra-mappings.ts`. Without this, opt-ins silently fail to apply the right Kartra automation.
 - **Adding an owner:** append email to `lib/owner-emails.ts`. Vercel auto-deploys; new owner sees full catalogue on next page load.
 - **Revoking a preview token:** change `AU_PREVIEW_TOKEN` env var to a new value in Vercel. All existing cookies stop working immediately.
+
+---
+
+## 12. Launch path — clean nuke + rebuild *(decided 2026-04-30)*
+
+The 5 nurture sequences in Kartra get rebuilt from scratch in the new AU template — **not** audit-and-fix-in-place. Existing Kartra sequences are backed up to Dropbox then deleted. New sequences are wired to the same opt-in trigger tags so the funnel keeps working without subscriber drop-off.
+
+**Why this path:** the 40-email rebuild was happening regardless. Auditing existing sequences for wrong links would have been duplicate work on top of the rebuild. Clean nuke is only ~2 hours more total active work and produces a sharper brand surface.
+
+**Phases:**
+
+1. **Backup** *(me, solo via Chrome MCP, ~30 min)* — export every Kartra sequence's emails to Dropbox markdown so the historical record exists even after deletion.
+2. **Build new** *(hybrid, ~3–4 hrs)* — 40 emails drafted as markdown across 5 funnels. First sequence (Acne Decoded, ~7 emails) built into Kartra as the AU-template proof; remainder paste-in by Bernadette or me.
+3. **Wire triggers** *(Bernadette, ~30 min)* — point each opt-in tag's automation at the new sequence. Update Kartra checkout post-purchase redirects to new-site `/courses/<slug>/thanks`.
+4. **Migrate mid-sequence leads** *(me, Chrome MCP, ~15 min)* — re-apply trigger tag to anyone currently mid-old-sequence so they re-enrol on email 1 of the new sequence rather than getting silently dropped.
+5. **Nuke old** *(me, Chrome MCP, ~45 min)* — delete old sequences (Phase 1 backup is the safety net), replace old Kartra-hosted sales-page content with "we've moved" + JS redirect to new-site equivalent, archive (don't delete) old broadcast templates.
+
+**No sender warm-up** — `aunlock.co.uk` is already verified and engaged-list-warm. Switching SMTP provider from Kartra's mailer to Resend (per SETUP.md Step 4) doesn't reset reputation; it just adds another sender on the same verified domain.
+
+**Calendar to launch:** 3–4 days from greenlight, ~6 hours total active work split across me + Giles + Bernadette.
+
+**Critical-path items still on Bernadette regardless of phasing:**
+- Real Kartra checkout URLs for all 5 paid courses (replaces `kartraUrl` placeholders in `lib/courses.ts`)
+- Verify the 5 `// TODO: confirm` Kartra mappings in `lib/kartra-mappings.ts`
+- Create 2 new Kartra lists/tags: "Skin Specialist Programme Buyers" + "The Skin Specialist Mini"
+- Approve the 40 nurture-email drafts before they go into Kartra
+
+**Clinical review of 29 Claude-drafted lessons is OUT of the launch gate** — moved to post-launch with a Claude pre-review pass mitigating risk. Skin Specialist Programme + RAG modules 2–9 are the highest-liability subsets and should get the pre-review pass before going public regardless.
+
+---
+
+## 13. Free-taster delivery model — auto-enrol on opt-in *(decided 2026-04-30)*
+
+When a user opts in to a free taster, the funnel **auto-creates a Supabase shadow account + memberships row** for that free course, and the welcome email contains a Supabase-generated magic-link that drops them straight into Lesson 1 of the members area. Free-taster content lives at `/members/courses/free-<slug>/<lesson>` — the same surface paid courses use.
+
+**Why Option B (auto-enrol) over Option A (email-only delivery):**
+- Members area is the brand surface we've built; free-taster is the bridge
+- Site analytics (Plausible `lesson_view` events) capture engagement
+- Free → paid upsell happens naturally inside the dashboard, not via "click another email"
+- Simpler mental model: every course (free or paid) has the same access pattern
+
+**Code changes required (~1.5 hrs):**
+
+| File | Change |
+|---|---|
+| `app/api/subscribe/route.ts` | After `addLead()`, use Supabase admin client to: createUser(email, email_confirm:true); upsert membership row {course_slug, active:true}; generateLink({type:'magiclink', redirectTo:`/members/courses/<slug>/<first-lesson>`}); pass the link URL to Kartra as a custom field on the lead |
+| `lib/kartra.ts` `addLead()` | Add optional `customFields` parameter so the magic-link URL can be attached to the Kartra lead |
+| Kartra welcome email (E1 of each sequence) | Reference `{custom_field_magic_link_url}` token in the CTA |
+| Supabase project settings | Extend magic-link expiry to 24 hours (sit-in-inbox tolerance) |
+| `OptInForm.tsx` success copy | Update *"Check your inbox"* to reference the immediate-access framing |
+
+**Magic-link defaults (load-bearing):**
+- Redirects to **lesson 1 of the free taster**, not /members dashboard (drop them straight into content)
+- **24-hour expiry** (default 1h is too short for "I'll read this tonight")
+- Falls back to `/login` with email pre-filled if expired
+
+**Paid course flow is unchanged.** Auto-enrol only fires on free-taster opt-ins. Paid-course access still flows via Kartra checkout → IPN → memberships row → magic-link sign-in. The pending_memberships gap (IPN fires before user has signed in) is a separate fix.
+
+**Security note:** auto-creating a Supabase user without email-ownership confirmation is safe because the magic-link in the welcome email IS the email-ownership proof — no one but the real owner can sign in. Honeypot in OptInForm catches obvious bots; rate-limiting can be added later if abuse appears.
+
+### 13.1 In-dashboard free-course enrolment *(decided 2026-04-30)*
+
+Existing signed-in members must be able to start a free taster from inside the dashboard *without* breaking the Kartra nurture loop. If they click a free-course tile and bypass the public-side OptInForm, they bypass `/api/subscribe`, which means no Kartra list/tag application, which means no nurture sequence, which means the upsell never fires.
+
+**Fix:** the public OptInForm needs an authenticated equivalent invoked from inside `/members`.
+
+```
+/members dashboard → click "Start free course" on tile
+  ↓
+POST /api/members/enrol-free  { courseSlug }
+  ↓
+1. Read user's email + first_name from current Supabase session
+2. Kartra: addLead() with the SAME optInListName + optInTagName
+   the public form uses → SAME nurture sequence fires
+3. Supabase: upsert memberships row {course_slug, active:true}
+4. Redirect to /members/courses/free-<slug>/<first-lesson>
+```
+
+**Critical property:** same Kartra tag, same automation. Public-form opt-in and in-dashboard "Start" are functionally identical from Kartra's perspective. Upsell behaviour is identical.
+
+**Dashboard tile states:**
+- Paid owned → "Continue" (unchanged)
+- Free already-enrolled → "Continue" (unchanged)
+- **Free not yet enrolled → "Start free course" button** (new)
+- Paid not-owned → "Buy" → Kartra checkout (unchanged)
+
+**Effort:** ~1 hour on top of the §13 Option B work. New `/api/members/enrol-free` route (~30 min) + dashboard tile component update (~30 min). Reuses existing `addLead` and `getKartraMapping` helpers.
+
+**Email cadence consideration:** a member who starts multiple free tasters back-to-back ends up on multiple parallel nurture sequences. Not a launch blocker — Bernadette can add a Kartra-side global send-rate cap if email-fatigue complaints surface. Ship without cap, watch the data.

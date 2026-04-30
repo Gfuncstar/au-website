@@ -136,47 +136,73 @@ export async function POST(request: NextRequest) {
           membership_name: details.membership_name,
         });
       }
+
+      const grantPayload = {
+        course_slug: course.slug,
+        level_name: details.level_name ?? null,
+        kartra_membership_id: details.membership_id
+          ? String(details.membership_id)
+          : null,
+        kartra_level_id: details.level_id ? String(details.level_id) : null,
+        active: true,
+        granted_at: new Date().toISOString(),
+      };
+
       if (existingMember) {
+        // Member already exists in Supabase — write directly to memberships.
         await supabase.from("memberships").upsert(
-          {
-            member_id: existingMember.id,
-            course_slug: course.slug,
-            level_name: details.level_name ?? null,
-            kartra_membership_id: details.membership_id
-              ? String(details.membership_id)
-              : null,
-            kartra_level_id: details.level_id ? String(details.level_id) : null,
-            active: true,
-            granted_at: new Date().toISOString(),
-          },
+          { member_id: existingMember.id, ...grantPayload },
           { onConflict: "member_id,course_slug" },
         );
+      } else {
+        // Member hasn't signed in yet — park the grant in pending_memberships.
+        // The trigger on auth.users insert (see migration 0002) drains
+        // these into memberships when the user finally signs in.
+        await supabase.from("pending_memberships").upsert(
+          { email: payload.lead.email.toLowerCase(), ...grantPayload },
+          { onConflict: "email,course_slug" },
+        );
       }
-      // Conversion event — fire even if existingMember was null (the
-      // grant still happened in Kartra, the Supabase row just lands
-      // on first sign-in). Tracks the actual revenue moment.
+
+      // Conversion event — fire even if existingMember was null. The
+      // grant happened in Kartra; the Supabase row lands now (or on
+      // first sign-in via the drain trigger). Tracks the revenue moment.
       await trackServer("course_purchase", request, {
         course: course.slug,
         level: details.level_name ?? "",
       });
-      // If !existingMember, the member hasn't signed in via magic link
-      // yet. The grant lands in `pending_memberships` once that table
-      // is added — for v1 we accept the event and rely on Bernadette
-      // sending the welcome email that prompts them to sign in.
       break;
     }
 
     case "membership_revoked":
     case "subscription_cancelled": {
       const details = payload.action_details;
-      if (!details?.membership_name || !existingMember) break;
+      if (!details?.membership_name) break;
       const course = getCourseByMembershipName(details.membership_name);
       if (!course) break;
-      await supabase
-        .from("memberships")
-        .update({ active: false })
-        .eq("member_id", existingMember.id)
-        .eq("course_slug", course.slug);
+
+      if (existingMember) {
+        await supabase
+          .from("memberships")
+          .update({ active: false })
+          .eq("member_id", existingMember.id)
+          .eq("course_slug", course.slug);
+      } else {
+        // No member yet — flip the pending row to inactive (or insert one
+        // as inactive if a grant never came through). The drain on first
+        // sign-in produces an inactive memberships row, which the
+        // entitlement check treats as no-access.
+        await supabase.from("pending_memberships").upsert(
+          {
+            email: payload.lead.email.toLowerCase(),
+            course_slug: course.slug,
+            active: false,
+            granted_at: new Date().toISOString(),
+          },
+          { onConflict: "email,course_slug" },
+        );
+      }
+
       await trackServer("course_revoke", request, {
         course: course.slug,
         action: payload.action,
