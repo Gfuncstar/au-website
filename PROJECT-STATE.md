@@ -1,6 +1,6 @@
-# Aesthetics Unlocked — project state
+# Aesthetics Unlocked, project state
 
-**Last updated:** April 2026 — at commit [`af285b1`](https://github.com/Gfuncstar/au-website/commit/af285b1)
+**Last updated:** 30 April 2026, end of day. Latest pushed commit: [`45b32ef`](https://github.com/Gfuncstar/au-website/commit/45b32ef) (plus subsequent dashboard-only changes in Supabase + Resend, see §6).
 
 This document is the **state-of-build** snapshot. It documents what's live, what works, what's pending, and where every piece lives. Use it before changing anything.
 
@@ -16,20 +16,22 @@ For repo overview + conventions, see [`README.md`](./README.md).
 |---|---|
 | Production website (target) | https://aestheticsunlocked.co.uk *(DNS not yet pointed)* |
 | Holding site (current) | https://au-website-one.vercel.app |
-| Email sender domain | `hello@aunlock.co.uk` *(already verified, sends from Kartra; shorter / easier to say than the website domain)* |
+| Email sender domain | `hello@aunlock.co.uk` ✅ *(verified at Kartra and at Resend; SMTP plumbed through Supabase Auth)* |
 | Repo | https://github.com/Gfuncstar/au-website |
 | Vercel project | https://vercel.com/giles-projects-b3d2a63d/au-website |
 | Clone authoring source | `~/Dropbox/CLAUDE/01 AESTHETICS UNLOCKED/clone-aesthetics-unlocked/` |
 
 Push to `main` → Vercel auto-deploys in ~90 seconds.
 
-**Two-domain split is intentional:** descriptive website (`aestheticsunlocked.co.uk`), memorable email (`aunlock.co.uk`). Magic-link emails go FROM `aunlock.co.uk` and link TO `aestheticsunlocked.co.uk`. Both domains need clean SPF/DKIM; DMARC alignment only matters for the sender domain.
+**Two-domain split is intentional:** descriptive website (`aestheticsunlocked.co.uk`), memorable email (`aunlock.co.uk`). Magic-link emails go FROM `aunlock.co.uk` and link TO `aestheticsunlocked.co.uk`. Both domains have clean SPF/DKIM; DMARC alignment is in place for the sender domain.
+
+**Brand voice hard save (2026-04-30):** zero em-dashes in user-visible copy, zero AI-tell vocabulary. Documented in `CLAUDE.md` and in the user's memory (`feedback_no_ai_slop.md`). Every existing em-dash in `app/`, `components/`, `lib/`, `content/blog/`, `content/courses/` was swept (~1,950 across 151 files, commit [`72aa2b3`](https://github.com/Gfuncstar/au-website/commit/72aa2b3)).
 
 ---
 
-## 2. Course catalogue (10 courses)
+## 2. Course catalogue (11 courses)
 
-All 10 courses are **live** on the holding site. Every lesson markdown file is in place. Every landing page returns 200.
+All 11 courses are **live** on the holding site. Every lesson markdown file is in place. Every landing page returns 200.
 
 | # | Course | Slug | Price | Lessons | Author / Review |
 |---|---|---|---|---|---|
@@ -43,8 +45,9 @@ All 10 courses are **live** on the holding site. Every lesson markdown file is i
 | 8 | Free Acne Decoded Mini | `free-acne-decoded` | Free | 3 | ⚠️ Claude-drafted |
 | 9 | Free Rosacea Beyond Redness Mini | `free-rosacea-beyond-redness` | Free | 3 | ⚠️ Claude-drafted |
 | 10 | The Skin Specialist™ Mini | `free-skin-specialist-mini` | Free | 4 | ⚠️ Claude-drafted |
+| 11 | The England Aesthetic Compliance Audit | `free-clinical-audit` | Free | 8 sections, ≈30 min total | ✅ Bernadette-authored *(from her ODT lead-magnet, 2026-04-30)* |
 
-**Total:** 77 lessons across 10 courses. ⚠️ items need Bernadette's clinical review before public launch.
+**Total:** 85 lessons / sections across 11 courses. ⚠️ items still need Bernadette's clinical review before public launch.
 
 ### Funnel pairing
 
@@ -55,6 +58,7 @@ All 10 courses are **live** on the holding site. Every lesson markdown file is i
 | `free-acne-decoded` | `acne-decoded` |
 | `free-rosacea-beyond-redness` | `rosacea-beyond-redness` |
 | `free-skin-specialist-mini` | `skin-specialist-programme` |
+| `free-clinical-audit` | `rag-pathway` |
 
 Wired in `lib/courses.ts` via `upsellsTo` + `freeTasterSlug` cross-references.
 
@@ -184,21 +188,44 @@ If unset, the bypass code path returns false and normal auth applies — fully o
 
 ## 6. What's working end-to-end
 
-✅ All 10 course landing pages render with full marketing copy, hero, transformations, curriculum, FAQs, schema.org structured data
-✅ All 10 thank-you pages render at `/courses/<slug>/thanks`
-✅ Course catalogue index at `/courses`
-✅ OptInForm captures email + first name + courseSlug, posts to `/api/subscribe`, calls Kartra `addLead()` with list + tag (4 of the 5 free tasters; new Skin Specialist Mini needs Kartra list/tag created)
+✅ All 11 course landing pages render with full marketing copy, hero, transformations, curriculum, FAQs, schema.org structured data *(catalogue grew by one on 2026-04-30: `free-clinical-audit`, the England aesthetic compliance audit lead-magnet feeding the RAG Pathway)*
+✅ All thank-you pages render at `/courses/<slug>/thanks`
+✅ Course catalogue index at `/courses` with Where-to-start panel + 5 tabs (All, Free, Clinical, Regulatory, Business), all visible on mobile
+✅ OptInForm captures email + first name + courseSlug, posts to `/api/subscribe`, calls Kartra `addLead()` with list + tag
 ✅ Magic-link / OTP sign-in flow at `/login` (Supabase Auth)
+✅ **Magic-link email is fully on brand and deliverable** *(2026-04-30 dashboard work):*
+   - Branded HTML pasted into Supabase Auth → Email Templates → Magic Link
+   - Subject set to "Your Aesthetics Unlocked sign-in link"
+   - Custom SMTP enabled in Supabase → Auth → SMTP Settings, pointing at Resend
+   - `aunlock.co.uk` verified in Resend with DKIM + SPF (record set lives at GoDaddy alongside Kartra's existing records, no conflict)
+   - Sender displayed as `Aesthetics Unlocked <hello@aunlock.co.uk>` with no "powered by Supabase" footer
+   - OTP length set to 6 digits in Supabase to match the `/login` form
+   - End-to-end smoke-tested: sign-in code arrives in <10s, lands in primary inbox, click-through works
 ✅ Supabase IPN webhook at `/api/kartra/ipn` syncs membership_granted / membership_revoked / subscription_cancelled events into the `memberships` table
 ✅ Members dashboard at `/members` renders course tiles based on memberships
+✅ `/dashboard` marketing page surfaces members-area features to public visitors (charcoal preview cards, "Instant access" framing)
+✅ `/testimonials` page groups social proof by course
 ✅ Lesson player at `/members/courses/<slug>/<lesson>` renders markdown with chapter strip, scroll progress, on-this-page nav, audio intro pill, video placeholder, lesson body, up-next card, lesson nav footer, keyboard nav (← / → / M)
 ✅ Per-course entitlement gating with redirect to public sales page on unentitled access
 ✅ Owner email allowlist live for Giles + Bernadette
 ✅ Preview token mechanism wired (env var unset by default)
 ✅ Plausible analytics: tracking calls placed on opt_in_submit, opt_in_success, sign_in_request, sign_in_success, lesson_view, course_purchase, course_revoke (env var unset → silent no-op)
-✅ Resend SMTP config documented in SETUP.md Step 4 + AU-branded magic-link email template at `supabase/email-templates/magic-link.html`
 ✅ Member-backfill script at `scripts/backfill-memberships.ts` (run via `npm run backfill -- /path/to/csv`)
 ✅ Footer added to members area layout
+✅ Footer Courses column auto-populated from `lib/courses.ts` (free-first, ascending price, alphabetical), so adding a course in the catalogue updates the footer link list automatically
+
+### 6.1 SEO surface (2026-04-30 audit + fixes)
+
+✅ Sitemap (`/sitemap.xml`) lists 46 URLs including all courses, standards, locations, blog posts
+✅ RSS feed (`/blog/feed.xml`) lists every post newest-first
+✅ `robots.txt` allows the public surface, blocks `/members` and `/login`, points at the sitemap
+✅ Per-post page metadata (title, description, canonical, Open Graph, Twitter card) generated from blog frontmatter
+✅ JSON-LD structured data per blog post: `BlogPosting` + `BreadcrumbList`, with author Person carrying NMC PIN, awards, sameAs to NMC register, and a per-citation `CreativeWork` for each source
+✅ Per-route Open Graph image generation: blog posts, courses, regulators, locations all carry their own 1200×630 PNG share card with topic eyebrow / title / byline / read time (no fallback bleed across routes)
+✅ Three new blog posts shipped with primary-source verification, full SEO surface (≥3 internal pillar links per post, 9–15 external citations per post, 1,377–1,468 words):
+   - [`/blog/vascular-occlusion-hyaluronic-acid-filler-uk`](https://au-website-one.vercel.app/blog/vascular-occlusion-hyaluronic-acid-filler-uk)
+   - [`/blog/mhra-botox-advertising-uk-rules`](https://au-website-one.vercel.app/blog/mhra-botox-advertising-uk-rules)
+   - [`/blog/nice-acne-guidelines-aesthetic-practitioners`](https://au-website-one.vercel.app/blog/nice-acne-guidelines-aesthetic-practitioners)
 
 ---
 
@@ -236,12 +263,17 @@ If unset, the bypass code path returns false and normal auth applies — fully o
 
 ### Production infrastructure
 
-- ❌ **SMTP not wired** — Supabase default mailer rate-limits at 3 emails/hour. Resend instructions in SETUP.md Step 4. Until configured, sign-in OTPs will fail under any meaningful load.
+- ✅ **SMTP wired and live** *(2026-04-30)*. Resend account created, `aunlock.co.uk` verified with DKIM + SPF, custom SMTP enabled in Supabase, branded magic-link template pasted, OTP length set to 6, end-to-end smoke-tested. The handoff doc at `supabase/email-templates/MAGIC_LINK_HANDOFF.md` is now historical reference; both fixes it described are done.
 - ❌ **`NEXT_PUBLIC_PLAUSIBLE_DOMAIN` env var** not set in Vercel. Until set, all Plausible tracking calls silently no-op. Set to `aestheticsunlocked.co.uk` once domain is signed up.
-- ❌ **Member backfill not yet run.** Existing Kartra customers won't have entitlements on first sign-in until `npm run backfill -- /path/to/kartra-export.csv` is run.
-- ❌ **Kartra checkout URLs** are still placeholders (`courseKartraPlaceholder("<slug>")` returns a stub URL). Each paid course needs its real Kartra checkout URL pasted into `lib/courses.ts`.
-- ❌ **Stripe webhooks** — code references `assignTag()` / `removeTag()` for purchase/refund events but no Stripe → IPN bridge is documented if direct Stripe checkout is added.
-- 🟡 **`AU_PREVIEW_TOKEN`** env var not set. Optional — only needed if you want to use the preview-link mechanism.
+- ❌ **Member backfill not yet run.** Existing Kartra customers won't have entitlements on first sign-in until `npm run backfill -- /path/to/kartra-export.csv` is run. See `BACKFILL-FORMAT.md` for the column-mapping spec.
+- ❌ **Kartra checkout URLs** are still placeholders (`courseKartraPlaceholder("<slug>")` returns a stub URL). Each paid course needs its real Kartra checkout URL pasted into `lib/courses.ts`. See `BERNADETTE-PREFLIGHT.md` §A.
+- ❌ **Stripe webhooks**: code references `assignTag()` / `removeTag()` for purchase/refund events but no Stripe → IPN bridge is documented if direct Stripe checkout is added.
+- 🟡 **`AU_PREVIEW_TOKEN`** env var not set. Optional, only needed if you want to use the preview-link mechanism.
+
+### Pre-launch redirects (in repo, dormant until DNS flip)
+
+- ✅ `next.config.ts` carries 301s for stale Kartra-era URLs: `/portal`, `/portal/:path*`, `/login-page`, `/sign-in`, `/signin`, `/free-acne-decoded`, `/free-rosacea-beyond-redness`, `/free-skin-specialist-mini`, `/free-2-day-rag`, `/free-3-day-startup`, `/aestetics`, `/aestethics`. These are inert until DNS swings to Vercel, then catch any inbound link from already-sent broadcasts.
+- ✅ `npm run preflight` (script at `scripts/preflight.ts`) runs a green/red checklist of every required env var, table existence, and endpoint health. Recommended right before declaring launch complete.
 
 ### Mock-only Kartra methods (LIVE-mode work)
 
@@ -316,7 +348,35 @@ The Kartra client methods `searchLead`, `editLead`, `cancelRecurringSubscription
 
 ---
 
-## 9. Recent commit history (this session)
+## 9. Recent commit history
+
+### 2026-04-30 (this session)
+
+| Commit | Summary |
+|---|---|
+| [`72aa2b3`](https://github.com/Gfuncstar/au-website/commit/72aa2b3) | Site-wide em-dash sweep + new `/dashboard`, `/testimonials` pages + voice ban hard-saved + free-clinical-audit course added |
+| [`3f4f62a`](https://github.com/Gfuncstar/au-website/commit/3f4f62a) | Three new blog posts cross-referenced against primary sources (vascular occlusion HA filler, MHRA Botox advertising, NICE acne NG198) |
+| [`650211d`](https://github.com/Gfuncstar/au-website/commit/650211d) | Per-post Open Graph image generator added for the Journal |
+| [`c3432da`](https://github.com/Gfuncstar/au-website/commit/c3432da) | Per-route OG image alt-text fix: `generateImageMetadata` filters by `params.slug` instead of returning the full collection |
+| [`df77fad`](https://github.com/Gfuncstar/au-website/commit/df77fad) | Magic-link branded-email template + Resend SMTP handoff doc (corrected to use intentional `aunlock.co.uk` sender domain) |
+| [`bc1a2cf`](https://github.com/Gfuncstar/au-website/commit/bc1a2cf) | Initial OG params-Promise fix for Next 16 (later corrected, see 2129530) |
+| [`2129530`](https://github.com/Gfuncstar/au-website/commit/2129530) | Correct Next 16 OG contract (sync params for `generateImageMetadata`, `Promise<params>` + `Promise<id>` for default Image function) |
+| [`45b32ef`](https://github.com/Gfuncstar/au-website/commit/45b32ef) | Drop ★ glyph from every OG image (Satori was 400-ing on the dynamic-font fetch), swap for a 14×14 pink square. Bundled in: launch-runway artefacts (LAUNCH-RUNBOOK.md, BERNADETTE-PREFLIGHT.md, BACKFILL-FORMAT.md, kartra-emails E01–E07 for Acne Decoded, `scripts/preflight.ts`, `next.config.ts` 301 redirects for stale Kartra URLs) |
+
+### 2026-04-30, dashboard-only (no commits, performed in third-party UIs)
+
+| Action | Where |
+|---|---|
+| Magic-link template pasted into Supabase | Supabase → Authentication → Email Templates → Magic Link |
+| Subject line "Your Aesthetics Unlocked sign-in link" set | Same place |
+| Resend account created, `aunlock.co.uk` added as sending domain | resend.com → Domains |
+| DKIM + SPF DNS records added at GoDaddy alongside existing Kartra records | GoDaddy → aunlock.co.uk → DNS |
+| Resend domain verified | Resend dashboard |
+| Resend API key minted (scope: Sending only) and pasted into Supabase | Resend → API Keys, then Supabase → Auth → SMTP Settings |
+| Custom SMTP enabled in Supabase | Supabase → Auth → SMTP Settings |
+| Email OTP length set to 6 (was 8, which broke the 6-digit `/login` form) | Supabase → Authentication → Providers → Email |
+
+### Earlier sessions
 
 | Commit | Summary |
 |---|---|

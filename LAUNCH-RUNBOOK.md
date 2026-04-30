@@ -11,7 +11,8 @@
 - ✅ IPN endpoint hardened (`KARTRA_IPN_SECRET` set in Vercel)
 - ✅ `aunlock.co.uk` MX → Microsoft 365 (Bernadette's existing inbox stays untouched)
 - ✅ `aestheticsunlocked.co.uk` currently DNS-pointed at Kartra hosting (will be repointed at Vercel during this runbook)
-- ⚠️ Local commit `c5563d8` not yet pushed to `origin/main` — push triggers Vercel deploy in ~90s
+- ✅ Phase 2 (SMTP + email deliverability) **already complete as of 2026-04-30**, see Phase 2 below for the historical record. Sign-in emails currently go out from `Aesthetics Unlocked <hello@aunlock.co.uk>` via Resend. Step 2.1 to 2.3 do not need re-running on launch day.
+- ⚠️ Latest commit on `origin/main`: [`45b32ef`](https://github.com/Gfuncstar/au-website/commit/45b32ef) (per-route OG fix + ★ glyph swap + bundled launch artefacts). Vercel auto-deploys.
 
 ---
 
@@ -101,9 +102,16 @@ This makes magic-links generated after this point land on the production domain.
 
 ---
 
-## Phase 2 — SMTP + email deliverability (~20 min)
+## Phase 2 — SMTP + email deliverability ✅ DONE (2026-04-30, ~30 min)
 
-`aunlock.co.uk` is **already verified for sending** (Microsoft Outlook + SendGrid via Kartra are in the SPF). Adding Resend means appending — never replacing.
+This phase is complete. Detail kept here as a historical record and as a
+re-run script if Resend credentials ever rotate.
+
+`aunlock.co.uk` is verified for sending across multiple providers (Microsoft
+365 inbound, Kartra/SendGrid outbound, and now Resend outbound). Records
+were added by appending, never replacing, so each provider keeps its own
+DKIM selector and SPF include. Verified in Resend dashboard within ~17
+minutes of save.
 
 ### 2.1 Sign up at Resend
 

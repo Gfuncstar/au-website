@@ -1,13 +1,14 @@
-# Aesthetics Unlocked — au-website
+# Aesthetics Unlocked, au-website
 
-The members platform for **Aesthetics Unlocked**, the UK aesthetics-education brand built by Bernadette Tobin RN MSc — Educator of the Year 2026 Nominee.
+The members platform for **Aesthetics Unlocked**, the UK aesthetics-education brand built by Bernadette Tobin RN MSc, Educator of the Year 2026 Nominee.
 
 This Next.js 16 app powers:
 
-- The public marketing site (`/`, `/courses`, `/about`, `/blog`, etc.)
-- 10 course landing pages with structured-data SEO
+- The public marketing site (`/`, `/courses`, `/about`, `/blog`, `/dashboard`, `/testimonials`)
+- 11 course landing pages with structured-data SEO and per-course Open Graph share cards
+- The Aesthetics Unlocked Journal at `/blog`, with per-post Open Graph cards, JSON-LD structured data including author Person + per-citation CreativeWork, sitemap and RSS feed
 - Email opt-in capture for free tasters with Kartra automation
-- Magic-link / OTP sign-in for paid members (Supabase Auth)
+- Magic-link / OTP sign-in for paid members (Supabase Auth, branded template, custom SMTP via Resend on the `aunlock.co.uk` sender domain)
 - The native course-lesson player at `/members/courses/<slug>/<lesson>`
 - Per-course entitlement gating with two backdoor mechanisms (owner allowlist + preview token)
 - Privacy-friendly conversion tracking via Plausible
@@ -32,7 +33,7 @@ Without env vars set, the dashboard runs in **MOCK mode** against `lib/kartra/mo
 
 ## Course catalogue
 
-Currently on the platform — all live, all rendering at `/courses/<slug>`:
+Currently on the platform, all live, all rendering at `/courses/<slug>`:
 
 | Course | Slug | Price | Status |
 |---|---|---|---|
@@ -46,6 +47,7 @@ Currently on the platform — all live, all rendering at `/courses/<slug>`:
 | Free Acne Decoded Mini | `free-acne-decoded` | Free | Available |
 | Free Rosacea Beyond Redness Mini | `free-rosacea-beyond-redness` | Free | Available |
 | The Skin Specialist™ Mini | `free-skin-specialist-mini` | Free | Available |
+| The England Aesthetic Compliance Audit *(RAG Pathway taster)* | `free-clinical-audit` | Free | Available |
 
 The single source of truth is `lib/courses.ts`. Adding a course means adding one entry to the `COURSES` array and dropping markdown into `content/courses/<slug>/`. Every consumer (catalogue, individual sales page, sitemap, schema, OG image, members launchpad) updates automatically.
 
@@ -83,15 +85,16 @@ See [SETUP.md](./SETUP.md) for the full launch sequence — Supabase setup, Kart
 
 ## Key conventions
 
+- **No em-dashes in user-visible copy. Ever.** Hard save, project-wide. Replace with comma, period, "and", or colon. Em-dashes are an AI-cadence tell and Giles has banned them site-wide. Includes JSX strings, `lib/courses.ts`, `lib/faqs.ts`, `lib/locations.ts`, `content/blog/*.md`, `content/courses/**/*.md`, page metadata, OG titles, alt text. Code comments and JSDoc are exempt.
 - **Never abbreviate Aesthetics Unlocked to AU** in user-facing copy or comments
-- **No rounded-full corners anywhere** — max `rounded-[5px]`
+- **No rounded-full corners anywhere**, max `rounded-[5px]`
 - **Lesson hero is always dark mode** (charcoal poster with white type)
 - **No drop caps in lesson body**
-- **Lato body, Spectral italic for pull quotes** — but never Spectral italic on white inside the course player
+- **Lato body, Spectral italic for pull quotes**, but never Spectral italic on white inside the course player
 - **No gradients, drop shadows, or glassmorphism** in any component or illustration
-- **Pink #e697b7 is the brand accent** — used sparingly, never as background
+- **Pink #e697b7 is the brand accent**, used sparingly, never as background
 
-These conventions are documented in `clone-aesthetics-unlocked/brand.md` and the user's memory file. Apply them to every new component, page, or piece of copy.
+These conventions are documented in `clone-aesthetics-unlocked/brand.md`, in `CLAUDE.md`, and in the user's memory (`feedback_no_ai_slop.md`, `feedback_aesthetics_unlocked_naming.md`, etc.). Apply them to every new component, page, or piece of copy.
 
 ---
 

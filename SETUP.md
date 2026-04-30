@@ -96,57 +96,89 @@ Variables and add them via the UI.
 
 After this step, the next deploy will run in LIVE mode.
 
-## Step 4 — configure Supabase Auth (5 min)
+## Step 4 — configure Supabase Auth ✅ DONE (2026-04-30)
 
-In Supabase dashboard → **Authentication → URL Configuration**:
+This step is complete. Both the URL configuration and the SMTP wiring
+are live. The detail below stays as a reference for future setup work
+or for re-doing this on a fresh Supabase project.
 
-- **Site URL**: `https://aestheticsunlocked.co.uk`
-  *(production target. Until DNS is pointed at Vercel, temporarily use
-  `https://au-website-one.vercel.app`.)*
-- **Redirect URLs** (add all three):
+### What's live in Supabase right now
+
+In **Authentication → URL Configuration**:
+
+- **Site URL**: `https://aestheticsunlocked.co.uk` *(stays correct after the
+  DNS flip; while DNS is still pointed at Kartra, Supabase tolerates the
+  mismatch because the redirect URLs list also covers the holding host)*
+- **Redirect URLs** include all three:
   - `https://aestheticsunlocked.co.uk/api/auth/callback`
   - `https://au-website-one.vercel.app/api/auth/callback`
   - `http://localhost:3000/api/auth/callback`
 
 In **Authentication → Providers → Email**:
 
-- Enable **Email** (already on by default)
-- Disable **"Confirm email"** *(magic link is the confirmation —
-  the second email step is friction)*
-- **Magic link expiry**: 900 seconds (15 minutes) — matches the UI copy
+- **Email** provider enabled
+- **Confirm email** disabled (magic-link itself is the confirmation)
+- **Magic link expiry**: 900 seconds (15 minutes), matching the `/login` UI
+- **Email OTP length**: 6 digits, matching the `/login` form
 
 In **Authentication → Email Templates → Magic Link**:
 
-- Replace Supabase's default template with the AU-branded version
-  in [`supabase/email-templates/magic-link.html`](supabase/email-templates/magic-link.html)
-  — short, dark-poster aesthetic, single CTA. Copy-paste into the
-  Supabase template editor.
-- Set **Subject heading** to `Your Aesthetics Unlocked sign-in link`
+- AU-branded template from `supabase/email-templates/magic-link.html`
+  pasted in
+- Subject: `Your Aesthetics Unlocked sign-in link`
 
-### SMTP — REQUIRED before launch
+In **Project Settings → Auth → SMTP Settings**:
 
-Supabase's built-in mailer rate-limits at **3 emails/hour** — fine
-for setup, but a single launch broadcast or a busy day of opt-ins
-will blow through it instantly. Wire a real SMTP provider before
-the doors open.
+- Custom SMTP enabled
+- Sender: `Aesthetics Unlocked <hello@aunlock.co.uk>`
+- Host: `smtp.resend.com`, port 587, username `resend`, password is the
+  Resend API key minted with Sending-only scope
+- `aunlock.co.uk` is verified at Resend with DKIM + SPF alongside Kartra's
+  existing records (Kartra's records were not touched, both services
+  coexist via different DKIM selectors)
 
-**Recommended: Resend.** Cleanest DX for Next.js + Vercel projects,
-3,000 emails/month free, then ~£15/mo for 50k. UK-friendly, fast
-deliverability, and the API surface Supabase Auth speaks to is just
-SMTP credentials — no app code changes required.
+End-to-end smoke-tested 2026-04-30: sign-in code arrives in under 10
+seconds, lands in Primary inbox, from-line reads
+`Aesthetics Unlocked <hello@aunlock.co.uk>`, no "powered by Supabase"
+footer, click-through and OTP entry both work.
+
+### Reference: the original setup steps
+
+Kept here in case the SMTP needs re-doing on a fresh Supabase project, or
+if Resend credentials get rotated.
+
+**Why a real SMTP provider:** Supabase's built-in mailer rate-limits at
+**3 emails/hour**. Fine for setup but blows through that ceiling in any
+real launch. The default mailer also sends from `noreply@mail.app.supabase.io`
+with a "powered by Supabase" footer, which destroys deliverability and
+reads as spammy.
+
+**Recommended: Resend.** 3,000 emails/month free, ~£15/mo for 50k after
+that. UK-friendly, fast deliverability, integrates with Supabase Auth via
+plain SMTP credentials.
 
 1. Sign up at [resend.com](https://resend.com) and verify the
-   `aunlock.co.uk` sending domain. **Important:** the website lives on
+   `aunlock.co.uk` sending domain. The website lives on
    `aestheticsunlocked.co.uk` but Bernadette sends email from
    `hello@aunlock.co.uk` (shorter, easier to say). The `aunlock.co.uk`
-   domain is **already verified and sending from Kartra**, so you're
-   adding Resend's DKIM selector + SPF include alongside Kartra's
-   existing records, not setting up cold. Multiple SPF includes in one
-   TXT record are valid; DKIM uses different selectors so Kartra and
-   Resend coexist. Takes ~10 minutes including propagation. No sender
-   warm-up window required.
+   domain is already verified at Kartra, so this is appending Resend's
+   DKIM selector + SPF include alongside Kartra's existing records, not
+   setting up cold. Multiple SPF includes in one TXT record are valid;
+   DKIM uses different selectors so Kartra and Resend coexist. Takes
+   about 10 minutes including DNS propagation. No sender warm-up window
+   required.
+
+   At GoDaddy DNS, **only ADD records, never replace existing ones**.
+   The three to add are: a DKIM TXT on `resend._domainkey`, an MX on
+   `send` for bounce routing (priority 10, `feedback-smtp.eu-west-1.amazonses.com`),
+   and an SPF TXT on `send` (`v=spf1 include:amazonses.com ~all`).
+   The optional fourth inbound-MX record from Resend should be skipped,
+   since touching the apex MX would break Bernadette's existing inbound
+   mail.
+
 2. In Resend → **API Keys → Create API Key**, name it
-   `supabase-auth-smtp`. Copy the key (starts `re_...`).
+   `supabase-auth-smtp`, scope it to **Sending access only**. Copy the key
+   (starts `re_...`).
 3. In Supabase dashboard → **Project Settings → Auth → SMTP Settings**,
    toggle **Enable Custom SMTP** and enter:
 
@@ -165,12 +197,12 @@ SMTP credentials — no app code changes required.
    See PROJECT-STATE.md §1.
 
 4. Click **Save**. Send yourself a magic-link sign-in to confirm
-   delivery in under 10 seconds.
+   delivery in under 10 seconds. Check Gmail's "Show original" view to
+   confirm SPF, DKIM and DMARC all PASS.
 
-**Alternatives:** Postmark (£10/mo, best deliverability for
-transactional, slower onboarding) or Mailgun (cheapest at scale,
-clunkier dashboard). Resend is the lowest-friction choice — switch
-later if you outgrow it.
+**Alternatives:** Postmark (£10/mo, best deliverability for transactional,
+slower onboarding) or Mailgun (cheapest at scale, clunkier dashboard).
+Resend won on lowest setup friction.
 
 ## Step 5 — Kartra credentials + IPN webhook (10 min)
 

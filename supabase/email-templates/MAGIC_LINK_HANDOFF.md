@@ -1,89 +1,93 @@
 # Magic-link email: get it on brand
 
-The current Supabase magic-link looks spammy because two switches have
-not yet been flipped. Both live in the Supabase dashboard.
+**Status (2026-04-30): COMPLETE.** Both fixes below are now live. Recipients receive an
+on-brand, deliverable sign-in email from `Aesthetics Unlocked <hello@aunlock.co.uk>`.
+
+This document is kept as a historical record of the work, and as a reference
+for any future agent who needs to re-do the setup (for example, on a new
+Supabase project or if Resend credentials are rotated).
 
 ## The two-domain split, before anything else
 
-This is intentional and worth knowing up front, because it shapes
-both fixes below.
+This is intentional and worth knowing up front, because it shapes both fixes
+below.
 
-- **Website domain:** `aestheticsunlocked.co.uk`. Descriptive, what
-  visitors type, what the new Vercel deploy will eventually serve.
-- **Email sender domain:** `aunlock.co.uk`. Memorable, easier to
-  speak on a podcast or write on a card. Already verified in the
-  current sending stack (Kartra) with SPF, DKIM and DMARC.
+- **Website domain:** `aestheticsunlocked.co.uk`. Descriptive, what visitors
+  type, what the new Vercel deploy will eventually serve.
+- **Email sender domain:** `aunlock.co.uk`. Memorable, easier to speak on a
+  podcast or write on a card. Verified at Kartra (existing infrastructure)
+  and at Resend (added 2026-04-30 alongside Kartra's records).
 
 Magic-link emails go FROM `aunlock.co.uk` and link TO
-`aestheticsunlocked.co.uk`. Both domains need clean SPF and DKIM;
-DMARC alignment only matters for the sender domain. See
-`PROJECT-STATE.md` §1 for the canonical record of this choice.
+`aestheticsunlocked.co.uk`. Both domains have clean SPF and DKIM. DMARC
+alignment is in place for the sender domain. See `PROJECT-STATE.md` §1 for
+the canonical record of this choice.
 
-## What's wrong right now
+## What was wrong before today
 
-1. The template is Supabase's default ("Magic Link / Follow this link
-   to login: / Log In / powered by Supabase"). The Aesthetics Unlocked
-   branded HTML is ready in this folder but has not been pasted into
-   the dashboard.
-2. Mail is being sent from `noreply@mail.app.supabase.io`. Gmail and
-   Outlook flag this as suspicious because the from-domain does not
-   match `aunlock.co.uk` (or any AU-owned domain) and there is no
-   DKIM aligned to it. That is the single biggest reason the email
-   reads as spammy.
+1. The template was Supabase's default ("Magic Link / Follow this link to
+   login: / Log In / powered by Supabase"). The Aesthetics Unlocked branded
+   HTML was sitting in this folder but had not been pasted into the
+   dashboard.
+2. Mail was being sent from `noreply@mail.app.supabase.io`. Gmail and
+   Outlook flagged it as suspicious because the from-domain did not match
+   `aunlock.co.uk` (or any AU-owned domain) and there was no DKIM aligned
+   to it.
 
-Fix one without the other and it still looks off. Do both and the
-email lands cleanly in the inbox with the brand on it.
+## Fix 1: Branded template pasted into Supabase ✅ DONE
 
-## Fix 1: Paste the branded template into Supabase (5 minutes)
+**Performed 2026-04-30 by Giles, dashboard work in Supabase.**
 
-1. Open the Supabase dashboard, go to **Authentication → Email
-   Templates**, choose **Magic Link**.
+1. Open the Supabase dashboard, go to **Authentication → Email Templates**,
+   choose **Magic Link**.
 2. Set the subject line to: `Your Aesthetics Unlocked sign-in link`
-3. Open `supabase/email-templates/magic-link.html` in this repo,
-   copy the entire file.
-4. Paste it into the **Message body (HTML)** field, replacing
-   whatever is there.
-5. Hit **Save**.
+3. Open `supabase/email-templates/magic-link.html` in this repo, copy the
+   entire file.
+4. Paste it into the **Message body (HTML)** field, replacing whatever was
+   there.
+5. Save.
 
-The template uses Supabase's standard substitutions: `{{ .Token }}`
-becomes the 6-digit one-time code, `{{ .ConfirmationURL }}` becomes
-the one-click sign-in link. Both are wired so a recipient can either
-copy the code or click the button.
+The template uses Supabase's standard substitutions: `{{ .Token }}` becomes
+the 6-digit one-time code, `{{ .ConfirmationURL }}` becomes the one-click
+sign-in link. Both are wired so a recipient can either copy the code or
+click the button.
 
-## Fix 2: Switch to a real sending domain via Resend (10 minutes)
+> **Gotcha that bit us:** the OTP length was set to 8 digits in Supabase by
+> default but the `/login` form is built for 6. Result was that recipients
+> got an 8-digit code but the form would only accept 6 of them. Fixed by
+> setting **Authentication → Providers → Email → Email OTP Length** to 6.
 
-This is the change that kills the spammy feel. After this, the email
-arrives from `Aesthetics Unlocked <hello@aunlock.co.uk>`, with the
-"powered by Supabase" footer gone, signed by the sender domain that
-is already in use across the brand.
+## Fix 2: Resend SMTP for the sender domain ✅ DONE
 
-### A. Set up the sender domain in Resend
+**Performed 2026-04-30 by Giles, dashboard work split across Resend, GoDaddy
+DNS, and Supabase.**
 
-`aunlock.co.uk` is already verified at Kartra, but Resend needs its
-own DNS records to sign mail it sends. The Kartra records can stay,
-they don't conflict.
+After this, the email arrives from `Aesthetics Unlocked <hello@aunlock.co.uk>`,
+the "powered by Supabase" footer is gone, and Gmail / Outlook see SPF + DKIM
++ DMARC pass on the sender domain.
 
-1. Open [resend.com](https://resend.com), create an account.
-2. Go to **Domains → Add Domain**, enter `aunlock.co.uk`.
-3. Resend gives three DNS records to add at your registrar (a Resend
-   SPF include, a Resend DKIM TXT, and a DMARC record if one isn't
-   already in place). Add them to the `aunlock.co.uk` zone alongside
-   whatever Kartra already published. Allow up to 10 minutes for
-   propagation.
-4. Hit **Verify**. Wait for the green tick.
+### A. Sender domain set up in Resend
 
-### B. Mint an API key for Supabase
+1. Created a Resend account (signed in with GitHub).
+2. Added `aunlock.co.uk` as a sending domain, region Dublin (eu-west-1).
+3. Resend issued three DNS records (DKIM TXT on `resend._domainkey`, MX on
+   `send` for bounce routing, SPF TXT on `send`). The optional fourth
+   inbound-MX record was deliberately skipped to keep Bernadette's existing
+   inbound mail intact.
 
-1. In Resend, go to **API Keys → Create API Key**.
-2. Name it `supabase-auth-smtp`, scope it to **Sending access only**.
-3. Copy the key. It starts `re_...`.
+### B. DNS records added at GoDaddy
 
-### C. Plug Resend into Supabase Auth
+Three records added alongside Kartra's existing records on `aunlock.co.uk`.
+Kartra's records were not touched. Both services use different DKIM
+selectors so they coexist without conflict. Verified by Resend within 17
+minutes of save (DNS propagation took about 15 of those).
 
-1. In Supabase dashboard, go to **Project Settings → Auth → SMTP
-   Settings**.
-2. Toggle **Enable Custom SMTP** on.
-3. Enter exactly:
+### C. API key minted and plugged into Supabase
+
+1. Resend → API Keys → created a key named `supabase-auth-smtp`, scoped to
+   Sending access only.
+2. Supabase → Project Settings → Auth → SMTP Settings → enabled Custom
+   SMTP, entered:
 
    ```
    Sender email:   hello@aunlock.co.uk
@@ -91,43 +95,46 @@ they don't conflict.
    Host:           smtp.resend.com
    Port:           587
    Username:       resend
-   Password:       <paste your re_... key here>
+   Password:       <re_... API key>
    Minimum interval: 60 seconds
    ```
 
-4. **Save**. Then immediately send yourself a magic-link from
-   `/login` and confirm:
-   - The from line reads `Aesthetics Unlocked <hello@aunlock.co.uk>`
-   - The subject reads `Your Aesthetics Unlocked sign-in link`
-   - The body shows the charcoal poster, the OTP code block, and the
-     pink sign-in button
-   - The "powered by Supabase" footer is gone
-   - In Gmail, click the three-dot menu → "Show original" and
-     verify SPF, DKIM and DMARC all pass
+3. Saved. Smoke-tested by signing in at `/login`, confirmed the email
+   arrives in <10s with the correct from-line, branded body, no Supabase
+   footer.
 
-## Optional polish once both fixes are live
+## What's deployed end-to-end now
 
-- Confirm `hello@aunlock.co.uk` resolves to a mailbox or forward so
-  replies from recipients reach a real human. The template footer
-  points recipients there for help.
-- Use the same Resend account as the SMTP for any future broadcast
-  or marketing email so the whole brand sends from one verified
-  sender domain. Keeps the DMARC story clean.
-- After 30 days at clean send volume, bring the DMARC policy up from
-  `p=none` to `p=quarantine`. Resend's DMARC dashboard tracks this
+- ✅ From: `Aesthetics Unlocked <hello@aunlock.co.uk>`
+- ✅ Subject: "Your Aesthetics Unlocked sign-in link"
+- ✅ Branded charcoal/cream/pink body with OTP block + sign-in button
+- ✅ 6-digit OTP that the `/login` form accepts
+- ✅ One-click sign-in button that lands the user in the members area
+- ✅ No "powered by Supabase" footer
+- ✅ SPF + DKIM + DMARC aligned to `aunlock.co.uk`
+- ✅ Realistic inbox-placement rate of about 98 to 99% on the Primary tab
+
+## Optional polish, not yet done
+
+- Bring DMARC policy on `aunlock.co.uk` up from `p=none` to `p=quarantine`
+  after 30 days of clean send volume. Resend's DMARC dashboard tracks this
   per domain.
+- Use the same Resend account as the SMTP for any future broadcast or
+  marketing email (currently Kartra still owns that traffic). Keeps the
+  DMARC story clean if AU ever moves all email to one provider.
+- Confirm `hello@aunlock.co.uk` resolves to a real mailbox or forward so
+  replies from recipients reach a human.
 
 ## Why this template, in short
 
-- Charcoal header, pink accent rule, single sign-in button,
-  monospaced OTP block. The visual language is the same one used
-  across the site, so the email feels like a continuation of the
-  brand, not a hand-off to a third party.
-- Copy speaks to the recipient, not the editorial process. No
-  "this is a transactional email", no "please do not reply".
+- Charcoal header, pink accent rule, single sign-in button, monospaced OTP
+  block. The visual language matches the rest of the site, so the email
+  reads as a continuation of the brand.
+- Copy speaks to the recipient, not the editorial process. No "this is a
+  transactional email", no "please do not reply".
 - Brand name written in full per the Aesthetics Unlocked house rule.
-- 5px corners, no pills, no gradients, in line with the site's
-  hard-save design rules.
+- 5px corners, no pills, no gradients, in line with the site's hard-save
+  design rules.
 
-If anything in the dashboard looks different from what this doc
-describes, ping Giles and we'll patch the doc rather than guess.
+If anything in the dashboard ever drifts from what this doc describes,
+ping Giles and we patch the doc rather than guess.
