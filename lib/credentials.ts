@@ -32,8 +32,9 @@ export const FOUNDER = {
   firstName: "Bernadette",
   lastName: "Tobin",
   fullName: "Bernadette Tobin",
-  shortCredentials: "RN, MSc",
-  longCredentials: "RN, MSc Advanced Practice",
+  shortCredentials: "RN, INP, MSc",
+  longCredentials:
+    "RN, Independent Nurse Prescriber, MSc Advanced Practice (Level 7), Level 7 Aesthetics",
   /** Verifiable on the NMC public register at nmc.org.uk */
   nmcPin: "05G1755E",
   /** Years headline numbers — surfaced in stat badges */
@@ -98,7 +99,9 @@ export const VISAGE_ATTRIBUTION =
  */
 export const HERO_STAT_STRIP = [
   "Educator of the Year 2026 Nominee",
-  "MSc Advanced Practice",
+  "Independent Nurse Prescriber",
+  "MSc Advanced Practice (Level 7)",
+  "Level 7 Aesthetics",
   "NMC Registered",
   "20+ years clinical",
   "12 years in aesthetics",
@@ -115,8 +118,9 @@ export const WHY_BERNADETTE_CREDIBILITY_LIST = [
     sub: "Health, Beauty & Wellness Awards · Founder, Visage Aesthetics",
   },
   {
-    headline: "RN, MSc Advanced Practice (Level 7)",
-    sub: "NMC Registered · Royal College of Nursing",
+    headline:
+      "RN, Independent Nurse Prescriber, MSc Advanced Practice (Level 7)",
+    sub: "Level 7 Aesthetics · NMC Registered · Royal College of Nursing",
   },
   {
     headline: "20+ years clinical, 12 years in aesthetics",

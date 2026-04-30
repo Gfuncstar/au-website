@@ -18,12 +18,13 @@ import { motion, type Variants } from "framer-motion";
 import { Eyebrow } from "./Eyebrow";
 import { Button } from "./Button";
 import { ClinicalIllustration } from "./SectionIllustration";
+import { FOUNDER } from "@/lib/credentials";
 
 const STATS = [
   { num: "20+", label: "Years nursing" },
   { num: "12", label: "Years in aesthetics" },
   { num: "MSc", label: "Advanced Practice" },
-  { num: "NMC", label: "Registered RN" },
+  { num: "INP", label: "Independent Prescriber" },
 ] as const;
 
 const containerVariants: Variants = {
@@ -88,7 +89,7 @@ export function MeetBernadette() {
         >
           Hi, I&rsquo;m{" "}
           <strong className="font-bold">Bernadette Tobin</strong>,{" "}
-          <span className="text-au-charcoal/70">RN, MSc Advanced Practice.</span>
+          <span className="text-au-charcoal/70">{FOUNDER.longCredentials}.</span>
         </motion.p>
         <motion.ul
           variants={itemVariants}

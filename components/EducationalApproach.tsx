@@ -29,7 +29,7 @@ const PRINCIPLES = [
   {
     num: "02",
     title: "Clarity before confidence",
-    body: "My courses don't ask you to perform certainty. They build the underlying judgement first, clinical reasoning, regulatory framework, business numbers, so confidence becomes a byproduct of competence.",
+    body: "I don't teach you to look confident. I teach you the judgement underneath it, clinical reasoning, regulatory framework, business numbers, so the confidence that shows up in the consultation room is real.",
     quote:
       "Profit is a byproduct of clarity, not complexity. You're not here to fit into the industry, you're here to find your place within it.",
     quoteFrom: "5K+ Formula Mini · Day 3",

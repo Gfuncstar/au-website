@@ -660,11 +660,11 @@ export const COURSES: readonly Course[] = [
     slug: "acne-decoded",
     kartraMembershipName: "Acne Decoded",
     freeTasterSlug: "free-acne-decoded",
-    eyebrow: "Clinical · £79",
+    eyebrow: "Clinical · £150",
     title: "Acne Decoded",
     summary:
       "Stop guessing. Learn what drives acne and how to treat it properly.",
-    body: "Most acne treatment plans are educated guesses. Same protocols, same disappointed clients, same results that don't hold. I built Acne Decoded as the science behind the condition. What drives breakouts at the cellular level. How to assess severity correctly. How to treat without over-treating. NICE guidance translated into clinical decisions you can defend. One course. £79. No upsells.",
+    body: "Most acne treatment plans are educated guesses. Same protocols, same disappointed clients, same results that don't hold. I built Acne Decoded as the science behind the condition. What drives breakouts at the cellular level. How to assess severity correctly. How to treat without over-treating. NICE guidance translated into clinical decisions you can defend. One course. £150. No upsells.",
     voiceQuote:
       "Acne is not simply a cosmetic concern. It is a complex, chronic inflammatory skin condition that affects individuals physically, psychologically, and socially.",
     bullets: [
@@ -673,7 +673,7 @@ export const COURSES: readonly Course[] = [
       "Treatment decision-making",
       "Severity assessment",
     ],
-    stats: ["11 sections", "Self-paced", "£79"],
+    stats: ["11 sections", "Self-paced", "£150"],
     modules: [
       {
         num: "01",
@@ -780,7 +780,7 @@ export const COURSES: readonly Course[] = [
         ],
       },
     ],
-    price: 79,
+    price: 150,
     ctaText: "View course",
     kartraUrl: courseKartraPlaceholder("acne-decoded"),
     tone: "charcoal",
@@ -841,8 +841,8 @@ export const COURSES: readonly Course[] = [
         a: "No. The course is designed for any practitioner working with skin who wants the clinical reasoning behind acne decisions, including aestheticians, beauty therapists, advanced facialists, and prescribing clinicians.",
       },
       {
-        q: "Is it really £79 with no upsells?",
-        a: "Yes. £79 one-time, lifetime access, no upsells inside the course. Bernadette's stance is that clinical education should be priced honestly.",
+        q: "Is it really £150 with no upsells?",
+        a: "Yes. £150 one-time, lifetime access, no upsells inside the course. Bernadette's stance is that clinical education should be priced honestly.",
       },
     ],
     weeklyHours: "≈ 1 hr/wk · 5 wks",
@@ -852,11 +852,11 @@ export const COURSES: readonly Course[] = [
     slug: "rosacea-beyond-redness",
     kartraMembershipName: "Rosacea Beyond Redness",
     freeTasterSlug: "free-rosacea-beyond-redness",
-    eyebrow: "Clinical · £79",
+    eyebrow: "Clinical · £150",
     title: "Rosacea Beyond Redness",
     summary:
       "Pathophysiology, barrier integrity, microbiome, NICE-aligned management, the rosacea course UK practitioners have been waiting for.",
-    body: "Rosacea is rarely just about redness. I built this course to unpack the four subtypes, the barrier story, the microbiome, and the long-term management strategy NICE backs. For practitioners who want to stop reaching for the same flare-management tool and start treating the condition. One course. £79. No upsells.",
+    body: "Rosacea is rarely just about redness. I built this course to unpack the four subtypes, the barrier story, the microbiome, and the long-term management strategy NICE backs. For practitioners who want to stop reaching for the same flare-management tool and start treating the condition. One course. £150. No upsells.",
     voiceQuote:
       "Build knowledge, confidence, and safe decision-making when working with clients who may present with rosacea.",
     bullets: [
@@ -865,7 +865,7 @@ export const COURSES: readonly Course[] = [
       "NICE-aligned management",
       "Trigger identification",
     ],
-    stats: ["12 sections", "Self-paced", "£79"],
+    stats: ["12 sections", "Self-paced", "£150"],
     modules: [
       {
         num: "01",
@@ -908,7 +908,7 @@ export const COURSES: readonly Course[] = [
         body: "Real cases, decision walkthroughs. NICE-aligned recap. Knowledge check + Certificate of Completion.",
       },
     ],
-    price: 79,
+    price: 150,
     ctaText: "View course",
     kartraUrl: courseKartraPlaceholder("rosacea-beyond-redness"),
     tone: "pink-soft",
@@ -1178,7 +1178,7 @@ export const COURSES: readonly Course[] = [
     faqs: [
       {
         q: "How is this different from Acne Decoded and Rosacea Beyond Redness?",
-        a: "The £79 decoders are deep dives on a single condition. The Skin Specialist Programme is the integrated, multi-condition pathway, including the consultation framework, pigmentation, barrier dysfunction, photodamage, and scarring (none of which are covered in the single-condition courses). If you've already taken Acne Decoded or Rosacea Beyond Redness, this extends, it doesn't repeat.",
+        a: "The £150 decoders are deep dives on a single condition. The Skin Specialist Programme is the integrated, multi-condition pathway, including the consultation framework, pigmentation, barrier dysfunction, photodamage, and scarring (none of which are covered in the single-condition courses). If you've already taken Acne Decoded or Rosacea Beyond Redness, this extends, it doesn't repeat.",
       },
       {
         q: "Is this CPD-accredited?",
@@ -1442,12 +1442,12 @@ export const COURSES: readonly Course[] = [
     slug: "5k-formula",
     kartraMembershipName: "The 5K+ Formula™",
     freeTasterSlug: "free-3-day-startup",
-    eyebrow: "Business · 12 weeks · £1,199",
+    eyebrow: "Business · 12 weeks · £799",
     title: "The 5K+ Formula™",
-    price: 1199,
+    price: 799,
     summary:
       "Consistent £5K+ months. Without chasing clients, discounting, or doing more treatments.",
-    body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Self-paced. Lifetime access. £1,199.",
+    body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Self-paced. Lifetime access. £799.",
     voiceQuote:
       "You're not here to learn generic business tips, you're here to master the art of building a profitable, personal, and professional aesthetics brand.",
     bullets: [
@@ -1458,7 +1458,7 @@ export const COURSES: readonly Course[] = [
       "Client journey mapping",
       "Monthly business rituals",
     ],
-    stats: ["12 modules", "12 weeks", "£1,199"],
+    stats: ["12 modules", "12 weeks", "£799"],
     modules: [
       {
         num: "01",
@@ -1568,7 +1568,7 @@ export const COURSES: readonly Course[] = [
       "12 modules across 12 weeks · rolling release",
       "The complete UNLOCK PROFIT™ Framework",
       "Niche · branding · pricing · systems modules",
-      "Live touch-points throughout the programme",
+      "Worksheets and templates inside every module",
       "Certificate of Completion",
       "Lifetime access, including future updates",
     ],
@@ -1591,7 +1591,7 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "Do I get 1-1 support?",
-        a: "The cohort runs with live group touch-points. 1-1 support sits outside this programme, speak to us directly if you're looking for that.",
+        a: "The 5K+ Formula™ is self-paced, not a live cohort. There are no group calls or director meetings inside the programme; the work is in the modules, the worksheets, and the framework you apply inside your own clinic. 1-1 support sits outside this programme, speak to us directly if you're looking for that.",
       },
     ],
     weeklyHours: "≈ 3 hrs/wk · 12 wks",
