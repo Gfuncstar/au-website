@@ -14,13 +14,23 @@ import { STANDARDS, getStandard } from "@/lib/standards";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
 
-export function generateImageMetadata() {
-  return STANDARDS.map((s) => ({
-    id: s.slug,
-    alt: `${s.abbrev}, ${s.name}`,
-    contentType,
-    size,
-  }));
+// Dynamic route: must return only the entry matching `params.slug`,
+// otherwise Next uses the first array element's id + alt for every page.
+export function generateImageMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const standard = STANDARDS.find((s) => s.slug === params.slug);
+  if (!standard) return [];
+  return [
+    {
+      id: standard.slug,
+      alt: `${standard.abbrev}, ${standard.name}`,
+      contentType,
+      size,
+    },
+  ];
 }
 
 const PINK = "#EE5A8E";

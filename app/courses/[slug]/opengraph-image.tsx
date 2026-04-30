@@ -20,13 +20,26 @@ import { COURSES, getCourse } from "@/lib/courses";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
 
-export function generateImageMetadata() {
-  return COURSES.map((c) => ({
-    id: c.slug,
-    alt: `${c.title}, Aesthetics Unlocked`,
-    contentType,
-    size,
-  }));
+// Dynamic route: this function fires once per route invocation with the
+// matched params, and must return ONLY the metadata entry for that
+// route's slug. Returning the full COURSES array causes Next to use
+// the first array element's id and alt for every course page (so the
+// `og:image:alt` becomes whichever course sorts first, on every page).
+export function generateImageMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const course = COURSES.find((c) => c.slug === params.slug);
+  if (!course) return [];
+  return [
+    {
+      id: course.slug,
+      alt: `${course.title}, Aesthetics Unlocked`,
+      contentType,
+      size,
+    },
+  ];
 }
 
 const PINK = "#EE5A8E";

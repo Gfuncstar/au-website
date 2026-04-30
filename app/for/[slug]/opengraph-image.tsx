@@ -15,13 +15,23 @@ import { LOCATIONS, getLocation } from "@/lib/locations";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
 
-export function generateImageMetadata() {
-  return LOCATIONS.map((l) => ({
-    id: l.slug,
-    alt: `Aesthetics education for ${l.name}, Aesthetics Unlocked`,
-    contentType,
-    size,
-  }));
+// Dynamic route: must return only the entry matching `params.slug`,
+// otherwise Next uses the first array element's id + alt for every page.
+export function generateImageMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const location = LOCATIONS.find((l) => l.slug === params.slug);
+  if (!location) return [];
+  return [
+    {
+      id: location.slug,
+      alt: `Aesthetics education for ${location.name}, Aesthetics Unlocked`,
+      contentType,
+      size,
+    },
+  ];
 }
 
 const PINK = "#EE5A8E";

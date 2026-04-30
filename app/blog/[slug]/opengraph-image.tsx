@@ -17,7 +17,7 @@
  */
 
 import { ImageResponse } from "next/og";
-import { getAllPosts, getPostBySlug, TOPIC_LABELS } from "@/lib/blog";
+import { getPostBySlug, TOPIC_LABELS } from "@/lib/blog";
 
 // Node runtime required because generateImageMetadata is not supported
 // on the edge runtime per Next 16. Same image quality, slightly slower
@@ -25,14 +25,25 @@ import { getAllPosts, getPostBySlug, TOPIC_LABELS } from "@/lib/blog";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
 
-export async function generateImageMetadata() {
-  const posts = await getAllPosts();
-  return posts.map((p) => ({
-    id: p.slug,
-    alt: `${p.title}, Aesthetics Unlocked Journal`,
-    contentType,
-    size,
-  }));
+// Dynamic route: must return only the entry matching `params.slug`,
+// otherwise Next uses the first array element's id + alt for every
+// post page (so every post would advertise the most recent post's
+// image alt text on social shares).
+export async function generateImageMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getPostBySlug(params.slug);
+  if (!post) return [];
+  return [
+    {
+      id: post.slug,
+      alt: `${post.title}, Aesthetics Unlocked Journal`,
+      contentType,
+      size,
+    },
+  ];
 }
 
 const PINK = "#EE5A8E";
