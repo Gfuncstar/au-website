@@ -28,7 +28,7 @@
 
 - **E1** uses `{magic_link_url}` (Kartra custom field, populated by /api/subscribe)
 - **E2, E3** link back to the next free lesson on the site: `https://aestheticsunlocked.co.uk/members/courses/free-acne-decoded`
-- **E4-E7** link to the paid Acne Decoded checkout. Bernadette to provide the real URL — until then, they reference the placeholder `{ACNE_CHECKOUT_URL}` which she'll replace in Kartra.
+- **E4-E7** link to the live Aesthetics Unlocked sales page at `https://aestheticsunlocked.co.uk/courses/acne-decoded`. That page carries the full pitch and the Kartra checkout button, so the reader gets the complete picture before the buy decision. No swap needed in Kartra. If Bernadette ever prefers to bypass the sales page and link straight to Kartra checkout, swap the URL when pasting the email into Kartra.
 
 ## Drafted by
 

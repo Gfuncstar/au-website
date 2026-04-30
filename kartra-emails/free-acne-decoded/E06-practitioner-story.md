@@ -4,7 +4,7 @@ position: 6
 day: 10
 delay-from-previous: 2 days
 sender: Bernadette - Aesthetics Unlocked <hello@aunlock.co.uk>
-cta-url: "{ACNE_CHECKOUT_URL}"
+cta-url: "https://aestheticsunlocked.co.uk/courses/acne-decoded"
 status: draft-for-review
 note: "Practitioner story below is illustrative — Bernadette to replace with a real verified case if she has one. Do not publish without her confirmation that the story is hers to tell."
 ---
@@ -43,7 +43,7 @@ That's the shift the course is built to produce. Not better
 products. Better seeing.
 
 **[ INSIDE ACNE DECODED → ]**
-{ACNE_CHECKOUT_URL}
+https://aestheticsunlocked.co.uk/courses/acne-decoded
 
 Bernadette
 

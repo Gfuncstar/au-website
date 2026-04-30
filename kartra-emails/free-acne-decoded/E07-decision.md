@@ -4,7 +4,7 @@ position: 7
 day: 13
 delay-from-previous: 3 days
 sender: Bernadette - Aesthetics Unlocked <hello@aunlock.co.uk>
-cta-url: "{ACNE_CHECKOUT_URL}"
+cta-url: "https://aestheticsunlocked.co.uk/courses/acne-decoded"
 status: draft-for-review
 ---
 
@@ -39,7 +39,7 @@ If you'd rather wait, the lessons from the mini stay in your members
 area. The full course is here when you want it.
 
 **[ JOIN ACNE DECODED → ]**
-{ACNE_CHECKOUT_URL}
+https://aestheticsunlocked.co.uk/courses/acne-decoded
 
 Bernadette
 

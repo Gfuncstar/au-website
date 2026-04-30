@@ -4,7 +4,7 @@ position: 4
 day: 6
 delay-from-previous: 2 days
 sender: Bernadette - Aesthetics Unlocked <hello@aunlock.co.uk>
-cta-url: "{ACNE_CHECKOUT_URL}"
+cta-url: "https://aestheticsunlocked.co.uk/courses/acne-decoded"
 status: draft-for-review
 ---
 
@@ -37,7 +37,7 @@ It's £79, lifetime access. No subscription. No drip. You buy it
 once and it sits with you while your practice grows.
 
 **[ TAKE A LOOK INSIDE → ]**
-{ACNE_CHECKOUT_URL}
+https://aestheticsunlocked.co.uk/courses/acne-decoded
 
 If now isn't the moment, that's fine. The lessons in the mini stay
 in your members area for as long as you want them. Read them

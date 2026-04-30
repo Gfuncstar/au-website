@@ -4,7 +4,7 @@ position: 5
 day: 8
 delay-from-previous: 2 days
 sender: Bernadette - Aesthetics Unlocked <hello@aunlock.co.uk>
-cta-url: "{ACNE_CHECKOUT_URL}"
+cta-url: "https://aestheticsunlocked.co.uk/courses/acne-decoded"
 status: draft-for-review
 ---
 
@@ -43,7 +43,7 @@ practitioner in your area whose name comes up when a different
 practitioner's plan didn't work.
 
 **[ TAKE A LOOK INSIDE → ]**
-{ACNE_CHECKOUT_URL}
+https://aestheticsunlocked.co.uk/courses/acne-decoded
 
 Bernadette
 
