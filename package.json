@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "backfill": "tsx scripts/backfill-memberships.ts",
-    "preflight": "tsx scripts/preflight.ts"
+    "preflight": "tsx scripts/preflight.ts",
+    "build-kartra-emails": "tsx scripts/build-kartra-emails.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.2",
