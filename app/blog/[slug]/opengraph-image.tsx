@@ -29,12 +29,17 @@ export const size = { width: 1200, height: 630 };
 // otherwise Next uses the first array element's id + alt for every
 // post page (so every post would advertise the most recent post's
 // image alt text on social shares).
+//
+// In Next 16, `params` is a Promise in dynamic routes, including OG
+// image routes. Treat it like the page-level `params` and await it
+// before reading `slug`.
 export async function generateImageMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) return [];
   return [
     {
@@ -51,12 +56,13 @@ const CHARCOAL = "#212121";
 const CREAM = "#FAF6F1";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   id: string;
 };
 
 export default async function BlogOG({ params }: Props) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return new ImageResponse(

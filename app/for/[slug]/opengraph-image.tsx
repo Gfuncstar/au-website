@@ -17,12 +17,17 @@ export const size = { width: 1200, height: 630 };
 
 // Dynamic route: must return only the entry matching `params.slug`,
 // otherwise Next uses the first array element's id + alt for every page.
-export function generateImageMetadata({
+//
+// In Next 16, `params` is a Promise in dynamic routes, including OG
+// image routes. Await it before reading `slug` or the default
+// component renders the fallback image.
+export async function generateImageMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const location = LOCATIONS.find((l) => l.slug === params.slug);
+  const { slug } = await params;
+  const location = LOCATIONS.find((l) => l.slug === slug);
   if (!location) return [];
   return [
     {
@@ -39,12 +44,13 @@ const CHARCOAL = "#212121";
 const CREAM = "#FAF6F1";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   id: string;
 };
 
 export default async function LocationOG({ params }: Props) {
-  const location = getLocation(params.slug);
+  const { slug } = await params;
+  const location = getLocation(slug);
 
   if (!location) {
     return new ImageResponse(

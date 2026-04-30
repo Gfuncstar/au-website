@@ -25,12 +25,17 @@ export const size = { width: 1200, height: 630 };
 // route's slug. Returning the full COURSES array causes Next to use
 // the first array element's id and alt for every course page (so the
 // `og:image:alt` becomes whichever course sorts first, on every page).
-export function generateImageMetadata({
+//
+// In Next 16, `params` is a Promise in dynamic routes, including OG
+// image routes. Treat it like the page-level `params` and await it
+// before reading `slug`.
+export async function generateImageMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const course = COURSES.find((c) => c.slug === params.slug);
+  const { slug } = await params;
+  const course = COURSES.find((c) => c.slug === slug);
   if (!course) return [];
   return [
     {
@@ -47,12 +52,13 @@ const CHARCOAL = "#212121";
 const CREAM = "#FAF6F1";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   id: string;
 };
 
 export default async function CourseOG({ params }: Props) {
-  const course = getCourse(params.slug);
+  const { slug } = await params;
+  const course = getCourse(slug);
 
   if (!course) {
     // Fallback — shouldn't happen because generateImageMetadata only
