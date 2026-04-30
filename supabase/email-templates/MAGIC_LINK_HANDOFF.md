@@ -1,0 +1,111 @@
+# Magic-link email: get it on brand
+
+The current Supabase magic-link looks spammy because two switches have
+not yet been flipped. Both live in the Supabase dashboard, and
+together they take about 15 minutes.
+
+## What's wrong right now
+
+1. The template is Supabase's default ("Magic Link / Follow this link
+   to login: / Log In / powered by Supabase"). The Aesthetics Unlocked
+   branded HTML is ready in this folder but has not been pasted into
+   the dashboard.
+2. Mail is being sent from `noreply@mail.app.supabase.io`. Gmail and
+   Outlook flag this as suspicious because the from-domain does not
+   match the brand domain and there is no DKIM aligned to
+   `aestheticsunlocked.co.uk`. That is the single biggest reason the
+   email reads as spammy.
+
+Fix one without the other and it still looks off. Do both and the
+email lands cleanly in the inbox with the brand on it.
+
+## Fix 1: Paste the branded template into Supabase (5 minutes)
+
+1. Open the Supabase dashboard, go to **Authentication → Email
+   Templates**, choose **Magic Link**.
+2. Set the subject line to: `Your Aesthetics Unlocked sign-in link`
+3. Open `supabase/email-templates/magic-link.html` in this repo,
+   copy the entire file.
+4. Paste it into the **Message body (HTML)** field, replacing whatever
+   is there.
+5. Hit **Save**.
+
+The template uses Supabase's standard substitutions: `{{ .Token }}`
+becomes the 6-digit one-time code, `{{ .ConfirmationURL }}` becomes
+the one-click sign-in link. Both are wired so a recipient can either
+copy the code or click the button.
+
+## Fix 2: Switch to a real sending domain via Resend (10 minutes)
+
+This is the change that kills the spammy feel. After this, the email
+arrives from `Aesthetics Unlocked <hello@aestheticsunlocked.co.uk>`
+with DKIM, SPF and DMARC aligned, and the "powered by Supabase"
+footer disappears.
+
+### A. Sign up for Resend and verify the brand domain
+
+1. Open [resend.com](https://resend.com), create an account.
+2. Go to **Domains → Add Domain**, enter `aestheticsunlocked.co.uk`.
+3. Resend gives three DNS records to add at your registrar (SPF + DKIM
+   + DMARC). Add them to the `aestheticsunlocked.co.uk` zone. Allow
+   up to 10 minutes for propagation.
+4. Hit **Verify**. Wait for the green tick.
+
+### B. Mint an API key for Supabase
+
+1. In Resend, go to **API Keys → Create API Key**.
+2. Name it `supabase-auth-smtp`, scope it to **Sending access only**.
+3. Copy the key. It starts `re_...`.
+
+### C. Plug Resend into Supabase Auth
+
+1. In Supabase dashboard, go to **Project Settings → Auth → SMTP
+   Settings**.
+2. Toggle **Enable Custom SMTP** on.
+3. Enter exactly:
+
+   ```
+   Sender email:   hello@aestheticsunlocked.co.uk
+   Sender name:    Aesthetics Unlocked
+   Host:           smtp.resend.com
+   Port:           587
+   Username:       resend
+   Password:       <paste your re_... key here>
+   Minimum interval: 60 seconds
+   ```
+
+4. **Save**. Then immediately send yourself a magic-link from
+   `/login` and confirm:
+   - The from line reads `Aesthetics Unlocked <hello@aestheticsunlocked.co.uk>`
+   - The subject reads `Your Aesthetics Unlocked sign-in link`
+   - The body shows the charcoal poster, the OTP code block, and the
+     pink sign-in button
+   - The "powered by Supabase" footer is gone
+   - In Gmail, click the three-dot menu → "Show original" and
+     verify SPF, DKIM and DMARC all pass
+
+## Optional polish once both fixes are live
+
+- Set up a `hello@aestheticsunlocked.co.uk` mailbox (or a forward) so
+  replies from recipients reach a real human. The footer points
+  recipients there for help.
+- Add the same Resend account as the SMTP for any future broadcast or
+  marketing email so the whole brand sends from one verified domain.
+- After 30 days at clean send volume, bring the DMARC policy up from
+  `p=none` to `p=quarantine`. Resend's DMARC dashboard tracks this
+  per domain.
+
+## Why this template, in short
+
+- Charcoal header, pink accent rule, single sign-in button,
+  monospaced OTP block. The visual language is the same one used
+  across the site, so the email feels like a continuation of the
+  brand, not a hand-off to a third party.
+- Copy speaks to the recipient, not the editorial process. No
+  "this is a transactional email", no "please do not reply".
+- Brand name written in full per the Aesthetics Unlocked house rule.
+- 5px corners, no pills, no gradients, in line with the site's
+  hard-save design rules.
+
+If anything in the dashboard looks different from what this doc
+describes, ping Giles and we'll patch the doc rather than guess.

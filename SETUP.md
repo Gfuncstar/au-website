@@ -143,7 +143,7 @@ SMTP credentials — no app code changes required.
    toggle **Enable Custom SMTP** and enter:
 
    ```
-   Sender email:   hello@aunlock.co.uk
+   Sender email:   hello@aestheticsunlocked.co.uk
    Sender name:    Aesthetics Unlocked
    Host:           smtp.resend.com
    Port:           587
