@@ -20,7 +20,7 @@ import { cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 import { kartra } from "@/lib/kartra/client";
-import { getCourseByMembershipName } from "@/lib/courses";
+import { getCourse, getCourseByMembershipName } from "@/lib/courses";
 import { isOwnerEmail } from "@/lib/owner-emails";
 
 export type EntitlementResult =
@@ -48,6 +48,21 @@ export async function checkCourseEntitlement(
     return { entitled: true };
   }
 
+  // FREE-COURSE BYPASS: any course with no price is free, and the
+  // brand promise is that free is free. Any signed-in user gets the
+  // free course without needing a memberships row to be synced from
+  // Kartra. This sidesteps the case where someone opted in via a
+  // different funnel path (or owns this course via Kartra but the
+  // Supabase membership row hasn't yet been created), and matches
+  // the architectural decision in PROJECT-STATE.md §13 that the
+  // members area is the brand surface for the free-taster bridge.
+  //
+  // The check runs AFTER auth so anonymous visitors still bounce to
+  // the sales page; it just removes the per-user-per-free-course
+  // gate for signed-in users.
+  const course = getCourse(courseSlug);
+  const isFreeCourse = course && course.price === undefined;
+
   // LIVE: Supabase configured → check session + memberships table.
   if (isSupabaseConfigured()) {
     const supabase = await createSupabaseServerClient();
@@ -60,6 +75,10 @@ export async function checkCourseEntitlement(
     if (!user) return { entitled: false, reason: "not_signed_in" };
 
     if (isOwnerEmail(user.email)) {
+      return { entitled: true };
+    }
+
+    if (isFreeCourse) {
       return { entitled: true };
     }
 
@@ -80,6 +99,10 @@ export async function checkCourseEntitlement(
   // entitlement gate is still exercised in dev.
   const lead = await kartra.getLead("");
   if (!lead) return { entitled: false, reason: "not_signed_in" };
+
+  if (isFreeCourse) {
+    return { entitled: true };
+  }
 
   const owned = lead.memberships
     .filter((m) => m.active)
