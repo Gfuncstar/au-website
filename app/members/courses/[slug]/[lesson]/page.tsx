@@ -60,7 +60,7 @@ export async function generateMetadata({
   const course = getCourse(slug);
   const lessonData = await getLesson(slug, lesson);
   if (!course || !lessonData) return { title: "Lesson" };
-  return { title: `${lessonData.title} — ${course.title}` };
+  return { title: `${lessonData.title}, ${course.title}` };
 }
 
 export async function generateStaticParams() {
@@ -102,7 +102,7 @@ export default async function LessonPage({
       {/* Scroll-linked progress rule fixed to viewport top */}
       <LessonScrollProgress />
 
-      {/* Behaviour-only — listens for ← / → / M to navigate or mark
+      {/* Behaviour-only, listens for ← / → / M to navigate or mark
           complete without leaving the keyboard. */}
       <LessonKeyboardNav
         courseSlug={slug}
@@ -112,7 +112,7 @@ export default async function LessonPage({
         nextHref={next ? `/members/courses/${slug}/${next.slug}` : null}
       />
 
-      {/* Conversion event — fires once on lesson render. */}
+      {/* Conversion event, fires once on lesson render. */}
       <LessonViewTracker courseSlug={slug} lessonSlug={current.slug} />
 
       {/* All lesson chrome + body inside one wrapper so the sticky pill
@@ -131,7 +131,7 @@ export default async function LessonPage({
         />
 
         {/* ============================================================
-            Editorial lesson hero — full-bleed dark mode (charcoal poster
+            Editorial lesson hero, full-bleed dark mode (charcoal poster
             with pink accents). Per Giles' "this section course-wide
             needs to be in dark mode" rule. Carries the soft pink wash +
             diagonal pink rule used on the Part dividers and the resume
@@ -203,7 +203,7 @@ export default async function LessonPage({
                 </p>
               )}
 
-              {/* Byline — dark-mode tone */}
+              {/* Byline, dark-mode tone */}
               <div>
                 <LessonByline tone="dark" />
               </div>
@@ -247,7 +247,7 @@ export default async function LessonPage({
         </div>
       </div>
 
-      {/* Sticky right-rail "On this chapter" — desktop only, shows
+      {/* Sticky right-rail "On this chapter", desktop only, shows
           when the lesson has 4+ sections. */}
       <OnThisPageNav sections={sections} />
     </>

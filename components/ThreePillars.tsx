@@ -211,7 +211,7 @@ export function ThreePillars() {
           viewport={{ once: true, margin: "-80px" }}
           className="group transition-transform duration-500 ease-out hover:-translate-y-1"
         >
-          {/* Top row — pink rule + number on the left, SVG mark on the
+          {/* Top row, pink rule + number on the left, SVG mark on the
               right. Per Giles' "all icons in this position on all" call,
               the marks now anchor the top-right of each pillar (was at
               the foot beneath the body copy). */}

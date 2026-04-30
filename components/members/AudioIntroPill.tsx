@@ -16,7 +16,7 @@ export function AudioIntroPill({ duration }: AudioIntroPillProps) {
     <button
       type="button"
       disabled
-      aria-label="Audio intro — coming soon"
+      aria-label="Audio intro, coming soon"
       className="inline-flex items-center gap-3 bg-au-white border border-au-charcoal/15 rounded-[5px] px-4 py-2.5 text-au-charcoal hover:border-au-pink hover:text-au-pink transition-colors disabled:opacity-70 disabled:cursor-not-allowed group"
     >
       <span

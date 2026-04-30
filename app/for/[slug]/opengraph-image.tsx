@@ -18,7 +18,7 @@ export const size = { width: 1200, height: 630 };
 export function generateImageMetadata() {
   return LOCATIONS.map((l) => ({
     id: l.slug,
-    alt: `Aesthetics education for ${l.name} — Aesthetics Unlocked`,
+    alt: `Aesthetics education for ${l.name}, Aesthetics Unlocked`,
     contentType,
     size,
   }));
@@ -79,7 +79,7 @@ export default async function LocationOG({ params }: Props) {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Top — eyebrow */}
+        {/* Top, eyebrow */}
         <div
           style={{
             display: "flex",
@@ -96,7 +96,7 @@ export default async function LocationOG({ params }: Props) {
           {location.kind === "nation" ? "UK Nation" : `City · ${location.region}`}
         </div>
 
-        {/* Middle — location name + subtitle */}
+        {/* Middle, location name + subtitle */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <div
             style={{
@@ -121,7 +121,7 @@ export default async function LocationOG({ params }: Props) {
           </div>
         </div>
 
-        {/* Bottom — author strip */}
+        {/* Bottom, author strip */}
         <div
           style={{
             display: "flex",

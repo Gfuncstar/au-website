@@ -1,9 +1,9 @@
 ---
-title: "Module 1 — The Aesthetics Reality Check"
+title: "Module 1: The Aesthetics Reality Check"
 order: 2
 icon: lightbulb
 duration: "12 min"
-summary: "The fragmented but tightening regulatory landscape in England — and why true professionalism starts with seeing it clearly."
+summary: "The fragmented but tightening regulatory landscape in England, and why true professionalism starts with seeing it clearly."
 ---
 
 Before we talk about treatments, income, or growth, we need to address **reality**.
@@ -20,7 +20,7 @@ By the end of this module, you will clearly understand:
 
 - How the aesthetics industry is structured in England
 - The difference between medical and non-medical aesthetics
-- Who regulates what — and what is currently unregulated
+- Who regulates what, and what is currently unregulated
 - Why the Traffic Light System exists
 - Exactly where you sit within that system
 
@@ -32,16 +32,16 @@ Non-surgical aesthetics in England is not a single, regulated profession. It is 
 
 The industry sits across four overlapping zones:
 
-- **Medical practice** — prescribing, injectables, and any treatment that involves a Prescription-Only Medicine (POM)
-- **Healthcare services** — treatments that may trigger CQC registration when they involve invasive procedures or take place under the supervision of a regulated healthcare professional
-- **Skin and beauty therapy** — facials, peels, microneedling, and similar treatments that fall outside medical regulation
-- **Personal care licensing** — local authority licensing of premises and practitioners under skin-piercing and special-treatment by-laws (currently inconsistent across councils)
+- **Medical practice**, prescribing, injectables, and any treatment that involves a Prescription-Only Medicine (POM)
+- **Healthcare services**, treatments that may trigger CQC registration when they involve invasive procedures or take place under the supervision of a regulated healthcare professional
+- **Skin and beauty therapy**, facials, peels, microneedling, and similar treatments that fall outside medical regulation
+- **Personal care licensing**, local authority licensing of premises and practitioners under skin-piercing and special-treatment by-laws (currently inconsistent across councils)
 
-**Why this matters:** Most practitioners assume "aesthetics" is one industry with one rulebook. It is not. Your obligations change depending on which of these zones each treatment sits in — and most practitioners operate across two or three of them without realising it.
+**Why this matters:** Most practitioners assume "aesthetics" is one industry with one rulebook. It is not. Your obligations change depending on which of these zones each treatment sits in, and most practitioners operate across two or three of them without realising it.
 
 ## Medical vs non-medical aesthetics
 
-This is the single most important distinction in the entire industry — and the one most often blurred.
+This is the single most important distinction in the entire industry, and the one most often blurred.
 
 **Medical aesthetic treatments** include:
 
@@ -69,7 +69,7 @@ These treatments require:
 
 ## Who regulates what
 
-There is no single aesthetics regulator in England. Instead, responsibility is split across multiple bodies — each with a clearly defined remit:
+There is no single aesthetics regulator in England. Instead, responsibility is split across multiple bodies, each with a clearly defined remit:
 
 | Body | What they cover |
 |------|-----------------|
@@ -84,9 +84,9 @@ There is no single aesthetics regulator in England. Instead, responsibility is s
 
 **Important:** Voluntary frameworks (JCCP, CPSA, ACE Group, BCAM, BACN) are not statutory regulators. They cannot remove your right to practise. But insurers, prescribers, and increasingly informed clients are starting to treat membership of one or more of these registers as a baseline of credibility.
 
-## What is changing — and why
+## What is changing, and why
 
-The **Health and Care Act 2022** gave the Secretary of State the power to introduce a national licensing scheme for non-surgical cosmetic procedures in England. The DHSC consultation that followed in 2023 set out a three-tier model — green, amber, red — which has heavily influenced the language and structure of this course.
+The **Health and Care Act 2022** gave the Secretary of State the power to introduce a national licensing scheme for non-surgical cosmetic procedures in England. The DHSC consultation that followed in 2023 set out a three-tier model, green, amber, red, which has heavily influenced the language and structure of this course.
 
 The direction of travel is now clear:
 
@@ -100,13 +100,13 @@ The direction of travel is now clear:
 
 ## Why the Traffic Light System exists
 
-Regulation in this industry is fragmented, but **risk is not**. Every treatment, every premises decision, every piece of marketing, every certificate on your wall sits somewhere on a single continuum — from clear professional risk through to demonstrable best practice.
+Regulation in this industry is fragmented, but **risk is not**. Every treatment, every premises decision, every piece of marketing, every certificate on your wall sits somewhere on a single continuum, from clear professional risk through to demonstrable best practice.
 
 The Traffic Light System (RAG) is the navigational backbone of this entire programme. It gives you a shared language for assessing where any decision sits:
 
-- **Red** — Active risk to your licence, insurance, or reputation. Stop, correct, or escalate
-- **Amber** — Requires improvement, evidence, or clarification. Defensible only if documented
-- **Green** — Demonstrable best practice. Safe under scrutiny
+- **Red**, Active risk to your licence, insurance, or reputation. Stop, correct, or escalate
+- **Amber**, Requires improvement, evidence, or clarification. Defensible only if documented
+- **Green**, Demonstrable best practice. Safe under scrutiny
 
 We will work through the framework in detail in Module 2. For now, the principle to hold is this: **if you cannot justify it on paper, you cannot defend it in practice.**
 
@@ -114,20 +114,20 @@ We will work through the framework in detail in Module 2. For now, the principle
 
 Most practitioners reading this course sit in one of five positions:
 
-1. **Newly qualified, finding your feet** — clarity matters more than scale
-2. **Established but undocumented** — the work is good, the paperwork is not
-3. **Confident but isolated** — no peer benchmarking, no governance structure
-4. **Rebuilding after a complaint or incident** — repairing reputation through evidenced practice
-5. **Scaling toward multi-treatment / multi-room** — formalising what worked at solo level
+1. **Newly qualified, finding your feet**, clarity matters more than scale
+2. **Established but undocumented**, the work is good, the paperwork is not
+3. **Confident but isolated**, no peer benchmarking, no governance structure
+4. **Rebuilding after a complaint or incident**, repairing reputation through evidenced practice
+5. **Scaling toward multi-treatment / multi-room**, formalising what worked at solo level
 
-There is no "wrong" starting point. There is only the gap between where you are now and what a defensible practice looks like — and that gap is what the rest of this programme is designed to close.
+There is no "wrong" starting point. There is only the gap between where you are now and what a defensible practice looks like, and that gap is what the rest of this programme is designed to close.
 
-## Reflection — before the next module
+## Reflection, before the next module
 
 Before you move on, sit with this:
 
 - Which of the four zones above does each of your treatments sit in?
-- For each one, who is your statutory regulator — if any?
+- For each one, who is your statutory regulator, if any?
 - Where would your current practice land if a complaint, an inspection, or an insurer query landed on your desk tomorrow?
 
-You don't need perfect answers yet. The point of this module is to make the questions visible. Everything from here on is about answering them — properly, and on paper.
+You don't need perfect answers yet. The point of this module is to make the questions visible. Everything from here on is about answering them, properly, and on paper.

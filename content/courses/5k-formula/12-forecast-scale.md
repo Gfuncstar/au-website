@@ -1,5 +1,5 @@
 ---
-title: "Module 10 — Forecast and Scale"
+title: "Module 10: Forecast and Scale"
 order: 12
 icon: chart
 duration: "22 min"
@@ -18,7 +18,7 @@ For an aesthetics business to grow predictably, decisions must be based on **dat
 
 **Key point:** It is vital that you get very comfortable knowing your figures.
 
-Without tracking metrics, business owners often operate in a reactive cycle — busy one month, quiet the next, unsure why fluctuations occur. Metrics transform this uncertainty into insight. Understanding your numbers allows you to:
+Without tracking metrics, business owners often operate in a reactive cycle, busy one month, quiet the next, unsure why fluctuations occur. Metrics transform this uncertainty into insight. Understanding your numbers allows you to:
 
 - Predict income more accurately
 - Identify profitable treatments
@@ -43,7 +43,7 @@ Metrics make invisible problems visible.
 
 Monthly revenue is the **total income** your aesthetics business generates within a calendar month before expenses are deducted. It is one of the most important indicators of business health because it shows how consistently your clinic is performing and whether your growth strategy is working.
 
-However, monthly revenue is not just a number — it is a reflection of client demand, pricing structure, booking efficiency, retention levels, operational systems, and practitioner capacity. Understanding it properly allows you to stop guessing and start planning strategically.
+However, monthly revenue is not just a number, it is a reflection of client demand, pricing structure, booking efficiency, retention levels, operational systems, and practitioner capacity. Understanding it properly allows you to stop guessing and start planning strategically.
 
 ### Breaking down monthly revenue
 
@@ -62,7 +62,7 @@ Analyse how diversified your income is. A business relying heavily on one treatm
 
 ### Emotional relationship with revenue
 
-Some people develop an emotional attachment to income. Try to view revenue **neutrally** — as information rather than a reflection of personal success or failure. Revenue is data, not identity. This mindset shift supports calm, professional financial leadership.
+Some people develop an emotional attachment to income. Try to view revenue **neutrally**, as information rather than a reflection of personal success or failure. Revenue is data, not identity. This mindset shift supports calm, professional financial leadership.
 
 ## Average client spend
 
@@ -97,13 +97,13 @@ Improving any of these elements can directly improve average spend.
 
 Conversion rate refers to the **percentage of enquiries, consultations, or treatment recommendations that turn into confirmed bookings or completed treatments**. In aesthetics, this metric reveals how effectively your business turns interest into action and recommendations into revenue.
 
-Conversion is not just about sales ability — it reflects communication quality, client confidence, consultation structure, perceived value, and trust in your expertise.
+Conversion is not just about sales ability, it reflects communication quality, client confidence, consultation structure, perceived value, and trust in your expertise.
 
 ### Types of conversion rates to track
 
-- **Enquiry to consultation** — how many enquiries book an initial consultation.
-- **Consultation to treatment** — how many consultations result in treatment booking.
-- **Recommendation to acceptance** — how many recommended treatments are approved by clients.
+- **Enquiry to consultation**, how many enquiries book an initial consultation.
+- **Consultation to treatment**, how many consultations result in treatment booking.
+- **Recommendation to acceptance**, how many recommended treatments are approved by clients.
 
 ### How to calculate conversion rates
 
@@ -184,14 +184,14 @@ Quiet time becomes strategic preparation, not wasted time.
 
 **Best practice:** Make a conscious decision to have a plan during a quiet period. For example, could you create batch content during this time?
 
-## Weekly challenge — monthly revenue review
+## Weekly challenge, monthly revenue review
 
 This exercise will help you develop **clarity, confidence, and control** around your income by actively reviewing your recent revenue performance.
 
 1. **Record your revenue:** write down your total revenue for the last 3 months.
 2. **Identify key figures:** from your 3-month data, calculate your highest month, lowest month, and average monthly revenue.
-3. **Analyse patterns:** review the numbers and note any trends — increases or decreases, fluctuations, stable patterns, or sudden spikes or drops.
-4. **Reflection on influencing factors:** consider what may have affected revenue changes — marketing activity, seasonal trends, cancellations or no-shows, staff availability, treatment demand, or pricing changes.
+3. **Analyse patterns:** review the numbers and note any trends, increases or decreases, fluctuations, stable patterns, or sudden spikes or drops.
+4. **Reflection on influencing factors:** consider what may have affected revenue changes, marketing activity, seasonal trends, cancellations or no-shows, staff availability, treatment demand, or pricing changes.
 5. **Set next month's target:** based on your insights, set a realistic and achievable revenue goal for the upcoming month. List one action you will take to help achieve this.
 
 ### Reflection questions

@@ -36,7 +36,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const course = getCourse(slug);
   return {
-    title: course ? `${course.title} — Members` : "Course",
+    title: course ? `${course.title}, Members` : "Course",
   };
 }
 
@@ -68,7 +68,7 @@ export default async function CourseOverviewPage({
   return (
     <>
       {/* ============================================================
-          Dark course-overview header — full-bleed charcoal poster
+          Dark course-overview header, full-bleed charcoal poster
           (same family as the lesson hero and Part dividers). Per
           Giles' "needs to be in dark mode" rule, applied course-wide.
           ============================================================ */}

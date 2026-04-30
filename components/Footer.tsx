@@ -17,24 +17,50 @@
 import Link from "next/link";
 import Image from "next/image";
 import { AWARDS, BRAND, FOUNDER } from "@/lib/credentials";
+import { COURSES } from "@/lib/courses";
 import { NMC_REGISTER_URL } from "@/lib/links";
+
+/**
+ * Build the Courses footer column directly from lib/courses.ts so the
+ * footer stays in lockstep with the catalogue — adding a new course
+ * to the data file automatically lists it here. Sorted free-first,
+ * then paid ascending by price, then alphabetical (same order the
+ * /courses catalogue and burger menu use).
+ */
+const SORTED_COURSES = [...COURSES].sort((a, b) => {
+  const aFree = a.price === undefined ? 0 : 1;
+  const bFree = b.price === undefined ? 0 : 1;
+  if (aFree !== bFree) return aFree - bFree;
+  const aP = a.price ?? 0;
+  const bP = b.price ?? 0;
+  if (aP !== bP) return aP - bP;
+  return a.title.localeCompare(b.title);
+});
+
+const COURSE_LINKS = SORTED_COURSES.map((c) => {
+  const tag =
+    c.availability === "waitlist"
+      ? "Waitlist"
+      : c.price === undefined
+        ? "Free"
+        : `£${c.price.toLocaleString("en-GB")}`;
+  return {
+    href: `/courses/${c.slug}`,
+    label: `${c.title} · ${tag}`,
+  };
+});
 
 const FOOTER_LINKS = [
   {
     title: "Courses",
-    items: [
-      { href: "/courses/free-3-day-startup", label: "5K+ Mini · Free" },
-      { href: "/courses/free-2-day-rag", label: "RAG Mini · Free" },
-      { href: "/courses/acne-decoded", label: "Acne Decoded · £79" },
-      { href: "/courses/rosacea-beyond-redness", label: "Rosacea Beyond Redness · £79" },
-      { href: "/courses/rag-pathway", label: "The RAG Pathway · Waitlist" },
-      { href: "/courses/5k-formula", label: "The 5K+ Formula™ · Waitlist" },
-    ],
+    items: COURSE_LINKS,
   },
   {
     title: "Aesthetics Unlocked",
     items: [
       { href: "/about", label: "About Bernadette" },
+      { href: "/dashboard", label: "Members' area" },
+      { href: "/testimonials", label: "Our reviews" },
       { href: "/regulation", label: "UK aesthetics regulation" },
       { href: "/standards", label: "Standards we teach against" },
       { href: "/for", label: "By UK nation & city" },
@@ -56,7 +82,7 @@ export function Footer() {
     <footer className="bg-au-black text-au-white">
       <div className="mx-auto max-w-7xl px-[35px] sm:px-10 md:px-14 py-16 sm:py-20">
         {/* ============================================================
-            TOP — logo + tagline + big email CTA.
+            TOP, logo + tagline + big email CTA.
             ============================================================ */}
         <div className="grid md:grid-cols-[5fr_4fr] gap-10 md:gap-16 pb-12 sm:pb-14 border-b border-au-white/15">
           <div>
@@ -76,7 +102,7 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Email CTA — prominent. */}
+          {/* Email CTA, prominent. */}
           <div className="flex flex-col items-start md:items-end justify-start">
             <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] text-au-white/55 mb-3">
               Get in touch
@@ -105,7 +131,7 @@ export function Footer() {
         </div>
 
         {/* ============================================================
-            TRUST STRIP — NMC PIN, RCN, MSc.
+            TRUST STRIP, NMC PIN, RCN, MSc.
             ============================================================ */}
         <div className="py-8 sm:py-10 border-b border-au-white/15 flex flex-wrap items-center gap-x-8 gap-y-3 font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] sm:text-[0.75rem]">
           <span className="text-au-white/55">For trust</span>

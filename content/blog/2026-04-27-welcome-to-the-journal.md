@@ -2,7 +2,7 @@
 title: "Why this exists. What you'll get from it."
 slug: "welcome-to-the-journal"
 date: "2026-04-27"
-excerpt: "The studies that matter. The regulation that's changing. The claims that don't survive a primary source — for working clinicians."
+excerpt: "The studies that matter. The regulation that's changing. The claims that don't survive a primary source, for working clinicians."
 topic: "other"
 sources: []
 author: "Bernadette Tobin RN, MSc"
@@ -22,10 +22,10 @@ Concise. Referenced. Short enough to read between consultations. That is what th
 
 Three pieces a week. Sunday, Tuesday, Thursday. Each drawn from one of five categories:
 
-- **Ingredient science** — retinoids, peptides, exosomes, polynucleotides.
-- **Treatments** — lasers, injectables, microneedling, devices.
-- **Regulation** — JCCP, MHRA, FDA, EMA, the UK licensing scheme.
-- **Studies worth reading** — peer-reviewed papers, summarised in plain English.
-- **Myths, quietly corrected** — claims that don't survive primary sources.
+- **Ingredient science**, retinoids, peptides, exosomes, polynucleotides.
+- **Treatments**, lasers, injectables, microneedling, devices.
+- **Regulation**, JCCP, MHRA, FDA, EMA, the UK licensing scheme.
+- **Studies worth reading**, peer-reviewed papers, summarised in plain English.
+- **Myths, quietly corrected**, claims that don't survive primary sources.
 
-— Bernadette
+Bernadette

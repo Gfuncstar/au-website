@@ -125,7 +125,7 @@ export function FiveKMiniIllustration({ className = "" }: { className?: string }
 export function RagMiniIllustration({ className = "" }: { className?: string }) {
   return (
     <IllustrationWrap className={className} ariaLabel="RAG Mini">
-      {/* Traffic light housing — rounded pill */}
+      {/* Traffic light housing, rounded pill */}
       <motion.rect
         x="36"
         y="14"
@@ -159,19 +159,19 @@ export function RagMiniIllustration({ className = "" }: { className?: string }) 
 export function AcneIllustration({ className = "" }: { className?: string }) {
   return (
     <IllustrationWrap className={className} ariaLabel="Acne Decoded">
-      {/* Skin texture grid — small dots laid out behind the glass */}
+      {/* Skin texture grid, small dots laid out behind the glass */}
       <motion.circle cx="22" cy="68" r="1.5" fill="currentColor" stroke="none" variants={popIn} custom={0} />
       <motion.circle cx="32" cy="74" r="1.5" fill="currentColor" stroke="none" variants={popIn} custom={0} />
       <motion.circle cx="22" cy="80" r="1.5" fill="currentColor" stroke="none" variants={popIn} custom={1} />
       <motion.circle cx="14" cy="74" r="1.5" fill="currentColor" stroke="none" variants={popIn} custom={1} />
       <motion.circle cx="42" cy="80" r="1.5" fill="currentColor" stroke="none" variants={popIn} custom={2} />
       <motion.circle cx="48" cy="68" r="1.5" fill="currentColor" stroke="none" variants={popIn} custom={2} />
-      {/* Larger lesion dots — what we're decoding */}
+      {/* Larger lesion dots, what we're decoding */}
       <motion.circle cx="28" cy="60" r="3" variants={drawIcon} custom={1} />
       <motion.circle cx="42" cy="56" r="2.5" variants={drawIcon} custom={2} />
-      {/* Magnifying glass — circle */}
+      {/* Magnifying glass, circle */}
       <motion.circle cx="58" cy="38" r="22" variants={drawIcon} custom={0} />
-      {/* Magnifying glass — handle */}
+      {/* Magnifying glass, handle */}
       <motion.line x1="74" y1="54" x2="88" y2="68" variants={drawIcon} custom={3} />
       {/* Inner highlight inside the glass */}
       <motion.path
@@ -189,7 +189,7 @@ export function AcneIllustration({ className = "" }: { className?: string }) {
 export function RosaceaIllustration({ className = "" }: { className?: string }) {
   return (
     <IllustrationWrap className={className} ariaLabel="Rosacea Beyond Redness">
-      {/* Top epidermis — wavy surface */}
+      {/* Top epidermis, wavy surface */}
       <motion.path
         d="M 12 22 Q 24 18 36 22 T 60 22 T 88 22"
         variants={drawIcon}
@@ -241,15 +241,15 @@ export function RagPathwayIllustration({
         variants={drawIcon}
         custom={0}
       />
-      {/* Three lights — outline */}
+      {/* Three lights, outline */}
       <motion.circle cx="36" cy="30" r="7" variants={drawIcon} custom={1} />
       <motion.circle cx="36" cy="50" r="7" variants={drawIcon} custom={2} />
       <motion.circle cx="36" cy="70" r="7" variants={drawIcon} custom={3} />
-      {/* All three filled — the full pathway through R, A, G */}
+      {/* All three filled, the full pathway through R, A, G */}
       <motion.circle cx="36" cy="30" r="4" fill="currentColor" stroke="none" variants={popIn} custom={0} />
       <motion.circle cx="36" cy="50" r="4" fill="currentColor" stroke="none" variants={popIn} custom={1} />
       <motion.circle cx="36" cy="70" r="4" fill="currentColor" stroke="none" variants={popIn} custom={2} />
-      {/* Pathway arrow — flowing right out of the green light */}
+      {/* Pathway arrow, flowing right out of the green light */}
       <motion.path
         d="M 56 70 L 78 70 L 78 30 L 92 30"
         variants={drawIcon}
@@ -283,7 +283,7 @@ export function FiveKFormulaIllustration({
       <motion.line x1="11" y1="30" x2="14" y2="30" variants={drawIcon} custom={1} />
       <motion.line x1="11" y1="50" x2="14" y2="50" variants={drawIcon} custom={1} />
       <motion.line x1="11" y1="70" x2="14" y2="70" variants={drawIcon} custom={1} />
-      {/* Growth curve — smooth ascending S */}
+      {/* Growth curve, smooth ascending S */}
       <motion.path
         d="M 18 78 C 30 76 40 70 50 56 C 60 42 70 28 88 22"
         variants={drawIcon}
@@ -317,7 +317,7 @@ export function FiveKFormulaIllustration({
         variants={popIn}
         custom={4}
       />
-      {/* Target — concentric ring at the curve peak */}
+      {/* Target, concentric ring at the curve peak */}
       <motion.circle cx="88" cy="22" r="6" variants={drawIcon} custom={3} />
       <motion.circle
         cx="88"

@@ -8,9 +8,9 @@ summary: "A science-led definition, the four mechanisms behind its development, 
 
 ## Understanding acne at a deeper level
 
-Acne is not simply a cosmetic concern. It is a **complex, chronic inflammatory skin condition** that affects individuals physically, psychologically, and socially. Despite being one of the most common skin conditions in the UK, acne is frequently misunderstood, under-treated, and oversimplified — both by the public and, at times, by professionals.
+Acne is not simply a cosmetic concern. It is a **complex, chronic inflammatory skin condition** that affects individuals physically, psychologically, and socially. Despite being one of the most common skin conditions in the UK, acne is frequently misunderstood, under-treated, and oversimplified, both by the public and, at times, by professionals.
 
-For many clients, acne is not just about what they see in the mirror. It is about **confidence**, **identity**, and **control**. It can influence how someone shows up in the world — how they interact socially, perform at work, or feel about themselves in intimate situations. Studies consistently show that acne can have a comparable emotional impact to chronic illnesses such as asthma or diabetes, particularly when it is persistent or scarring.
+For many clients, acne is not just about what they see in the mirror. It is about **confidence**, **identity**, and **control**. It can influence how someone shows up in the world, how they interact socially, perform at work, or feel about themselves in intimate situations. Studies consistently show that acne can have a comparable emotional impact to chronic illnesses such as asthma or diabetes, particularly when it is persistent or scarring.
 
 This course has been created to move beyond surface-level explanations and generic treatment advice. Instead, it takes a **science-led, client-centred approach**, empowering you to understand acne from its root causes through to effective, ethical, and realistic treatment pathways.
 
@@ -26,11 +26,11 @@ It is characterised by the formation of:
 - Closed comedones (whiteheads)
 - Inflammatory lesions such as papules, pustules, nodules, and cysts
 
-Acne most commonly affects areas of the skin with a high density of sebaceous glands — particularly the **face, chest, shoulders, and back**.
+Acne most commonly affects areas of the skin with a high density of sebaceous glands, particularly the **face, chest, shoulders, and back**.
 
 According to the **National Institute for Health and Care Excellence (NICE)**, acne is a condition that can range from mild to severe and often requires **long-term management rather than short-term treatment**.
 
-## The science behind acne — how it develops
+## The science behind acne, how it develops
 
 Acne does not occur due to poor hygiene or "dirty skin." It develops through a multifactorial biological process involving the skin, hormones, immune system, and microbiome.
 
@@ -42,7 +42,7 @@ Sebaceous glands produce sebum, an oily substance that helps protect and lubrica
 
 During puberty and hormonal fluctuations, androgens (e.g. testosterone) stimulate sebaceous glands to enlarge and produce excess sebum. Excess sebum creates an ideal environment for follicular blockage and bacterial proliferation.
 
-Sebum itself is not harmful — however, overproduction alters the skin environment, contributing to acne formation.
+Sebum itself is not harmful, however, overproduction alters the skin environment, contributing to acne formation.
 
 ### 2. Follicular hyperkeratinisation (blocked pores)
 
@@ -66,7 +66,7 @@ In acne-prone follicles:
 - The bacteria break down sebum into inflammatory by-products
 - These by-products activate the immune system
 
-Importantly, **acne is not an infection** — it is an inflammatory response to bacterial imbalance.
+Importantly, **acne is not an infection**, it is an inflammatory response to bacterial imbalance.
 
 ### 4. Inflammatory and immune response
 

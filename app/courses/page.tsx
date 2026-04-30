@@ -19,7 +19,7 @@ import { Footer } from "@/components/Footer";
 import { PosterBlock } from "@/components/PosterBlock";
 import { Eyebrow } from "@/components/Eyebrow";
 import { CTAPoster } from "@/components/CTAPoster";
-import { CourseCard } from "@/components/CourseCard";
+import { CoursesCatalog } from "@/components/CoursesCatalog";
 import {
   NicheMark,
   TrafficLightMark,
@@ -34,20 +34,20 @@ import { COURSES } from "@/lib/courses";
 export const metadata: Metadata = {
   title: "Courses",
   description:
-    "Strategic education for UK aesthetic practitioners by Bernadette Tobin RN, MSc — free tasters, NICE-aligned clinical decoders, regulatory and business programmes. A growing catalogue from an Educator of the Year 2026 Nominee.",
+    "Strategic education for UK aesthetic practitioners by Bernadette Tobin RN, MSc, free tasters, NICE-aligned clinical decoders, regulatory and business programmes. A growing catalogue from an Educator of the Year 2026 Nominee.",
   alternates: { canonical: "/courses" },
   openGraph: {
-    title: "Courses — Aesthetics Unlocked®",
+    title: "Courses, Aesthetics Unlocked®",
     description:
-      "Every course, one framework. Free tasters, NICE-aligned clinical decoders, regulatory and business programmes — a growing catalogue.",
+      "Every course, one framework. Free tasters, NICE-aligned clinical decoders, regulatory and business programmes, a growing catalogue.",
     url: "/courses",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Courses — Aesthetics Unlocked®",
+    title: "Courses, Aesthetics Unlocked®",
     description:
-      "Strategic education for UK aesthetic practitioners by Bernadette Tobin RN, MSc — Educator of the Year 2026 Nominee.",
+      "Strategic education for UK aesthetic practitioners by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee.",
   },
 };
 
@@ -102,41 +102,16 @@ export default function CoursesIndexPage() {
               Free tasters to start. NICE-aligned clinical decoders. A 4-week
               regulatory pathway. A 12-week business programme. And more on
               the way as the catalogue grows. Built and taught by Bernadette
-              Tobin RN, MSc — Educator of the Year 2026 Nominee.
+              Tobin RN, MSc, Educator of the Year 2026 Nominee.
             </p>
           </ScrollReveal>
         </PosterBlock>
 
         {/* ============================================================
-            COURSE GRID
+            COURSE CATALOG, subject tabs + search + filtered grid
             ============================================================ */}
         <PosterBlock tone="white" contained>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {COURSES.map((c, i) => {
-              // Stats derived from the course data — duration / cadence /
-              // price. Keeps the rail short and consistent across cards.
-              const formatParts = c.format.split("·").map((s) => s.trim());
-              const stats: string[] = [
-                ...formatParts,
-                c.price === undefined ? "Free" : `£${c.price.toLocaleString("en-GB")}`,
-              ];
-              return (
-                <ScrollReveal key={c.slug} delay={i * 0.08}>
-                  <CourseCard
-                    tone={c.tone}
-                    eyebrow={c.eyebrow}
-                    title={c.title}
-                    stats={stats}
-                    bullets={c.bullets}
-                    mark={MARKS[c.slug]}
-                    href={`/courses/${c.slug}`}
-                    ctaText={c.ctaText}
-                    price={c.price}
-                  />
-                </ScrollReveal>
-              );
-            })}
-          </div>
+          <CoursesCatalog courses={COURSES} marks={MARKS} />
         </PosterBlock>
 
         {/* ============================================================

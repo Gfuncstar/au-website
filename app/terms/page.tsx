@@ -29,8 +29,8 @@ const SECTIONS: LegalSection[] = [
     body: "Paid courses give you a personal, non-transferable licence to the content. You can't share your login, redistribute the materials, or use them to build a competing product. Free tasters run on the same rules.",
   },
   {
-    heading: "Refunds",
-    body: "We offer a 14-day money-back guarantee on paid courses, no questions asked, provided you've completed less than 30% of the modules. Email hello@aunlock.co.uk to request a refund.",
+    heading: "All sales final",
+    body: "Course enrolments are non-refundable. You're paying for lifetime access to the content as it exists at the point of purchase, plus every future update at no additional cost. Take a free taster first if you want to be sure the teaching style fits before you commit. If something genuinely goes wrong with your access, email hello@aunlock.co.uk and I'll make it right.",
   },
   {
     heading: "Intellectual property",
@@ -57,7 +57,7 @@ export default function TermsPage() {
           .
         </span>,
       ]}
-      intro="The agreement between you and Aesthetics Unlocked® when you use this site or buy a course. Working draft — replaced with solicitor-reviewed copy before launch."
+      intro="The agreement between you and Aesthetics Unlocked® when you use this site or buy a course. Working draft, replaced with solicitor-reviewed copy before launch."
       lastUpdated="Working draft · April 2026"
       sections={SECTIONS}
     />

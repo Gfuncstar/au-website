@@ -45,7 +45,7 @@ const SUGGESTIONS = [
   {
     href: "/about",
     label: "About me",
-    body: "Bernadette Tobin RN, MSc — Educator of the Year 2026 Nominee.",
+    body: "Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee.",
   },
 ] as const;
 

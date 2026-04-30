@@ -23,7 +23,7 @@ export const size = { width: 1200, height: 630 };
 export function generateImageMetadata() {
   return COURSES.map((c) => ({
     id: c.slug,
-    alt: `${c.title} — Aesthetics Unlocked`,
+    alt: `${c.title}, Aesthetics Unlocked`,
     contentType,
     size,
   }));
@@ -88,7 +88,7 @@ export default async function CourseOG({ params }: Props) {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Top — eyebrow strip */}
+        {/* Top, eyebrow strip */}
         <div
           style={{
             display: "flex",
@@ -125,7 +125,7 @@ export default async function CourseOG({ params }: Props) {
           </div>
         </div>
 
-        {/* Middle — course title */}
+        {/* Middle, course title */}
         <div
           style={{
             display: "flex",
@@ -160,7 +160,7 @@ export default async function CourseOG({ params }: Props) {
           </div>
         </div>
 
-        {/* Bottom — price + author + credentials */}
+        {/* Bottom, price + author + credentials */}
         <div
           style={{
             display: "flex",

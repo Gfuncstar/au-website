@@ -1,12 +1,12 @@
 ---
-title: "Module 6 — Becoming Fully Booked"
+title: "Module 6: Becoming Fully Booked"
 order: 8
 icon: shield
 duration: "20 min"
-summary: "Pre-booking and retention frameworks, cancellation and no-show systems, and the client buyer journey — so your diary stays full without constant marketing."
+summary: "Pre-booking and retention frameworks, cancellation and no-show systems, and the client buyer journey, so your diary stays full without constant marketing."
 ---
 
-Keeping clients returning consistently is the foundation of a **stable, fully booked aesthetics business**. Pre-booking and retention are not about "convincing" clients to come back — they are about creating clarity, consistency, and confidence so the client naturally stays on their long-term plan.
+Keeping clients returning consistently is the foundation of a **stable, fully booked aesthetics business**. Pre-booking and retention are not about "convincing" clients to come back, they are about creating clarity, consistency, and confidence so the client naturally stays on their long-term plan.
 
 This module teaches practitioners how to build a client journey that keeps the diary full months ahead, increases client loyalty, and supports predictable revenue growth.
 
@@ -14,11 +14,11 @@ This module teaches practitioners how to build a client journey that keeps the d
 
 ### Why pre-booking matters
 
-Pre-booking ensures your diary fills before clients even leave the clinic. Most clients want guidance — they want to know when their next treatment is due, how often maintenance is needed, and what the long-term plan looks like. When you confidently guide them, they feel reassured and committed. Pre-booking removes uncertainty and keeps results consistent, which leads to higher satisfaction and long-term loyalty.
+Pre-booking ensures your diary fills before clients even leave the clinic. Most clients want guidance, they want to know when their next treatment is due, how often maintenance is needed, and what the long-term plan looks like. When you confidently guide them, they feel reassured and committed. Pre-booking removes uncertainty and keeps results consistent, which leads to higher satisfaction and long-term loyalty.
 
 ### Educating clients on long-term treatment cycles
 
-Most aesthetic results are not permanent — they require maintenance. When you educate clients on their treatment cycle at the point of delivery, they understand why returning is part of the plan, not a separate decision.
+Most aesthetic results are not permanent, they require maintenance. When you educate clients on their treatment cycle at the point of delivery, they understand why returning is part of the plan, not a separate decision.
 
 **Scripts to use when pre-booking:**
 
@@ -29,7 +29,7 @@ Most aesthetic results are not permanent — they require maintenance. When you 
 
 ### Building long-term treatment plans
 
-Retention increases when clients see a **bigger picture** — not just a single appointment. A strong long-term plan includes:
+Retention increases when clients see a **bigger picture**, not just a single appointment. A strong long-term plan includes:
 
 - A 6–12 month treatment roadmap
 - Phased treatments (e.g. structure, refinement, skin quality)
@@ -41,7 +41,7 @@ When clients understand the journey, they commit to the journey.
 
 ### Aftercare and post-treatment follow-up
 
-One of the strongest retention tools you have is what you do *after* the appointment. Follow-up touchpoints build trust and reduce risk. For example: *"Just checking in after your treatment today — how are you feeling?"* This small step has a disproportionate impact on loyalty.
+One of the strongest retention tools you have is what you do *after* the appointment. Follow-up touchpoints build trust and reduce risk. For example: *"Just checking in after your treatment today, how are you feeling?"* This small step has a disproportionate impact on loyalty.
 
 ### Loyalty and retention strategies that work
 
@@ -56,12 +56,12 @@ Retention comes from **consistent value, not discounts**. High-performing clinic
 
 Small touches create long-term loyalty.
 
-### Reactivation — bringing clients back
+### Reactivation, bringing clients back
 
 Not all retained clients return automatically. Many simply forget, get busy, or need a reminder. Gentle reactivation messages work extremely well:
 
 - *"Hi lovely, it's been a little while! If you'd like to refresh your results or plan your next treatment, I'm here and happy to help."*
-- *"I was reviewing my client list and noticed you may be due for maintenance soon — would you like me to check availability for you?"*
+- *"I was reviewing my client list and noticed you may be due for maintenance soon, would you like me to check availability for you?"*
 
 These messages fill gaps in the diary and rebuild long-term relationships.
 
@@ -119,7 +119,7 @@ When cancellations do happen, the key is to maintain professionalism while prote
 
 ### Filling gaps quickly
 
-Cancellations will happen — even with systems in place. Strategies to fill last-minute gaps include:
+Cancellations will happen, even with systems in place. Strategies to fill last-minute gaps include:
 
 - Priority waiting lists
 - WhatsApp broadcast groups
@@ -137,16 +137,16 @@ Cancellations can feel personal, but they aren't. Neutralise emotional responses
 
 The client buyer journey describes the **psychological and behavioural stages** a person moves through before making a decision. In aesthetic and medical settings, this journey is rarely linear and is shaped by uncertainty, trust, identity, and perceived risk.
 
-Understanding this journey allows practitioners to communicate appropriately at each stage — supporting informed decisions rather than applying pressure. The stages include:
+Understanding this journey allows practitioners to communicate appropriately at each stage, supporting informed decisions rather than applying pressure. The stages include:
 
-1. **Awareness** — they recognise the concern
-2. **Consideration** — they research options
-3. **Evaluation** — they compare practitioners
-4. **Decision readiness** — they are ready to book
+1. **Awareness**, they recognise the concern
+2. **Consideration**, they research options
+3. **Evaluation**, they compare practitioners
+4. **Decision readiness**, they are ready to book
 
 For each stage, consider what the client is thinking and what concerns or hesitations may be present.
 
-## Weekly challenge — supporting the client journey
+## Weekly challenge, supporting the client journey
 
 **Task 1: Client buyer journey mapping**
 

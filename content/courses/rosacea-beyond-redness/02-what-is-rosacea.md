@@ -3,7 +3,7 @@ title: "What is Rosacea?"
 order: 2
 icon: lens
 duration: "8 min"
-summary: "Rosacea defined as a chronic, neurovascular and immune-mediated condition — and why phenotype-led thinking matters."
+summary: "Rosacea defined as a chronic, neurovascular and immune-mediated condition, and why phenotype-led thinking matters."
 ---
 
 Rosacea is a **chronic, inflammatory skin condition** primarily affecting the central face, characterised by persistent erythema, episodic flushing, visible blood vessels, inflammatory lesions, and heightened skin sensitivity. It is a **relapsing–remitting condition**, meaning symptoms fluctuate over time and can worsen without appropriate management.
@@ -18,11 +18,11 @@ Clinically, rosacea presents along a **spectrum of phenotypes**, ranging from tr
 
 ## Who develops rosacea
 
-Rosacea typically develops in adulthood, often between the ages of 30 and 60, and is more frequently diagnosed in individuals with lighter skin phototypes — although it can affect all skin tones and is often **underdiagnosed in darker skin**. While more commonly reported in women, men may experience more severe or phymatous forms.
+Rosacea typically develops in adulthood, often between the ages of 30 and 60, and is more frequently diagnosed in individuals with lighter skin phototypes, although it can affect all skin tones and is often **underdiagnosed in darker skin**. While more commonly reported in women, men may experience more severe or phymatous forms.
 
 Importantly, rosacea carries a significant **psychosocial burden**, with many individuals experiencing reduced quality of life, embarrassment, anxiety, or social withdrawal due to visible symptoms and unpredictable flare-ups.
 
-## There is no cure — but it can be stabilised
+## There is no cure, but it can be stabilised
 
 At present, **there is no cure for rosacea**. Management focuses on:
 

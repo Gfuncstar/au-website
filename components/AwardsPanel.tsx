@@ -175,7 +175,7 @@ export function AwardsPanel({ variant = "full", tone = "cream" }: Props) {
   if (variant === "compact") {
     return (
       <div className="relative isolate overflow-hidden rounded-[5px] bg-au-black text-au-white">
-        {/* Soft pink halo top-right — gives the billboard a touch of
+        {/* Soft pink halo top-right, gives the billboard a touch of
             brand colour and lifts it off pure black. */}
         <div
           aria-hidden="true"
@@ -207,7 +207,7 @@ export function AwardsPanel({ variant = "full", tone = "cream" }: Props) {
                     : ""
                 }`}
               >
-                {/* LEFT — year numeral stacked over the animated mark. */}
+                {/* LEFT, year numeral stacked over the animated mark. */}
                 <div className="flex flex-col items-start gap-4">
                   <span
                     className="font-display font-black leading-none"
@@ -224,7 +224,7 @@ export function AwardsPanel({ variant = "full", tone = "cream" }: Props) {
                   </div>
                 </div>
 
-                {/* RIGHT — status badge, award title, awarding body. */}
+                {/* RIGHT, status badge, award title, awarding body. */}
                 <div>
                   <span
                     className="inline-block font-section font-semibold uppercase tracking-[0.2em] text-[0.6875rem] sm:text-[0.75rem] mb-2.5 px-2 py-1 border"
@@ -277,7 +277,7 @@ export function AwardsPanel({ variant = "full", tone = "cream" }: Props) {
             Awards on both sides of the table.
           </h2>
           <p className="text-au-charcoal max-w-md">
-            Bernadette teaches at award-nominee level — and practises at
+            Bernadette teaches at award-nominee level, and practises at
             award-winning level. The work behind every Aesthetics Unlocked
             course is grounded in clinical credibility, academic rigour, and a
             refusal to teach what hasn&rsquo;t been proven in real clinic.

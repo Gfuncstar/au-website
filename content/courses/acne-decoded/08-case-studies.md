@@ -3,12 +3,12 @@ title: "Case Studies & Applied Learning"
 order: 8
 icon: people
 duration: "10 min"
-summary: "Two UK case studies — teenage moderate acne and adult hormonal acne — with management approaches and reflection prompts."
+summary: "Two UK case studies, teenage moderate acne and adult hormonal acne, with management approaches and reflection prompts."
 ---
 
-![same condition, different patterns — two real UK case presentations.](/illustrations/acne-decoded/08-case-studies/01-profile-cards.png)
+![same condition, different patterns, two real UK case presentations.](/illustrations/acne-decoded/08-case-studies/01-profile-cards.png)
 
-## Case Study 1 — Teenage moderate acne (UK secondary school student)
+## Case Study 1, Teenage moderate acne (UK secondary school student)
 
 **Client profile**
 
@@ -53,7 +53,7 @@ The client presents with a combination of open and closed comedones, inflammator
 
 ---
 
-## Case Study 2 — Adult hormonal acne (UK working professional)
+## Case Study 2, Adult hormonal acne (UK working professional)
 
 **Client profile**
 

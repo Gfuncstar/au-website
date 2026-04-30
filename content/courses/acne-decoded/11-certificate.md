@@ -7,7 +7,7 @@ summary: "Mark the course complete and download your certificate."
 isCertificate: true
 ---
 
-Congratulations — you've reached the end of **Acne Decoded**.
+Congratulations, you've reached the end of **Acne Decoded**.
 
 Mark this lesson complete to unlock your certificate of completion. Your certificate confirms that you've worked through the full course, including UK-specific classification, NICE-aligned assessment, and evidence-based treatment pathways.
 

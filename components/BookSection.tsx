@@ -42,7 +42,7 @@ export function BookSection() {
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
     >
-      {/* Photo — Bernadette in scrubs holding the book in her clinic. */}
+      {/* Photo, Bernadette in scrubs holding the book in her clinic. */}
       <motion.div
         variants={itemVariants}
         className="relative aspect-[4/5] w-full overflow-hidden rounded-[5px] bg-au-charcoal"
@@ -62,7 +62,7 @@ export function BookSection() {
         />
       </motion.div>
 
-      {/* Right column — eyebrow + headline + body + book details. */}
+      {/* Right column, eyebrow + headline + body + book details. */}
       <div className="flex flex-col">
         <motion.div variants={itemVariants}>
           <Eyebrow className="mb-5">The book</Eyebrow>
@@ -88,8 +88,8 @@ export function BookSection() {
         >
           <em className="font-bold">
             Regulation to Reputation: mastering successful aesthetic practice
-          </em>{" "}
-          — the reference I wrote for UK aesthetic practitioners who want to
+          </em>
+          , the reference I wrote for UK aesthetic practitioners who want to
           practise safely, ethically, and defensibly. Available on Amazon UK.
         </motion.p>
 
@@ -97,15 +97,15 @@ export function BookSection() {
           variants={itemVariants}
           className="text-[0.9375rem] sm:text-[1rem] text-au-charcoal/70 leading-relaxed mb-7 sm:mb-8 max-w-md"
         >
-          Every framework I teach inside the courses — including the{" "}
+          Every framework I teach inside the courses, including the{" "}
           <span style={{ color: "var(--color-au-pink)" }}>
             Traffic Light System
           </span>{" "}
           and the{" "}
           <span style={{ color: "var(--color-au-pink)" }}>
             UNLOCK PROFIT™ Framework
-          </span>{" "}
-          — is anchored to the same clinical and regulatory reasoning I put on
+          </span>
+          , is anchored to the same clinical and regulatory reasoning I put on
           the record in the book. If you want the long-form, the book is the
           start. If you want me walking you through it module by module, the
           courses are the next step.

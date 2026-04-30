@@ -27,10 +27,10 @@ import { LOGIN_URL } from "@/lib/links";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Aesthetics Unlocked — the strategic education platform for UK aesthetic practitioners. Email hello@aunlock.co.uk.",
+    "Get in touch with Aesthetics Unlocked, the strategic education platform for UK aesthetic practitioners. Email hello@aunlock.co.uk.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact — Aesthetics Unlocked®",
+    title: "Contact, Aesthetics Unlocked®",
     description:
       "Get in touch with Aesthetics Unlocked. Email hello@aunlock.co.uk.",
     url: "/contact",
@@ -120,7 +120,7 @@ export default function ContactPage() {
                 className="text-au-charcoal leading-relaxed"
                 style={{ fontSize: "clamp(1rem, 2.2vw, 1.125rem)" }}
               >
-                Monday–Friday, 09:00–17:30 GMT. We&rsquo;re a small team — out
+                Monday–Friday, 09:00–17:30 GMT. We&rsquo;re a small team, out
                 of hours, the inbox waits and we reply first thing.
               </p>
             </ScrollReveal>
@@ -129,7 +129,7 @@ export default function ContactPage() {
               <Eyebrow className="mb-4">Privacy</Eyebrow>
               <p className="text-au-charcoal/75 leading-relaxed text-[0.9375rem]">
                 We&rsquo;re GDPR-compliant. Your details are used only to
-                respond to your message — never sold, never passed on. See our{" "}
+                respond to your message, never sold, never passed on. See our{" "}
                 <a
                   href="/privacy"
                   className="underline decoration-[var(--color-au-pink)] underline-offset-4 hover:text-[var(--color-au-pink)] transition-colors"

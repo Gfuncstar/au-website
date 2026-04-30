@@ -6,7 +6,7 @@ duration: "6 min"
 summary: "The pilosebaceous unit explained, and how normal physiology becomes dysregulated."
 ---
 
-Acne is a disorder of the **pilosebaceous unit** — the functional structure of the skin consisting of:
+Acne is a disorder of the **pilosebaceous unit**, the functional structure of the skin consisting of:
 
 - A hair follicle
 - An associated sebaceous (oil) gland
@@ -29,8 +29,8 @@ Acne develops when this process becomes dysregulated.
 
 The **stratum corneum** plays a key role in the early stages of acne development, particularly through its influence on cell turnover and follicular blockage. In acne-prone skin, desquamation becomes irregular, leading to increased cohesion between corneocytes. Instead of shedding efficiently, these cells accumulate within the follicular opening, contributing to the formation of a microcomedone. This process, known as **abnormal keratinisation**, is one of the primary initiating factors in acne and occurs before any visible lesion develops.
 
-In addition to its role in cell turnover, the stratum corneum is essential for maintaining barrier function. When this barrier is compromised — whether through over-exfoliation, harsh products, or underlying skin dysfunction — it can lead to increased transepidermal water loss and inflammation. This disruption can further exacerbate acne by promoting irritation and altering the skin's environment, making it more prone to congestion and bacterial proliferation.
+In addition to its role in cell turnover, the stratum corneum is essential for maintaining barrier function. When this barrier is compromised, whether through over-exfoliation, harsh products, or underlying skin dysfunction, it can lead to increased transepidermal water loss and inflammation. This disruption can further exacerbate acne by promoting irritation and altering the skin's environment, making it more prone to congestion and bacterial proliferation.
 
 Maintaining a balanced, functional stratum corneum is therefore essential in both preventing and managing acne.
 
-![the cellular world beneath the skin — where every acne lesion begins.](/illustrations/acne-decoded/03-anatomy-and-physiology/01-microscope.png)
+![the cellular world beneath the skin, where every acne lesion begins.](/illustrations/acne-decoded/03-anatomy-and-physiology/01-microscope.png)

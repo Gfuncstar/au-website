@@ -62,7 +62,7 @@ export function PressStrip() {
         </Eyebrow>
       </motion.div>
 
-      {/* Tightened per Giles' "smaller" call — single horizontal row on
+      {/* Tightened per Giles' "smaller" call, single horizontal row on
           tablet+, 2x2 on mobile, with reduced padding and smaller marks. */}
       <motion.ul
         className="grid grid-cols-2 sm:grid-cols-4 w-full max-w-2xl border-y border-au-charcoal/15 divide-x divide-au-charcoal/15"

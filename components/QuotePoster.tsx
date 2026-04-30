@@ -57,9 +57,9 @@ export function QuotePoster({
               <Image
                 src={sigSrc}
                 alt={attribution ?? "Bernadette Tobin"}
-                width={180}
-                height={70}
-                className="h-[72px] sm:h-[84px] w-auto opacity-90"
+                width={270}
+                height={105}
+                className="h-[108px] sm:h-[126px] w-auto opacity-90"
               />
             )}
             {attribution && (

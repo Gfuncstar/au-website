@@ -75,6 +75,17 @@ export const COURSE_KARTRA: Record<string, CourseKartraMapping> = {
     optInTagName: "Rosacea Mini Opted In",
     completedTagName: "Rosacea Mini Complete",
   },
+  "free-clinical-audit": {
+    // TODO: confirm with Bernadette — needs a dedicated Kartra list
+    // ("England Aesthetic Compliance Audit") and a tag ("Compliance
+    // Audit Opted In") created before launch. The opt-in should drop
+    // the lead into a nurture sequence pointing to the paid RAG
+    // Pathway, since the audit IS the gap-analysis tool that the
+    // Pathway exists to close.
+    optInListName: "England Aesthetic Compliance Audit",
+    optInTagName: "Compliance Audit Opted In",
+    completedTagName: "Compliance Audit Complete",
+  },
 
   // ──────────────────────────────────────────────────────────
   // PAID SELF-PACED — Stripe webhook fires the purchase tag

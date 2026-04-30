@@ -100,6 +100,49 @@ export async function getAllPosts(): Promise<PostMeta[]> {
   return posts;
 }
 
+/**
+ * Course slug → relevant blog topics. Drives the "Related reading"
+ * strip on each course detail page so a visitor reading about a
+ * course can dip into the supporting analysis without going hunting.
+ * Free tasters resolve to the same topics as their paid sister.
+ */
+const COURSE_TOPICS: Record<string, readonly Topic[]> = {
+  "acne-decoded": ["ingredient-science", "treatments", "studies"],
+  "free-acne-decoded": ["ingredient-science", "treatments"],
+  "rosacea-beyond-redness": ["ingredient-science", "treatments", "studies"],
+  "free-rosacea-beyond-redness": ["ingredient-science", "treatments"],
+  "skin-specialist-programme": [
+    "ingredient-science",
+    "treatments",
+    "studies",
+  ],
+  "free-skin-specialist-mini": ["ingredient-science", "treatments"],
+  "rag-pathway": ["regulation", "myths", "studies"],
+  "free-2-day-rag": ["regulation", "myths"],
+  "free-clinical-audit": ["regulation", "myths"],
+  "5k-formula": ["other", "regulation"],
+  "free-3-day-startup": ["other"],
+};
+
+/**
+ * Latest posts that relate to a given course, capped at `limit`. Used
+ * by the course detail page's "Related reading" strip — keeps blog and
+ * courses cross-linked without per-post hand-curation. Returns an
+ * empty array if the course slug has no topic mapping (e.g. a brand
+ * new course before the data table is updated).
+ */
+export async function getPostsForCourse(
+  courseSlug: string,
+  limit = 3,
+): Promise<PostMeta[]> {
+  const topics = COURSE_TOPICS[courseSlug];
+  if (!topics || topics.length === 0) return [];
+  const allPosts = await getAllPosts();
+  return allPosts
+    .filter((p) => topics.includes(p.topic))
+    .slice(0, limit);
+}
+
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   const files = readDir();
   const match = files.find((f) => fileToSlug(f) === slug);

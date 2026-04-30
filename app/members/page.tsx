@@ -53,7 +53,7 @@ export default async function MembersHomePage() {
   return (
     <div className="space-y-10 sm:space-y-14">
       {/* ============================================================
-          Personal hero — dark-mode editorial poster, sympathetic to the
+          Personal hero, dark-mode editorial poster, sympathetic to the
           /login dark surface so members feel they're in the private
           portal. White type on charcoal with the pink accent intact.
           ============================================================ */}
@@ -68,7 +68,7 @@ export default async function MembersHomePage() {
             letterSpacing: "var(--tracking-tight-display)",
           }}
         >
-          {lead.first_name} —{" "}
+          {lead.first_name},{" "}
           <span className="text-au-pink">picking up where you left off.</span>
         </p>
 
@@ -79,7 +79,7 @@ export default async function MembersHomePage() {
               {activeMemberships.length}{" "}
               {activeMemberships.length === 1 ? "course" : "courses"}
             </span>{" "}
-            on your shelf — most recently{" "}
+            on your shelf, most recently{" "}
             <span className="font-bold text-au-white">
               {ownedCourses[0].title}
             </span>
@@ -104,7 +104,7 @@ export default async function MembersHomePage() {
       </section>
 
       {/* ============================================================
-          At-a-glance status — sits just below the personal greeting
+          At-a-glance status, sits just below the personal greeting
           ============================================================ */}
       <Reveal delay={0.05}>
         <MembersStatusStrip lead={lead} />
@@ -171,7 +171,7 @@ export default async function MembersHomePage() {
       </Reveal>
 
       {/* ============================================================
-          Recent purchases — clean two-line rows, no badge clutter,
+          Recent purchases, clean two-line rows, no badge clutter,
           full-width single column. Refunds render with negative
           amount + REFUND label so the state still reads.
           ============================================================ */}
@@ -258,7 +258,7 @@ export default async function MembersHomePage() {
       </Reveal>
 
       {/* ============================================================
-          Courses you might be interested in — restrained upsell at the
+          Courses you might be interested in, restrained upsell at the
           bottom of the dashboard, never blocking, never modal.
           ============================================================ */}
       {recommendations.length > 0 && (

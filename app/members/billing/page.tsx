@@ -56,7 +56,7 @@ export default async function BillingPage() {
           <span className="text-au-pink">Billing</span>.
         </h1>
         <p className="mt-3 sm:mt-4 text-[0.9375rem] sm:text-[1.0625rem] text-au-white/75 max-w-[60ch] leading-relaxed">
-          Every course you&apos;ve bought — single one-off payments, no
+          Every course you&apos;ve bought, single one-off payments, no
           recurring fees, no surprises.
         </p>
       </section>
@@ -64,7 +64,7 @@ export default async function BillingPage() {
       <MembersStatusStrip lead={lead} />
 
       {/* ============================================================
-          Quick stats — single-payment model, no subscriptions to count
+          Quick stats, single-payment model, no subscriptions to count
           ============================================================ */}
       <Reveal delay={0.1}>
         <section className="grid grid-cols-2 gap-px bg-au-charcoal/10 rounded-[4px] overflow-hidden">
@@ -132,14 +132,14 @@ export default async function BillingPage() {
       </Reveal>
 
       <p className="text-[0.8125rem] text-au-mid">
-        Need a refund?{" "}
+        Question about a payment?{" "}
         <a
           href="mailto:hello@aunlock.co.uk"
           className="text-au-pink hover:text-au-charcoal transition-colors"
         >
           hello@aunlock.co.uk
-        </a>{" "}
-        — Bernadette handles every refund personally.
+        </a>
+        . Bernadette replies personally within one working day.
       </p>
     </div>
   );

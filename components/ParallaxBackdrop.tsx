@@ -61,7 +61,7 @@ export function ParallaxBackdrop({
       aria-hidden="true"
       className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
     >
-      {/* Image layer — extends past section bounds so parallax doesn't
+      {/* Image layer, extends past section bounds so parallax doesn't
           reveal background gaps. */}
       <motion.div
         className="absolute inset-x-0 -top-[15%] -bottom-[15%] bg-cover bg-center"
@@ -70,7 +70,7 @@ export function ParallaxBackdrop({
           y,
         }}
       />
-      {/* Overlay — flat or gradient. Keeps headline copy readable. */}
+      {/* Overlay, flat or gradient. Keeps headline copy readable. */}
       {overlayGradient ? (
         <div
           className="absolute inset-0"

@@ -23,12 +23,12 @@ import { getAllPosts } from "@/lib/blog";
 import { BRAND, FOUNDER } from "@/lib/credentials";
 
 export const metadata: Metadata = {
-  title: "Journal — unlocking the aesthetics arena",
+  title: "Journal, unlocking the aesthetics arena",
   description:
     "A clinical journal for UK aesthetic practitioners. Ingredient science, treatments, regulation, peer-reviewed studies, and the claims that don't survive scrutiny. Three pieces a week from Bernadette Tobin RN, MSc.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Journal — Aesthetics Unlocked",
+    title: "Journal, Aesthetics Unlocked",
     description:
       "Clinical reads for UK aesthetic practitioners. Sourced, referenced, written for working clinicians.",
     url: "/blog",
@@ -107,7 +107,7 @@ export default async function BlogIndexPage() {
         </PosterBlock>
 
         {/* ============================================================
-            FEATURED + SEARCH + LIST — split into a client component
+            FEATURED + SEARCH + LIST, split into a client component
             so the search filter can run interactively. The static page
             still pre-renders the full list as initial state.
             ============================================================ */}

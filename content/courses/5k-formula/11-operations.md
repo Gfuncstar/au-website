@@ -1,5 +1,5 @@
 ---
-title: "Module 9 — Operations"
+title: "Module 9: Operations"
 order: 11
 icon: clipboard
 duration: "20 min"
@@ -16,7 +16,7 @@ Your perfect booking framework is created by **intentionally designing your diar
 
 ### Treatment categories
 
-Separating appointment types — consultations, injectables, skin treatments, follow-up reviews, aftercare checks — allows each category to receive different time allocation and energy.
+Separating appointment types, consultations, injectables, skin treatments, follow-up reviews, aftercare checks, allows each category to receive different time allocation and energy.
 
 ### Time blocking
 
@@ -68,7 +68,7 @@ Implement: 24–48 hour confirmation procedures, deposit-secured bookings, defin
 
 ## Client management and record keeping
 
-Client management and record keeping are critical to running a **professional, safe, and scalable** aesthetics business. These systems are not just administrative — they directly impact treatment quality, client trust, compliance, and long-term retention. When records are organised and client management is structured, practitioners can deliver personalised care with confidence and consistency.
+Client management and record keeping are critical to running a **professional, safe, and scalable** aesthetics business. These systems are not just administrative, they directly impact treatment quality, client trust, compliance, and long-term retention. When records are organised and client management is structured, practitioners can deliver personalised care with confidence and consistency.
 
 ### Creating a complete client profile
 
@@ -113,7 +113,7 @@ Trust is strengthened when clients know their information is protected.
 
 ### Using records to enhance client experience
 
-Good record keeping is not just for protection — it also enhances rapport. Examples: remembering client preferences, referencing previous concerns, showing progress through comparison photos, tracking long-term improvements, and creating continuity in conversation. Clients feel recognised, respected, and valued.
+Good record keeping is not just for protection, it also enhances rapport. Examples: remembering client preferences, referencing previous concerns, showing progress through comparison photos, tracking long-term improvements, and creating continuity in conversation. Clients feel recognised, respected, and valued.
 
 ### Common record-keeping mistakes to avoid
 
@@ -130,7 +130,7 @@ Good record keeping is not just for protection — it also enhances rapport. Exa
 
 Workflow and Standard Operating Procedures (SOPs) are the systems that turn daily operations into a **smooth, repeatable, high-standard process**. Without clear workflows and SOPs, clinics rely on memory, inconsistency, and reactive decision-making. With them, businesses operate with precision, professionalism, and confidence.
 
-This section teaches practitioners how to create structured, repeatable processes that protect quality, safety, and efficiency — even during busy or high-pressure periods.
+This section teaches practitioners how to create structured, repeatable processes that protect quality, safety, and efficiency, even during busy or high-pressure periods.
 
 ## Automation and efficiency tools
 
@@ -138,9 +138,9 @@ Automation and efficiency tools are essential for running a **modern, scalable**
 
 ### Key areas where automation creates impact
 
-- **Appointment reminders and confirmations.** Automated SMS or email reminders significantly reduce no-shows and late cancellations — confirmation upon booking, 24–48 hour reminders, and follow-up reminders post-appointment.
+- **Appointment reminders and confirmations.** Automated SMS or email reminders significantly reduce no-shows and late cancellations, confirmation upon booking, 24–48 hour reminders, and follow-up reminders post-appointment.
 - **Digital consultation and consent forms.** Automated digital forms allow clients to complete paperwork before arriving, saving consultation time and ensuring accurate data capture. Benefits: faster check-ins, improved accuracy, secure record storage, better compliance, and smoother client experience.
-- **CRM systems.** Centralise all client data — booking history, treatment records, preferences, follow-ups, and communication history. This allows personalised, professional care every time.
+- **CRM systems.** Centralise all client data, booking history, treatment records, preferences, follow-ups, and communication history. This allows personalised, professional care every time.
 - **Automated follow-up sequences.** Post-treatment care check-ins, review appointment reminders, maintenance scheduling prompts, and rebooking nudges. These reinforce professionalism and continuity of care.
 - **Payment and invoice automation.** Digital invoices, pre-payment links, secure card processing, deposit automation, and receipt issuing. Efficiency here increases professionalism and reduces friction.
 
@@ -164,7 +164,7 @@ Select and integrate tools such as: online booking platforms, CRM and diary syst
 
 The goal is **thoughtful automation, not complexity**.
 
-## Weekly challenge — streamline your operations
+## Weekly challenge, streamline your operations
 
 **Weekly challenge 1: Automate one core process**
 

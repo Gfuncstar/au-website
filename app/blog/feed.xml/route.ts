@@ -38,7 +38,7 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>${escapeXml(BRAND.name)} — Journal</title>
+    <title>${escapeXml(BRAND.name)} · Journal</title>
     <link>${SITE_URL}/blog</link>
     <description>A clinical journal for UK aesthetic practitioners. Three pieces a week from Bernadette Tobin RN, MSc.</description>
     <language>en-gb</language>

@@ -119,7 +119,7 @@ const itemVariants: Variants = {
     opacity: 1,
     transition: {
       duration: 0.75,
-      ease: [0.22, 1, 0.36, 1], // expo-out — confident, editorial
+      ease: [0.22, 1, 0.36, 1], // expo-out, confident, editorial
     },
   },
 };
@@ -127,7 +127,7 @@ const itemVariants: Variants = {
 export function HeroAnimated() {
   return (
     <section className="relative bg-au-black text-au-white h-screen-safe overflow-hidden">
-      {/* 1. Bernadette background video — loops silently, plays inline on
+      {/* 1. Bernadette background video, loops silently, plays inline on
              mobile (required for iOS autoplay), poster frame shown until the
              video buffers. NOTE: source is currently 480x640 (low-res sample
              from clone-aesthetics-unlocked/VIDEO/). Drop a true 1080p+ source
@@ -145,7 +145,7 @@ export function HeroAnimated() {
         <source src="/video/bernadette-hero.mp4" type="video/mp4" />
       </video>
 
-      {/* 2. Readability gradient — black up from the bottom so the type
+      {/* 2. Readability gradient, black up from the bottom so the type
              below stays legible over any frame of the video. */}
       <div
         aria-hidden="true"
@@ -156,7 +156,7 @@ export function HeroAnimated() {
         }}
       />
 
-      {/* 3. Top vignette — small black-to-transparent fade so the Nav
+      {/* 3. Top vignette, small black-to-transparent fade so the Nav
              logo + hamburger always have contrast no matter the video frame. */}
       <div
         aria-hidden="true"
@@ -167,9 +167,9 @@ export function HeroAnimated() {
         }}
       />
 
-      {/* 2. Type — the poster itself. Bottom-anchored on mobile,
+      {/* 2. Type, the poster itself. Bottom-anchored on mobile,
              centred-bottom on desktop. (Pink halo removed per Giles'
-             "remove line" call — it was bleeding into the top-right
+             "remove line" call, it was bleeding into the top-right
              corner near the nav.) */}
       <motion.div
         variants={containerVariants}
@@ -182,7 +182,7 @@ export function HeroAnimated() {
         className="relative z-20 h-full flex flex-col justify-end px-[35px] sm:px-10 md:px-14 pb-[60px] sm:pb-[90px] md:pb-[110px]"
       >
         <div className="md:max-w-3xl">
-          {/* Awards rail — leads the hero. "Strategic Education" eyebrow
+          {/* Awards rail, leads the hero. "Strategic Education" eyebrow
               was removed per Giles' "remove" call; the two award lines now
               sit at the top on their own. */}
           <motion.ul
@@ -200,7 +200,7 @@ export function HeroAnimated() {
             </li>
           </motion.ul>
 
-          {/* Headline — line-by-line cascade */}
+          {/* Headline, line-by-line cascade */}
           <h1
             className="mt-7 sm:mt-9 font-display font-black text-au-white"
             style={{
@@ -231,7 +231,7 @@ export function HeroAnimated() {
             </motion.span>
           </h1>
 
-          {/* Hero description — first-person, written in Bernadette's voice
+          {/* Hero description, first-person, written in Bernadette's voice
               per Giles' "rewrite in first person, quietly upsell" call.
               Weaves the clinic proof in lightly: this isn't theory, it's
               what I run inside a real clinic that won its category. */}
@@ -246,8 +246,8 @@ export function HeroAnimated() {
             who want to scale with{" "}
             <span style={{ color: "var(--color-au-pink)" }}>
               clarity, structure, and confidence
-            </span>{" "}
-            — using the same frameworks I run inside my own{" "}
+            </span>
+            , using the same frameworks I run inside my own{" "}
             <span style={{ color: "var(--color-au-pink)" }}>
               award-winning
             </span>{" "}
@@ -264,7 +264,7 @@ export function HeroAnimated() {
             <Button href="/about" variant="glass" size="sm">
               About me
             </Button>
-            {/* Members login — internal /login page (custom on-brand
+            {/* Members login, internal /login page (custom on-brand
                 sign-in). Matches the Members link in the Nav. */}
             <Button
               href={LOGIN_URL}

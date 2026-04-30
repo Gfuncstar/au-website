@@ -8,7 +8,7 @@ summary: "Where the Traffic Light System came from, which UK regulators it align
 
 ## Has it "come in" yet?
 
-**Short answer:** It is not fully enacted in law yet — but it is not hypothetical.
+**Short answer:** It is not fully enacted in law yet, but it is not hypothetical.
 
 The Traffic Light System in England is part of the government's agreed direction of travel, embedded in policy planning and guidance, and already being used as a risk-classification framework by regulators, insurers, councils, and professional bodies.
 
@@ -25,7 +25,7 @@ It is now closely aligned with:
 - Future practitioner and premises licensing
 - Risk-based regulation principles used across healthcare
 
-The Traffic Light System reflects how regulators already think — even before legislation is finalised.
+The Traffic Light System reflects how regulators already think, even before legislation is finalised.
 
 ## What is it aligned with?
 
@@ -117,7 +117,7 @@ The higher the risk, the higher the expectation.
 
 This system is about **proportionate control, not ambition**.
 
-## 2. The biggest mistake — misclassification
+## 2. The biggest mistake, misclassification
 
 One of the most common regulatory failures in England is misclassifying treatments.
 
@@ -150,4 +150,4 @@ When something goes wrong, no one asks:
 
 They ask:
 
-> "Why did you think this was appropriate — and where is the evidence?"
+> "Why did you think this was appropriate, and where is the evidence?"

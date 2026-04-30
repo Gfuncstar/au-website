@@ -39,7 +39,7 @@ export async function generateMetadata({
   const course = getCourse(slug);
   return {
     title: course
-      ? `You're in — ${course.title}`
+      ? `You're in, ${course.title}`
       : "Thank you",
     description: "Welcome to Aesthetics Unlocked.",
     robots: { index: false, follow: false },
@@ -84,8 +84,7 @@ export default async function ThanksPage({
               your safe senders so future emails come through cleanly.
             </p>
             <p className="max-w-2xl text-[1rem] sm:text-[1.0625rem] text-au-charcoal/75 leading-relaxed mb-10">
-              While you wait, take a look at the rest of what I teach —
-              there&rsquo;s usually one course that complements{" "}
+              While you wait, take a look at the rest of what I teach,               there&rsquo;s usually one course that complements{" "}
               {course.title} naturally. Or read about{" "}
               <Link
                 href="/about"

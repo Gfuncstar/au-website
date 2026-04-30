@@ -42,7 +42,7 @@ export function VideoPlaceholder({
         }}
       />
 
-      {/* Diagonal pink rule — editorial flourish */}
+      {/* Diagonal pink rule, editorial flourish */}
       <div
         aria-hidden="true"
         className="absolute -left-8 top-0 w-px h-[140%] bg-au-pink/25 rotate-[18deg] origin-top-left"
@@ -92,7 +92,7 @@ export function VideoPlaceholder({
         )}
       </div>
 
-      {/* Bottom-right lesson title — small, editorial */}
+      {/* Bottom-right lesson title, small, editorial */}
       <p className="absolute bottom-4 right-5 max-w-[60%] text-right font-display font-bold text-[0.7rem] sm:text-[0.8rem] text-au-white/40 leading-tight">
         {lessonTitle}
       </p>

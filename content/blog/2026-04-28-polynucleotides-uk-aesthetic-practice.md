@@ -2,7 +2,7 @@
 title: "Polynucleotides in UK Aesthetic Practice: The 2026 Evidence Read"
 slug: "polynucleotides-uk-aesthetic-practice"
 date: "2026-04-28"
-excerpt: "Polynucleotides in UK aesthetic practice — what the peer-reviewed evidence actually supports in 2026, and where the limits sit."
+excerpt: "Polynucleotides in UK aesthetic practice, what the peer-reviewed evidence actually supports in 2026, and where the limits sit."
 topic: "ingredient-science"
 sources:
   - title: "The Effectiveness of Polynucleotides in Esthetic Medicine: A Systematic Review"
@@ -14,11 +14,11 @@ sources:
 author: "Bernadette Tobin RN, MSc"
 ---
 
-Polynucleotides are injectable DNA fragments — most commonly salmon-derived — used as **bioregenerators** in aesthetic medicine. The peer-reviewed evidence supports collagen stimulation, improved skin elasticity, and a low adverse-event profile. They are not traditional fillers. They sit alongside skin boosters as a regenerative tool with a different clinical rationale.
+Polynucleotides are injectable DNA fragments, most commonly salmon-derived, used as **bioregenerators** in aesthetic medicine. The peer-reviewed evidence supports collagen stimulation, improved skin elasticity, and a low adverse-event profile. They are not traditional fillers. They sit alongside skin boosters as a regenerative tool with a different clinical rationale.
 
 ## What polynucleotides actually are
 
-Polynucleotides are short and long-chain fragments of purified DNA, isolated from natural sources such as salmon trout sperm. The most studied product class is referred to in the literature as PN-HPT — polynucleotides at high purification technology. Two related compounds also appear in the dermatology literature: PDRN (polydeoxyribonucleotide), which uses shorter DNA fragments, and PN proper, which uses longer chains.
+Polynucleotides are short and long-chain fragments of purified DNA, isolated from natural sources such as salmon trout sperm. The most studied product class is referred to in the literature as PN-HPT, polynucleotides at high purification technology. Two related compounds also appear in the dermatology literature: PDRN (polydeoxyribonucleotide), which uses shorter DNA fragments, and PN proper, which uses longer chains.
 
 Mechanistically, the published [systematic review](https://pmc.ncbi.nlm.nih.gov/articles/PMC11845969/) describes a sustained interaction with the extracellular matrix. The fragments act on fibroblasts, encouraging collagen production and tissue self-repair. The viscoelasticity of the longer DNA chains gives the products a temporary structural quality, but the goal is biological remodelling, not volume replacement.
 
@@ -38,7 +38,7 @@ The conflation of polynucleotides with HA fillers is one of the most common misr
 
 - **HA fillers** restore volume immediately through a viscous gel.
 - **Polynucleotides** work over weeks by encouraging endogenous collagen production. Visible change is gradual.
-- **HA fillers** dissolve over months; polynucleotides do not need dissolving — the DNA fragments are metabolised.
+- **HA fillers** dissolve over months; polynucleotides do not need dissolving, the DNA fragments are metabolised.
 - **HA fillers** are reversed with hyaluronidase if a complication occurs. Polynucleotides have no analogous reversal agent.
 
 For practitioners, the consent conversation is fundamentally different. The patient is not buying volume. They are buying biological remodelling, on a longer time horizon, without the same off-ramp.
@@ -47,17 +47,17 @@ For practitioners, the consent conversation is fundamentally different. The pati
 
 Across the [reviewed literature](https://pmc.ncbi.nlm.nih.gov/articles/PMC11845969/), the indications with the most consistent evidence are:
 
-- **Periorbital and perioral fine lines** — the skin-quality indications where small, repeatable changes are most visible.
-- **Atrophic acne scars** — when used alongside microneedling or laser as a priming or co-injection strategy.
-- **Striae albae** (mature stretch marks) — improvement in elasticity and texture across multiple small studies.
-- **Iatrogenic fat atrophy** — case-series-level evidence for facial volume rehabilitation.
-- **Pore size and skin texture** — surveyed cosmetic physicians reported this as a strong perceived indication.
+- **Periorbital and perioral fine lines**, the skin-quality indications where small, repeatable changes are most visible.
+- **Atrophic acne scars**, when used alongside microneedling or laser as a priming or co-injection strategy.
+- **Striae albae** (mature stretch marks), improvement in elasticity and texture across multiple small studies.
+- **Iatrogenic fat atrophy**, case-series-level evidence for facial volume rehabilitation.
+- **Pore size and skin texture**, surveyed cosmetic physicians reported this as a strong perceived indication.
 
-Indications where the evidence is weaker or absent include hand rejuvenation, hair regrowth and intimate dermatology — areas where polynucleotides are sometimes marketed but where the published support has not yet caught up.
+Indications where the evidence is weaker or absent include hand rejuvenation, hair regrowth and intimate dermatology, areas where polynucleotides are sometimes marketed but where the published support has not yet caught up.
 
 ## Safety profile and adverse events
 
-The reviews are consistent on the safety profile. Reported events are predominantly local — bruising, mild erythema, transient nodules — and resolve without intervention. Serious adverse events are rare in the published literature.
+The reviews are consistent on the safety profile. Reported events are predominantly local, bruising, mild erythema, transient nodules, and resolve without intervention. Serious adverse events are rare in the published literature.
 
 That is not a clinical guarantee. It is a statement about what the literature has captured. As with any injectable, the responsibility for managing rare events sits with the practitioner, the consent process, and the documentation. The [JCCP](/standards/jccp)'s competence framework covers the procedural standards expected in UK practice.
 
@@ -65,11 +65,11 @@ That is not a clinical guarantee. It is a statement about what the literature ha
 
 Polynucleotide products are CE/UKCA marked as medical devices, not licensed medicines. That places them firmly under the [MHRA](/standards/mhra) for any regulatory action concerning the device itself, and under your professional regulator (NMC, GMC or GDC) for the clinical decisions you make around their use.
 
-When the [licensing scheme under the Health and Care Act 2022](/regulation) brings injectables into the local-authority licensing tier, polynucleotides are likely to fall within scope. That has not been formally confirmed at the time of writing — the procedure list is still being defined — but it would be unusual for a deep-injection product class to sit outside the scheme.
+When the [licensing scheme under the Health and Care Act 2022](/regulation) brings injectables into the local-authority licensing tier, polynucleotides are likely to fall within scope. That has not been formally confirmed at the time of writing, the procedure list is still being defined, but it would be unusual for a deep-injection product class to sit outside the scheme.
 
 If you offer polynucleotides in clinic, the documentation work that pays back is the same work that pays back for any injectable: scope of practice on file, consent records that match the actual conversation, and a competence record aligned to the [CPSA framework](/standards/cpsa).
 
-For the structured walk-through of where polynucleotides — and every other injectable category — fit inside a defensible UK practice, the [RAG Pathway](/courses/rag-pathway) is the four-week programme designed to land practitioners aligned with JCCP, CPSA, MHRA and the licensing scheme expectations before the regulations tighten.
+For the structured walk-through of where polynucleotides, and every other injectable category, fit inside a defensible UK practice, the [RAG Pathway](/courses/rag-pathway) is the four-week programme designed to land practitioners aligned with JCCP, CPSA, MHRA and the licensing scheme expectations before the regulations tighten.
 
 ## FAQ
 

@@ -17,7 +17,7 @@ export const size = { width: 1200, height: 630 };
 export function generateImageMetadata() {
   return STANDARDS.map((s) => ({
     id: s.slug,
-    alt: `${s.abbrev} — ${s.name}`,
+    alt: `${s.abbrev}, ${s.name}`,
     contentType,
     size,
   }));
@@ -73,7 +73,7 @@ export default async function StandardOG({ params }: Props) {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Top — eyebrow */}
+        {/* Top, eyebrow */}
         <div
           style={{
             display: "flex",
@@ -90,7 +90,7 @@ export default async function StandardOG({ params }: Props) {
           Standards I teach against
         </div>
 
-        {/* Middle — abbrev (huge) + full name */}
+        {/* Middle, abbrev (huge) + full name */}
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div
             style={{
@@ -127,7 +127,7 @@ export default async function StandardOG({ params }: Props) {
           </div>
         </div>
 
-        {/* Bottom — author */}
+        {/* Bottom, author */}
         <div
           style={{
             display: "flex",

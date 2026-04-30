@@ -8,7 +8,7 @@ summary: "Why Acne Decoded exists, who it's for, and what you'll walk away with.
 
 Welcome to the **Acne Decoded** course.
 
-Acne is one of the most common skin conditions in the UK — yet it remains one of the most misunderstood.
+Acne is one of the most common skin conditions in the UK, yet it remains one of the most misunderstood.
 
 Often dismissed as a teenage issue, acne is in fact a **complex, chronic inflammatory condition** that can affect individuals at any stage of life, with significant physical and psychological impact.
 
@@ -28,4 +28,4 @@ Throughout this course, you will gain:
 - An understanding of the emotional impact of acne and how to communicate sensitively with clients
 - NHS guidance used by the NHS
 
-Each section builds on the last, ensuring that by the end of the course, you are not just repeating protocols — you are making informed, evidence-based decisions.
+Each section builds on the last, ensuring that by the end of the course, you are not just repeating protocols, you are making informed, evidence-based decisions.

@@ -51,11 +51,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Aesthetics Unlocked® — UK Aesthetics Education · Educator of the Year 2026 Nominee",
-    template: "%s — Aesthetics Unlocked®",
+      "Aesthetics Unlocked® · UK Aesthetics Education · Educator of the Year 2026 Nominee",
+    template: "%s · Aesthetics Unlocked®",
   },
   description:
-    "Education for UK aesthetic practitioners by Bernadette Tobin RN MSc — working clinic owner, NHS clinical leader, and Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards. NICE-aligned, JCCP-aware, evidence-led courses on regulation, profit, and clinical practice.",
+    "Education for UK aesthetic practitioners by Bernadette Tobin RN MSc, working clinic owner, NHS clinical leader, and Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards. NICE-aligned, JCCP-aware, evidence-led courses on regulation, profit, and clinical practice.",
   keywords: [
     // Core brand + educator
     "aesthetics education UK",
@@ -97,9 +97,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Aesthetics Unlocked® — Educator of the Year 2026 Nominee",
+      "Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
     description:
-      "Education for UK aesthetic practitioners by Bernadette Tobin RN MSc — Beauty & Aesthetics Awards Educator of the Year 2026 Nominee.",
+      "Education for UK aesthetic practitioners by Bernadette Tobin RN MSc, Beauty & Aesthetics Awards Educator of the Year 2026 Nominee.",
     url: SITE_URL,
     siteName: "Aesthetics Unlocked",
     locale: "en_GB",
@@ -108,7 +108,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Aesthetics Unlocked® — Educator of the Year 2026 Nominee",
+      "Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
     description:
       "UK aesthetics education by Bernadette Tobin RN MSc. NICE-aligned, evidence-led.",
   },

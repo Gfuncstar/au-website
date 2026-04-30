@@ -35,9 +35,9 @@ import { TestimonialQuote } from "@/components/TestimonialQuote";
 
 export const metadata: Metadata = {
   title:
-    "UK aesthetics regulation 2026 — JCCP, MHRA, CQC, licensing, decoded",
+    "UK aesthetics regulation 2026, JCCP, MHRA, CQC, licensing, decoded",
   description:
-    "A clear UK aesthetics regulation guide for practitioners by Bernadette Tobin RN, MSc — the licensing scheme, JCCP / CPSA / MHRA / CQC / NICE / NMC / RCN / ASA, devolved nation rules, and where to start. Educator of the Year 2026 Nominee.",
+    "A clear UK aesthetics regulation guide for practitioners by Bernadette Tobin RN, MSc, the licensing scheme, JCCP / CPSA / MHRA / CQC / NICE / NMC / RCN / ASA, devolved nation rules, and where to start. Educator of the Year 2026 Nominee.",
   alternates: { canonical: "/regulation" },
   keywords: [
     "UK aesthetics regulation",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title:
-      "UK aesthetics regulation 2026 — decoded by Bernadette Tobin RN, MSc",
+      "UK aesthetics regulation 2026, decoded by Bernadette Tobin RN, MSc",
     description:
       "The licensing scheme, the eight regulators, the devolved-nation rules, and where to start. A clear UK aesthetics regulation guide by an Educator of the Year 2026 Nominee.",
     url: "/regulation",
@@ -64,14 +64,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "UK aesthetics regulation 2026 — decoded",
+      "UK aesthetics regulation 2026, decoded",
     description:
-      "JCCP, CPSA, MHRA, CQC, NICE, NMC, RCN, ASA — and the licensing scheme. The map, in one place. By Bernadette Tobin RN, MSc.",
+      "JCCP, CPSA, MHRA, CQC, NICE, NMC, RCN, ASA, and the licensing scheme. The map, in one place. By Bernadette Tobin RN, MSc.",
   },
 };
 
 const TOC = [
-  { href: "#landscape", label: "The landscape — why it's tangled" },
+  { href: "#landscape", label: "The landscape, why it's tangled" },
   { href: "#licensing-scheme", label: "England's licensing scheme" },
   { href: "#regulators", label: "The eight regulators" },
   { href: "#devolved", label: "Devolved nation differences" },
@@ -85,7 +85,7 @@ const REG_INTRO: Record<string, string> = {
   jccp:
     "The voluntary register and competence framework most insurers and complaint reviewers already work to. If you're not on it, the question is why.",
   cpsa:
-    "The body that publishes the standards JCCP enforces. Quietly the most important regulator nobody talks about.",
+    "The body that publishes the standards JCCP enforces. The most important regulator nobody talks about.",
   mhra:
     "Owns the medicines side. If you supply a Schedule 4 / POM, you live under MHRA. Most unintentional breaches I see are here.",
   cqc:
@@ -114,9 +114,9 @@ export default function RegulationPage() {
         "@type": "Article",
         "@id": `${pageUrl}#article`,
         headline:
-          "UK aesthetics regulation 2026 — JCCP, MHRA, CQC, licensing, decoded",
+          "UK aesthetics regulation 2026, JCCP, MHRA, CQC, licensing, decoded",
         description:
-          "A clear UK aesthetics regulation guide for practitioners — the licensing scheme, the eight regulators, devolved-nation differences, and where to start.",
+          "A clear UK aesthetics regulation guide for practitioners, the licensing scheme, the eight regulators, devolved-nation differences, and where to start.",
         url: pageUrl,
         author: {
           "@type": "Person",
@@ -190,7 +190,7 @@ export default function RegulationPage() {
               years untangling it. Eight bodies, four UK nations, and the
               new licensing scheme arriving in stages. This is the layout.
               Where you sit on it depends on your registration, your
-              services, and your nation — I&rsquo;ve flagged each below.
+              services, and your nation, I&rsquo;ve flagged each below.
             </p>
             <p className="max-w-2xl text-[0.9375rem] sm:text-[1rem] text-au-charcoal/70 leading-relaxed mb-8">
               Authored by{" "}
@@ -199,8 +199,8 @@ export default function RegulationPage() {
                 className="underline decoration-[var(--color-au-pink)] underline-offset-4 hover:text-[var(--color-au-pink)] transition-colors"
               >
                 Bernadette Tobin RN, MSc
-              </Link>{" "}
-              — Educator of the Year 2026 Nominee · Founder of Visage
+              </Link>
+              , Educator of the Year 2026 Nominee · Founder of Visage
               Aesthetics, Best Non-Surgical Aesthetics Clinic 2026 (Essex).
             </p>
           </ScrollReveal>
@@ -245,8 +245,7 @@ export default function RegulationPage() {
               }}
             >
               Why it&rsquo;s{" "}
-              <span style={{ color: "var(--color-au-pink)" }}>tangled</span> —
-              and what to do about it.
+              <span style={{ color: "var(--color-au-pink)" }}>tangled</span>,               and what to do about it.
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
@@ -270,7 +269,7 @@ export default function RegulationPage() {
                 position, the next decisions become a lot calmer.
               </p>
               <p>
-                And then there&rsquo;s the new piece —{" "}
+                And then there&rsquo;s the new piece:{" "}
                 <Link
                   href="#licensing-scheme"
                   className="text-[var(--color-au-pink)] hover:underline"
@@ -356,9 +355,9 @@ export default function RegulationPage() {
         </PosterBlock>
 
         {/* ============================================================
-            STUDENT VOICE — single anchored testimonial mid-pillar.
+            STUDENT VOICE, single anchored testimonial mid-pillar.
             Pulls a regulation-relevant testimonial (RAG Pathway).
-            ⚠️ PLACEHOLDER content — see lib/testimonials.ts.
+            ⚠️ PLACEHOLDER content, see lib/testimonials.ts.
             ============================================================ */}
         {(() => {
           const ragTestimonial = TESTIMONIALS.find(
@@ -546,8 +545,8 @@ export default function RegulationPage() {
                       className="text-[var(--color-au-pink)] hover:underline"
                     >
                       RAG 2-Day Mini
-                    </Link>{" "}
-                    — free. Two days, the honest read on where you sit
+                    </Link>
+                    , free. Two days, the honest read on where you sit
                     today, framed around the Traffic Light System I teach.
                   </p>
                 </div>
@@ -578,7 +577,7 @@ export default function RegulationPage() {
                     >
                       for-practitioners page
                     </Link>{" "}
-                    for England, Scotland, Wales or Northern Ireland — the
+                    for England, Scotland, Wales or Northern Ireland, the
                     rulebook genuinely differs.
                   </p>
                 </div>

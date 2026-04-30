@@ -23,6 +23,37 @@ import { motion, type Variants } from "framer-motion";
 import type { Testimonial } from "@/lib/testimonials";
 import { Eyebrow } from "./Eyebrow";
 
+/**
+ * ReviewStarsMark — five line-art stars, top-right of every testimonial.
+ *
+ * Replaces the old "Sample" placeholder badge that lived in the same
+ * corner. Matches the line-art aesthetic of CourseMarks (single colour,
+ * stroked, no fill) and signals "review" without being shouty.
+ */
+function ReviewStarsMark() {
+  return (
+    <svg
+      viewBox="0 0 110 22"
+      role="img"
+      aria-label="Review"
+      className="shrink-0 w-[88px] sm:w-[96px] h-auto mt-2"
+      style={{ color: "var(--color-au-pink)" }}
+    >
+      {[0, 22, 44, 66, 88].map((x) => (
+        <polygon
+          key={x}
+          points="11,2 13.4,8 19.8,8.6 14.9,12.9 16.4,19.2 11,15.8 5.6,19.2 7.1,12.9 2.2,8.6 8.6,8"
+          transform={`translate(${x}, 0)`}
+          fill="currentColor"
+          stroke="currentColor"
+          strokeWidth="0.6"
+          strokeLinejoin="round"
+        />
+      ))}
+    </svg>
+  );
+}
+
 type Props = {
   /** Quotes to render. Pre-filter at the call site if you need a subset. */
   testimonials: readonly Testimonial[];
@@ -91,8 +122,8 @@ export function TestimonialStrip({
             variants={itemVariants}
             className={`font-display font-black ${headlineColour}`}
             style={{
-              fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
-              lineHeight: 1.05,
+              fontSize: "var(--text-poster)",
+              lineHeight: "var(--leading-poster)",
               letterSpacing: "var(--tracking-tight-display)",
             }}
           >
@@ -108,31 +139,20 @@ export function TestimonialStrip({
             variants={itemVariants}
             className={`relative border rounded-[5px] p-6 sm:p-7 flex flex-col ${cardBg}`}
           >
-            {/* Big pink quote mark */}
-            <span
-              aria-hidden="true"
-              className="font-display font-black leading-none mb-4"
-              style={{
-                fontSize: "3.5rem",
-                color: "var(--color-au-pink)",
-              }}
-            >
-              &ldquo;
-            </span>
-
-            {/* Placeholder badge — visible reminder during staging */}
-            {t.placeholder && (
+            {/* Big pink quote mark + 5-star review mark, top-right corner. */}
+            <div className="flex items-start justify-between gap-4 mb-4">
               <span
-                className="absolute top-4 right-4 inline-block px-2 py-1 font-section font-semibold uppercase tracking-[0.18em] text-[0.5625rem] border rounded-[3px]"
+                aria-hidden="true"
+                className="font-display font-black leading-none"
                 style={{
-                  borderColor: "var(--color-au-pink)",
+                  fontSize: "3.5rem",
                   color: "var(--color-au-pink)",
                 }}
-                title="Placeholder — real testimonial pending consent"
               >
-                Sample
+                &ldquo;
               </span>
-            )}
+              <ReviewStarsMark />
+            </div>
 
             <blockquote
               className={`${quoteColour} font-serif italic leading-relaxed mb-6 flex-1`}

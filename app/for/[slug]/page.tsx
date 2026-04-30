@@ -79,19 +79,19 @@ export async function generateMetadata({
       : `Aesthetics education for ${location.name} practitioners`;
 
   return {
-    title: `${titleSuffix} — Aesthetics Unlocked®`,
+    title: `${titleSuffix}, Aesthetics Unlocked®`,
     description: location.summary,
     alternates: { canonical: `/for/${location.slug}` },
     keywords: [...location.seoKeywords],
     openGraph: {
-      title: `${titleSuffix} — Aesthetics Unlocked®`,
+      title: `${titleSuffix}, Aesthetics Unlocked®`,
       description: location.summary,
       url: `/for/${location.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${titleSuffix} — Aesthetics Unlocked®`,
+      title: `${titleSuffix}, Aesthetics Unlocked®`,
       description: location.summary,
     },
   };
@@ -197,7 +197,7 @@ export default async function LocationPage({
       <Nav forceLight />
       <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
-            HERO — eyebrow + headline + intro.
+            HERO, eyebrow + headline + intro.
             ============================================================ */}
         <PosterBlock tone="cream" contained>
           <ScrollReveal className="max-w-4xl">
@@ -228,7 +228,7 @@ export default async function LocationPage({
         </PosterBlock>
 
         {/* ============================================================
-            REGULATORY NOTES — what differs here.
+            REGULATORY NOTES, what differs here.
             ============================================================ */}
         <PosterBlock tone="white" contained>
           <ScrollReveal className="max-w-3xl mb-10">
@@ -251,7 +251,7 @@ export default async function LocationPage({
               ]}
             />
             <p className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/80 leading-relaxed">
-              The bodies that set the rules where you practise — and the points
+              The bodies that set the rules where you practise, and the points
               I flag in every course because they sit differently in {location.name}.
             </p>
           </ScrollReveal>
@@ -358,7 +358,7 @@ export default async function LocationPage({
         </PosterBlock>
 
         {/* ============================================================
-            RECOMMENDED COURSES — relevant for practitioners here.
+            RECOMMENDED COURSES, relevant for practitioners here.
             ============================================================ */}
         <PosterBlock tone="white" contained>
           <ScrollReveal className="max-w-3xl mb-10 sm:mb-12">
@@ -381,7 +381,7 @@ export default async function LocationPage({
               ]}
             />
             <p className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/85 leading-relaxed">
-              The courses I&rsquo;d steer you toward first — same content as
+              The courses I&rsquo;d steer you toward first, same content as
               the rest of the UK, but ordered for what {location.name}{" "}
               practitioners typically need most.
             </p>

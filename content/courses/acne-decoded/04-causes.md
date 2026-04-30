@@ -3,14 +3,14 @@ title: "Causes"
 order: 4
 icon: branching
 duration: "10 min"
-summary: "The seven interacting drivers of acne — hormones, sebum, keratinisation, bacteria, inflammation, genetics, and lifestyle."
+summary: "The seven interacting drivers of acne, hormones, sebum, keratinisation, bacteria, inflammation, genetics, and lifestyle."
 ---
 
 Acne develops as a result of multiple interacting causes, rather than a single trigger. Understanding these causes allows practitioners to identify why acne is occurring in each individual and to design more effective, ethical treatment plans.
 
 This module focuses on the core biological causes of acne, alongside key influencing factors.
 
-![seven interlocking causes — hormones drive, six others amplify.](/illustrations/acne-decoded/04-causes/01-dna-helix.png)
+![seven interlocking causes, hormones drive, six others amplify.](/illustrations/acne-decoded/04-causes/01-dna-helix.png)
 
 ## 1. Hormonal influence (primary cause)
 
@@ -27,7 +27,7 @@ Hormones play a central role in acne development, particularly androgens.
 
 **Clinical relevance:** Hormonal acne often presents on the jawline, chin, and neck, tends to be inflammatory, and may be persistent or cyclical.
 
-![Three-step cascade from rising androgens through sebaceous gland enlargement to sebum overproduction, with the five most common hormonal triggers — puberty, menstrual cycle, PCOS, pregnancy, perimenopause — surfaced underneath.](/illustrations/acne-decoded/04-causes/02-hormonal-pathway.svg)
+![Three-step cascade from rising androgens through sebaceous gland enlargement to sebum overproduction, with the five most common hormonal triggers, puberty, menstrual cycle, PCOS, pregnancy, perimenopause, surfaced underneath.](/illustrations/acne-decoded/04-causes/02-hormonal-pathway.svg)
 
 ## 2. Excess sebum production
 
@@ -62,7 +62,7 @@ In acne-prone follicles:
 - *C. acnes* multiplies excessively
 - Bacterial by-products trigger inflammation
 
-**Important clarification:** Acne is not an infection — it is an inflammatory response to bacterial imbalance.
+**Important clarification:** Acne is not an infection, it is an inflammatory response to bacterial imbalance.
 
 ## 5. Inflammation (central cause)
 

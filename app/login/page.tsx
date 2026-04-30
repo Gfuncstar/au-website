@@ -47,7 +47,7 @@ function LoginForm() {
       : errorParam === "link_invalid"
         ? "That link wasn't valid. Send yourself a fresh code."
         : errorParam === "auth_not_configured"
-          ? "Sign-in isn't fully configured yet — please email hello@aunlock.co.uk."
+          ? "Sign-in isn't fully configured yet, please email hello@aunlock.co.uk."
           : "",
   );
 
@@ -69,7 +69,7 @@ function LoginForm() {
       if (!json.ok) {
         setError(
           json.error === "auth_not_configured"
-            ? "Sign-in isn't configured yet — please email hello@aunlock.co.uk."
+            ? "Sign-in isn't configured yet, please email hello@aunlock.co.uk."
             : json.error === "invalid_email"
               ? "That doesn't look like a valid email."
               : "Something went wrong. Try again in a moment.",
@@ -104,9 +104,9 @@ function LoginForm() {
       if (!json.ok) {
         setError(
           json.error === "invalid_code"
-            ? "That code isn't valid — check the digits."
+            ? "That code isn't valid, check the digits."
             : json.error === "auth_not_configured"
-              ? "Sign-in isn't configured yet — please email hello@aunlock.co.uk."
+              ? "Sign-in isn't configured yet, please email hello@aunlock.co.uk."
               : json.error?.toLowerCase().includes("expired")
                 ? "That code has expired. Send yourself a fresh one."
                 : "That code didn't work. Try again or send a fresh one.",
@@ -142,7 +142,7 @@ function LoginForm() {
         <p className="text-au-white/70 text-[1rem] sm:text-[1.0625rem] leading-relaxed max-w-[44ch] mb-9">
           We&apos;ve sent a 6-digit code to{" "}
           <span className="font-bold text-au-white">{email}</span>. Type it
-          below — it expires in 15 minutes.
+          below, it expires in 15 minutes.
         </p>
 
         <form onSubmit={onVerifyCode} className="space-y-7" noValidate>
@@ -244,7 +244,7 @@ function LoginForm() {
       </h1>
       <p className="text-au-white/70 text-[1rem] sm:text-[1.0625rem] leading-relaxed max-w-[44ch] mb-9">
         Enter the email you used to enrol. We&apos;ll send a one-time 6-digit
-        sign-in code — no password needed.
+        sign-in code, no password needed.
       </p>
 
       <form onSubmit={onSendCode} className="space-y-7" noValidate>
@@ -317,7 +317,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-[1.1fr_1fr] bg-au-charcoal text-au-white">
       <section className="relative flex flex-col justify-between px-7 sm:px-12 lg:px-16 py-8 lg:py-14 min-h-[80vh] lg:min-h-screen">
         <header className="flex items-center justify-between">
-          <Link href="/" aria-label="Aesthetics Unlocked — home">
+          <Link href="/" aria-label="Aesthetics Unlocked, home">
             <Image
               src="/brand/au-logo-pink-on-dark.png"
               alt="Aesthetics Unlocked"

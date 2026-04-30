@@ -33,14 +33,14 @@ import { BRAND, FOUNDER, AWARDS, PERSON_AWARDS_JSONLD } from "@/lib/credentials"
 import { BOOK_AMAZON_URL, INSTAGRAM_URL, NMC_REGISTER_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
-  title: "About Bernadette Tobin — Educator of the Year 2026 Nominee",
+  title: "About Bernadette Tobin, Educator of the Year 2026 Nominee",
   description:
     "I started nursing at 17 and never really stopped. Twenty years on, I lead the clinical workforce for an NHS Trust, run a busy aesthetics clinic, lecture postgraduate clinicians, and write about how to build a practice that doesn't burn the practitioner alive.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About Bernadette Tobin — Educator of the Year 2026 Nominee",
+    title: "About Bernadette Tobin, Educator of the Year 2026 Nominee",
     description:
-      "Bernadette Tobin RN, MSc — founder of Aesthetics Unlocked, Best Non-Surgical Aesthetics Clinic 2026 (Essex), and Educator of the Year 2026 Nominee.",
+      "Bernadette Tobin RN, MSc, founder of Aesthetics Unlocked, Best Non-Surgical Aesthetics Clinic 2026 (Essex), and Educator of the Year 2026 Nominee.",
     url: "/about",
     type: "profile",
   },
@@ -73,7 +73,7 @@ const JOURNEY = [
   {
     num: "03",
     head: "Founder, Visage Aesthetics",
-    body: "A working clinic in Essex — Best Non-Surgical Aesthetics Clinic 2026 (Health, Beauty & Wellness Awards). Where every framework AU teaches has been tested under real fee pressure.",
+    body: "A working clinic in Essex, Best Non-Surgical Aesthetics Clinic 2026 (Health, Beauty & Wellness Awards). Where every framework AU teaches has been tested under real fee pressure.",
   },
   {
     num: "04",
@@ -88,7 +88,7 @@ const JOURNEY = [
   {
     num: "06",
     head: "Educator of the Year 2026 Nominee",
-    body: "Beauty & Aesthetics Awards. The teaching axis recognised — not just the practice.",
+    body: "Beauty & Aesthetics Awards. National recognition for the teaching itself.",
   },
 ] as const;
 
@@ -111,7 +111,7 @@ const CREDENTIALS = [
   },
   {
     head: "Safeguarding trained",
-    sub: "Patient welfare and informed consent — the non-negotiable foundation of every consultation.",
+    sub: "Patient welfare and informed consent, the non-negotiable foundation of every consultation.",
   },
   {
     head: "Featured in Cosmopolitan",
@@ -206,7 +206,7 @@ export default function AboutPage() {
       <Nav forceLight />
       <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
-            HERO — light, type-led.
+            HERO, light, type-led.
             ============================================================ */}
         <PosterBlock tone="cream" contained>
           <ScrollReveal className="max-w-4xl">
@@ -234,8 +234,7 @@ export default function AboutPage() {
           <ScrollReveal delay={0.15}>
             <p className="max-w-2xl text-[1.0625rem] sm:text-[1.125rem] md:text-[1.25rem] text-au-charcoal/85 leading-relaxed">
               Aesthetics Unlocked is the only UK education platform built and
-              taught by a working clinician, NHS leader, and clinic owner —
-              for practitioners who want to grow{" "}
+              taught by a working clinician, NHS leader, and clinic owner,               for practitioners who want to grow{" "}
               <span style={{ color: "var(--color-au-pink)" }}>
                 safely, ethically, and on their own terms
               </span>
@@ -245,7 +244,7 @@ export default function AboutPage() {
         </PosterBlock>
 
         {/* ============================================================
-            PORTRAIT + OPENING PARAGRAPHS — "I started nursing at 17…"
+            PORTRAIT + OPENING PARAGRAPHS, "I started nursing at 17…"
             ============================================================ */}
         <PosterBlock tone="white" contained>
           <div className="grid md:grid-cols-[5fr_7fr] gap-10 sm:gap-12 md:gap-16 items-start">
@@ -256,12 +255,12 @@ export default function AboutPage() {
                   className="absolute top-0 left-0 z-10 h-[3px] w-16"
                   style={{ backgroundColor: "var(--color-au-pink)" }}
                 />
-                {/* High-res editorial studio portrait — blue blazer,
+                {/* High-res editorial studio portrait, blue blazer,
                     arms folded, white studio backdrop with negative
                     space. Per Giles' "update to this image" call. */}
                 <Image
                   src="/brand/bernadette-3.jpg"
-                  alt="Bernadette Tobin — RN, MSc Advanced Practice, founder of Aesthetics Unlocked"
+                  alt="Bernadette Tobin, RN, MSc Advanced Practice, founder of Aesthetics Unlocked"
                   fill
                   className="object-cover object-[75%_center]"
                   sizes="(max-width: 768px) 100vw, 40vw"
@@ -303,7 +302,7 @@ export default function AboutPage() {
         </PosterBlock>
 
         {/* ============================================================
-            WHY I BUILT AU — quote-style block (cream).
+            WHY I BUILT AU, quote-style block (cream).
             ============================================================ */}
         <PosterBlock tone="cream" contained>
           <ScrollReveal className="max-w-3xl">
@@ -330,15 +329,15 @@ export default function AboutPage() {
               The practitioners I knew were technically excellent. They were
               just{" "}
               <strong className="font-bold">
-                exhausted, undercharging, and quietly unsure if they were
+                exhausted, undercharging, and privately unsure if they were
                 actually compliant.
               </strong>
             </p>
             <p className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/80 leading-relaxed mb-5">
               The programme pulls together everything I&rsquo;ve spent twenty
-              years building — clinical authority, academic rigour, NHS
+              years building, clinical authority, academic rigour, NHS
               leadership, real business strategy, and the psychology of
-              confident, ethical practice — into something you can actually
+              confident, ethical practice, into something you can actually
               use.
             </p>
             <p className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/80 leading-relaxed">
@@ -353,9 +352,10 @@ export default function AboutPage() {
         </PosterBlock>
 
         {/* ============================================================
-            AWARDS — pink poster, 1-2 USP punch.
+            AWARDS, pink poster, 1-2 USP punch. id="awards" so the
+            burger menu can deep-link visitors straight to recognition.
             ============================================================ */}
-        <PosterBlock tone="pink" contained>
+        <PosterBlock tone="pink" contained id="awards">
           <ScrollReveal>
             <Eyebrow color="black" className="mb-6">
               Recognised by the industry
@@ -365,7 +365,7 @@ export default function AboutPage() {
         </PosterBlock>
 
         {/* ============================================================
-            JOURNEY — numbered ledger.
+            JOURNEY, numbered ledger.
             ============================================================ */}
         <PosterBlock tone="white" contained>
           <ScrollReveal className="max-w-4xl">
@@ -435,7 +435,7 @@ export default function AboutPage() {
         </PosterBlock>
 
         {/* ============================================================
-            CREDENTIALS GRID + STAT STRIP — solid black, AU primary.
+            CREDENTIALS GRID + STAT STRIP, solid black, AU primary.
             ============================================================ */}
         <PosterBlock tone="black" contained full>
           <ScrollReveal className="max-w-4xl mb-10 sm:mb-12">
@@ -460,7 +460,7 @@ export default function AboutPage() {
             ]}
           />
 
-          {/* Stat strip — top-line numbers. */}
+          {/* Stat strip, top-line numbers. */}
           <ScrollReveal delay={0.1}>
             <dl className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-14 border-t border-au-white/15 pt-8 sm:pt-10">
               {STATS.map((s) => (
@@ -483,7 +483,7 @@ export default function AboutPage() {
             </dl>
           </ScrollReveal>
 
-          {/* Credentials list — verified facts only. */}
+          {/* Credentials list, verified facts only. */}
           <div className="grid sm:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl">
             {CREDENTIALS.map((item, i) => (
               <ScrollReveal key={item.head} delay={i * 0.06}>

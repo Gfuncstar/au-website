@@ -89,7 +89,7 @@ export function FreeBadge({ className = "" }: { className?: string }) {
       >
         {/* Solid pink ink */}
         <circle cx="50" cy="50" r="46" fill="var(--color-au-pink)" />
-        {/* White hairline inner ring — decorative */}
+        {/* White hairline inner ring, decorative */}
         <motion.circle
           cx="50"
           cy="50"

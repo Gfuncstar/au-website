@@ -17,7 +17,7 @@ In rosacea-prone skin, barrier dysfunction is frequently observed. Research indi
 - Reduced ceramide levels
 - Heightened cutaneous sensitivity
 
-When the barrier is compromised, permeability increases. This allows external triggers — such as UV radiation, temperature fluctuations, harsh skincare products, and pollution — to penetrate more easily. In turn, this can stimulate inflammatory pathways and contribute to vascular reactivity, resulting in erythema and flare episodes.
+When the barrier is compromised, permeability increases. This allows external triggers, such as UV radiation, temperature fluctuations, harsh skincare products, and pollution, to penetrate more easily. In turn, this can stimulate inflammatory pathways and contribute to vascular reactivity, resulting in erythema and flare episodes.
 
 Barrier impairment may also increase **neurosensory stimulation**, which explains the common symptoms of burning, stinging, and discomfort reported by clients with rosacea.
 

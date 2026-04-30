@@ -73,7 +73,7 @@ function IllustrationWrap({
 export function ClinicalIllustration({ className = "" }: { className?: string }) {
   return (
     <IllustrationWrap className={className} ariaLabel="Clinical experience">
-      {/* Tubing — left earpiece down, U-bend, up to right earpiece */}
+      {/* Tubing, left earpiece down, U-bend, up to right earpiece */}
       <motion.path
         d="M 28 14 L 28 42 C 28 56 38 64 50 64 C 62 64 72 56 72 42 L 72 14"
         variants={drawIcon}
@@ -137,7 +137,7 @@ export function PrinciplesIllustration({
       <motion.circle cx="28" cy="78" r="5" variants={drawIcon} custom={3} />
       <motion.line x1="36" y1="78" x2="78" y2="78" variants={drawIcon} custom={3} />
       <motion.line x1="36" y1="84" x2="68" y2="84" variants={drawIcon} custom={3} />
-      {/* Filled centre dots — pop in last */}
+      {/* Filled centre dots, pop in last */}
       <motion.circle
         cx="28"
         cy="22"
@@ -207,11 +207,11 @@ export function BookIllustration({ className = "" }: { className?: string }) {
       />
       {/* Centre fold */}
       <motion.line x1="50" y1="25" x2="50" y2="75" variants={drawIcon} custom={1} />
-      {/* Page lines — left */}
+      {/* Page lines, left */}
       <motion.line x1="22" y1="38" x2="42" y2="35" variants={drawIcon} custom={2} />
       <motion.line x1="22" y1="46" x2="42" y2="43" variants={drawIcon} custom={2} />
       <motion.line x1="22" y1="54" x2="42" y2="51" variants={drawIcon} custom={2} />
-      {/* Page lines — right */}
+      {/* Page lines, right */}
       <motion.line x1="58" y1="35" x2="78" y2="38" variants={drawIcon} custom={3} />
       <motion.line x1="58" y1="43" x2="78" y2="46" variants={drawIcon} custom={3} />
       <motion.line x1="58" y1="51" x2="78" y2="54" variants={drawIcon} custom={3} />

@@ -120,6 +120,23 @@ export type Course = {
    *  sales pages and the parentCourse link inside the free Mini's
    *  members-area chrome. */
   freeTasterSlug?: string;
+  /** Time commitment as a short reader-facing string, e.g.
+   *  "≈ 2 hrs / week" or "≈ 30 min total". Surfaced on cards + the
+   *  detail-page stat strip so practitioners can plan their week
+   *  before they enrol. */
+  weeklyHours?: string;
+  /** A concrete, defensible value anchor used on higher-priced course
+   *  detail pages so the price has context. Two short lines work best,
+   *  e.g. "Equivalent CPD pathway with a private dermatology educator:
+   *  £600+/day" + "One additional retained client at £200/treatment
+   *  pays this back in two visits." Compliant — never claims an
+   *  outcome, just frames opportunity cost. */
+  valueAnchor?: readonly string[];
+  /** True if the course is structured for CPD evidence + NMC
+   *  revalidation reflective practice, with a downloadable
+   *  Certificate of Completion. Drives a chip on the catalogue card
+   *  and a one-line strip on the detail page. */
+  isCpdEvidence?: boolean;
 };
 
 export const COURSES: readonly Course[] = [
@@ -134,7 +151,7 @@ export const COURSES: readonly Course[] = [
     title: "The 5K+ Formula™ Mini",
     summary:
       "A free 3-day clarity reset for practitioners who feel busy but not paid.",
-    body: "Not another marketing course. Not “post more on Instagram.” Three short lessons on the maths and mindset that decide whether your clinic actually pays you. By the end of Day 3 you'll know exactly which clients and services are most likely to grow your income — without adding more treatments or more hours.",
+    body: "Not another marketing course. Not “post more on Instagram.” Three short lessons on the maths and mindset that decide whether your clinic actually pays you. By the end of Day 3 you'll know exactly which clients and services are most likely to grow your income, without adding more treatments or more hours.",
     voiceQuote:
       "You're not here to fit into the industry. You're here to find your place within it.",
     bullets: ["Niche clarity", "Brand positioning", "Profit awareness"],
@@ -142,18 +159,18 @@ export const COURSES: readonly Course[] = [
     modules: [
       {
         num: "01",
-        title: "Day 1 — Niche awareness",
+        title: "Day 1: Niche awareness",
         body: "Stop trying to be everything. The exercise that surfaces the niche where your expertise, your interest and the economics actually line up.",
       },
       {
         num: "02",
-        title: "Day 2 — Brand awareness",
+        title: "Day 2: Brand awareness",
         body: "The one-line brand statement that turns “another injector” into “the practitioner I trust.” Built in 30 minutes.",
       },
       {
         num: "03",
-        title: "Day 3 — Profit awareness",
-        body: "The simple weekly read-out that tells you whether your clinic is busy or actually profitable — and what to change first.",
+        title: "Day 3: Profit awareness",
+        body: "The simple weekly read-out that tells you whether your clinic is busy or actually profitable, and what to change first.",
       },
     ],
     ctaText: "Get instant access",
@@ -164,11 +181,11 @@ export const COURSES: readonly Course[] = [
     availability: "available",
     bgImage: "/backgrounds/pink-grunge-deep.png",
     promise:
-      "By the end of Day 3, you'll know exactly which clients and services are most likely to grow your income — without adding more treatments, more hours, or more guesswork.",
+      "By the end of Day 3, you'll know exactly which clients and services are most likely to grow your income, without adding more treatments, more hours, or more guesswork.",
     transformations: [
       {
         before:
-          "Trying to be everything — every treatment, every trend, every client. Quietly overwhelmed.",
+          "Trying to be everything, every treatment, every trend, every client. Privately overwhelmed.",
         after:
           "A clear niche based on where your expertise, interest, and the economics actually line up.",
       },
@@ -180,18 +197,18 @@ export const COURSES: readonly Course[] = [
       },
       {
         before:
-          "Busy diary, but quietly unsure if the clinic is actually paying you.",
+          "Busy diary, but privately unsure if the clinic is actually paying you.",
         after:
-          "A simple weekly read-out that tells you whether your clinic is busy or actually profitable — and what to change first.",
+          "A simple weekly read-out that tells you whether your clinic is busy or actually profitable, and what to change first.",
       },
     ],
     whyBernadette:
-      "I built my own clinic — Visage Aesthetics — using this exact reset. It went on to win Best Non-Surgical Aesthetics Clinic 2026 (Essex). The 5K+ Formula™ is my playbook, refined over twelve years of running a real clinic under real fee pressure. The Mini is the front door.",
+      "I built my own clinic, Visage Aesthetics, using this exact reset. It went on to win Best Non-Surgical Aesthetics Clinic 2026 (Essex). The 5K+ Formula™ is my playbook, refined over twelve years of running a real clinic under real fee pressure. The Mini is the front door.",
     includes: [
       "Three short daily lessons released over 3 days",
-      "Lifetime access — revisit any time",
+      "Lifetime access, revisit any time",
       "A simple weekly numbers read-out you can keep",
-      "Self-paced — work it around your clinic",
+      "Self-paced, work it around your clinic",
     ],
     faqs: [
       {
@@ -200,13 +217,15 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "Do I get a certificate?",
-        a: "The Mini doesn't include a Certificate of Completion — that sits with the full 5K+ Formula™ programme. The Mini is designed as a clarity reset, not a CPD module.",
+        a: "The Mini doesn't include a Certificate of Completion, that sits with the full 5K+ Formula™ programme. The Mini is designed as a clarity reset, not a CPD module.",
       },
       {
         q: "Will it sell me on the paid course?",
-        a: "There's a soft transition at the end if you want to keep going — but no pressure. The Mini stands on its own; many practitioners take it, do the work, and never enrol in the paid programme.",
+        a: "There's a soft transition at the end if you want to keep going, but no pressure. The Mini stands on its own; many practitioners take it, do the work, and never enrol in the paid programme.",
       },
     ],
+    weeklyHours: "≈ 30 min total",
+    isCpdEvidence: false,
   },
   {
     slug: "free-2-day-rag",
@@ -215,8 +234,8 @@ export const COURSES: readonly Course[] = [
     eyebrow: "Free · 2 days",
     title: "From Regulation to Reputation™ Mini",
     summary:
-      "A free 2-day reality check on UK aesthetics regulation — built for practitioners in England.",
-    body: "Built for practitioners in England who want to know exactly where they stand before the regulator decides for them. Two days. The honest read-out, framed around the Traffic Light System — Red, Amber, Green — so you can see your scope of practice, your risk gaps, and your next move.",
+      "A free 2-day reality check on UK aesthetics regulation, built for practitioners in England.",
+    body: "Built for practitioners in England who want to know exactly where they stand before the regulator decides for them. Two days. The honest read-out, framed around the Traffic Light System, Red, Amber, Green, so you can see your scope of practice, your risk gaps, and your next move.",
     voiceQuote:
       "Most practitioners don't get into trouble for being careless. They get into trouble because the rules were never clearly explained to them.",
     bullets: [
@@ -228,12 +247,12 @@ export const COURSES: readonly Course[] = [
     modules: [
       {
         num: "01",
-        title: "Day 1 — The aesthetics reality check",
+        title: "Day 1: The aesthetics reality check",
         body: "What the rules actually say, what they don't, and where the line sits for practitioners in England today.",
       },
       {
         num: "02",
-        title: "Day 2 — The Traffic Light System",
+        title: "Day 2: The Traffic Light System",
         body: "🔴 Red, 🟠 Amber, 🟢 Green. The decision-making muscle that lets you triage every new procedure, marketing claim and treatment offer at a glance.",
       },
     ],
@@ -245,7 +264,7 @@ export const COURSES: readonly Course[] = [
     availability: "available",
     bgImage: "/backgrounds/pink-halftone.png",
     promise:
-      "Two days. The honest read-out on where you stand under England's evolving aesthetics regulation — before someone else decides for you.",
+      "Two days. The honest read-out on where you stand under England's evolving aesthetics regulation, before someone else decides for you.",
     transformations: [
       {
         before:
@@ -263,31 +282,33 @@ export const COURSES: readonly Course[] = [
         before:
           "Relying on training certificates as if they were permission to practise.",
         after:
-          "Understanding the difference between training and authorisation — and where most unintentional breaches actually start.",
+          "Understanding the difference between training and authorisation, and where most unintentional breaches actually start.",
       },
     ],
     whyBernadette:
-      "I'm NMC-registered (verifiable on the public register) and an MSc Advanced Practice nurse. I lecture postgraduate clinicians on regulation, lead clinical workforce governance for an NHS Trust, and I built my own clinic to JCCP / CPSA-aligned standards. The Traffic Light System I teach isn't theory — it's how regulators already think.",
+      "I'm NMC-registered (verifiable on the public register) and an MSc Advanced Practice nurse. I lecture postgraduate clinicians on regulation, lead clinical workforce governance for an NHS Trust, and I built my own clinic to JCCP / CPSA-aligned standards. The Traffic Light System I teach isn't theory, it's how regulators already think.",
     includes: [
       "Two short lessons released over 2 days",
       "The full Traffic Light System (Red / Amber / Green)",
-      "Lifetime access — revisit any time",
-      "Self-paced — work it around your clinic",
+      "Lifetime access, revisit any time",
+      "Self-paced, work it around your clinic",
     ],
     faqs: [
       {
         q: "Is this England-only?",
-        a: "Yes. The regulatory framework taught is specific to England — the JCCP, CPSA, MHRA, CQC and ASA jurisdiction. Practitioners in Scotland, Wales, or Northern Ireland will find the principles useful but the licensing detail differs.",
+        a: "Yes. The regulatory framework taught is specific to England, the JCCP, CPSA, MHRA, CQC and ASA jurisdiction. Practitioners in Scotland, Wales, or Northern Ireland will find the principles useful but the licensing detail differs.",
       },
       {
         q: "Will this turn me into a regulator?",
-        a: "No. The aim is to help you recognise risk before risk recognises you — not to make you an expert in legislation. You'll leave able to triage decisions the way regulators already do.",
+        a: "No. The aim is to help you recognise risk before risk recognises you, not to make you an expert in legislation. You'll leave able to triage decisions the way regulators already do.",
       },
       {
         q: "What's the difference between this and the full RAG Pathway?",
-        a: "The Mini gives you awareness — the conceptual framework. The full RAG Pathway (4 weeks, paid) gives you the documentation, governance systems, and defensible practice records to actually operate inside it day-to-day.",
+        a: "The Mini gives you awareness, the conceptual framework. The full RAG Pathway (4 weeks, paid) gives you the documentation, governance systems, and defensible practice records to actually operate inside it day-to-day.",
       },
     ],
+    weeklyHours: "≈ 25 min total",
+    isCpdEvidence: false,
   },
 
   {
@@ -295,10 +316,10 @@ export const COURSES: readonly Course[] = [
     kartraMembershipName: "Acne Decoded Mini",
     upsellsTo: "acne-decoded",
     eyebrow: "Free · 3 lessons",
-    title: "Acne Decoded — The Mini",
+    title: "Acne Decoded, The Mini",
     summary:
-      "A free 3-lesson taster of the science underneath every breakout — and why most plans fail.",
-    body: "Free, 20-minute taster of the full Acne Decoded course. Three short lessons that reframe acne from a hygiene problem into a chronic inflammatory condition with four interlocking drivers — sebum, hyperkeratinisation, microbiome, inflammation — and show you why most plans fail by treating one or two of them. NICE-aligned. Honest. Yours to keep.",
+      "A free 3-lesson taster of the science underneath every breakout, and why most plans fail.",
+    body: "Free, 20-minute taster of the full Acne Decoded course. Three short lessons that reframe acne from a hygiene problem into a chronic inflammatory condition with four interlocking drivers, sebum, hyperkeratinisation, microbiome, inflammation, and show you why most plans fail by treating one or two of them. NICE-aligned. Honest. Yours to keep.",
     voiceQuote:
       "Acne is not simply a cosmetic concern. It is a complex, chronic inflammatory skin condition that affects individuals physically, psychologically, and socially.",
     bullets: [
@@ -332,53 +353,55 @@ export const COURSES: readonly Course[] = [
     availability: "available",
     bgImage: "/backgrounds/cream-halftone.png",
     promise:
-      "Twenty minutes. The science under every breakout — so the next acne consultation feels less like guessing and more like clinical reasoning.",
+      "Twenty minutes. The science under every breakout, so the next acne consultation feels less like guessing and more like clinical reasoning.",
     transformations: [
       {
         before:
           "Treating acne as a hygiene problem with the same protocol every time.",
         after:
-          "Treating acne as a chronic inflammatory condition with four interlocking drivers — and a plan that addresses all four.",
+          "Treating acne as a chronic inflammatory condition with four interlocking drivers, and a plan that addresses all four.",
       },
       {
         before:
           "Plans that work for one client and not the next.",
         after:
-          "A clear mental model of why some plans hold and some don't — even before you change a single product.",
+          "A clear mental model of why some plans hold and some don't, even before you change a single product.",
       },
     ],
     whyBernadette:
-      "I'm an Advanced Nurse Practitioner, MSc Advanced Practice, NMC registered, and I lecture postgraduate clinicians on conditions like this. The Mini distils the opening of the full Acne Decoded course — same NICE-aligned approach, no protocols borrowed from social media.",
+      "I'm an Advanced Nurse Practitioner, MSc Advanced Practice, NMC registered, and I lecture postgraduate clinicians on conditions like this. The Mini distils the opening of the full Acne Decoded course, same NICE-aligned approach, no protocols borrowed from social media.",
     includes: [
       "Three short lessons (~20 minutes total)",
-      "Lifetime access — revisit any time",
+      "Lifetime access, revisit any time",
       "The four-mechanism model of acne",
       "A clear next step if you want the full clinical pathway",
     ],
     faqs: [
       {
         q: "Is this really free?",
-        a: "Yes. Three lessons, fully free. No credit card. The science in Lesson 2 is yours to keep — whether you ever take the paid course or not.",
+        a: "Yes. Three lessons, fully free. No credit card. The science in Lesson 2 is yours to keep, whether you ever take the paid course or not.",
       },
       {
         q: "Will it sell me on the paid course?",
-        a: "Lesson 3 is a clear pointer to the full course if you want to keep going — but no pressure. Many practitioners take the Mini, do the work, and never enrol in the paid programme.",
+        a: "Lesson 3 is a clear pointer to the full course if you want to keep going, but no pressure. Many practitioners take the Mini, do the work, and never enrol in the paid programme.",
       },
       {
         q: "Do I get a certificate?",
-        a: "The Mini doesn't include a Certificate of Completion — that sits with the full Acne Decoded course. The Mini is designed as a clarity reset, not a CPD module.",
+        a: "The Mini doesn't include a Certificate of Completion, that sits with the full Acne Decoded course. The Mini is designed as a clarity reset, not a CPD module.",
       },
     ],
+    weeklyHours: "≈ 20 min total",
+    isCpdEvidence: false,
   },
   {
     slug: "free-rosacea-beyond-redness",
     kartraMembershipName: "Rosacea Beyond Redness Mini",
     upsellsTo: "rosacea-beyond-redness",
     eyebrow: "Free · 3 lessons",
-    title: "Rosacea Beyond Redness — The Mini",
+    title: "Rosacea Beyond Redness, The Mini",
     summary:
       "A free 3-lesson taster on why rosacea is a barrier-and-microbiome condition, not a redness problem.",
-    body: "Free, 20-minute taster of the full Rosacea Beyond Redness course. Three short lessons that reframe rosacea from a redness problem into a barrier-and-microbiome condition with four NICE-recognised subtypes — and show you why barrier-first treatment outperforms anti-inflammatory-first treatment in most cases. NICE-aligned. Honest. Yours to keep.",
+    body: "Free, 20-minute taster of the full Rosacea Beyond Redness course. Three short lessons that reframe rosacea from a redness problem into a barrier-and-microbiome condition with four NICE-recognised subtypes, and show you why barrier-first treatment outperforms anti-inflammatory-first treatment in most cases. NICE-aligned. Honest. Yours to keep.",
     voiceQuote:
       "Build knowledge, confidence, and safe decision-making when working with clients who may present with rosacea.",
     bullets: [
@@ -412,7 +435,7 @@ export const COURSES: readonly Course[] = [
     availability: "available",
     bgImage: "/backgrounds/cream-halftone.png",
     promise:
-      "Twenty minutes. The science underneath the redness — so the next rosacea consultation lands on the right pathway, not the textbook one.",
+      "Twenty minutes. The science underneath the redness, so the next rosacea consultation lands on the right pathway, not the textbook one.",
     transformations: [
       {
         before:
@@ -424,31 +447,210 @@ export const COURSES: readonly Course[] = [
         before:
           "Plans that calm the surface but don't change the underlying condition.",
         after:
-          "A barrier-first mental model that treats rosacea as the condition it actually is — not the symptom that's most visible.",
+          "A barrier-first mental model that treats rosacea as the condition it actually is, not the symptom that's most visible.",
       },
     ],
     whyBernadette:
-      "I'm an Advanced Nurse Practitioner, MSc Advanced Practice, NMC registered. My clinic — Visage Aesthetics, Best Non-Surgical Aesthetics Clinic 2026 (Essex) — sees rosacea every week. The Mini distils the opening of the full Rosacea Beyond Redness course.",
+      "I'm an Advanced Nurse Practitioner, MSc Advanced Practice, NMC registered. My clinic, Visage Aesthetics, Best Non-Surgical Aesthetics Clinic 2026 (Essex), sees rosacea every week. The Mini distils the opening of the full Rosacea Beyond Redness course.",
     includes: [
       "Three short lessons (~20 minutes total)",
-      "Lifetime access — revisit any time",
+      "Lifetime access, revisit any time",
       "The four-subtype model of rosacea",
       "A clear next step if you want the full clinical pathway",
     ],
     faqs: [
       {
         q: "Is this really free?",
-        a: "Yes. Three lessons, fully free. No credit card. The science in Lesson 2 is yours to keep — whether you ever take the paid course or not.",
+        a: "Yes. Three lessons, fully free. No credit card. The science in Lesson 2 is yours to keep, whether you ever take the paid course or not.",
       },
       {
         q: "Will it sell me on the paid course?",
-        a: "Lesson 3 is a clear pointer to the full course if you want to keep going — but no pressure. Many practitioners take the Mini, do the work, and never enrol in the paid programme.",
+        a: "Lesson 3 is a clear pointer to the full course if you want to keep going, but no pressure. Many practitioners take the Mini, do the work, and never enrol in the paid programme.",
       },
       {
         q: "Do I get a certificate?",
-        a: "The Mini doesn't include a Certificate of Completion — that sits with the full Rosacea Beyond Redness course. The Mini is designed as a clarity reset, not a CPD module.",
+        a: "The Mini doesn't include a Certificate of Completion, that sits with the full Rosacea Beyond Redness course. The Mini is designed as a clarity reset, not a CPD module.",
       },
     ],
+    weeklyHours: "≈ 20 min total",
+    isCpdEvidence: false,
+  },
+  {
+    slug: "free-clinical-audit",
+    kartraMembershipName: "The England Aesthetic Compliance Audit",
+    upsellsTo: "rag-pathway",
+    eyebrow: "Free · 8-section audit",
+    title: "The England Aesthetic Compliance Audit",
+    summary:
+      "A free 8-section self-audit that shows you exactly where your clinic stands against England's aesthetic compliance requirements, before someone else decides for you.",
+    body: "The compliance audit Bernadette runs against her own clinic, distilled for English aesthetic practitioners to use straight away. Eight sections of yes/no checks covering health & safety, licensing, clinical paperwork, infection control, GDPR, essential policies, stock control, and aftercare. Plus a closing inspection-readiness check. Self-paced. Honest. Yours to keep.",
+    voiceQuote:
+      "You don't need to be perfect. You need to be defensible. The audit shows you where the gap actually is, before someone else decides for you.",
+    bullets: [
+      "Map your clinic against eight compliance areas",
+      "See exactly which documents you're missing",
+      "Triage what to fix first",
+    ],
+    stats: ["8 sections", "Self-paced", "Free"],
+    modules: [
+      {
+        num: "01",
+        title: "Section 1: Health & Safety",
+        body: "COSHH, Safety Data Sheets, and the risk assessments every English aesthetic clinic is legally expected to hold.",
+        topics: [
+          "COSHH risk assessments, completed, accessible, reviewed annually",
+          "Dermal fillers and injectables included within COSHH",
+          "Safety Data Sheets (SDS) for every product in clinic",
+          "Fire, treatment-specific, and infection-control risk assessments",
+          "Where to source: HSE templates · manufacturer SDS",
+        ],
+      },
+      {
+        num: "02",
+        title: "Section 2: Licensing & regulation (England)",
+        body: "Local-authority Special Treatments Licences, the incoming national licensing scheme, treatment-specific insurance, and the qualifications evidence inspectors actually look for.",
+        topics: [
+          "Special Treatments Licence, checked, obtained, conditions followed",
+          "Awareness of the incoming national licensing scheme",
+          "Practitioner + premises licensing readiness",
+          "Treatment-specific insurance (e.g. Hamilton Fraser)",
+          "Certificates and CPD evidence matched to treatments performed",
+        ],
+      },
+      {
+        num: "03",
+        title: "Section 3: Core clinical paperwork",
+        body: "Consultation, consent, treatment records and photography, the four-document foundation underneath every defensible plan.",
+        topics: [
+          "Full medical history, recorded and updated regularly",
+          "Treatment-specific consent forms, signed, dated, risks outlined",
+          "Treatment record per visit, products, batch, dosage, area, date",
+          "Before/after photography with consent, secure storage, and record-link",
+        ],
+      },
+      {
+        num: "04",
+        title: "Section 4: Infection control & clinical safety",
+        body: "Written infection-control policy, sharps and clinical waste disposal, and the complication / emergency protocols you need before something happens.",
+        topics: [
+          "Written infection-control procedures + cleaning + hand hygiene",
+          "Sharps bins, clinical waste contract, collection records",
+          "Written complication management plan + emergency procedures",
+          "Adverse event log + escalation / referral pathway",
+        ],
+      },
+      {
+        num: "05",
+        title: "Section 5: Data protection (GDPR)",
+        body: "ICO registration, privacy policy, secure record storage and a clear retention rule, the data spine the rest of the audit hangs on.",
+        topics: [
+          "Registered with the Information Commissioner's Office",
+          "Privacy policy in place and accessible to clients",
+          "Secure client record storage with access controls",
+          "Data retention policy defined and applied",
+        ],
+      },
+      {
+        num: "06",
+        title: "Section 6: Essential policies & documents",
+        body: "Complaints, accidents, safeguarding, lone working, health & safety, staff, the policy file inspectors and insurers expect to find on day one.",
+        topics: [
+          "Complaints procedure",
+          "Accident / incident log",
+          "Safeguarding policy (where applicable)",
+          "Lone working policy + Health & Safety policy",
+          "Staff policies (where applicable)",
+        ],
+      },
+      {
+        num: "07",
+        title: "Section 7: Product & stock control",
+        body: "Approved suppliers, batch traceability, expiry monitoring, storage and tracking, the supply-chain audit that protects every treatment record above.",
+        topics: [
+          "Products sourced from approved suppliers only",
+          "Batch numbers recorded per client treatment",
+          "Expiry dates monitored",
+          "Storage conditions followed (temperature + security)",
+          "Stock tracking system in place",
+        ],
+      },
+      {
+        num: "08",
+        title: "Section 8: Aftercare & follow-up",
+        body: "Written aftercare on every treatment, follow-up plans, and a closing inspection-readiness check so you know the audit holds together end-to-end.",
+        topics: [
+          "Written aftercare for every treatment, explained + documented",
+          "Follow-up plan recorded per client",
+          "Post-treatment communication logged",
+          "Inspection readiness, produce all documents on demand, consistent across clients, paperwork reflects treatments actually performed",
+        ],
+      },
+    ],
+    ctaText: "Get the audit",
+    kartraUrl: courseKartraPlaceholder("free-clinical-audit"),
+    tone: "pink-soft",
+    category: "Free taster",
+    format: "8 sections · self-paced",
+    availability: "available",
+    bgImage: "/backgrounds/pink-halftone.png",
+    promise:
+      "By the time you've worked through the audit, you'll know exactly which compliance gaps to close first, and which ones genuinely matter under England's incoming licensing scheme.",
+    transformations: [
+      {
+        before:
+          "Vague unease about whether your clinic is genuinely compliant.",
+        after:
+          "An eight-section self-audit you can produce on demand for an inspector, an insurer, or a complaint reviewer.",
+      },
+      {
+        before:
+          "Compliance documents scattered across folders, emails, and that one drive nobody can find.",
+        after:
+          "A single audit trail showing exactly where every piece of compliance paperwork lives.",
+      },
+      {
+        before:
+          "Hoping the incoming national licensing scheme won't apply to your clinic.",
+        after:
+          "Already aligned with the scope of practitioner and premises licensing England is proposing. By design, not by accident.",
+      },
+      {
+        before:
+          "Treating compliance as paperwork to dread.",
+        after:
+          "Treating compliance as the framework that protects your reputation, not a burden you keep postponing.",
+      },
+    ],
+    whyBernadette:
+      "I lead clinical workforce governance for an NHS Trust with oversight of more than a thousand nurses, lecture postgraduate clinicians on regulation, and run my own clinic, Visage Aesthetics, to JCCP / CPSA-aligned standards. The audit you're getting is the one I run against my own practice. It's plain English, defensible, and built for the way English clinics actually operate.",
+    includes: [
+      "The full 8-section self-audit (digital, mobile-friendly, printable)",
+      "Section-by-section yes / no checklists",
+      "Reference notes on where each piece of compliance documentation sits",
+      "Closing inspection-readiness check",
+      "Lifetime access, revisit any time",
+      "A clear next step if you want the templates and governance systems behind the framework",
+    ],
+    faqs: [
+      {
+        q: "Is this really free?",
+        a: "Yes. The full eight-section audit, fully free. No credit card. The checklist is yours to keep, whether or not you ever take the paid programme.",
+      },
+      {
+        q: "Is this England-only?",
+        a: "Yes. The licensing detail and regulator landscape is specific to England, the Special Treatments Licence regime, the upcoming national licensing scheme, the JCCP / CPSA framework, ICO registration, ASA jurisdiction. Practitioners in Scotland, Wales, or Northern Ireland will find the principles useful but the licensing detail differs.",
+      },
+      {
+        q: "Will I get a certificate?",
+        a: "The audit doesn't include a Certificate of Completion, that sits with the full RAG Pathway. The audit is designed as a gap-analysis tool, not a CPD module.",
+      },
+      {
+        q: "What's the difference between this and the full RAG Pathway?",
+        a: "The audit gives you the gap-analysis: where you stand, what's missing, what to fix first. The full RAG Pathway (4 weeks, paid) gives you the documents, governance systems, and templates to actually close the gaps, including ASA-safe marketing modules and JCCP-aligned operating standards.",
+      },
+    ],
+    weeklyHours: "≈ 30 min total",
+    isCpdEvidence: false,
   },
 
   /* ============================================================
@@ -476,7 +678,7 @@ export const COURSES: readonly Course[] = [
       {
         num: "01",
         title: "What is acne?",
-        body: "Definition, types, UK classification, key facts — and why “teenage acne” gets it wrong.",
+        body: "Definition, types, UK classification, key facts, and why “teenage acne” gets it wrong.",
         topics: [
           "Definition of acne vulgaris (medical, not cosmetic)",
           "Open vs closed comedones",
@@ -542,7 +744,7 @@ export const COURSES: readonly Course[] = [
       {
         num: "06",
         title: "Treatment pathways",
-        body: "Topicals, oral, in-clinic — when each belongs and how to sequence without burning the barrier.",
+        body: "Topicals, oral, in-clinic, when each belongs and how to sequence without burning the barrier.",
         topics: [
           "AHAs (glycolic, lactic, mandelic): mechanism + indications",
           "BHAs (salicylic): when, why, how",
@@ -556,7 +758,7 @@ export const COURSES: readonly Course[] = [
       {
         num: "07",
         title: "Case studies & applied learning",
-        body: "Real cases, decision walkthroughs. Mild, moderate, severe — what you'd do, why, and what NICE backs.",
+        body: "Real cases, decision walkthroughs. Mild, moderate, severe, what you'd do, why, and what NICE backs.",
         topics: [
           "Mild comedonal: full pathway walkthrough",
           "Moderate inflammatory: sequencing decisions",
@@ -611,18 +813,18 @@ export const COURSES: readonly Course[] = [
         before:
           "Charging beauty-room prices for clinical-level work.",
         after:
-          "Charging premium fees with the clinical reasoning to back them — and the photographic documentation to prove the outcome.",
+          "Charging premium fees with the clinical reasoning to back them, and the photographic documentation to prove the outcome.",
       },
     ],
     whyBernadette:
-      "I hold an MSc Advanced Practice (Level 7), I'm NMC registered, I lecture postgraduate clinicians, and I run an award-winning aesthetics clinic — Visage Aesthetics, which won Best Non-Surgical Aesthetics Clinic 2026 (Essex). I built Acne Decoded on the same NICE pathways the NHS uses — translated for private clinic practice by a nurse who's spent twenty years inside the system that wrote them.",
+      "I hold an MSc Advanced Practice (Level 7), I'm NMC registered, I lecture postgraduate clinicians, and I run an award-winning aesthetics clinic, Visage Aesthetics, which won Best Non-Surgical Aesthetics Clinic 2026 (Essex). I built Acne Decoded on the same NICE pathways the NHS uses, translated for private clinic practice by a nurse who's spent twenty years inside the system that wrote them.",
     includes: [
       "11 sections covering pathophysiology, assessment, and treatment",
       "NICE-aligned consultation framework + severity scoring",
       "Treatment pathway decision tree (mild / moderate / severe)",
       "Real case study walkthroughs",
       "Certificate of Completion for CPD evidence",
-      "Lifetime access — including future updates",
+      "Lifetime access, including future updates",
       "Self-paced · self-marked knowledge check",
     ],
     faqs: [
@@ -632,17 +834,19 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "Will this teach me to inject?",
-        a: "No. This is clinical reasoning around acne — assessment, treatment decisions, NICE-aligned pathways, when to escalate. Hands-on technical training requires a separate insured pathway.",
+        a: "No. This is clinical reasoning around acne, assessment, treatment decisions, NICE-aligned pathways, when to escalate. Hands-on technical training requires a separate insured pathway.",
       },
       {
         q: "Do I need to be a nurse to take it?",
-        a: "No. The course is designed for any practitioner working with skin who wants the clinical reasoning behind acne decisions — including aestheticians, beauty therapists, advanced facialists, and prescribing clinicians.",
+        a: "No. The course is designed for any practitioner working with skin who wants the clinical reasoning behind acne decisions, including aestheticians, beauty therapists, advanced facialists, and prescribing clinicians.",
       },
       {
         q: "Is it really £79 with no upsells?",
         a: "Yes. £79 one-time, lifetime access, no upsells inside the course. Bernadette's stance is that clinical education should be priced honestly.",
       },
     ],
+    weeklyHours: "≈ 1 hr/wk · 5 wks",
+    isCpdEvidence: true,
   },
   {
     slug: "rosacea-beyond-redness",
@@ -651,7 +855,7 @@ export const COURSES: readonly Course[] = [
     eyebrow: "Clinical · £79",
     title: "Rosacea Beyond Redness",
     summary:
-      "Pathophysiology, barrier integrity, microbiome, NICE-aligned management — the rosacea course UK practitioners have been waiting for.",
+      "Pathophysiology, barrier integrity, microbiome, NICE-aligned management, the rosacea course UK practitioners have been waiting for.",
     body: "Rosacea is rarely just about redness. I built this course to unpack the four subtypes, the barrier story, the microbiome, and the long-term management strategy NICE backs. For practitioners who want to stop reaching for the same flare-management tool and start treating the condition. One course. £79. No upsells.",
     voiceQuote:
       "Build knowledge, confidence, and safe decision-making when working with clients who may present with rosacea.",
@@ -671,7 +875,7 @@ export const COURSES: readonly Course[] = [
       {
         num: "02",
         title: "Pathophysiology & skin science",
-        body: "Vascular, neurological, immunological. The three systems that conspire to make rosacea unpredictable — and how to read them.",
+        body: "Vascular, neurological, immunological. The three systems that conspire to make rosacea unpredictable, and how to read them.",
       },
       {
         num: "03",
@@ -713,7 +917,7 @@ export const COURSES: readonly Course[] = [
     availability: "available",
     bgImage: "/backgrounds/cream-halftone.png",
     promise:
-      "Stop managing flares with the same tool. Start treating the condition — barrier, microbiome, vascular, neurological — with NICE-aligned clinical reasoning.",
+      "Stop managing flares with the same tool. Start treating the condition, barrier, microbiome, vascular, neurological, with NICE-aligned clinical reasoning.",
     transformations: [
       {
         before:
@@ -737,11 +941,11 @@ export const COURSES: readonly Course[] = [
         before:
           "Unsure when to refer or co-manage.",
         after:
-          "Clear escalation criteria — phymatous progression, ocular involvement, treatment-resistant inflammation.",
+          "Clear escalation criteria, phymatous progression, ocular involvement, treatment-resistant inflammation.",
       },
     ],
     whyBernadette:
-      "I'm an Advanced Nurse Practitioner with twenty years' clinical experience and twelve in aesthetics. My clinic — Visage Aesthetics, Best Non-Surgical Aesthetics Clinic 2026 (Essex) — sees rosacea every week. I built this course on the NICE pathway, the RCN's clinical guidance, and the realities of treating rosacea inside a private clinic at premium fees.",
+      "I'm an Advanced Nurse Practitioner with twenty years' clinical experience and twelve in aesthetics. My clinic, Visage Aesthetics, Best Non-Surgical Aesthetics Clinic 2026 (Essex), sees rosacea every week. I built this course on the NICE pathway, the RCN's clinical guidance, and the realities of treating rosacea inside a private clinic at premium fees.",
     includes: [
       "12 sections covering subtypes, assessment, and treatment ladders",
       "Barrier-first vs anti-inflammatory-first decision framework",
@@ -749,7 +953,7 @@ export const COURSES: readonly Course[] = [
       "NICE-aligned topical + oral treatment pathway",
       "Real case study walkthroughs",
       "Certificate of Completion for CPD evidence",
-      "Lifetime access — including future updates",
+      "Lifetime access, including future updates",
     ],
     faqs: [
       {
@@ -758,13 +962,15 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "Does it cover ocular rosacea?",
-        a: "Yes — including when to refer to ophthalmology and how to document the conversation. Ocular involvement is one of the most under-recognised aspects of rosacea in private practice.",
+        a: "Yes, including when to refer to ophthalmology and how to document the conversation. Ocular involvement is one of the most under-recognised aspects of rosacea in private practice.",
       },
       {
         q: "Is it CPD-accredited?",
         a: "Designed to count toward CPD and appropriate as NMC revalidation reflective practice. Includes a Certificate of Completion.",
       },
     ],
+    weeklyHours: "≈ 1 hr/wk · 6 wks",
+    isCpdEvidence: true,
   },
 
   /* ============================================================
@@ -778,8 +984,8 @@ export const COURSES: readonly Course[] = [
     title: "The Skin Specialist™ Programme",
     price: 399,
     summary:
-      "From single-condition uncertainty to multi-condition skin specialism. A 10-module clinical-reasoning programme — NICE-aligned, evidence-led.",
-    body: "The course Bernadette wishes had existed when she was learning. A self-paced 10-module clinical programme that takes a generalist beauty or aesthetic practitioner to a confident, multi-condition skin specialist — anchored in NICE-aligned clinical reasoning rather than borrowed protocols. Covers the consultation framework, acne, rosacea, pigmentation, barrier dysfunction, photodamage, scarring, treatment planning, and the documentation that makes every plan defensible. Self-paced. Lifetime access. £399. Certificate of Completion for CPD evidence.",
+      "From single-condition uncertainty to multi-condition skin specialism. A 10-module clinical-reasoning programme, NICE-aligned, evidence-led.",
+    body: "The course Bernadette wishes had existed when she was learning. A self-paced 10-module clinical programme that takes a generalist beauty or aesthetic practitioner to a confident, multi-condition skin specialist, anchored in NICE-aligned clinical reasoning rather than borrowed protocols. Covers the consultation framework, acne, rosacea, pigmentation, barrier dysfunction, photodamage, scarring, treatment planning, and the documentation that makes every plan defensible. Self-paced. Lifetime access. £399. Certificate of Completion for CPD evidence.",
     voiceQuote:
       "Most skin plans don't fail because the practitioner is careless. They fail because the consultation skipped the question that would have changed the plan.",
     bullets: [
@@ -794,19 +1000,19 @@ export const COURSES: readonly Course[] = [
     modules: [
       {
         num: "01",
-        title: "Module 1 — Foundations of skin health",
+        title: "Module 1: Foundations of skin health",
         body: "Skin biology, barrier function, the microbiome, the immune system at the surface. The mental model every skin plan rests on.",
         topics: [
           "Skin layers + cellular detail",
           "Barrier function & TEWL",
           "The skin microbiome",
           "Innate immune response in skin",
-          "Skin types vs skin conditions — the difference",
+          "Skin types vs skin conditions, the difference",
         ],
       },
       {
         num: "02",
-        title: "Module 2 — The Skin Specialist consultation",
+        title: "Module 2: The Skin Specialist consultation",
         body: "The structured consultation framework that anchors every condition module that follows. NICE-aligned, defensible, repeatable.",
         topics: [
           "Pre-consultation intake",
@@ -819,21 +1025,21 @@ export const COURSES: readonly Course[] = [
       },
       {
         num: "03",
-        title: "Module 3 — Acne, in depth",
-        body: "The clinical-reasoning approach to acne — building on the Acne Decoded course with hormonal pathways, scarring risk, and treatment escalation.",
+        title: "Module 3: Acne, in depth",
+        body: "The clinical-reasoning approach to acne, building on the Acne Decoded course with hormonal pathways, scarring risk, and treatment escalation.",
         topics: [
           "Four mechanisms revisited",
           "Hormonal acne in adult women",
           "Severity grading + escalation triggers",
-          "AHAs, BHAs, retinoids — sequencing",
+          "AHAs, BHAs, retinoids, sequencing",
           "Post-acne pigmentation + scarring risk",
           "When to refer to GP / dermatology",
         ],
       },
       {
         num: "04",
-        title: "Module 4 — Rosacea, in depth",
-        body: "Beyond redness — the four NICE-recognised subtypes, barrier-first treatment, and the trigger-mapping protocol clients will actually follow.",
+        title: "Module 4: Rosacea, in depth",
+        body: "Beyond redness, the four NICE-recognised subtypes, barrier-first treatment, and the trigger-mapping protocol clients will actually follow.",
         topics: [
           "Erythematotelangiectatic, papulopustular, phymatous, ocular",
           "Vascular, neurological, immunological mechanisms",
@@ -845,7 +1051,7 @@ export const COURSES: readonly Course[] = [
       },
       {
         num: "05",
-        title: "Module 5 — Pigmentation disorders",
+        title: "Module 5: Pigmentation disorders",
         body: "Melasma, post-inflammatory hyperpigmentation (PIH), sun damage. Skin-tone-aware approach with realistic outcomes and ethical bleaching alternatives.",
         topics: [
           "Melanin biology + Fitzpatrick assessment",
@@ -858,25 +1064,25 @@ export const COURSES: readonly Course[] = [
       },
       {
         num: "06",
-        title: "Module 6 — Barrier dysfunction & sensitised skin",
+        title: "Module 6: Barrier dysfunction & sensitised skin",
         body: "The most-misunderstood condition in the clinic. Barrier repair pathway, ceramide science, microbiome-friendly actives.",
         topics: [
           "Functional vs structural barrier impairment",
           "TEWL measurement + interpretation",
-          "Ceramides, fatty acids, cholesterol — the lipid trio",
+          "Ceramides, fatty acids, cholesterol, the lipid trio",
           "Sequencing actives without crashing the barrier",
-          "Sensitised vs sensitive skin — diagnostic difference",
+          "Sensitised vs sensitive skin, diagnostic difference",
           "Recovery timeline + client communication",
         ],
       },
       {
         num: "07",
-        title: "Module 7 — Photodamage & ageing skin",
+        title: "Module 7: Photodamage & ageing skin",
         body: "Intrinsic vs extrinsic ageing, sun-damage assessment, anti-ageing treatment hierarchy. What works, what's marketing, what's both.",
         topics: [
           "Intrinsic vs extrinsic ageing biology",
           "Sun damage assessment (Glogau, Fitzpatrick)",
-          "Retinoids, vitamin C, niacinamide — evidence + sequencing",
+          "Retinoids, vitamin C, niacinamide, evidence + sequencing",
           "Photoprotection as the foundation",
           "In-clinic adjuncts (peels, microneedling, light)",
           "Setting realistic outcomes",
@@ -884,11 +1090,11 @@ export const COURSES: readonly Course[] = [
       },
       {
         num: "08",
-        title: "Module 8 — Scarring & post-inflammatory change",
+        title: "Module 8: Scarring & post-inflammatory change",
         body: "Atrophic, hypertrophic, keloid scars + post-inflammatory pigmentation/erythema. Classification, treatment options, realistic outcomes.",
         topics: [
           "Scar classification (ice-pick, boxcar, rolling, hypertrophic)",
-          "PIH vs PIE — different problems, different solutions",
+          "PIH vs PIE, different problems, different solutions",
           "Microneedling, peels, light-based options",
           "When to refer (deep dermal scarring, keloid risk)",
           "Photographic documentation of progress",
@@ -897,7 +1103,7 @@ export const COURSES: readonly Course[] = [
       },
       {
         num: "09",
-        title: "Module 9 — Treatment planning & combination therapy",
+        title: "Module 9: Treatment planning & combination therapy",
         body: "How to combine modalities safely. The decision tree for stacking actives, peels, microneedling, and light. Risk management for the practitioner who wants to do more than one thing.",
         topics: [
           "Single-modality vs combination thinking",
@@ -910,7 +1116,7 @@ export const COURSES: readonly Course[] = [
       },
       {
         num: "10",
-        title: "Module 10 — Integration, certification & next steps",
+        title: "Module 10: Integration, certification & next steps",
         body: "Pulling the framework into a sustainable clinical practice. Case study presentation. Self-audit. Certificate of Completion. Where to go next.",
         topics: [
           "Case study presentation framework",
@@ -930,35 +1136,35 @@ export const COURSES: readonly Course[] = [
     availability: "available",
     bgImage: "/backgrounds/pink-grunge-mid.png",
     promise:
-      "Stop guessing across conditions. Start consulting like a skin specialist — with NICE-aligned clinical reasoning you can defend on paper.",
+      "Stop guessing across conditions. Start consulting like a skin specialist, with NICE-aligned clinical reasoning you can defend on paper.",
     transformations: [
       {
         before:
           "Confident in one or two conditions. Unsure or improvising on the rest.",
         after:
-          "Multi-condition clinical reasoning across acne, rosacea, pigmentation, barrier, photodamage, and scarring — anchored in NICE-aligned thinking.",
+          "Multi-condition clinical reasoning across acne, rosacea, pigmentation, barrier, photodamage, and scarring, anchored in NICE-aligned thinking.",
       },
       {
         before:
           "Borrowing protocols from social media. Hoping the next plan holds.",
         after:
-          "A structured consultation framework that surfaces the real driver — and a treatment plan you can defend to a GP, an insurer, or a complaint reviewer.",
+          "A structured consultation framework that surfaces the real driver, and a treatment plan you can defend to a GP, an insurer, or a complaint reviewer.",
       },
       {
         before:
           "Charging skin-therapy prices for clinical-level work because the documentation doesn't yet justify the premium.",
         after:
-          "A defensible consultation, photographic baseline, and treatment plan that justifies premium fees — and the reputation that follows.",
+          "A defensible consultation, photographic baseline, and treatment plan that justifies premium fees, and the reputation that follows.",
       },
       {
         before:
           "Single-condition courses (Acne, Rosacea) as one-off CPD ticks.",
         after:
-          "An integrated skin-specialist identity — the practitioner clients refer their friends to.",
+          "An integrated skin-specialist identity, the practitioner clients refer their friends to.",
       },
     ],
     whyBernadette:
-      "I'm an Advanced Nurse Practitioner with twenty years on the ward, twelve in aesthetics, and I run an NHS Trust's clinical workforce governance for over 1,000 nurses. I'm NMC registered, MSc Advanced Practice, and lecture postgraduate clinicians on this exact pathway. The Skin Specialist Programme is the curriculum I distilled from teaching inside the NHS — translated for private clinic practice, NICE-aligned end-to-end, built by a senior clinician who treats skin every week.",
+      "I'm an Advanced Nurse Practitioner with twenty years on the ward, twelve in aesthetics, and I run an NHS Trust's clinical workforce governance for over 1,000 nurses. I'm NMC registered, MSc Advanced Practice, and lecture postgraduate clinicians on this exact pathway. The Skin Specialist Programme is the curriculum I distilled from teaching inside the NHS, translated for private clinic practice, NICE-aligned end-to-end, built by a senior clinician who treats skin every week.",
     includes: [
       "10 self-paced modules covering foundations, consultation, six conditions, and integration",
       "The structured Skin Specialist consultation framework",
@@ -967,12 +1173,12 @@ export const COURSES: readonly Course[] = [
       "Multi-modal combination-therapy guidance",
       "Real UK case study walkthroughs",
       "Certificate of Completion for CPD evidence",
-      "Lifetime access — including future clinical updates",
+      "Lifetime access, including future clinical updates",
     ],
     faqs: [
       {
         q: "How is this different from Acne Decoded and Rosacea Beyond Redness?",
-        a: "The £79 decoders are deep dives on a single condition. The Skin Specialist Programme is the integrated, multi-condition pathway — including the consultation framework, pigmentation, barrier dysfunction, photodamage, and scarring (none of which are covered in the single-condition courses). If you've already taken Acne Decoded or Rosacea Beyond Redness, this extends — it doesn't repeat.",
+        a: "The £79 decoders are deep dives on a single condition. The Skin Specialist Programme is the integrated, multi-condition pathway, including the consultation framework, pigmentation, barrier dysfunction, photodamage, and scarring (none of which are covered in the single-condition courses). If you've already taken Acne Decoded or Rosacea Beyond Redness, this extends, it doesn't repeat.",
       },
       {
         q: "Is this CPD-accredited?",
@@ -980,20 +1186,26 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "Will this teach me to inject?",
-        a: "No. This is clinical reasoning around skin — assessment, treatment planning, multi-modal pathways, when to escalate, defensible documentation. Hands-on injectable training requires a separate insured pathway.",
+        a: "No. This is clinical reasoning around skin, assessment, treatment planning, multi-modal pathways, when to escalate, defensible documentation. Hands-on injectable training requires a separate insured pathway.",
       },
       {
         q: "Do I need a clinical background?",
-        a: "No, but you should be already working with skin in a professional capacity (aesthetician, advanced facialist, beauty therapist, clinical nurse, prescribing clinician). The programme assumes you know how to perform treatments — the work is on the clinical reasoning underneath them.",
+        a: "No, but you should be already working with skin in a professional capacity (aesthetician, advanced facialist, beauty therapist, clinical nurse, prescribing clinician). The programme assumes you know how to perform treatments, the work is on the clinical reasoning underneath them.",
       },
       {
         q: "Is £399 a one-off or a subscription?",
-        a: "One-off, lifetime access — including future updates as clinical guidance evolves. No recurring fees, no upsells inside the course.",
+        a: "One-off, lifetime access, including future updates as clinical guidance evolves. No recurring fees, no upsells inside the course.",
       },
       {
         q: "How long does it take?",
         a: "Self-paced. Most practitioners complete one module per week (~10 weeks) but you can move faster or slower. Each module is approximately 2 hours of learning + reflection.",
       },
+    ],
+    weeklyHours: "≈ 2 hrs/wk · 10 wks",
+    isCpdEvidence: true,
+    valueAnchor: [
+      "An equivalent multi-condition skin-specialist pathway with a private dermatology educator runs £600–£900 per teaching day.",
+      "One additional retained skin client at a confident £200/treatment recoups the course in two visits.",
     ],
   },
 
@@ -1008,9 +1220,9 @@ export const COURSES: readonly Course[] = [
     title: "The Skin Specialist™ Mini",
     summary:
       "A free 4-lesson taster of the consultation framework that anchors every defensible skin plan.",
-    body: "Free, 30-minute taster of the full Skin Specialist Programme. Four short lessons that reframe skin consultations from a tick-box exercise into the structured clinical conversation that decides whether a plan holds. The Skin Specialist consultation is the foundation underneath every condition module in the full course — and the most differentiating skill a practitioner can develop. NICE-aligned. Honest. Yours to keep.",
+    body: "Free, 30-minute taster of the full Skin Specialist Programme. Four short lessons that reframe skin consultations from a tick-box exercise into the structured clinical conversation that decides whether a plan holds. The Skin Specialist consultation is the foundation underneath every condition module in the full course, and the most differentiating skill a practitioner can develop. NICE-aligned. Honest. Yours to keep.",
     voiceQuote:
-      "If you cannot justify it on paper, you cannot defend it in practice — and the consultation is where the paper trail starts.",
+      "If you cannot justify it on paper, you cannot defend it in practice, and the consultation is where the paper trail starts.",
     bullets: [
       "Why most skin plans fail",
       "The structured consultation framework",
@@ -1026,12 +1238,12 @@ export const COURSES: readonly Course[] = [
       {
         num: "02",
         title: "Why most skin plans fail",
-        body: "The consultation gap — the question most plans skip, and why it's the question that decides whether the plan holds.",
+        body: "The consultation gap, the question most plans skip, and why it's the question that decides whether the plan holds.",
       },
       {
         num: "03",
         title: "The Skin Specialist consultation",
-        body: "The structured framework — pre-consultation intake, history, examination, classification, expectations, consent. The same flow used inside the full programme.",
+        body: "The structured framework, pre-consultation intake, history, examination, classification, expectations, consent. The same flow used inside the full programme.",
       },
       {
         num: "04",
@@ -1047,43 +1259,45 @@ export const COURSES: readonly Course[] = [
     availability: "available",
     bgImage: "/backgrounds/cream-halftone.png",
     promise:
-      "Thirty minutes. The consultation framework underneath every defensible skin plan — yours to keep, whether or not you ever take the full programme.",
+      "Thirty minutes. The consultation framework underneath every defensible skin plan, yours to keep, whether or not you ever take the full programme.",
     transformations: [
       {
         before:
           "Skin consultations as a tick-box exercise before the treatment.",
         after:
-          "The structured clinical conversation that decides whether the plan holds — and gives you the paper trail to defend it.",
+          "The structured clinical conversation that decides whether the plan holds, and gives you the paper trail to defend it.",
       },
       {
         before:
           "Plans that look great on paper and fall apart by week six.",
         after:
-          "A consultation that surfaces the real driver — so the plan you write is the plan that holds.",
+          "A consultation that surfaces the real driver, so the plan you write is the plan that holds.",
       },
     ],
     whyBernadette:
-      "The consultation framework taught here is the same one I use inside Visage Aesthetics — the clinic that won Best Non-Surgical Aesthetics Clinic 2026 (Essex). It's the foundation underneath every condition module in the full Skin Specialist Programme. The Mini is the front door.",
+      "The consultation framework taught here is the same one I use inside Visage Aesthetics, the clinic that won Best Non-Surgical Aesthetics Clinic 2026 (Essex). It's the foundation underneath every condition module in the full Skin Specialist Programme. The Mini is the front door.",
     includes: [
       "Four short lessons (~30 minutes total)",
       "The structured Skin Specialist consultation framework",
-      "Lifetime access — revisit any time",
+      "Lifetime access, revisit any time",
       "A clear next step if you want the full clinical pathway",
     ],
     faqs: [
       {
         q: "Is this really free?",
-        a: "Yes. Four lessons, fully free. No credit card. The consultation framework is yours to keep — whether or not you ever take the paid programme.",
+        a: "Yes. Four lessons, fully free. No credit card. The consultation framework is yours to keep, whether or not you ever take the paid programme.",
       },
       {
         q: "Will it sell me on the paid course?",
-        a: "Lesson 4 is a clear pointer to the full Skin Specialist Programme if you want to keep going — but no pressure. Many practitioners take the Mini, integrate the consultation framework, and never enrol in the paid programme.",
+        a: "Lesson 4 is a clear pointer to the full Skin Specialist Programme if you want to keep going, but no pressure. Many practitioners take the Mini, integrate the consultation framework, and never enrol in the paid programme.",
       },
       {
         q: "How is this different from the Acne or Rosacea Mini?",
-        a: "The Acne and Rosacea Minis are condition-specific tasters. The Skin Specialist Mini is the consultation framework that sits underneath every condition — applicable whether you treat acne, rosacea, pigmentation, or anything else. Take all three if it helps; they don't repeat.",
+        a: "The Acne and Rosacea Minis are condition-specific tasters. The Skin Specialist Mini is the consultation framework that sits underneath every condition, applicable whether you treat acne, rosacea, pigmentation, or anything else. Take all three if it helps; they don't repeat.",
       },
     ],
+    weeklyHours: "≈ 30 min total",
+    isCpdEvidence: false,
   },
 
   /* ============================================================
@@ -1091,14 +1305,14 @@ export const COURSES: readonly Course[] = [
      ============================================================ */
   {
     slug: "rag-pathway",
-    kartraMembershipName: "From Regulation to Reputation™ — The RAG Pathway",
+    kartraMembershipName: "From Regulation to Reputation™, The RAG Pathway",
     freeTasterSlug: "free-2-day-rag",
     eyebrow: "Regulatory · 4 weeks · £499",
-    title: "From Regulation to Reputation™ — The RAG Pathway",
+    title: "From Regulation to Reputation™, The RAG Pathway",
     price: 499,
     summary:
       "The structured 4-week, educator-led RAG Pathway. For England-based practitioners who want to practise safely, ethically, and defensibly.",
-    body: "Aesthetics isn't unregulated. It's misunderstood — and that's where careers, confidence, and reputations get lost. From Regulation to Reputation™ is the RAG Pathway in full: a 4-week, educator-led programme I designed for England-based practitioners. Without fear. Without guesswork. Without cutting corners. This isn't a “how to inject” course. It's the framework that keeps you compliant, in business, and building a reputation that compounds — the same one I run my own award-winning clinic on.",
+    body: "Aesthetics isn't unregulated. It's misunderstood, and that's where careers, confidence, and reputations get lost. From Regulation to Reputation™ is the RAG Pathway in full: a 4-week, educator-led programme I designed for England-based practitioners. Without fear. Without guesswork. Without cutting corners. This isn't a “how to inject” course. It's the framework that keeps you compliant, in business, and building a reputation that compounds, the same one I run my own award-winning clinic on.",
     voiceQuote:
       "As your mentor on this journey, my role is to help you move beyond confusion and fear around regulation and instead use it as a strategic advantage.",
     bullets: [
@@ -1112,42 +1326,42 @@ export const COURSES: readonly Course[] = [
     modules: [
       {
         num: "01",
-        title: "Module 1 — The aesthetics reality check",
+        title: "Module 1: The aesthetics reality check",
         body: "Where England's aesthetics industry actually sits today. The licensing landscape, the JCCP register, the MHRA expectations.",
       },
       {
         num: "02",
-        title: "Module 2 — The Traffic Light System",
+        title: "Module 2: The Traffic Light System",
         body: "🔴 Red, 🟠 Amber, 🟢 Green. The decision-making muscle for every procedure, marketing claim, and treatment offer.",
       },
       {
         num: "03",
-        title: "Module 3 — Legal essentials",
+        title: "Module 3: Legal essentials",
         body: "Consent, capacity, supervision, prescribing pathways, indemnity. The non-negotiables, in plain English.",
       },
       {
         num: "04",
-        title: "Module 4 — Setting up your clinic",
+        title: "Module 4: Setting up your clinic",
         body: "Premises, infection control, sharps, waste, oversight. What inspectors look for and what gets you closed.",
       },
       {
         num: "05",
-        title: "Module 5 — Clinical governance",
+        title: "Module 5: Clinical governance",
         body: "Documentation, audit, complaints, escalation. The systems that turn complaints into evidence of good practice.",
       },
       {
         num: "06",
-        title: "Module 6 — Staying ASA safe",
+        title: "Module 6: Staying ASA safe",
         body: "What you can claim, what you can't, what gets your ads pulled. Marketing rules, made workable.",
       },
       {
         num: "07",
-        title: "Module 7 — Training, qualifications & CPD",
+        title: "Module 7: Training, qualifications & CPD",
         body: "What counts, what doesn't, and how to evidence ongoing competence to insurers and clients.",
       },
       {
         num: "08",
-        title: "Module 8 — Integration & reflection",
+        title: "Module 8: Integration & reflection",
         body: "Pulling the framework into a sustainable practice rhythm. Certificate of Completion.",
       },
     ],
@@ -1165,7 +1379,7 @@ export const COURSES: readonly Course[] = [
         before:
           "Vaguely anxious. Hoping no one looks too closely at the documentation.",
         after:
-          "A defensible practice — scope, premises, consent, governance, marketing — every layer aligned to JCCP / CPSA / MHRA expectations.",
+          "A defensible practice, scope, premises, consent, governance, marketing, every layer aligned to JCCP / CPSA / MHRA expectations.",
       },
       {
         before:
@@ -1183,7 +1397,7 @@ export const COURSES: readonly Course[] = [
         before:
           "If something went wrong tomorrow, you couldn't say who'd investigate or what they'd find.",
         after:
-          "Clear answer to the question: “If a complaint landed today, could I justify and defend every decision?” Yes — on paper.",
+          "Clear answer to the question: “If a complaint landed today, could I justify and defend every decision?” Yes, on paper.",
       },
       {
         before:
@@ -1193,7 +1407,7 @@ export const COURSES: readonly Course[] = [
       },
     ],
     whyBernadette:
-      "I lead clinical workforce governance for an NHS Trust with oversight of over 1,000 nurses. I lecture postgraduate clinicians on advanced practice, regulation, and clinical governance — at the same level the rules in this course were designed for. The RAG Pathway is what I distilled from teaching inside the NHS into a framework private aesthetic practitioners can actually use — and it's how I run my own clinic.",
+      "I lead clinical workforce governance for an NHS Trust with oversight of over 1,000 nurses. I lecture postgraduate clinicians on advanced practice, regulation, and clinical governance, at the same level the rules in this course were designed for. The RAG Pathway is what I distilled from teaching inside the NHS into a framework private aesthetic practitioners can actually use, and it's how I run my own clinic.",
     includes: [
       "8 modules across 4 weeks · educator-led",
       "The full Traffic Light System decision framework",
@@ -1201,12 +1415,12 @@ export const COURSES: readonly Course[] = [
       "ASA-safe content frameworks (what you can and can't claim)",
       "Live touch-points throughout the 4-week programme",
       "Certificate of Completion for CPD + revalidation",
-      "Lifetime access — including future regulatory updates",
+      "Lifetime access, including future regulatory updates",
     ],
     faqs: [
       {
         q: "When can I start?",
-        a: "Immediately. The RAG Pathway is self-paced — you can begin Module 1 the day you enrol and work through the eight modules at the pace that fits your clinic.",
+        a: "Immediately. The RAG Pathway is self-paced, you can begin Module 1 the day you enrol and work through the eight modules at the pace that fits your clinic.",
       },
       {
         q: "Is this a one-off or a subscription?",
@@ -1218,9 +1432,11 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "What's the difference between this and the free 2-day Mini?",
-        a: "The Mini gives you the conceptual framework. The full RAG Pathway gives you the documented, defensible practice records to actually operate inside it — including templates, audit checklists, and ASA-safe marketing modules.",
+        a: "The Mini gives you the conceptual framework. The full RAG Pathway gives you the documented, defensible practice records to actually operate inside it, including templates, audit checklists, and ASA-safe marketing modules.",
       },
     ],
+    weeklyHours: "≈ 2 hrs/wk · 4 wks",
+    isCpdEvidence: true,
   },
   {
     slug: "5k-formula",
@@ -1233,7 +1449,7 @@ export const COURSES: readonly Course[] = [
       "Consistent £5K+ months. Without chasing clients, discounting, or doing more treatments.",
     body: "12-week aesthetics business system built around the UNLOCK PROFIT™ Framework I refined inside my own clinic. Niche, signature offers, confident pricing, the systems that hold a clinic together. For clinic owners ready to build consistent £5K+ months without burning out, racing on price, or chasing the next viral treatment. Self-paced. Lifetime access. £1,199.",
     voiceQuote:
-      "You're not here to learn generic business tips — you're here to master the art of building a profitable, personal, and professional aesthetics brand.",
+      "You're not here to learn generic business tips, you're here to master the art of building a profitable, personal, and professional aesthetics brand.",
     bullets: [
       "The UNLOCK PROFIT™ Framework",
       "Three Pillars of the Clinical Core",
@@ -1246,62 +1462,62 @@ export const COURSES: readonly Course[] = [
     modules: [
       {
         num: "01",
-        title: "Module 1 — Niche",
+        title: "Module 1: Niche",
         body: "The Three Pillars of the Clinical Core: Expertise. Excitement. Economics. The exercise that turns a generalist clinic into a destination practice.",
       },
       {
         num: "02",
-        title: "Module 2 — Branding",
+        title: "Module 2: Branding",
         body: "Voice, visual, and the one-line proposition that turns “another injector” into “the practitioner I trust.”",
       },
       {
         num: "03",
-        title: "Module 3 — Leveraging",
-        body: "Where your time, energy and authority compound — and the busywork to drop today.",
+        title: "Module 3: Leveraging",
+        body: "Where your time, energy and authority compound, and the busywork to drop today.",
       },
       {
         num: "04",
-        title: "Module 4 — Optimise the client experience",
+        title: "Module 4: Optimise the client experience",
         body: "Pre-consult, consult, post-treatment, reactivation. The four touch-points that decide whether one client becomes ten.",
       },
       {
         num: "05",
-        title: "Module 5 — Create authority via content",
+        title: "Module 5: Create authority via content",
         body: "Educational content that converts without pandering. The minimum-viable rhythm that fills the diary.",
       },
       {
         num: "06",
-        title: "Module 6 — Becoming fully booked",
+        title: "Module 6: Becoming fully booked",
         body: "Diary management, retention, the invisible scarcity that makes you the practitioner they wait for.",
       },
       {
         num: "07",
-        title: "Module 7 — Pricing mastery",
+        title: "Module 7: Pricing mastery",
         body: "How to set, hold, and raise prices without losing the clients you actually want.",
       },
       {
         num: "08",
-        title: "Module 8 — Refine your sales skills",
+        title: "Module 8: Refine your sales skills",
         body: "Ethical sales as patient-centred guidance. Closing without ever sounding like a salesperson.",
       },
       {
         num: "09",
-        title: "Module 9 — Organise your operations",
+        title: "Module 9: Organise your operations",
         body: "The systems, SOPs, and rhythms that keep a busy clinic from owning your weekends.",
       },
       {
         num: "10",
-        title: "Module 10 — Forecast & scale",
+        title: "Module 10: Forecast & scale",
         body: "Numbers you actually run on. The monthly read-out that decides what to grow and what to cut.",
       },
       {
         num: "11",
-        title: "Module 11 — Long-term strategy",
-        body: "Where the practice goes in year three, five, ten — and how to plan back from it.",
+        title: "Module 11: Long-term strategy",
+        body: "Where the practice goes in year three, five, ten, and how to plan back from it.",
       },
       {
         num: "12",
-        title: "Module 12 — The compound effect",
+        title: "Module 12: The compound effect",
         body: "Integration & reflection. Why the practitioners who stay still eventually win. Certificate of Completion.",
       },
     ],
@@ -1313,11 +1529,11 @@ export const COURSES: readonly Course[] = [
     availability: "available",
     bgImage: "/backgrounds/pink-fade-charcoal-2.png",
     promise:
-      "Twelve weeks. Twelve modules. The UNLOCK PROFIT™ Framework I built my own award-winning clinic on — translated for practitioners who want consistent £5K+ months without burning out.",
+      "Twelve weeks. Twelve modules. The UNLOCK PROFIT™ Framework I built my own award-winning clinic on, translated for practitioners who want consistent £5K+ months without burning out.",
     transformations: [
       {
         before:
-          "Busy diary, but quietly unsure if the clinic is actually paying you.",
+          "Busy diary, but privately unsure if the clinic is actually paying you.",
         after:
           "Consistent £5K+ months. Numbers you can trust. A monthly read-out that drives decisions.",
       },
@@ -1337,7 +1553,7 @@ export const COURSES: readonly Course[] = [
         before:
           "Living inside your own diary. Owning every booking, every reminder, every follow-up.",
         after:
-          "Systems that hold the clinic without you. Pre-consult, consult, post-treatment, reactivation — automated where it should be, personal where it matters.",
+          "Systems that hold the clinic without you. Pre-consult, consult, post-treatment, reactivation, automated where it should be, personal where it matters.",
       },
       {
         before:
@@ -1347,23 +1563,23 @@ export const COURSES: readonly Course[] = [
       },
     ],
     whyBernadette:
-      "I built Visage Aesthetics — winner of Best Non-Surgical Aesthetics Clinic 2026 (Essex, Health, Beauty & Wellness Awards) — using the UNLOCK PROFIT™ Framework. I've been refining it for twelve years, in real clinic, at real fee pressure. This is the system — taught by the practitioner who proved it works.",
+      "I built Visage Aesthetics on the UNLOCK PROFIT™ Framework. The clinic went on to win Best Non-Surgical Aesthetics Clinic 2026 (Essex, Health, Beauty & Wellness Awards). I've spent twelve years refining the framework in real clinic, under real fee pressure. The 5K+ Formula™ is that system, taught by the practitioner who proved it works.",
     includes: [
       "12 modules across 12 weeks · rolling release",
       "The complete UNLOCK PROFIT™ Framework",
       "Niche · branding · pricing · systems modules",
       "Live touch-points throughout the programme",
       "Certificate of Completion",
-      "Lifetime access — including future updates",
+      "Lifetime access, including future updates",
     ],
     faqs: [
       {
         q: "When can I start?",
-        a: "Immediately. The 5K+ Formula™ is self-paced — you can begin Module 1 the day you enrol and work through the twelve weeks at the pace that fits your clinic.",
+        a: "Immediately. The 5K+ Formula™ is self-paced, you can begin Module 1 the day you enrol and work through the twelve weeks at the pace that fits your clinic.",
       },
       {
         q: "What if I already have a busy clinic?",
-        a: "The 5K+ Formula™ is built specifically for practitioners who are already in clinic but feel busy-not-paid. It assumes you've got the technical skills — the work is on niche, pricing, signature offers, and the systems that turn busy weeks into profitable ones.",
+        a: "The 5K+ Formula™ is built specifically for practitioners who are already in clinic but feel busy-not-paid. It assumes you've got the technical skills, the work is on niche, pricing, signature offers, and the systems that turn busy weeks into profitable ones.",
       },
       {
         q: "How much time per week?",
@@ -1371,12 +1587,18 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "Will it teach me marketing?",
-        a: "Yes — but ASA-safe, ethical, content-first marketing. Not Instagram tactics, not paid ads. The marketing module is anchored to the same regulatory framework taught in the RAG Pathway.",
+        a: "Yes, but ASA-safe, ethical, content-first marketing. Not Instagram tactics, not paid ads. The marketing module is anchored to the same regulatory framework taught in the RAG Pathway.",
       },
       {
         q: "Do I get 1-1 support?",
-        a: "The cohort runs with live group touch-points. 1-1 support sits outside this programme — speak to us directly if you're looking for that.",
+        a: "The cohort runs with live group touch-points. 1-1 support sits outside this programme, speak to us directly if you're looking for that.",
       },
+    ],
+    weeklyHours: "≈ 3 hrs/wk · 12 wks",
+    isCpdEvidence: true,
+    valueAnchor: [
+      "Equivalent 1-to-1 business mentoring with an aesthetics-specialist consultant runs £200–£400 per hour.",
+      "Adding £350 to a single month's revenue through tighter pricing and signature offers covers the programme back inside one quarter.",
     ],
   },
 ] as const;
@@ -1384,6 +1606,47 @@ export const COURSES: readonly Course[] = [
 /** Look-up helper used by `/courses/[slug]/page.tsx`. */
 export function getCourse(slug: string): Course | undefined {
   return COURSES.find((c) => c.slug === slug);
+}
+
+/**
+ * The three high-level *subjects* the catalogue is organised by on
+ * the /courses index. Free tasters map to one of these based on the
+ * paid course they front (`upsellsTo`) so they sit alongside their
+ * parent in the tabs — instead of stranded under a "Free" filter.
+ */
+export type CourseSubject = "Clinical" | "Regulatory" | "Business";
+
+export const COURSE_SUBJECTS: readonly CourseSubject[] = [
+  "Clinical",
+  "Regulatory",
+  "Business",
+] as const;
+
+/**
+ * Resolve the subject (Clinical / Regulatory / Business) for any course.
+ * For paid courses the answer is `category` directly. For free tasters
+ * we look up the paid course they upsell to and use its category — so
+ * a Free taster of a Clinical programme appears under the CLINICAL tab.
+ *
+ * Returns `null` for the (rare) edge case of a free taster with no
+ * `upsellsTo` mapping yet — those will fall into the "All" view.
+ */
+export function getCourseSubject(course: Course): CourseSubject | null {
+  if (
+    course.category === "Clinical" ||
+    course.category === "Regulatory" ||
+    course.category === "Business"
+  ) {
+    return course.category;
+  }
+  // Free taster — derive from parent.
+  if (course.upsellsTo) {
+    const parent = COURSES.find((c) => c.slug === course.upsellsTo);
+    if (parent && parent.category !== "Free taster") {
+      return parent.category as CourseSubject;
+    }
+  }
+  return null;
 }
 
 /** Resolve a Kartra `lead.memberships[].membership_name` back to its

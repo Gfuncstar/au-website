@@ -1,18 +1,18 @@
 ---
-title: "Module 7 — Pricing Mastery"
+title: "Module 7: Pricing Mastery"
 order: 9
 icon: scales
 duration: "20 min"
 summary: "Understanding your value, pricing psychology backed by research, the 3 P's model, ethical upselling, and the Two-Plan Method for confident recommendation delivery."
 ---
 
-Pricing mastery in aesthetics is **not** about charging more for the sake of revenue. It is the ability to price services in a way that reflects value, expertise, risk, and outcomes — while maintaining trust and ethical standards. In aesthetic practice, pricing decisions directly influence patient confidence, perceived quality, and long-term loyalty.
+Pricing mastery in aesthetics is **not** about charging more for the sake of revenue. It is the ability to price services in a way that reflects value, expertise, risk, and outcomes, while maintaining trust and ethical standards. In aesthetic practice, pricing decisions directly influence patient confidence, perceived quality, and long-term loyalty.
 
 Unlike retail or low-risk services, aesthetic treatments involve **personal identity, medical responsibility, and emotional investment**. As a result, pricing functions not only as a financial decision, but as a signal of safety, professionalism, and credibility.
 
 ## Understanding your value
 
-Most practitioners undercharge because they underestimate the value they provide. Understanding your value means recognising that clients are not paying for just the product or technique — they are paying for your **safety, expertise, judgment, artistry, and the experience you deliver**.
+Most practitioners undercharge because they underestimate the value they provide. Understanding your value means recognising that clients are not paying for just the product or technique, they are paying for your **safety, expertise, judgment, artistry, and the experience you deliver**.
 
 Your value comes from:
 
@@ -24,13 +24,13 @@ Your value comes from:
 - The environment you provide
 - The time, attention, and support you give
 
-When you clearly understand your value, pricing becomes less about comparison and more about alignment. Clients aren't choosing you because you are the cheapest — they choose you because they trust you, feel safe with you, and believe in the quality of your work.
+When you clearly understand your value, pricing becomes less about comparison and more about alignment. Clients aren't choosing you because you are the cheapest, they choose you because they trust you, feel safe with you, and believe in the quality of your work.
 
 **Key point:** Value clarity = pricing clarity = pricing confidence.
 
 ## The psychology of pricing
 
-Price is not just a number — it **communicates meaning**. Clients use price as a shortcut for understanding quality, safety, and expertise, especially in aesthetics where results and safety are top priorities.
+Price is not just a number, it **communicates meaning**. Clients use price as a shortcut for understanding quality, safety, and expertise, especially in aesthetics where results and safety are top priorities.
 
 ### Key pricing psychology principles
 
@@ -53,23 +53,23 @@ How these apply to an aesthetics business:
 
 - **Practice your "price delivery sentence" until it feels natural.** Example: *"The investment for this treatment is £___, and it includes everything we discussed to achieve your result."*
 - **Showcase high-quality social proof to justify perceived value.** Add 3–5 strong before/afters to consultations and follow-ups. Keep a quick-access folder on your phone or tablet.
-- **Stop pricing by time or millilitres — price by result.** Change menu wording from "1ml / 0.5ml" to "Enhanced definition / Subtle refinement". Build simple treatment plans instead of single appointments. Highlight outcomes, not product quantity.
+- **Stop pricing by time or millilitres, price by result.** Change menu wording from "1ml / 0.5ml" to "Enhanced definition / Subtle refinement". Build simple treatment plans instead of single appointments. Highlight outcomes, not product quantity.
 - **Create a clear, transparent "Price and Value" explanation for every treatment.** What the treatment does, why you recommend it, expected longevity, and what's included in the price.
 - **Use a simple, branded pricing guide.** A clean, easy-to-read guide with treatment categories, prices, what's included, and maintenance timelines. Send this after every enquiry.
 - **Increase your own belief in your value.** List your qualifications, training, investment in learning. Take 2 minutes before each day to say: *"My prices reflect my expertise and the transformation I deliver."*
-- **Reinforce the safety–quality link in consultations.** Emphasise your training, your experience, your safety standards, and your long-term client care — not as bragging, but as informative reassurance.
+- **Reinforce the safety–quality link in consultations.** Emphasise your training, your experience, your safety standards, and your long-term client care, not as bragging, but as informative reassurance.
 
 ## Building a profitable pricing structure
 
 The **3 P's of Confident Pricing** simplify the pricing process:
 
-1. **Positioning** — where do you sit in the market? Are you boutique, luxury, or accessibility-focused? Your pricing should reflect your brand identity and client demographic.
-2. **Perception** — what do clients believe they're investing in? You're not selling "anti-wrinkle" — you're providing confidence, safety, and expertise.
-3. **Profitability** — does your price support sustainable growth? Never price to survive — price to thrive. A price that feels aligned attracts clients who are aligned.
+1. **Positioning**, where do you sit in the market? Are you boutique, luxury, or accessibility-focused? Your pricing should reflect your brand identity and client demographic.
+2. **Perception**, what do clients believe they're investing in? You're not selling "anti-wrinkle", you're providing confidence, safety, and expertise.
+3. **Profitability**, does your price support sustainable growth? Never price to survive, price to thrive. A price that feels aligned attracts clients who are aligned.
 
 ### The psychology of pricing in practice
 
-Clients don't buy the cheapest option — they buy what feels **safest and most trustworthy**.
+Clients don't buy the cheapest option, they buy what feels **safest and most trustworthy**.
 
 - Low = *"Maybe it's less skilled or safe."*
 - Mid = *"Good value, professional."*
@@ -99,9 +99,9 @@ Reframe *"How can I get more money from this client?"* to *"What would genuinely
 
 Most upsells fail because they are random. Ethical upsells succeed because they are relevant. Use the NEEDS radar:
 
-- **Immediate need** — what they asked for
-- **Hidden need** — what they didn't articulate
-- **Future need** — what they'll face next
+- **Immediate need**, what they asked for
+- **Hidden need**, what they didn't articulate
+- **Future need**, what they'll face next
 
 ### Conversational recommendation system
 
@@ -132,7 +132,7 @@ Every recommendation must:
 - Never create pressure or urgency
 - Be something you genuinely believe in
 
-## Weekly challenge — pricing mastery in practice
+## Weekly challenge, pricing mastery in practice
 
 **Mini challenge:** design 2 ethical upsell scripts for your business and test them this week.
 

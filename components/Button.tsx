@@ -93,7 +93,7 @@ function Inner({
         {price !== undefined && (
           <>
             {" "}
-            — £{typeof price === "number" ? price.toLocaleString("en-GB") : price}
+            , £{typeof price === "number" ? price.toLocaleString("en-GB") : price}
           </>
         )}
       </span>

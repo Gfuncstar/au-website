@@ -274,7 +274,7 @@ export default function ScrollImageSequence({
       className={`relative overflow-hidden bg-black select-none ${className}`}
       style={wrapperStyle}
     >
-      {/* Image layer — visible to the user, never receives the scroll gesture */}
+      {/* Image layer, visible to the user, never receives the scroll gesture */}
       <div className="absolute inset-0 pointer-events-none">
         <img
           ref={imgRef}
@@ -297,7 +297,7 @@ export default function ScrollImageSequence({
         />
       </div>
 
-      {/* Loading state — minimal, always centred */}
+      {/* Loading state, minimal, always centred */}
       {!isLoaded && (
         <div
           className="absolute inset-0 flex items-end justify-center pb-6 sm:pb-10 pointer-events-none"
@@ -313,7 +313,7 @@ export default function ScrollImageSequence({
         </div>
       )}
 
-      {/* Scroll layer — invisible, catches the gesture and drives the frame.
+      {/* Scroll layer, invisible, catches the gesture and drives the frame.
           On mobile this gets the user's finger; touch-action: pan-y locks the
           page behind. overscroll-contain stops a chained body scroll when the
           internal scroll hits its end. */}

@@ -46,11 +46,11 @@ Avoid:
 **Appropriate options:**
 
 - Gentle calming facials (no heat or friction)
-- Barrier-support treatments — e.g. niacinamide, low-strength azelaic acid — to reduce redness and inflammation and protect the barrier
+- Barrier-support treatments, e.g. niacinamide, low-strength azelaic acid, to reduce redness and inflammation and protect the barrier
 - LED (non-thermal, low intensity)
 - Cooling and lymphatic support techniques using very light pressure to reduce swelling and flushing
 
-**Important:** Proceed with caution on IPL and vascular laser — these should be medical-led or shared care. Patch testing is essential, and intervals between treatments should be longer than usual.
+**Important:** Proceed with caution on IPL and vascular laser, these should be medical-led or shared care. Patch testing is essential, and intervals between treatments should be longer than usual.
 
 ## 4. Treatments to avoid or defer
 
@@ -87,7 +87,7 @@ Step back if redness lasts longer than baseline. Adjust the plan seasonally.
 
 - Use a gentle, soap-free cleanser
 - Lukewarm water only
-- Pat dry — do not rub
+- Pat dry, do not rub
 
 Avoid: foaming cleansers, scrubs or cleansing brushes, and hot water.
 
@@ -144,4 +144,4 @@ Use exactly as prescribed. Expect improvement over 6–12 weeks.
 - Thickening skin (especially the nose)
 - Emotional distress linked to symptoms
 
-**Key point:** The message to convey to clients — *calm skin first. Consistency matters more than intensity.*
+**Key point:** The message to convey to clients, *calm skin first. Consistency matters more than intensity.*

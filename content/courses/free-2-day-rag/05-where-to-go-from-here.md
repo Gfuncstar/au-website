@@ -28,14 +28,14 @@ You now understand:
 
 This is awareness.
 
-**Important:** Awareness is powerful — but on its own, it is not enough.
+**Important:** Awareness is powerful, but on its own, it is not enough.
 
 ## The gap this mini-course reveals
 
 Most practitioners leave free education with one of two feelings:
 
 1. "I didn't realise how much I didn't know."
-2. "I know what the risks are — but I'm not sure how to fix them properly."
+2. "I know what the risks are, but I'm not sure how to fix them properly."
 
 That gap is exactly where careers either:
 
@@ -46,7 +46,7 @@ That gap is exactly where careers either:
 
 ## What the full 4-week programme does differently
 
-**From Regulation to Reputation™ — the RAG Pathway.**
+**From Regulation to Reputation™, the RAG Pathway.**
 
 The full course is not "more rules".
 
@@ -100,9 +100,9 @@ It is not for:
 
 Ask yourself honestly:
 
-> "If someone questioned my decisions tomorrow — could I calmly justify them?"
+> "If someone questioned my decisions tomorrow, could I calmly justify them?"
 
-If the answer is "I'm not sure", that's not failure — it's information.
+If the answer is "I'm not sure", that's not failure, it's information.
 
 And it tells you exactly what the next step is.
 
@@ -110,7 +110,7 @@ And it tells you exactly what the next step is.
 
 The mini-course gave you awareness. The full programme gives you **protection, structure, and confidence**.
 
-**From Regulation to Reputation™** — the RAG Pathway (4 weeks).
+**From Regulation to Reputation™**, the RAG Pathway (4 weeks).
 
 Because in aesthetics:
 

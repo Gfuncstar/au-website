@@ -217,7 +217,7 @@ export default async function BlogPostPage({
                     >
                       {s.title}
                     </a>
-                    <span className="text-au-charcoal/60"> — {s.publisher}</span>
+                    <span className="text-au-charcoal/60">, {s.publisher}</span>
                   </li>
                 ))}
               </ol>
@@ -226,7 +226,7 @@ export default async function BlogPostPage({
         )}
 
         {/* ============================================================
-            CONTINUE — internal links per topic. Drives readers (and
+            CONTINUE, internal links per topic. Drives readers (and
             search engines) into the deeper site: courses, the
             regulation pillar, the standards index. Three tailored
             links per topic, defined in lib/blog.ts.

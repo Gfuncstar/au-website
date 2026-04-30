@@ -3,10 +3,10 @@ title: "Knowledge check"
 order: 10
 icon: target
 duration: "12 min"
-summary: "A self-check before you sit with a client — fifteen questions covering the spine of the course, with answer anchors to mark your own thinking against."
+summary: "A self-check before you sit with a client, fifteen questions covering the spine of the course, with answer anchors to mark your own thinking against."
 ---
 
-This is a reflective self-check, not a graded test. Work through each question in your own words first, then read the anchor underneath. The point isn't a score — it's noticing where your thinking is already firm and where you'd want to read a chapter again before consulting on rosacea in clinic.
+This is a reflective self-check, not a graded test. Work through each question in your own words first, then read the anchor underneath. The point isn't a score, it's noticing where your thinking is already firm and where you'd want to read a chapter again before consulting on rosacea in clinic.
 
 **Best practice:** Set aside 15–20 minutes of uninterrupted time, answer in your own words, and mark the questions where you hesitated. Those are the chapters worth re-reading.
 
@@ -14,7 +14,7 @@ This is a reflective self-check, not a graded test. Work through each question i
 
 ### 1. In your own words, define rosacea. How does it differ from acne vulgaris?
 
-*Anchor:* A chronic, relapsing, neurovascular and immune-mediated inflammatory condition centred on the central face. Unlike acne, it is not a disorder of the pilosebaceous unit and does not begin with comedones — flushing, persistent erythema and visible vessels are the signature.
+*Anchor:* A chronic, relapsing, neurovascular and immune-mediated inflammatory condition centred on the central face. Unlike acne, it is not a disorder of the pilosebaceous unit and does not begin with comedones, flushing, persistent erythema and visible vessels are the signature.
 
 ### 2. Name the four physiological systems that become dysregulated in rosacea.
 
@@ -26,19 +26,19 @@ This is a reflective self-check, not a graded test. Work through each question i
 
 ### 4. What is the role of LL-37 and Toll-like receptor 2 (TLR-2) in rosacea inflammation?
 
-*Anchor:* In rosacea-prone skin TLR-2 is over-expressed, triggering excessive cleavage of cathelicidin into LL-37 fragments. These fragments amplify vascular and inflammatory signalling — driving the redness, swelling and sensitivity that define a flare.
+*Anchor:* In rosacea-prone skin TLR-2 is over-expressed, triggering excessive cleavage of cathelicidin into LL-37 fragments. These fragments amplify vascular and inflammatory signalling, driving the redness, swelling and sensitivity that define a flare.
 
 ### 5. Why is barrier repair foundational, rather than corrective?
 
-*Anchor:* A compromised barrier increases water loss, raises pH, and lets the immune system over-react to ordinary stimuli. You cannot calm rosacea reliably while the barrier is still failing — barrier repair is the precondition for every other intervention working.
+*Anchor:* A compromised barrier increases water loss, raises pH, and lets the immune system over-react to ordinary stimuli. You cannot calm rosacea reliably while the barrier is still failing, barrier repair is the precondition for every other intervention working.
 
 ### 6. Explain the difference between a trigger and a cause, using *Demodex* as an example.
 
-*Anchor:* A cause sits at the root (genetic predisposition, dysregulated immunity, vascular reactivity). A trigger pushes a vulnerable system into a flare. *Demodex* is a trigger — the mite is present on most adult skin, but in rosacea-prone skin its density and the immune response to it amplify inflammation.
+*Anchor:* A cause sits at the root (genetic predisposition, dysregulated immunity, vascular reactivity). A trigger pushes a vulnerable system into a flare. *Demodex* is a trigger, the mite is present on most adult skin, but in rosacea-prone skin its density and the immune response to it amplify inflammation.
 
 ### 7. List six common rosacea triggers a client should track in a flare diary.
 
-*Anchor:* Heat (sun, hot drinks, hot rooms), alcohol, spicy food, stress, temperature swings, and topical irritants. UV exposure is in a category of its own — a daily background trigger, not just an episodic one.
+*Anchor:* Heat (sun, hot drinks, hot rooms), alcohol, spicy food, stress, temperature swings, and topical irritants. UV exposure is in a category of its own, a daily background trigger, not just an episodic one.
 
 ### 8. What are the four key clinical patterns to recognise during visual assessment?
 
@@ -50,7 +50,7 @@ This is a reflective self-check, not a graded test. Work through each question i
 
 ### 10. What is rhinophyma, and which subtype of rosacea does it sit within?
 
-*Anchor:* Phymatous rosacea — sebaceous gland hyperplasia and connective tissue thickening, most commonly affecting the nose. It is a medical concern, not an aesthetic one — refer.
+*Anchor:* Phymatous rosacea, sebaceous gland hyperplasia and connective tissue thickening, most commonly affecting the nose. It is a medical concern, not an aesthetic one, refer.
 
 ### 11. Describe the foundation phase of the NICE-aligned management pathway.
 
@@ -70,8 +70,8 @@ This is a reflective self-check, not a graded test. Work through each question i
 
 ### 15. What is the most common practitioner mistake when working with sensitised rosacea skin?
 
-*Anchor:* Treating it like acne — adding actives, exfoliation, or "deep cleansing" to a barrier that is already compromised. The instinct to "do more" is the single most reliable way to make rosacea worse.
+*Anchor:* Treating it like acne, adding actives, exfoliation, or "deep cleansing" to a barrier that is already compromised. The instinct to "do more" is the single most reliable way to make rosacea worse.
 
 ## When you've finished
 
-Mark any question where you hesitated, and revisit that chapter before your next rosacea consultation. The goal of this check isn't a score on a page — it's confidence at the chair.
+Mark any question where you hesitated, and revisit that chapter before your next rosacea consultation. The goal of this check isn't a score on a page, it's confidence at the chair.

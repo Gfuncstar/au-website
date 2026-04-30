@@ -55,7 +55,7 @@ export function MembersNav({ firstName, lastName, email }: MembersNavProps) {
         <Link
           href="/"
           className="block px-7 pt-7 pb-8"
-          aria-label="Aesthetics Unlocked — back to home"
+          aria-label="Aesthetics Unlocked, back to home"
         >
           <Image
             src="/brand/au-logo-pink-on-dark.png"
@@ -127,7 +127,7 @@ export function MembersNav({ firstName, lastName, email }: MembersNavProps) {
           ============================================================ */}
       <header className="lg:hidden sticky top-0 z-30 bg-au-charcoal text-au-white">
         <div className="flex items-center justify-between px-5 py-3.5">
-          <Link href="/" aria-label="Aesthetics Unlocked — back to home">
+          <Link href="/" aria-label="Aesthetics Unlocked, back to home">
             <Image
               src="/brand/au-logo-pink-on-dark.png"
               alt="Aesthetics Unlocked"

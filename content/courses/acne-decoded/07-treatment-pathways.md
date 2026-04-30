@@ -3,7 +3,7 @@ title: "Treatment Pathways"
 order: 7
 icon: signpost
 duration: "14 min"
-summary: "AHAs vs BHAs, how each fits acne pathophysiology, and the at-home routine that supports — never sabotages — barrier health."
+summary: "AHAs vs BHAs, how each fits acne pathophysiology, and the at-home routine that supports, never sabotages, barrier health."
 ---
 
 Before we move on to the treatment of acne, it is very important you understand what AHAs and BHAs are and how they can play a part in the management of acne and other skin conditions.
@@ -12,7 +12,7 @@ Alpha Hydroxy Acids (AHAs) and Beta Hydroxy Acids (BHAs) are **chemical exfolian
 
 When used correctly, AHAs and BHAs support acne treatment by targeting follicular blockage, inflammation, and post-acne marks.
 
-![AHAs and BHAs — two molecules, two layers, one defensible plan.](/illustrations/acne-decoded/07-treatment-pathways/01-pill-bottle.png)
+![AHAs and BHAs, two molecules, two layers, one defensible plan.](/illustrations/acne-decoded/07-treatment-pathways/01-pill-bottle.png)
 
 ## What are AHAs?
 
@@ -25,7 +25,7 @@ When used correctly, AHAs and BHAs support acne treatment by targeting follicula
 - Improve skin smoothness and brightness
 - Support cellular turnover
 
-They do not penetrate deeply into pores, which means they are not pore-clearing in the same way as BHAs — but they play an important supportive role in acne management.
+They do not penetrate deeply into pores, which means they are not pore-clearing in the same way as BHAs, but they play an important supportive role in acne management.
 
 **How AHAs positively impact acne:**
 
@@ -39,11 +39,11 @@ They are particularly useful once active inflammation is controlled.
 
 ### Common AHAs used in acne care
 
-*Glycolic Acid* — small molecular size, strong exfoliation, improves texture and brightness, helps with post-acne marks.
+*Glycolic Acid*, small molecular size, strong exfoliation, improves texture and brightness, helps with post-acne marks.
 
-*Lactic Acid* — larger molecule, gentler action, hydrating and barrier-supportive, suitable for sensitive or dehydrated acne-prone skin.
+*Lactic Acid*, larger molecule, gentler action, hydrating and barrier-supportive, suitable for sensitive or dehydrated acne-prone skin.
 
-*Mandelic Acid* — very large molecule, slow penetration, minimal irritation, ideal for inflammatory acne and deeper skin tones.
+*Mandelic Acid*, very large molecule, slow penetration, minimal irritation, ideal for inflammatory acne and deeper skin tones.
 
 **Best suited for:** comedonal acne, post-inflammatory hyperpigmentation, dull or uneven skin texture, clients who cannot tolerate stronger actives.
 
@@ -74,7 +74,7 @@ Salicylic acid also has anti-inflammatory properties, making it useful for infla
 
 **Best suited for:** oily skin, blackheads and whiteheads, mild to moderate inflammatory acne, acne-prone pores.
 
-## AHAs vs BHAs — key differences
+## AHAs vs BHAs, key differences
 
 | Feature | AHAs | BHAs |
 |---------|------|------|

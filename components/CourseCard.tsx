@@ -40,6 +40,14 @@ type Props = {
   ctaText: string;
   /** Optional GBP price for the CTA — passes through to AU Button. */
   price?: number | string;
+  /** Time commitment as a short reader-facing string, e.g.
+   *  "≈ 1 hr / week × 5 weeks". Surfaced as a small strip near the
+   *  bottom of the card so visitors can plan around their week. */
+  weeklyHours?: string;
+  /** True when the course is structured for CPD evidence + NMC
+   *  revalidation. Renders as a small pink "CPD ✓" chip beside the
+   *  weekly-hours line. */
+  isCpdEvidence?: boolean;
 };
 
 /* ============================================================
@@ -125,16 +133,18 @@ export function CourseCard({
   href,
   ctaText,
   price,
+  weeklyHours,
+  isCpdEvidence,
 }: Props) {
   const t = tones[tone];
 
   return (
     <article className="group relative isolate overflow-hidden rounded-[5px] flex flex-col h-full">
       {/* ============================================================
-          MAIN BODY — bgImage as the dominant backdrop with a tone wash.
+          MAIN BODY, bgImage as the dominant backdrop with a tone wash.
           ============================================================ */}
       <div className="relative flex-1">
-        {/* Layer 1 — bgImage (full opacity, fills the body). */}
+        {/* Layer 1, bgImage (full opacity, fills the body). */}
         {bgImage && (
           <div
             aria-hidden="true"
@@ -142,7 +152,7 @@ export function CourseCard({
             style={{ backgroundImage: `url('${bgImage}')` }}
           />
         )}
-        {/* Layer 2 — tone wash. Gives every card its brand identity while
+        {/* Layer 2, tone wash. Gives every card its brand identity while
             letting the texture read clearly through it. */}
         <div
           aria-hidden="true"
@@ -150,7 +160,7 @@ export function CourseCard({
           style={{ backgroundColor: t.wash }}
         />
 
-        {/* Top accent rule — widens on hover. */}
+        {/* Top accent rule, widens on hover. */}
         <div
           aria-hidden="true"
           className="absolute top-0 left-0 h-[3px] w-12 sm:w-16 transition-all duration-500 group-hover:w-24"
@@ -158,10 +168,10 @@ export function CourseCard({
         />
 
         <div
-          className={`relative z-10 h-full flex flex-col p-6 sm:p-7 ${t.bodyText}`}
+          className={`relative z-10 h-full flex flex-col p-5 sm:p-6 ${t.bodyText}`}
         >
           {/* Eyebrow + mark row */}
-          <div className="flex items-start justify-between gap-4 mb-7 sm:mb-9">
+          <div className="flex items-start justify-between gap-4 mb-4 sm:mb-5">
             <Eyebrow color={t.eyebrowColor}>{eyebrow}</Eyebrow>
             {mark && (
               <div
@@ -174,7 +184,7 @@ export function CourseCard({
           </div>
 
           {/* BIG title + stats */}
-          <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-5 mb-6 sm:mb-7">
+          <div className="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-4 mb-5 sm:mb-6">
             <h3
               className="font-display font-black uppercase leading-[0.88] flex-1"
               style={{
@@ -207,14 +217,56 @@ export function CourseCard({
               ))}
             </ul>
           )}
+
+          {/* Footer strip, weekly hours + CPD chip. Renders only when
+              the course has set the data. Sits above the CTA strip so
+              practitioners see the time commitment + CPD eligibility
+              without having to open the detail page. */}
+          {(weeklyHours || isCpdEvidence) && (
+            <div
+              className={`mt-5 sm:mt-6 pt-4 border-t flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.75rem] sm:text-[0.8125rem] ${t.bodyMuted}`}
+              style={{ borderColor: "currentColor", borderTopWidth: "1px", opacity: 0.9 }}
+            >
+              {weeklyHours && (
+                <span className="inline-flex items-center gap-1.5">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="9" />
+                    <polyline points="12 7 12 12 15 14" />
+                  </svg>
+                  {weeklyHours}
+                </span>
+              )}
+              {isCpdEvidence && (
+                <span
+                  className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] font-section font-semibold uppercase tracking-[0.14em] text-[0.625rem] sm:text-[0.6875rem]"
+                  style={{
+                    backgroundColor: "var(--color-au-pink)",
+                    color: "var(--color-au-white)",
+                  }}
+                >
+                  <span aria-hidden="true">✓</span> CPD evidence
+                </span>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
       {/* ============================================================
-          CTA STRIP — contrasting tone, full width.
+          CTA STRIP, contrasting tone, full width.
           ============================================================ */}
       <div className={`relative ${t.ctaBg}`}>
-        <div className="relative z-10 p-5 sm:p-6 flex">
+        <div className="relative z-10 p-4 sm:p-5 flex">
           <Button
             href={href}
             variant={t.ctaButtonVariant}

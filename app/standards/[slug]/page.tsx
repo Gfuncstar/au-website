@@ -60,18 +60,18 @@ export async function generateMetadata({
   if (!standard) return { title: "Standard not found" };
 
   return {
-    title: `${standard.abbrev} — ${standard.name}`,
+    title: `${standard.abbrev}, ${standard.name}`,
     description: standard.what,
     alternates: { canonical: `/standards/${standard.slug}` },
     openGraph: {
-      title: `${standard.abbrev} — ${standard.name}`,
+      title: `${standard.abbrev}, ${standard.name}`,
       description: standard.what,
       url: `/standards/${standard.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${standard.abbrev} — ${standard.name}`,
+      title: `${standard.abbrev}, ${standard.name}`,
       description: standard.what,
     },
   };
@@ -99,7 +99,7 @@ export default async function StandardPage({
       {
         "@type": "Article",
         "@id": `${standardUrl}#article`,
-        headline: `${standard.abbrev} — ${standard.name}`,
+        headline: `${standard.abbrev}, ${standard.name}`,
         description: standard.what,
         url: standardUrl,
         author: {
@@ -145,7 +145,7 @@ export default async function StandardPage({
       <Nav forceLight />
       <main id="main" className="pt-16 sm:pt-20">
         {/* ============================================================
-            HERO — abbreviation as the giant poster headline.
+            HERO, abbreviation as the giant poster headline.
             ============================================================ */}
         <PosterBlock tone="cream" contained>
           <ScrollReveal className="max-w-4xl">
@@ -188,7 +188,7 @@ export default async function StandardPage({
         </PosterBlock>
 
         {/* ============================================================
-            WHAT THIS BODY DOES — responsibilities (white).
+            WHAT THIS BODY DOES, responsibilities (white).
             ============================================================ */}
         <PosterBlock tone="white" contained>
           <ScrollReveal className="max-w-4xl">
@@ -235,7 +235,7 @@ export default async function StandardPage({
         </PosterBlock>
 
         {/* ============================================================
-            HOW AU TEACHES AGAINST IT — cream poster.
+            HOW AU TEACHES AGAINST IT, cream poster.
             ============================================================ */}
         <PosterBlock tone="cream" contained>
           <ScrollReveal className="max-w-4xl">
@@ -274,7 +274,7 @@ export default async function StandardPage({
         </PosterBlock>
 
         {/* ============================================================
-            RELATED COURSES — only render if there are any.
+            RELATED COURSES, only render if there are any.
             ============================================================ */}
         {relatedCourses.length > 0 && (
           <PosterBlock tone="white" contained>

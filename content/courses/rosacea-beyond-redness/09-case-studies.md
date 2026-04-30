@@ -3,10 +3,10 @@ title: "Case Studies & Applied Learning"
 order: 9
 icon: people
 duration: "14 min"
-summary: "Three real-world rosacea cases — phymatous, vascular, and reactive — with management approaches and reflection prompts."
+summary: "Three real-world rosacea cases, phymatous, vascular, and reactive, with management approaches and reflection prompts."
 ---
 
-## Case Study 1 — Mr. A, 58, restaurant owner (phymatous rosacea)
+## Case Study 1, Mr. A, 58, restaurant owner (phymatous rosacea)
 
 **Client profile**
 
@@ -59,10 +59,10 @@ Long-term untreated inflammation leads to **structural skin changes** rather tha
 
 ### Learning tasks
 
-**Diagnosis — what subtype(s) of rosacea are present?**
+**Diagnosis, what subtype(s) of rosacea are present?**
 
-- **Erythematotelangiectatic rosacea (ETR)** — evidenced by persistent centrofacial erythema and visible telangiectasia
-- **Phymatous rosacea** — evidenced by tissue thickening and sebaceous gland hypertrophy of the nose (early-to-moderate rhinophyma)
+- **Erythematotelangiectatic rosacea (ETR)**, evidenced by persistent centrofacial erythema and visible telangiectasia
+- **Phymatous rosacea**, evidenced by tissue thickening and sebaceous gland hypertrophy of the nose (early-to-moderate rhinophyma)
 
 **What clinical markers confirm phymatous involvement?**
 
@@ -74,7 +74,7 @@ Long-term untreated inflammation leads to **structural skin changes** rather tha
 
 These indicate **dermal fibrosis and connective tissue remodelling**, not just superficial inflammation.
 
-**Trigger identification — list at least five contributing triggers in this case:**
+**Trigger identification, list at least five contributing triggers in this case:**
 
 1. Regular alcohol consumption (vasodilation trigger)
 2. Chronic heat exposure (kitchen environment)
@@ -84,7 +84,7 @@ These indicate **dermal fibrosis and connective tissue remodelling**, not just s
 6. Possible dietary triggers
 7. Occupational temperature fluctuations
 
-**Treatment planning (aesthetic scope) — what treatments are safe?**
+**Treatment planning (aesthetic scope), what treatments are safe?**
 
 - Barrier-repair facials
 - LED red light therapy (anti-inflammatory support)
@@ -102,7 +102,7 @@ These indicate **dermal fibrosis and connective tissue remodelling**, not just s
 
 Phymatous tissue is structurally altered and easily aggravated.
 
-**Referral considerations — when should this client be referred to a GP or dermatologist?**
+**Referral considerations, when should this client be referred to a GP or dermatologist?**
 
 - Evidence of progressive tissue thickening
 - Moderate to advanced rhinophyma
@@ -118,7 +118,7 @@ Develop a barrier-supportive homecare plan focused on gentle cleansing, lipid-re
 
 ---
 
-## Case Study 2 — 34-year-old female (vascular / erythematotelangiectatic)
+## Case Study 2–34-year-old female (vascular / erythematotelangiectatic)
 
 **Client profile**
 
@@ -135,7 +135,7 @@ Develop a barrier-supportive homecare plan focused on gentle cleansing, lipid-re
 
 ### Student tasks
 
-1. Would you treat today? Yes / No — why?
+1. Would you treat today? Yes / No, why?
 2. Which treatments should be avoided initially?
 3. What phase of the treatment pathway is this client in?
 
@@ -151,7 +151,7 @@ Develop a barrier-supportive homecare plan focused on gentle cleansing, lipid-re
 
 ---
 
-## Case Study 3 — 29-year-old female (reactive / neurogenic)
+## Case Study 3–29-year-old female (reactive / neurogenic)
 
 **Client profile**
 

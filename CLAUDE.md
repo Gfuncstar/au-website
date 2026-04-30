@@ -44,14 +44,15 @@ Free tasters use `upsellsTo` + paid courses use `freeTasterSlug` to express the 
 
 ## Hard constraints
 
+- **No em-dashes (—) in user-visible copy. Ever.** Hard save, project-wide. Replace with comma, period, "and", or colon. Em-dashes are an AI-cadence tell and Giles has banned them site-wide. Includes JSX strings, `lib/courses.ts`, `lib/faqs.ts`, `lib/locations.ts`, `content/blog/*.md`, `content/courses/**/*.md`, page metadata, OG titles, alt text. Code comments and JSDoc are exempt (developer-facing). See `feedback_no_ai_slop.md` in the user's memory for the full ban list (also covers "not just X, Y" formulas, hedge words, ChatGPT-default vocabulary).
 - **Never abbreviate "Aesthetics Unlocked"** to "AU" in user-visible content (lessons, captions, copy, marketing). Full name everywhere. (Per `feedback_aesthetics_unlocked_naming.md` in the user's memory.)
 - **No rounded-full corners anywhere.** Max `rounded-[5px]`.
 - **Lesson hero is always dark mode.** Charcoal poster, white type, pink accents.
 - **No drop caps in lesson body.**
 - **No Spectral italic on white inside the course player.** Lato only.
-- **Course CTAs are always square** — `rounded-[5px]`, never pill.
-- **Pink `#e697b7` is the brand accent** — used sparingly, never as background.
-- **No gradients, drop shadows, glassmorphism** — anywhere.
+- **Course CTAs are always square.** `rounded-[5px]`, never pill.
+- **Pink `#e697b7` is the brand accent.** Used sparingly, never as background.
+- **No gradients, drop shadows, glassmorphism.** Anywhere.
 
 ## Naming conventions
 
@@ -61,12 +62,14 @@ Free tasters use `upsellsTo` + paid courses use `freeTasterSlug` to express the 
 
 ## Voice
 
-Two distinct registers — both Bernadette's:
+Two distinct registers, both Bernadette's:
 
 - **Marketing voice** (sales pages, broadcasts, social): calm, direct, short sentence pairs. Never hype. Examples: *"Compliance gets you open. Reputation keeps you in business."*
 - **Course-content voice** (inside lessons): warmer, mentor-tutor, confessional openers. Same authority, different temperature.
 
 When writing new copy, match the surface: marketing pages get marketing voice; lesson body gets course voice.
+
+**Voice ban list (hard save).** Never use em-dashes, "not just X but Y" formulas, hedge words ("arguably", "perhaps"), or ChatGPT-default vocabulary (delve, tapestry, harness, robust, vibrant, cutting-edge, elevate, streamline, leverage, synergies, dynamic, seamlessly, innovative, navigate as a metaphor, unlock potential, embark on a journey, in today's fast-paced world, ever-evolving landscape). If a draft contains any of these, treat it as unfinished and rewrite before showing Giles. Full rationale in `feedback_no_ai_slop.md` in the user's memory.
 
 ## What's not yet done (pending tasks)
 

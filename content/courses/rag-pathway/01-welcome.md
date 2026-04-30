@@ -28,12 +28,12 @@ By the end of this course, you will be able to:
 
 ## What this course will do for you
 
-**Clarity instead of confusion.** You will finally understand *what applies to you*, *what does not*, and *what actually matters* — without contradictory advice or social media misinformation.
+**Clarity instead of confusion.** You will finally understand *what applies to you*, *what does not*, and *what actually matters*, without contradictory advice or social media misinformation.
 
 **Confidence in your professional decisions.** When you know where you sit on the RAG pathway, you can make informed choices about training, treatments, and progression without second-guessing yourself.
 
 **Protection of your career and livelihood.** By identifying red and amber risks early, you significantly reduce exposure to complaints, insurance refusal, regulatory escalation, or reputational damage.
 
-**Stronger reputation with clients and peers.** Clients trust practitioners who communicate professionalism clearly. This course helps you demonstrate safety, ethics, and credibility — not just results.
+**Stronger reputation with clients and peers.** Clients trust practitioners who communicate professionalism clearly. This course helps you demonstrate safety, ethics, and credibility, not just results.
 
-**A clear pathway for growth.** Whether you are newly qualified or established, this course shows you what the next green step looks like — and how to reach it safely.
+**A clear pathway for growth.** Whether you are newly qualified or established, this course shows you what the next green step looks like, and how to reach it safely.

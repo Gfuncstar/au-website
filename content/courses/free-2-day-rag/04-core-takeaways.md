@@ -25,7 +25,7 @@ Most problems arise from:
 
 Awareness is the first layer of protection.
 
-## 3. Training shows how — permission decides if
+## 3. Training shows how, permission decides if
 
 Certificates are not authority.
 
@@ -39,7 +39,7 @@ Professional safety is built where:
 
 …all align. **If one is missing, protection collapses.**
 
-## 4. Regulation is fragmented — but accountability is not
+## 4. Regulation is fragmented, but accountability is not
 
 There is no single regulator in England. But that does not mean you are unregulated.
 
@@ -69,7 +69,7 @@ Social media is advertising. Language matters. Implication matters.
 
 Professional presence protects you more than popularity ever will.
 
-## 7. Compliance gets you open — reputation keeps you operating
+## 7. Compliance gets you open, reputation keeps you operating
 
 Compliance is the minimum standard.
 

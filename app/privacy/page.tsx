@@ -36,7 +36,7 @@ const SECTIONS: LegalSection[] = [
   },
   {
     heading: "Your rights",
-    body: "You can ask us at any time to see, correct, or delete the personal data we hold about you. Email hello@aunlock.co.uk and we'll act on it within 30 days. You also have the right to complain to the ICO if you think we've handled your data badly — ico.org.uk.",
+    body: "You can ask us at any time to see, correct, or delete the personal data we hold about you. Email hello@aunlock.co.uk and we'll act on it within 30 days. You also have the right to complain to the ICO if you think we've handled your data badly, ico.org.uk.",
   },
   {
     heading: "Cookies",

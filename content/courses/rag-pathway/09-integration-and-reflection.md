@@ -1,5 +1,5 @@
 ---
-title: "Module 8 — Integration & Reflection"
+title: "Module 8: Integration & Reflection"
 order: 9
 icon: target
 duration: "14 min"
@@ -8,7 +8,7 @@ summary: "Your personal RAG audit, your move-to-green action plan, and how this 
 
 The final module is where the whole programme lands in **your own practice**. It walks you through a personal RAG audit so you can see clearly where you are currently sitting, an action plan to move any amber findings into the green, and a long-term professional-development roadmap that keeps you there.
 
-It also connects this regulatory work back to your broader business goals — including how a defensible, reputation-led practice supports the growth modelled in The 5K+ Formula™ — and closes with reflection prompts so you leave the programme with a **written, dated commitment to the next steps**.
+It also connects this regulatory work back to your broader business goals, including how a defensible, reputation-led practice supports the growth modelled in The 5K+ Formula™, and closes with reflection prompts so you leave the programme with a **written, dated commitment to the next steps**.
 
 ## Learning outcomes
 
@@ -51,7 +51,7 @@ Work through the audit below honestly. Mark each item Green (in place, current, 
 
 - I have a documented prescriber relationship with face-to-face consultation as standard
 - I have a clinical supervisor or peer-review buddy for complex case discussion
-- I run quarterly audits — clinical records, adverse-event log, one specific area
+- I run quarterly audits, clinical records, adverse-event log, one specific area
 - I run an annual full review of SOPs, insurance, premises, prescriber agreement
 - I have an adverse-event log and an incident-management protocol
 
@@ -79,21 +79,21 @@ Count your Reds, Ambers, and Greens.
 
 **Ambers** are the work. They are the file you build over the next 90 days. Each Amber has a single owner (you), a date, and an evidence outcome.
 
-**Greens** are the floor. Every Green you hold is permission to keep practising — and the start of the credibility you build a reputation on top of.
+**Greens** are the floor. Every Green you hold is permission to keep practising, and the start of the credibility you build a reputation on top of.
 
-**Important:** A practice with no Reds and a clear Amber-to-Green plan is a defensible practice, even if some Ambers take six months to close. A practice with three Reds is not — and the work this week is to remove or contain the Reds, not to admire the Greens.
+**Important:** A practice with no Reds and a clear Amber-to-Green plan is a defensible practice, even if some Ambers take six months to close. A practice with three Reds is not, and the work this week is to remove or contain the Reds, not to admire the Greens.
 
 ## 3. The 90-day action plan
 
 Take your top five Amber findings (or any Red findings, treated first). For each one, fill in:
 
-- **The finding** — in plain language, one sentence
-- **The evidence outcome** — the specific document, certificate, audit, or change of practice that closes it
-- **The owner** — almost always you
-- **The date** — within 90 days
-- **The next-action today** — the single thing that starts the work this week
+- **The finding**, in plain language, one sentence
+- **The evidence outcome**, the specific document, certificate, audit, or change of practice that closes it
+- **The owner**, almost always you
+- **The date**, within 90 days
+- **The next-action today**, the single thing that starts the work this week
 
-**Best practice:** Print the plan. Diary the dates. The act of writing the plan is governance evidence in itself — keep it on file alongside the closed-out evidence.
+**Best practice:** Print the plan. Diary the dates. The act of writing the plan is governance evidence in itself, keep it on file alongside the closed-out evidence.
 
 ## 4. The 6-month roadmap
 
@@ -117,16 +117,16 @@ In the next twelve months, build:
 - A peer-review or clinical-supervision relationship with documented contact
 - A training step that genuinely moves your scope or your indemnity forward (Module 7)
 - A relationship with one or two membership bodies that match your practice
-- A reputation built on education, process, and honest outcomes — not POM marketing
+- A reputation built on education, process, and honest outcomes, not POM marketing
 
 **Best practice:** Pin the 12-month roadmap somewhere visible. Review it quarterly. The roadmap is what turns a one-off compliance push into a practice that *stays* defensible.
 
-## 6. From Regulation to Reputation™ — how this connects to growth
+## 6. From Regulation to Reputation™, how this connects to growth
 
 The whole framework of this programme is named **From Regulation to Reputation**, and the order of those words is deliberate.
 
-- Compliance gets you **open** — it is the floor of practising at all
-- Reputation keeps you **in business** — it is the ceiling you build above the floor
+- Compliance gets you **open**, it is the floor of practising at all
+- Reputation keeps you **in business**, it is the ceiling you build above the floor
 - Revenue is the byproduct of operating well above the floor, consistently, in public
 
 The defensible practice you are building is the **same** practice that:
@@ -135,19 +135,19 @@ The defensible practice you are building is the **same** practice that:
 - Earns the prescriber's trust to refer their own friends and family to you
 - Earns the membership body's recommendation when a patient asks who is good
 - Earns the insurer's best premium because you are demonstrably lower-risk
-- Earns the local-authority inspector's quiet approval — and a frictionless renewal
+- Earns the local-authority inspector's quiet approval, and a frictionless renewal
 
 This is where the RAG Pathway plugs into The 5K+ Formula™. **The growth modelled in 5K+ assumes the foundations laid in RAG.** Without the foundations, growth amplifies risk. With them, growth amplifies reputation.
 
 ## 7. Reflective statement
 
-In your own words — three to five sentences — write the answer to:
+In your own words, three to five sentences, write the answer to:
 
 > **What does my defensible practice now look like?**
 
 Date it. Sign it. Keep it on file.
 
-A year from now, write the same statement again, and compare. The point of this work is not to feel safer in the abstract. It is to be **measurably more defensible** every twelve months — and to be able to show that progress to anyone who asks.
+A year from now, write the same statement again, and compare. The point of this work is not to feel safer in the abstract. It is to be **measurably more defensible** every twelve months, and to be able to show that progress to anyone who asks.
 
 ## 8. The closing principle
 

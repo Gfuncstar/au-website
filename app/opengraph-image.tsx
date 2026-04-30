@@ -17,7 +17,7 @@ export const runtime = "edge";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
 export const alt =
-  "Aesthetics Unlocked — UK Aesthetics Education · Educator of the Year 2026 Nominee";
+  "Aesthetics Unlocked, UK Aesthetics Education · Educator of the Year 2026 Nominee";
 
 const PINK = "#EE5A8E";
 const CHARCOAL = "#212121";
@@ -39,7 +39,7 @@ export default async function OGImage() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Top — eyebrow */}
+        {/* Top, eyebrow */}
         <div
           style={{
             display: "flex",
@@ -62,7 +62,7 @@ export default async function OGImage() {
           Aesthetics Unlocked
         </div>
 
-        {/* Middle — headline */}
+        {/* Middle, headline */}
         <div
           style={{
             display: "flex",
@@ -93,7 +93,7 @@ export default async function OGImage() {
           </div>
         </div>
 
-        {/* Bottom — credentials strip */}
+        {/* Bottom, credentials strip */}
         <div
           style={{
             display: "flex",

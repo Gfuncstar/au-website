@@ -66,7 +66,7 @@ Acne vulgaris is characterised by:
 
 ## 4. Map the distribution
 
-Document where acne appears — this influences treatment and referral.
+Document where acne appears, this influences treatment and referral.
 
 Check:
 

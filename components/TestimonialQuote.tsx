@@ -102,7 +102,7 @@ export function TestimonialQuote({
               borderColor: "var(--color-au-pink)",
               color: "var(--color-au-pink)",
             }}
-            title="Placeholder — real testimonial pending consent"
+            title="Placeholder, real testimonial pending consent"
           >
             Sample
           </span>

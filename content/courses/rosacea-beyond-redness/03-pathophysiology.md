@@ -3,10 +3,10 @@ title: "Pathophysiology & Skin Science"
 order: 3
 icon: cross-section
 duration: "12 min"
-summary: "What's happening beneath the redness — vessels, nerves, immune system, barrier, sebaceous glands, and Demodex."
+summary: "What's happening beneath the redness, vessels, nerves, immune system, barrier, sebaceous glands, and Demodex."
 ---
 
-Rosacea is **not a surface-level skin issue**. Its visible symptoms are the end result of deep structural and functional changes involving the blood vessels, immune system, nervous system, sebaceous units, and skin barrier. Understanding these systems — and how they interact — is essential for safe and effective management.
+Rosacea is **not a surface-level skin issue**. Its visible symptoms are the end result of deep structural and functional changes involving the blood vessels, immune system, nervous system, sebaceous units, and skin barrier. Understanding these systems, and how they interact, is essential for safe and effective management.
 
 ## The facial vascular system
 
@@ -86,11 +86,11 @@ The stratum corneum acts as the skin's protective shield. In rosacea, this barri
 - Product intolerance
 - Heightened sensitivity
 
-**Key point:** Barrier repair is foundational — without it, inflammation persists.
+**Key point:** Barrier repair is foundational, without it, inflammation persists.
 
 ## Sebaceous glands & pilosebaceous units
 
-**Not acne — but still involved.**
+**Not acne, but still involved.**
 
 Sebaceous glands are prominent in the central face, where rosacea commonly appears.
 

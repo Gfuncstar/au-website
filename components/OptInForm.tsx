@@ -104,7 +104,7 @@ export function OptInForm({
     } catch {
       setStatus("error");
       setErrorMsg(
-        "Network error — check your connection and try again, or email hello@aunlock.co.uk.",
+        "Network error, check your connection and try again, or email hello@aunlock.co.uk.",
       );
     }
   }
@@ -145,7 +145,7 @@ export function OptInForm({
         >
           I&rsquo;ve sent the {courseTitle} welcome email to{" "}
           <strong>{email}</strong>. If it&rsquo;s not in your inbox in the
-          next few minutes, check your spam — and add{" "}
+          next few minutes, check your spam, and add{" "}
           <code className="text-[0.875rem]">hello@aunlock.co.uk</code> to
           your safe senders.
         </p>
@@ -170,7 +170,7 @@ export function OptInForm({
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md flex flex-col gap-4" noValidate>
-      {/* Honeypot — hidden from real users, bots fill it. */}
+      {/* Honeypot, hidden from real users, bots fill it. */}
       <div
         aria-hidden="true"
         style={{

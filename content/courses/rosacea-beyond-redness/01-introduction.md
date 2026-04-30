@@ -21,4 +21,4 @@ By the end of this course, you will be able to:
 - Apply your knowledge in real clinical practice
 - Work in a way that is aligned with NICE guidance
 
-Each section builds on the last, so by the end of the course you are not just repeating protocols — you are making informed, evidence-based decisions about real clients in front of you.
+Each section builds on the last, so by the end of the course you are not just repeating protocols, you are making informed, evidence-based decisions about real clients in front of you.

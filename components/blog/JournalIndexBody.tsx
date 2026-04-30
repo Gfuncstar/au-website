@@ -44,7 +44,7 @@ export function JournalIndexBody({ posts }: Props) {
   return (
     <>
       {/* ============================================================
-          FEATURED — dark-mode poster card. Charcoal background,
+          FEATURED, dark-mode poster card. Charcoal background,
           white type, pink accents. Sets the latest piece visually
           apart from the cream hero above and the white list below.
           ============================================================ */}

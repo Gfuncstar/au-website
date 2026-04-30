@@ -21,7 +21,7 @@ const PRINCIPLES = [
   {
     num: "01",
     title: "Education over enforcement",
-    body: "I teach from mentorship, not punishment. UK aesthetics regulation has been fragmented, poorly communicated, and inconsistently applied — feeling unsure isn't a failure, it's information. Every one of my courses starts from there.",
+    body: "I teach from mentorship, not punishment. UK aesthetics regulation has been fragmented, poorly communicated, and inconsistently applied, feeling unsure isn't a failure, it's information. Every one of my courses starts from there.",
     quote:
       "There is no judgement here. There is no shaming. The system failed to prepare you. This is about putting that right.",
     quoteFrom: "RAG 2-Day · Welcome",
@@ -29,15 +29,15 @@ const PRINCIPLES = [
   {
     num: "02",
     title: "Clarity before confidence",
-    body: "My courses don't ask you to perform certainty. They build the underlying judgement first — clinical reasoning, regulatory framework, business numbers — so confidence becomes a byproduct of competence.",
+    body: "My courses don't ask you to perform certainty. They build the underlying judgement first, clinical reasoning, regulatory framework, business numbers, so confidence becomes a byproduct of competence.",
     quote:
-      "Profit is a byproduct of clarity, not complexity. You're not here to fit into the industry — you're here to find your place within it.",
+      "Profit is a byproduct of clarity, not complexity. You're not here to fit into the industry, you're here to find your place within it.",
     quoteFrom: "5K+ Formula Mini · Day 3",
   },
   {
     num: "03",
     title: "Defensible, not popular",
-    body: "Every clinical decision I teach is built around one question: can you justify this on paper? I teach treatments NICE-aligned. Regulation Traffic-Light-aligned. Marketing ASA-aligned. The work has to hold up in the room where it matters — that's how I run my own clinic, and it's how I teach you to run yours.",
+    body: "Every clinical decision I teach is built around one question: can you justify this on paper? I teach treatments NICE-aligned. Regulation Traffic-Light-aligned. Marketing ASA-aligned. The work has to hold up in the room where it matters, that's how I run my own clinic, and it's how I teach you to run yours.",
     quote:
       "If you can't justify it on paper, you can't defend it in practice.",
     quoteFrom: "RAG 2-Day · Module 2",
@@ -83,7 +83,7 @@ export function EducationalApproach() {
           letterSpacing: "var(--tracking-tight-display)",
         }}
       >
-        {/* Three connected principles — visual echo of the three numbered
+        {/* Three connected principles, visual echo of the three numbered
             principles below. */}
         <PrinciplesIllustration
           className="float-right ml-4 sm:ml-5 -mt-1 w-[88px] h-[88px] sm:w-[112px] sm:h-[112px] md:w-[132px] md:h-[132px]"
@@ -96,7 +96,7 @@ export function EducationalApproach() {
         variants={itemVariants}
         className="max-w-2xl text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/80 leading-relaxed mb-12 sm:mb-14"
       >
-        Three principles run through every course I teach — clinical,
+        Three principles run through every course I teach, clinical,
         regulatory, and business. They&rsquo;re what makes the work hold up
         at the regulator&rsquo;s office, the bank, and the consultation room.
       </motion.p>

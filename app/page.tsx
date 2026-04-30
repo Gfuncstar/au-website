@@ -26,6 +26,7 @@ import { QuotePoster } from "@/components/QuotePoster";
 import { CTAPoster } from "@/components/CTAPoster";
 import Link from "next/link";
 import { CourseListCompact } from "@/components/CourseListCompact";
+import { DashboardPreview } from "@/components/DashboardPreview";
 import { HeroAnimated } from "@/components/HeroAnimated";
 import { ThreePillars } from "@/components/ThreePillars";
 import { WhoThisIsFor } from "@/components/WhoThisIsFor";
@@ -47,24 +48,24 @@ import { Fragment } from "react";
 
 export const metadata: Metadata = {
   title:
-    "Aesthetics Unlocked® — UK Aesthetics Education · Educator of the Year 2026 Nominee",
+    "Aesthetics Unlocked® · UK Aesthetics Education · Educator of the Year 2026 Nominee",
   description:
-    "UK aesthetics education by Bernadette Tobin RN MSc — a working clinic owner, NHS clinical leader, MSc Advanced Practice clinician, published author, and Educator of the Year 2026 Nominee. NICE-aligned clinical decoders, JCCP-aware regulation courses, and the clinic-owner profit framework most aesthetics training never teaches.",
+    "UK aesthetics education by Bernadette Tobin RN MSc, a working clinic owner, NHS clinical leader, MSc Advanced Practice clinician, published author, and Educator of the Year 2026 Nominee. NICE-aligned clinical decoders, JCCP-aware regulation courses, and the clinic-owner profit framework most aesthetics training never teaches.",
   alternates: { canonical: "/" },
   openGraph: {
     title:
-      "Aesthetics Unlocked® — UK Aesthetics Education · Educator of the Year 2026 Nominee",
+      "Aesthetics Unlocked® · UK Aesthetics Education · Educator of the Year 2026 Nominee",
     description:
-      "Education for UK aesthetic practitioners by Bernadette Tobin RN, MSc — Educator of the Year 2026 Nominee. The only platform built by a working clinician, NHS leader, and clinic owner.",
+      "Education for UK aesthetic practitioners by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee. The only platform built by a working clinician, NHS leader, and clinic owner.",
     url: "/",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Aesthetics Unlocked® — Educator of the Year 2026 Nominee",
+      "Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
     description:
-      "UK aesthetics education by Bernadette Tobin RN, MSc — working clinic owner, NHS leader, MSc Advanced Practice. NICE-aligned, JCCP-aware.",
+      "UK aesthetics education by Bernadette Tobin RN, MSc, working clinic owner, NHS leader, MSc Advanced Practice. NICE-aligned, JCCP-aware.",
   },
 };
 
@@ -96,27 +97,27 @@ export default function Home() {
   return (
     <>
       <Nav />
-      {/* No top padding on main — the transparent nav floats over the
+      {/* No top padding on main, the transparent nav floats over the
           full-bleed dark hero. */}
       <main id="main">
         {/* ============================================================
-            HERO — typographic editorial poster + Bernadette video bg.
+            HERO, typographic editorial poster + Bernadette video bg.
             ============================================================ */}
         <HeroAnimated />
 
-        {/* PressStrip removed per Giles' "remove" call — the trust signals
+        {/* PressStrip removed per Giles' "remove" call, the trust signals
             (NMC PIN, RCN registration, MSc) now live exclusively in the
             Footer trust strip and the Nav drawer credential block. */}
 
         {/* ============================================================
-            MEET BERNADETTE — authority section.
+            MEET BERNADETTE, authority section.
             ============================================================ */}
         <PosterBlock tone="cream" contained>
           <MeetBernadette />
         </PosterBlock>
 
         {/* ============================================================
-            THE BOOK — "She literally wrote the book on it."
+            THE BOOK, "She literally wrote the book on it."
             Surfaces Bernadette's published reference (Regulation to
             Reputation, Amazon UK) as a tangible authority signal.
             ============================================================ */}
@@ -125,7 +126,7 @@ export default function Home() {
         </PosterBlock>
 
         {/* ============================================================
-            HOW AU TEACHES — educational philosophy (NEW).
+            HOW AU TEACHES, educational philosophy (NEW).
             Surfaces the mentor-not-enforcement teaching stance + the
             three principles every course is anchored to. Anchored with
             verbatim quotes from inside the actual courses.
@@ -135,7 +136,7 @@ export default function Home() {
         </PosterBlock>
 
         {/* ============================================================
-            THE FRAMEWORK — three pillars, black poster with parallax.
+            THE FRAMEWORK, three pillars, black poster with parallax.
             ============================================================ */}
         <PosterBlock
           tone="black"
@@ -144,7 +145,7 @@ export default function Home() {
           bgImage="/backgrounds/pink-grunge-deep.png"
           bgOverlay={0.72}
         >
-          {/* Pillars illustration — float-right so the eyebrow, headline
+          {/* Pillars illustration, float-right so the eyebrow, headline
               lines, and intro paragraph wrap around it. Lives at the top
               of the section so it draws first as the user scrolls in. */}
           <PillarsIllustration
@@ -171,7 +172,7 @@ export default function Home() {
           <ScrollReveal delay={0.15}>
             <p className="max-w-2xl text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-white/85 leading-relaxed mb-12 sm:mb-14">
               At the regulator&rsquo;s office, the bank, and the consultation
-              room. Three lenses I teach through in every course —{" "}
+              room. Three lenses I teach through in every course:{" "}
               <span style={{ color: "var(--color-au-pink)" }}>
                 clinical identity, regulatory safety, and profit & systems
               </span>
@@ -182,20 +183,20 @@ export default function Home() {
         </PosterBlock>
 
         {/* ============================================================
-            "THIS IS FOR YOU IF…" — audience qualification.
+            "THIS IS FOR YOU IF…", audience qualification.
             ============================================================ */}
         <PosterBlock tone="white" contained>
           <WhoThisIsFor />
         </PosterBlock>
 
         {/* ============================================================
-            COURSES — compact professional list (replaces the big card
+            COURSES, compact professional list (replaces the big card
             grid per Giles' "too big and too salesy for a landing page"
             call). The image-backed CourseCard grid lives on /courses
             where the marketing depth belongs.
             ============================================================ */}
         <PosterBlock tone="white" contained>
-          {/* Course-card grid illustration — echoes the courses listed
+          {/* Course-card grid illustration, echoes the courses listed
               below. Stays accurate as the catalogue grows. */}
           <CoursesIllustration
             className="float-right ml-4 sm:ml-5 -mt-1 w-[88px] h-[88px] sm:w-[112px] sm:h-[112px] md:w-[132px] md:h-[132px]"
@@ -223,7 +224,7 @@ export default function Home() {
             <p className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/85 leading-relaxed">
               Free tasters to start, NICE-aligned clinical decoders, my
               regulatory pathway, and the business programme I teach to clinic
-              owners — with more on the way as the catalogue grows. Click any
+              owners, with more on the way as the catalogue grows. Click any
               line for the full curriculum.
             </p>
           </ScrollReveal>
@@ -242,9 +243,20 @@ export default function Home() {
         </PosterBlock>
 
         {/* ============================================================
-            TESTIMONIALS — student-voice strip. Sits between courses
+            INSIDE THE PORTAL, dashboard preview. Sits after the
+            course list so the visitor sees "you'd be enrolling in X"
+            and immediately learns what the post-purchase experience
+            looks like. Cream tone alternates against the white course
+            list above and the white testimonial block below.
+            ============================================================ */}
+        <PosterBlock tone="cream" contained>
+          <DashboardPreview />
+        </PosterBlock>
+
+        {/* ============================================================
+            TESTIMONIALS, student-voice strip. Sits between courses
             and standards as social proof bridge.
-            ⚠️ Currently uses PLACEHOLDER testimonials — see
+            ⚠️ Currently uses PLACEHOLDER testimonials, see
             lib/testimonials.ts for the consent + replacement protocol.
             ============================================================ */}
         <PosterBlock tone="white" contained>
@@ -265,7 +277,7 @@ export default function Home() {
         </PosterBlock>
 
         {/* ============================================================
-            STANDARDS WE TEACH AGAINST — authority strip.
+            STANDARDS WE TEACH AGAINST, authority strip.
             Surfaces NICE, JCCP, MHRA, NMC, RCN, ASA, CPSA, CQC. Pulled
             verbatim from the AU course content (RAG 2-Day Module 2 in
             particular namedrops every relevant UK regulator).
@@ -275,7 +287,7 @@ export default function Home() {
         </PosterBlock>
 
         {/* ============================================================
-            QUOTE — Bernadette pull-quote, cross-business signature line.
+            QUOTE, Bernadette pull-quote, cross-business signature line.
             ============================================================ */}
         <QuotePoster
           attribution="Bernadette Tobin RN, MSc"
@@ -293,7 +305,7 @@ export default function Home() {
         </QuotePoster>
 
         {/* ============================================================
-            FINAL CTA — solid black, AU primary.
+            FINAL CTA, solid black, AU primary.
             ============================================================ */}
         <CTAPoster
           eyebrow="Ready when you are"

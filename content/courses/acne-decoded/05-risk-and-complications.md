@@ -3,7 +3,7 @@ title: "Risk & Complications"
 order: 5
 icon: warning
 duration: "7 min"
-summary: "What happens when acne is left untreated or poorly managed — barrier damage, pigmentation, scarring, and emotional toll."
+summary: "What happens when acne is left untreated or poorly managed, barrier damage, pigmentation, scarring, and emotional toll."
 ---
 
 Acne carries both **short-term risks and long-term complications**. Persistent inflammation, barrier damage, pigmentation changes, scarring, and psychological distress are all possible outcomes, particularly when acne is untreated or poorly managed. Early, informed, and appropriate intervention is essential to minimise long-term harm.

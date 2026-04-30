@@ -48,7 +48,7 @@ export default async function ActivityPage() {
           Your <span className="text-au-pink">activity</span>.
         </h1>
         <p className="mt-3 sm:mt-4 text-[0.9375rem] sm:text-[1.0625rem] text-au-white/75 max-w-[60ch] leading-relaxed">
-          Everywhere you show up in the AU world — the sequences you&apos;re in,
+          Everywhere you show up in the AU world, the sequences you&apos;re in,
           live calls past and upcoming, your quiz results, and your engagement
           profile.
         </p>
@@ -57,7 +57,7 @@ export default async function ActivityPage() {
       <MembersStatusStrip lead={lead} />
 
       {/* ============================================================
-          Engagement profile — customer-facing counts only
+          Engagement profile, customer-facing counts only
           (lead score, source, and email sequences are internal CRM data
           and intentionally not surfaced here)
           ============================================================ */}
@@ -68,7 +68,7 @@ export default async function ActivityPage() {
       </section>
 
       {/* ============================================================
-          Past attendance — only renders if there's history. Live calls
+          Past attendance, only renders if there's history. Live calls
           aren't being run yet, so this section is hidden by default.
           ============================================================ */}
       {past.length > 0 && (

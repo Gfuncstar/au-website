@@ -112,7 +112,7 @@ export function PosterBlock({
           style={{ backgroundImage: `url('${overlay.image}')` }}
         />
       )}
-      {/* Parallax backdrop — optional. Sits behind content, in front of
+      {/* Parallax backdrop, optional. Sits behind content, in front of
           the tone bg colour. The wrapping inner div has `relative z-10`
           so it sits above the backdrop. */}
       {bgImage && (

@@ -7,9 +7,9 @@ summary: "Mark the course complete and request your personalised certificate."
 isCertificate: true
 ---
 
-Congratulations — you've reached the end of **Rosacea Beyond Redness**.
+Congratulations, you've reached the end of **Rosacea Beyond Redness**.
 
-Mark this lesson complete to finalise the course. Your certificate confirms that you've worked through the full curriculum — from the science of rosacea, through clinical assessment and NICE-aligned treatment pathways, to applied case-based practice.
+Mark this lesson complete to finalise the course. Your certificate confirms that you've worked through the full curriculum, from the science of rosacea, through clinical assessment and NICE-aligned treatment pathways, to applied case-based practice.
 
 Once the course is completed, please email [hello@aunlock.co.uk](mailto:hello@aunlock.co.uk) to receive your personalised certificate. Your certificate will be emailed back within 24 hours.
 

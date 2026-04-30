@@ -15,9 +15,16 @@
 
 "use client";
 
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
-import { COURSES } from "@/lib/courses";
+import {
+  COURSES,
+  COURSE_SUBJECTS,
+  type Course,
+  type CourseSubject,
+  getCourseSubject,
+} from "@/lib/courses";
 import { CourseIllustrationFor } from "@/components/CourseIllustration";
 import { FreeBadge } from "@/components/FreeBadge";
 
@@ -38,16 +45,100 @@ const rowVariants: Variants = {
   },
 };
 
+type TabValue = "All" | CourseSubject;
+const TABS: readonly TabValue[] = ["All", ...COURSE_SUBJECTS] as const;
+
 export function CourseListCompact() {
+  const [activeTab, setActiveTab] = useState<TabValue>("All");
+
+  // Bucket every course into its subject. Free tasters route to the
+  // tab of the paid course they front (`upsellsTo`) so they sit
+  // alongside it under, e.g., CLINICAL — not stranded under "Free".
+  const bySubject = useMemo(() => {
+    const map: Record<TabValue, Course[]> = {
+      All: [...COURSES],
+      Clinical: [],
+      Regulatory: [],
+      Business: [],
+    };
+    for (const c of COURSES) {
+      const subject = getCourseSubject(c);
+      if (subject) map[subject].push(c);
+    }
+    // Free first, then paid by ascending price, then alphabetical.
+    for (const key of Object.keys(map) as TabValue[]) {
+      map[key].sort((a, b) => {
+        const aFree = a.price === undefined ? 0 : 1;
+        const bFree = b.price === undefined ? 0 : 1;
+        if (aFree !== bFree) return aFree - bFree;
+        const aP = a.price ?? 0;
+        const bP = b.price ?? 0;
+        if (aP !== bP) return aP - bP;
+        return a.title.localeCompare(b.title);
+      });
+    }
+    return map;
+  }, []);
+
+  const visible = bySubject[activeTab];
+
   return (
-    <motion.ul
-      className="flex flex-col"
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
-    >
-      {COURSES.map((c) => {
+    <div>
+      {/* Tabs, 4-col grid on mobile so all 4 fit the screen, flex on
+          sm+ where labels can take their natural width. Same shape as
+          the /courses catalogue tabs. No search here, keeps the
+          homepage section light. */}
+      <nav aria-label="Filter courses by subject" className="mb-6 sm:mb-8">
+        <ul className="grid grid-cols-4 gap-1 sm:flex sm:items-center sm:gap-1.5">
+          {TABS.map((tab) => {
+            const count = bySubject[tab].length;
+            const active = activeTab === tab;
+            return (
+              <li key={tab}>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  aria-pressed={active}
+                  className={[
+                    "group inline-flex w-full sm:w-auto items-center justify-center gap-1.5 sm:gap-2",
+                    "px-2 sm:px-4 py-2.5 rounded-[5px]",
+                    "font-section font-semibold uppercase tracking-[0.14em] sm:tracking-[0.18em]",
+                    "text-[0.6875rem] sm:text-[0.8125rem] whitespace-nowrap",
+                    "transition-colors duration-200 outline-none",
+                    "focus-visible:ring-2 focus-visible:ring-[var(--color-au-pink)]",
+                    active
+                      ? "bg-au-charcoal text-au-white hover:bg-[var(--color-au-pink)]"
+                      : "bg-au-charcoal/4 text-au-charcoal/75 hover:bg-[var(--color-au-pink)] hover:text-au-white",
+                  ].join(" ")}
+                >
+                  <span>{tab}</span>
+                  <span
+                    className={[
+                      "hidden sm:inline text-[0.6875rem] tabular-nums",
+                      active ? "text-au-white/55" : "text-au-charcoal/40",
+                    ].join(" ")}
+                    aria-hidden="true"
+                  >
+                    {count}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <motion.ul
+        // Re-mount on tab change so the new rows fade in cleanly. Without
+        // a fresh key, framer-motion's `whileInView` (with `once: true`)
+        // already fired and new rows would render stuck at opacity:0.
+        key={activeTab}
+        className="flex flex-col"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {visible.map((c) => {
         const isFree = c.price === undefined;
         const priceLabel =
           c.price === undefined ? null : `£${c.price.toLocaleString("en-GB")}`;
@@ -62,7 +153,7 @@ export function CourseListCompact() {
               href={`/courses/${c.slug}`}
               className="group block py-7 sm:py-8 px-5 -mx-5 grid grid-cols-[1fr_auto_auto] gap-x-4 sm:gap-x-7 items-start transition-colors hover:bg-au-charcoal"
             >
-              {/* Left column — eyebrow + title + summary. Text flips
+              {/* Left column, eyebrow + title + summary. Text flips
                   white when the row hovers on AU charcoal. */}
               <div className="min-w-0">
                 <p
@@ -89,7 +180,7 @@ export function CourseListCompact() {
                 </p>
               </div>
 
-              {/* Middle column — FREE stamp for free courses, animated
+              {/* Middle column, FREE stamp for free courses, animated
                   thematic course illustration otherwise. They never both
                   render, so the column stays visually balanced. */}
               {isFree ? (
@@ -101,7 +192,7 @@ export function CourseListCompact() {
                 />
               )}
 
-              {/* Right column — price (paid only) + arrow. */}
+              {/* Right column, price (paid only) + arrow. */}
               <div className="flex flex-col items-end gap-2 shrink-0">
                 {priceLabel && (
                   <span
@@ -124,9 +215,10 @@ export function CourseListCompact() {
                 </span>
               </div>
             </Link>
-          </motion.li>
-        );
-      })}
-    </motion.ul>
+            </motion.li>
+          );
+        })}
+      </motion.ul>
+    </div>
   );
 }

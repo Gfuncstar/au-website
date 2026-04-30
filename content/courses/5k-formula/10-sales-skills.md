@@ -1,20 +1,20 @@
 ---
-title: "Module 8 — Sales Skills"
+title: "Module 8: Sales Skills"
 order: 10
 icon: branching
 duration: "18 min"
 summary: "Reframing sales as professional guidance, the mindset shift from suggestion to recommendation, and the Two-Plan Method for confident, ethical consultation conversion."
 ---
 
-Refining your sales skills in aesthetics is **not** about becoming pushy or persuasive — it is about learning how to communicate with clarity, confidence, and empathy so clients feel safe, understood, and guided. In a high-trust industry like aesthetics, sales success comes from **connection, expertise, and emotional intelligence** — not hard selling.
+Refining your sales skills in aesthetics is **not** about becoming pushy or persuasive, it is about learning how to communicate with clarity, confidence, and empathy so clients feel safe, understood, and guided. In a high-trust industry like aesthetics, sales success comes from **connection, expertise, and emotional intelligence**, not hard selling.
 
 This module focuses on elevating how practitioners communicate, recommend, and close treatments so that consultations naturally convert into bookings while maintaining integrity and professionalism.
 
-## Sales mindset shift — reframing what sales really is
+## Sales mindset shift, reframing what sales really is
 
 In an aesthetics context, sales is not persuasion. It is **professional direction based on expertise and assessment**.
 
-When you genuinely believe in the safety, effectiveness, and value of what you offer, recommending treatment becomes an act of responsibility. Clients attend consultations because they want guidance — not vague options or uncertainty. When practitioners hold back recommendations, present too many choices, or defer decisions back to the client without guidance, they unintentionally create insecurity.
+When you genuinely believe in the safety, effectiveness, and value of what you offer, recommending treatment becomes an act of responsibility. Clients attend consultations because they want guidance, not vague options or uncertainty. When practitioners hold back recommendations, present too many choices, or defer decisions back to the client without guidance, they unintentionally create insecurity.
 
 A skilled aesthetic practitioner:
 
@@ -24,7 +24,7 @@ A skilled aesthetic practitioner:
 - Guides decisively
 - Supports emotionally
 
-This is not dominance — it is **responsibility**.
+This is not dominance, it is **responsibility**.
 
 ### Common limiting beliefs this module addresses
 
@@ -66,7 +66,7 @@ There is a powerful psychological difference between these two approaches.
 - *"To achieve your goal of [X], I recommend [Y]."*
 - *"This is what I would suggest as your treatment plan."*
 
-**Key point:** Clients experience recommendation language as reassuring, expert-led, and caring. They interpret suggestion language as uncertainty — and uncertainty creates hesitation.
+**Key point:** Clients experience recommendation language as reassuring, expert-led, and caring. They interpret suggestion language as uncertainty, and uncertainty creates hesitation.
 
 ### Tone, pace, and body language
 
@@ -86,7 +86,7 @@ Confident recommendations should always connect back to what the client has said
 
 ### Overcoming fear of being "too direct"
 
-Many practitioners soften their recommendation because they fear sounding pushy. In reality, **directness increases client confidence when delivered with warmth**. Clear guidance feels safe. Vagueness feels uncertain. Clients are not uncomfortable with directness — they are uncomfortable with hesitation.
+Many practitioners soften their recommendation because they fear sounding pushy. In reality, **directness increases client confidence when delivered with warmth**. Clear guidance feels safe. Vagueness feels uncertain. Clients are not uncomfortable with directness, they are uncomfortable with hesitation.
 
 ### From recommendation to invitation
 
@@ -113,7 +113,7 @@ The Ideal Plan represents the **most comprehensive and clinically sound pathway*
 - Appropriate timelines for optimal results
 - Long-term maintenance considerations
 
-Presenting an Ideal Plan positions the practitioner as **confident, proactive, and outcome-focused**. It communicates expertise by demonstrating that the recommendation is based on structure and foresight — rather than individual treatments sold in isolation.
+Presenting an Ideal Plan positions the practitioner as **confident, proactive, and outcome-focused**. It communicates expertise by demonstrating that the recommendation is based on structure and foresight, rather than individual treatments sold in isolation.
 
 ### The Priority Plan
 
@@ -125,11 +125,11 @@ The Priority Plan is a **simplified alternative** that still delivers meaningful
 
 **Important:** The Priority Plan is not a compromise in care quality. It is a strategic prioritisation that respects the client's readiness, budget, or timing, without undermining professional standards.
 
-## Weekly challenge — sales skills in action
+## Weekly challenge, sales skills in action
 
 **Task 1: Communication upgrade**
 
-Choose one consultation this week and consciously slow your pace. Speak 20% more calmly and clearly. Avoid over-explaining — focus only on what supports the client's goals.
+Choose one consultation this week and consciously slow your pace. Speak 20% more calmly and clearly. Avoid over-explaining, focus only on what supports the client's goals.
 
 *Outcome:* you experience the power of clarity and intentional communication.
 

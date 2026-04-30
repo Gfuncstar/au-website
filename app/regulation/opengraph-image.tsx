@@ -14,7 +14,7 @@ export const runtime = "edge";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
 export const alt =
-  "UK aesthetics regulation 2026 — JCCP, MHRA, CQC, licensing, decoded";
+  "UK aesthetics regulation 2026, JCCP, MHRA, CQC, licensing, decoded";
 
 const PINK = "#EE5A8E";
 const CHARCOAL = "#212121";
@@ -36,7 +36,7 @@ export default async function RegulationOG() {
           fontFamily: "sans-serif",
         }}
       >
-        {/* Top — eyebrow */}
+        {/* Top, eyebrow */}
         <div
           style={{
             display: "flex",
@@ -53,7 +53,7 @@ export default async function RegulationOG() {
           UK Aesthetics Regulation
         </div>
 
-        {/* Middle — headline */}
+        {/* Middle, headline */}
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           <div
             style={{
@@ -85,12 +85,12 @@ export default async function RegulationOG() {
               maxWidth: 920,
             }}
           >
-            JCCP, CPSA, MHRA, CQC, NICE, NMC, RCN, ASA — and the new licensing
+            JCCP, CPSA, MHRA, CQC, NICE, NMC, RCN, ASA, and the new licensing
             scheme. The map, in one place.
           </div>
         </div>
 
-        {/* Bottom — author */}
+        {/* Bottom, author */}
         <div
           style={{
             display: "flex",

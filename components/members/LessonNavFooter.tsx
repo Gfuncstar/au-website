@@ -125,7 +125,7 @@ export function LessonNavFooter({
         </div>
       </div>
 
-      {/* Keyboard hint — quietly tells members the course supports
+      {/* Keyboard hint, quietly tells members the course supports
           arrow-key navigation. Hidden on touch viewports where it's
           irrelevant. */}
       <p className="hidden lg:flex mt-5 items-center gap-3 text-[0.7rem] text-au-mid font-section font-semibold uppercase tracking-[0.16em]">

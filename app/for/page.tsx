@@ -17,22 +17,22 @@ import { RevealHeadline } from "@/components/RevealHeadline";
 import { LOCATIONS, getLocationsByKind } from "@/lib/locations";
 
 export const metadata: Metadata = {
-  title: "For UK practitioners — by nation and city",
+  title: "For UK practitioners, by nation and city",
   description:
     "Aesthetics education tailored to UK nation-level regulation (England, Scotland, Wales, Northern Ireland) and key practitioner-density cities (London, Manchester, Birmingham, Edinburgh).",
   alternates: { canonical: "/for" },
   openGraph: {
-    title: "For UK practitioners — Aesthetics Unlocked®",
+    title: "For UK practitioners, Aesthetics Unlocked®",
     description:
-      "Tailored aesthetics education for every UK nation and major city — the regulatory map, the practitioner landscape, and the courses I'd start with.",
+      "Tailored aesthetics education for every UK nation and major city, the regulatory map, the practitioner landscape, and the courses I'd start with.",
     url: "/for",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "For UK practitioners — by nation & city",
+    title: "For UK practitioners, by nation & city",
     description:
-      "Tailored aesthetics education for England, Scotland, Wales, Northern Ireland — and London, Manchester, Birmingham, Edinburgh.",
+      "Tailored aesthetics education for England, Scotland, Wales, Northern Ireland, and London, Manchester, Birmingham, Edinburgh.",
   },
 };
 
@@ -67,7 +67,7 @@ export default function ForIndexPage() {
           />
           <ScrollReveal delay={0.15}>
             <p className="max-w-2xl text-[1.0625rem] sm:text-[1.125rem] md:text-[1.25rem] text-au-charcoal/85 leading-relaxed">
-              UK aesthetics regulation isn&rsquo;t one rulebook — it diverges
+              UK aesthetics regulation isn&rsquo;t one rulebook, it diverges
               by nation, and the practitioner economics shift dramatically
               between cities. Pick the page closest to where you work.
             </p>
@@ -90,7 +90,7 @@ export default function ForIndexPage() {
               <span style={{ color: "var(--color-au-pink)" }}>four rulebooks</span>.
             </h2>
             <p className="text-[1rem] sm:text-[1.0625rem] text-au-charcoal/80 leading-relaxed">
-              Healthcare regulation is devolved across the UK — CQC in England,
+              Healthcare regulation is devolved across the UK, CQC in England,
               HIS in Scotland, HIW in Wales, RQIA in Northern Ireland. The
               UK-wide bodies (NMC, MHRA, JCCP, CPSA, ASA) overlay all four,
               but the framework I teach flags every divergence.
@@ -144,7 +144,7 @@ export default function ForIndexPage() {
             </h2>
             <p className="text-[1rem] sm:text-[1.0625rem] text-au-charcoal/80 leading-relaxed">
               Practitioner density and fee tolerance vary sharply between UK
-              cities. The framework I teach doesn&rsquo;t change — but the
+              cities. The framework I teach doesn&rsquo;t change, but the
               order in which I&rsquo;d steer you through it does.
             </p>
           </ScrollReveal>

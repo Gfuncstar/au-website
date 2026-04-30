@@ -50,7 +50,7 @@ const BULLETS: Bullet[] = [
     sub: (
       <>
         You&rsquo;re a year or three into aesthetics, technically capable, and
-        quietly unsure.
+        privately unsure.
       </>
     ),
   },
@@ -127,7 +127,7 @@ export function WhoThisIsFor() {
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
     >
-      {/* Concentric audience target — float-right so eyebrow + headline
+      {/* Concentric audience target, float-right so eyebrow + headline
           + bullets wrap around it. */}
       <AudienceIllustration
         className="float-right ml-4 sm:ml-5 -mt-1 w-[88px] h-[88px] sm:w-[112px] sm:h-[112px] md:w-[132px] md:h-[132px]"
@@ -138,7 +138,7 @@ export function WhoThisIsFor() {
         <Eyebrow className="mb-6">Who this is for</Eyebrow>
       </motion.div>
 
-      {/* Headline — line-by-line reveal through overflow-hidden bands.
+      {/* Headline, line-by-line reveal through overflow-hidden bands.
           Same gesture as the hero so the whole site reads with one motion
           language. */}
       <h2
@@ -162,7 +162,7 @@ export function WhoThisIsFor() {
         </span>
       </h2>
 
-      {/* Ledger of bullets — staggered, with animated pink rule beneath
+      {/* Ledger of bullets, staggered, with animated pink rule beneath
           each number. */}
       <ul className="flex flex-col gap-7 sm:gap-9 max-w-3xl">
         {BULLETS.map((b) => (
@@ -171,7 +171,7 @@ export function WhoThisIsFor() {
             variants={rowVariants}
             className="grid grid-cols-[auto_1fr] gap-x-6 sm:gap-x-9 items-start"
           >
-            {/* Left column — big display number + animated pink rule. */}
+            {/* Left column, big display number + animated pink rule. */}
             <div className="flex flex-col items-start gap-2 pt-1">
               <span
                 className="font-display font-black leading-none"
@@ -198,8 +198,8 @@ export function WhoThisIsFor() {
               />
             </div>
 
-            {/* Right column — header + subheader.
-                Bold weight removed per Giles' "remove bold" call — header
+            {/* Right column, header + subheader.
+                Bold weight removed per Giles' "remove bold" call, header
                 now renders at regular Lato weight, distinguished only by
                 size + AU pink. Subheader stays in charcoal at 75%. */}
             <div>
@@ -224,6 +224,33 @@ export function WhoThisIsFor() {
           </motion.li>
         ))}
       </ul>
+
+      {/* Who's actually enrolled, calm reassurance for visitors who
+          aren't sure they "belong". Speaks to category mix only, no
+          fabricated percentages, every label here genuinely fits the
+          cohort that takes the courses. */}
+      <motion.div
+        variants={rowVariants}
+        className="mt-10 sm:mt-12 max-w-3xl rounded-[5px] border border-au-charcoal/10 bg-au-white p-5 sm:p-6"
+      >
+        <p
+          className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] sm:text-[0.75rem] mb-3"
+          style={{ color: "var(--color-au-pink)" }}
+        >
+          Who&rsquo;s already inside
+        </p>
+        <p className="text-au-charcoal/85 leading-relaxed text-[0.9375rem] sm:text-[1.0625rem]">
+          The cohort is a deliberate mix:{" "}
+          <strong className="font-semibold text-au-charcoal">
+            aesthetic nurses, aesthetic doctors, aestheticians, advanced
+            facialists, and clinic owners
+          </strong>
+          , practising across England, Scotland, Wales and Northern
+          Ireland. The clinical courses are written for any practitioner
+          working with skin; the regulatory and business courses for
+          anyone running an aesthetics practice in the UK.
+        </p>
+      </motion.div>
     </motion.div>
   );
 }

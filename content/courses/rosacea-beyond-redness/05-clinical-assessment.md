@@ -38,7 +38,7 @@ Clinical observation should assess:
 - Papules and pustules (without comedones)
 - Skin texture and hydration levels
 - Signs of barrier impairment
-- Ocular involvement (red, irritated eyes — requires referral)
+- Ocular involvement (red, irritated eyes, requires referral)
 
 Good lighting and minimal stimulation are essential during assessment, as rosacea-prone skin may flush easily.
 
@@ -78,7 +78,7 @@ Working collaboratively with medical professionals supports client safety and pr
 
 The full template lives in the course resources for download. Below is the structure to work through with each client presenting with rosacea-type concerns.
 
-**Client details** — Name / Date / Practitioner
+**Client details**, Name / Date / Practitioner
 
 **Skin history**
 
@@ -101,7 +101,7 @@ The full template lives in the course resources for download. Below is the struc
 - Are there products you cannot tolerate?
 - Is your skin always sensitive, or only sensitive during flare-ups?
 
-**Current skincare routine** — Cleanser / Serums / Moisturiser / SPF
+**Current skincare routine**, Cleanser / Serums / Moisturiser / SPF
 
 - How often do you exfoliate?
 - Are you using active ingredients? (Acids / Retinoids / Vitamin C / None)

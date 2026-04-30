@@ -187,7 +187,7 @@ function BillingIcon() {
       aria-hidden="true"
     >
       <circle cx="12" cy="12" r="9" />
-      {/* £ — top hook, vertical stem, base swoop */}
+      {/* £, top hook, vertical stem, base swoop */}
       <path d="M 14.8 9 C 14.8 7.6 13.7 6.5 12 6.5 C 10.3 6.5 9.2 7.6 9.2 9 V 17 H 15.5" />
       {/* Crossbar */}
       <line x1="8.2" y1="13" x2="13.2" y2="13" />

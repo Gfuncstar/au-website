@@ -104,7 +104,7 @@ export default async function AccountPage() {
           Your <span className="text-au-pink">account</span>.
         </h1>
         <p className="mt-3 sm:mt-4 text-[0.9375rem] sm:text-[1.0625rem] text-au-white/75 max-w-[60ch] leading-relaxed">
-          Edit anything below — changes save back to your AU profile straight
+          Edit anything below, changes save back to your AU profile straight
           away and follow you into every course.
         </p>
       </section>

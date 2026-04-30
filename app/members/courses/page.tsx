@@ -59,7 +59,7 @@ export default async function CoursesPage() {
           Your <span className="text-au-pink">courses</span>.
         </h1>
         <p className="mt-3 sm:mt-4 text-[0.9375rem] sm:text-[1.0625rem] text-au-white/75 max-w-[60ch] leading-relaxed">
-          Everything you have access to — and what&apos;s next.
+          Everything you have access to, and what&apos;s next.
         </p>
       </section>
 
@@ -136,7 +136,7 @@ export default async function CoursesPage() {
       </Reveal>
 
       {/* ============================================================
-          You might also like — restrained upsell, never blocking
+          You might also like, restrained upsell, never blocking
           ============================================================ */}
       {recommendations.length > 0 && (
         <Reveal delay={0.15}>

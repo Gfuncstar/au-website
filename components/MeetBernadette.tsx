@@ -52,7 +52,7 @@ export function MeetBernadette() {
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
     >
-      {/* Single-column layout — portrait removed per Giles' "remove" call.
+      {/* Single-column layout, portrait removed per Giles' "remove" call.
           Bio + bullets + stat strip carry the section. */}
       <div className="flex flex-col">
         <motion.div variants={itemVariants}>
@@ -80,14 +80,14 @@ export function MeetBernadette() {
           nursing.
         </motion.h2>
 
-        {/* Identity line — first-person, "Hi, I'm Bernadette" framing
+        {/* Identity line, first-person, "Hi, I'm Bernadette" framing
             per Giles' "rewrite in first person" call. */}
         <motion.p
           variants={itemVariants}
           className="text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] text-au-charcoal/85 leading-relaxed mb-4 sm:mb-5"
         >
           Hi, I&rsquo;m{" "}
-          <strong className="font-bold">Bernadette Tobin</strong> —{" "}
+          <strong className="font-bold">Bernadette Tobin</strong>,{" "}
           <span className="text-au-charcoal/70">RN, MSc Advanced Practice.</span>
         </motion.p>
         <motion.ul
@@ -128,14 +128,13 @@ export function MeetBernadette() {
           className="text-[1rem] sm:text-[1.0625rem] text-au-charcoal/75 leading-relaxed mb-8 sm:mb-9"
         >
           I built Aesthetics Unlocked because the gap I kept seeing wasn&rsquo;t
-          clinical. The practitioners I knew were technically excellent — they
+          clinical. The practitioners I knew were technically excellent, they
           were just{" "}
           <span style={{ color: "var(--color-au-pink)" }}>
-            exhausted, undercharging, and quietly unsure if they were actually
+            exhausted, undercharging, and privately unsure if they were actually
             compliant
           </span>
-          . AU is the framework I wish someone had handed me when I started —
-          the same one I run inside{" "}
+          . AU is the framework I wish someone had handed me when I started,           the same one I run inside{" "}
           <strong className="font-bold">Visage Aesthetics</strong>, my own
           clinic, which won{" "}
           <span style={{ color: "var(--color-au-pink)" }}>
@@ -144,7 +143,7 @@ export function MeetBernadette() {
           . What I teach isn&rsquo;t theory. It&rsquo;s what I do.
         </motion.p>
 
-        {/* Stat strip — verified credentials only. */}
+        {/* Stat strip, verified credentials only. */}
         <motion.dl
           variants={itemVariants}
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5 mb-8 sm:mb-9 border-t border-au-charcoal/15 pt-6 sm:pt-7"

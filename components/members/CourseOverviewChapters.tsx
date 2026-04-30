@@ -53,7 +53,7 @@ export function CourseOverviewChapters({
   return (
     <>
       {/* ============================================================
-          Resume hero — Black Poster treatment (per design-direction §3)
+          Resume hero, Black Poster treatment (per design-direction §3)
           ============================================================ */}
       <Reveal>
         <section className="relative bg-au-charcoal text-au-white rounded-[5px] overflow-hidden mb-12 sm:mb-14">
@@ -66,7 +66,7 @@ export function CourseOverviewChapters({
                 "radial-gradient(70% 100% at 100% 0%, var(--color-au-pink) 0%, transparent 60%)",
             }}
           />
-          {/* Diagonal pink rule — editorial flourish */}
+          {/* Diagonal pink rule, editorial flourish */}
           <div
             aria-hidden="true"
             className="absolute -right-10 -top-10 w-px h-[180%] bg-au-pink/30 rotate-[18deg] origin-top-right"
