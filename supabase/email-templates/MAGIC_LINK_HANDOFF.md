@@ -1,8 +1,23 @@
 # Magic-link email: get it on brand
 
 The current Supabase magic-link looks spammy because two switches have
-not yet been flipped. Both live in the Supabase dashboard, and
-together they take about 15 minutes.
+not yet been flipped. Both live in the Supabase dashboard.
+
+## The two-domain split, before anything else
+
+This is intentional and worth knowing up front, because it shapes
+both fixes below.
+
+- **Website domain:** `aestheticsunlocked.co.uk`. Descriptive, what
+  visitors type, what the new Vercel deploy will eventually serve.
+- **Email sender domain:** `aunlock.co.uk`. Memorable, easier to
+  speak on a podcast or write on a card. Already verified in the
+  current sending stack (Kartra) with SPF, DKIM and DMARC.
+
+Magic-link emails go FROM `aunlock.co.uk` and link TO
+`aestheticsunlocked.co.uk`. Both domains need clean SPF and DKIM;
+DMARC alignment only matters for the sender domain. See
+`PROJECT-STATE.md` §1 for the canonical record of this choice.
 
 ## What's wrong right now
 
@@ -12,9 +27,9 @@ together they take about 15 minutes.
    the dashboard.
 2. Mail is being sent from `noreply@mail.app.supabase.io`. Gmail and
    Outlook flag this as suspicious because the from-domain does not
-   match the brand domain and there is no DKIM aligned to
-   `aestheticsunlocked.co.uk`. That is the single biggest reason the
-   email reads as spammy.
+   match `aunlock.co.uk` (or any AU-owned domain) and there is no
+   DKIM aligned to it. That is the single biggest reason the email
+   reads as spammy.
 
 Fix one without the other and it still looks off. Do both and the
 email lands cleanly in the inbox with the brand on it.
@@ -26,8 +41,8 @@ email lands cleanly in the inbox with the brand on it.
 2. Set the subject line to: `Your Aesthetics Unlocked sign-in link`
 3. Open `supabase/email-templates/magic-link.html` in this repo,
    copy the entire file.
-4. Paste it into the **Message body (HTML)** field, replacing whatever
-   is there.
+4. Paste it into the **Message body (HTML)** field, replacing
+   whatever is there.
 5. Hit **Save**.
 
 The template uses Supabase's standard substitutions: `{{ .Token }}`
@@ -38,17 +53,23 @@ copy the code or click the button.
 ## Fix 2: Switch to a real sending domain via Resend (10 minutes)
 
 This is the change that kills the spammy feel. After this, the email
-arrives from `Aesthetics Unlocked <hello@aestheticsunlocked.co.uk>`
-with DKIM, SPF and DMARC aligned, and the "powered by Supabase"
-footer disappears.
+arrives from `Aesthetics Unlocked <hello@aunlock.co.uk>`, with the
+"powered by Supabase" footer gone, signed by the sender domain that
+is already in use across the brand.
 
-### A. Sign up for Resend and verify the brand domain
+### A. Set up the sender domain in Resend
+
+`aunlock.co.uk` is already verified at Kartra, but Resend needs its
+own DNS records to sign mail it sends. The Kartra records can stay,
+they don't conflict.
 
 1. Open [resend.com](https://resend.com), create an account.
-2. Go to **Domains → Add Domain**, enter `aestheticsunlocked.co.uk`.
-3. Resend gives three DNS records to add at your registrar (SPF + DKIM
-   + DMARC). Add them to the `aestheticsunlocked.co.uk` zone. Allow
-   up to 10 minutes for propagation.
+2. Go to **Domains → Add Domain**, enter `aunlock.co.uk`.
+3. Resend gives three DNS records to add at your registrar (a Resend
+   SPF include, a Resend DKIM TXT, and a DMARC record if one isn't
+   already in place). Add them to the `aunlock.co.uk` zone alongside
+   whatever Kartra already published. Allow up to 10 minutes for
+   propagation.
 4. Hit **Verify**. Wait for the green tick.
 
 ### B. Mint an API key for Supabase
@@ -65,7 +86,7 @@ footer disappears.
 3. Enter exactly:
 
    ```
-   Sender email:   hello@aestheticsunlocked.co.uk
+   Sender email:   hello@aunlock.co.uk
    Sender name:    Aesthetics Unlocked
    Host:           smtp.resend.com
    Port:           587
@@ -76,7 +97,7 @@ footer disappears.
 
 4. **Save**. Then immediately send yourself a magic-link from
    `/login` and confirm:
-   - The from line reads `Aesthetics Unlocked <hello@aestheticsunlocked.co.uk>`
+   - The from line reads `Aesthetics Unlocked <hello@aunlock.co.uk>`
    - The subject reads `Your Aesthetics Unlocked sign-in link`
    - The body shows the charcoal poster, the OTP code block, and the
      pink sign-in button
@@ -86,11 +107,12 @@ footer disappears.
 
 ## Optional polish once both fixes are live
 
-- Set up a `hello@aestheticsunlocked.co.uk` mailbox (or a forward) so
-  replies from recipients reach a real human. The footer points
-  recipients there for help.
-- Add the same Resend account as the SMTP for any future broadcast or
-  marketing email so the whole brand sends from one verified domain.
+- Confirm `hello@aunlock.co.uk` resolves to a mailbox or forward so
+  replies from recipients reach a real human. The template footer
+  points recipients there for help.
+- Use the same Resend account as the SMTP for any future broadcast
+  or marketing email so the whole brand sends from one verified
+  sender domain. Keeps the DMARC story clean.
 - After 30 days at clean send volume, bring the DMARC policy up from
   `p=none` to `p=quarantine`. Resend's DMARC dashboard tracks this
   per domain.

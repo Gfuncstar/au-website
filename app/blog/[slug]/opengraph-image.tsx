@@ -30,16 +30,16 @@ export const size = { width: 1200, height: 630 };
 // post page (so every post would advertise the most recent post's
 // image alt text on social shares).
 //
-// In Next 16, `params` is a Promise in dynamic routes, including OG
-// image routes. Treat it like the page-level `params` and await it
-// before reading `slug`.
+// Next 16 contract (asymmetric, see Next docs):
+//   - generateImageMetadata receives `params` as a SYNC object.
+//   - The default Image function receives `params` and `id` as
+//     Promises that must be awaited.
 export async function generateImageMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = await getPostBySlug(params.slug);
   if (!post) return [];
   return [
     {
@@ -57,7 +57,7 @@ const CREAM = "#FAF6F1";
 
 type Props = {
   params: Promise<{ slug: string }>;
-  id: string;
+  id: Promise<string>;
 };
 
 export default async function BlogOG({ params }: Props) {
@@ -176,10 +176,11 @@ export default async function BlogOG({ params }: Props) {
               opacity: 0.78,
               maxWidth: 950,
               fontWeight: 400,
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
+              // Satori (next/og) does not support `display: -webkit-box`
+              // or `WebkitLineClamp`, so we hard-cap the excerpt length
+              // at the frontmatter level (160 chars) and let it wrap
+              // naturally inside the 950px maxWidth.
+              display: "flex",
             }}
           >
             {post.excerpt}

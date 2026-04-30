@@ -26,16 +26,16 @@ export const size = { width: 1200, height: 630 };
 // the first array element's id and alt for every course page (so the
 // `og:image:alt` becomes whichever course sorts first, on every page).
 //
-// In Next 16, `params` is a Promise in dynamic routes, including OG
-// image routes. Treat it like the page-level `params` and await it
-// before reading `slug`.
-export async function generateImageMetadata({
+// Next 16 contract (asymmetric, see Next docs):
+//   - generateImageMetadata receives `params` as a SYNC object.
+//   - The default Image function receives `params` and `id` as
+//     Promises that must be awaited.
+export function generateImageMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
-  const course = COURSES.find((c) => c.slug === slug);
+  const course = COURSES.find((c) => c.slug === params.slug);
   if (!course) return [];
   return [
     {
@@ -53,7 +53,7 @@ const CREAM = "#FAF6F1";
 
 type Props = {
   params: Promise<{ slug: string }>;
-  id: string;
+  id: Promise<string>;
 };
 
 export default async function CourseOG({ params }: Props) {
