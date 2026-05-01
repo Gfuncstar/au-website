@@ -1131,7 +1131,8 @@ export const COURSES: readonly Course[] = [
       },
     ],
     ctaText: "Enrol now",
-    kartraUrl: courseKartraPlaceholder("skin-specialist-programme"),
+    kartraUrl:
+      "https://aestheticsunlock.kartra.com/checkout/cf1907b07a0c733941243f06ad0e74e2",
     tone: "charcoal",
     category: "Clinical",
     format: "Self-paced · 10 modules",

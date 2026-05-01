@@ -14,13 +14,11 @@ For each of the five paid courses below, paste the actual Kartra checkout page U
 |---|---|---|---|
 | Acne Decoded | `acne-decoded` | £150 | ✅ wired 2026-04-30 |
 | Rosacea Beyond Redness | `rosacea-beyond-redness` | £150 | ✅ wired 2026-04-30 |
-| The Skin Specialist™ Programme | `skin-specialist-programme` | £399 | ❌ **still pending** |
+| The Skin Specialist™ Programme | `skin-specialist-programme` | £399 | ✅ wired 2026-04-30 |
 | The RAG Pathway *(From Regulation to Reputation™)* | `rag-pathway` | £499 | ✅ wired 2026-04-30 |
 | The 5K+ Formula™ | `5k-formula` | £799 | ✅ wired 2026-04-30 |
 
-**Where to find each URL:** Kartra → Products → \<product name\> → Checkout pages → copy the public link. Use the FINAL checkout URL, not a draft.
-
-Only Skin Specialist Programme is left. Once you paste that, every paid course's Enrol button on the holding site goes straight to a working Kartra checkout.
+**Section A is fully closed.** Every paid course's Enrol button on the holding site now points at its real Kartra checkout. No further action on URLs.
 
 ---
 
