@@ -119,18 +119,14 @@ export const metadata: Metadata = {
   /**
    * Google Search Console verification.
    *
-   * To activate: paste the value Google gives you in Search Console
-   * (Add property → URL prefix → HTML tag verification) between the
-   * quotes below, then redeploy. Google looks for the meta tag in
-   * <head>; Next renders this from `metadata.verification.google`.
-   *
-   * Commented out until the production domain is pointed at this
-   * Vercel project — verifying a Vercel preview URL would index
-   * staging pages, not the real domain.
+   * Activated post-DNS-flip on launch day. Google looks for the meta
+   * tag in <head>; Next renders this from `metadata.verification.google`.
+   * If the property is ever moved or re-verified, paste the new token
+   * below.
    */
-  // verification: {
-  //   google: "PASTE_VERIFICATION_TOKEN_HERE",
-  // },
+  verification: {
+    google: "m21duHNZgtRfKf-Cdz4meL_4aQA2l0nYBFwphHPqX8o",
+  },
 };
 
 export default function RootLayout({
