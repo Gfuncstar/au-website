@@ -1,12 +1,15 @@
 # Aesthetics Unlocked, project state
 
-**Last updated:** 30 April 2026, end of day. Latest pushed commit: [`45b32ef`](https://github.com/Gfuncstar/au-website/commit/45b32ef) (plus subsequent dashboard-only changes in Supabase + Resend, see §6).
+> **✅ LAUNCHED 2026-05-01.** DNS flipped, SSL provisioned, sequences active, search-engine verified. Site is live at https://www.aestheticsunlocked.co.uk. See [`LAUNCH-COMPLETE.md`](./LAUNCH-COMPLETE.md) for the launch-day record of what shipped, what was cleaned up, and what's outstanding post-launch. This document is the ongoing state-of-build; the launch-complete doc is the historical record.
+
+**Last updated:** 1 May 2026, end of launch day. Latest pushed commit: `ee6003d` (Search Console verification token wired). Today's commits: `0f24de9` (structured data + twitter cards + login noindex), `e123317` (Educator of the Year 2026 amplification across 6 pages), `ee6003d` (Search Console token).
 
 This document is the **state-of-build** snapshot. It documents what's live, what works, what's pending, and where every piece lives. Use it before changing anything.
 
 For Next.js project-context Claude needs, see [`CLAUDE.md`](./CLAUDE.md).
 For getting-to-production setup, see [`SETUP.md`](./SETUP.md).
 For repo overview + conventions, see [`README.md`](./README.md).
+For the launch-day record, see [`LAUNCH-COMPLETE.md`](./LAUNCH-COMPLETE.md).
 
 ---
 
@@ -14,16 +17,33 @@ For repo overview + conventions, see [`README.md`](./README.md).
 
 | Surface | URL |
 |---|---|
-| Production website (target) | https://aestheticsunlocked.co.uk *(DNS not yet pointed)* |
-| Holding site (current) | https://au-website-one.vercel.app |
+| Production website | **https://www.aestheticsunlocked.co.uk** ✅ live (DNS flipped 2026-05-01) |
+| Apex redirect | https://aestheticsunlocked.co.uk → 307 → www |
+| Holding site (Vercel preview) | https://au-website-one.vercel.app (still resolves; same project) |
 | Email sender domain | `hello@aunlock.co.uk` ✅ *(verified at Kartra and at Resend; SMTP plumbed through Supabase Auth)* |
 | Repo | https://github.com/Gfuncstar/au-website |
 | Vercel project | https://vercel.com/giles-projects-b3d2a63d/au-website |
 | Clone authoring source | `~/Dropbox/CLAUDE/01 AESTHETICS UNLOCKED/clone-aesthetics-unlocked/` |
+| Search Console | https://search.google.com/search-console (URL prefix property, verified 2026-05-01) |
 
 Push to `main` → Vercel auto-deploys in ~90 seconds.
 
 **Two-domain split is intentional:** descriptive website (`aestheticsunlocked.co.uk`), memorable email (`aunlock.co.uk`). Magic-link emails go FROM `aunlock.co.uk` and link TO `aestheticsunlocked.co.uk`. Both domains have clean SPF/DKIM; DMARC alignment is in place for the sender domain.
+
+**DNS records on `aestheticsunlocked.co.uk` (post-flip):**
+
+| Type | Name | Value | Notes |
+|---|---|---|---|
+| A | @ | 216.150.1.1 | Vercel apex (post-launch) |
+| CNAME | www | b6a88a78c36d8840.vercel-dns-017.com | Vercel www (project-specific) |
+| TXT | _dmarc | v=DMARC1; p=quarantine; ... | Email auth (preserved) |
+| CNAME | k01._domainkey | k01.domainkey.u57021987.wl238.sendgrid.net | Legacy SendGrid DKIM |
+| CNAME | k012._domainkey | k012.domainkey.u57021987.wl238.sendgrid.net | Legacy SendGrid DKIM |
+| CNAME | sk357781 | u57021987.wl238.sendgrid.net | Legacy SendGrid sender |
+| CNAME | _domainconnect | _domainconnect.gd.domaincontrol.com | GoDaddy infrastructure |
+| NS | @ | ns63/ns64.domaincontrol.com | Locked GoDaddy nameservers |
+
+The SendGrid records pre-date the Resend migration and can be cleaned in a future hygiene pass; they don't conflict with anything.
 
 **Brand voice hard save (2026-04-30):** zero em-dashes in user-visible copy, zero AI-tell vocabulary. Documented in `CLAUDE.md` and in the user's memory (`feedback_no_ai_slop.md`). Every existing em-dash in `app/`, `components/`, `lib/`, `content/blog/`, `content/courses/` was swept (~1,950 across 151 files, commit [`72aa2b3`](https://github.com/Gfuncstar/au-website/commit/72aa2b3)).
 

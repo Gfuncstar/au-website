@@ -1,8 +1,10 @@
 # Launch runbook — Aesthetics Unlocked
 
+> **✅ EXECUTED 2026-05-01.** Site is live at https://www.aestheticsunlocked.co.uk. All 11 Kartra sequences are active, DNS flipped, SSL provisioned, Supabase migration applied, Plausible wired, Search Console verified. See [`LAUNCH-COMPLETE.md`](./LAUNCH-COMPLETE.md) for the canonical record of what shipped. This runbook is preserved as the original plan and rollback reference.
+
 **Purpose:** the single document for launch day. Every step has the exact value to paste, the expected response, and a rollback. Aim is ~90 minutes start to finish, paste-and-press.
 
-**Last updated:** 2026-04-30
+**Last updated:** 2026-05-01 (banner added on launch completion; runbook body is the 2026-04-30 plan)
 
 **Pre-launch state confirmed by automated probe:**
 - ✅ Site live at `https://au-website-one.vercel.app` (200 on /, /courses, /login)

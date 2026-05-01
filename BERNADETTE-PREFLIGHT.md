@@ -1,5 +1,13 @@
 # Bernadette pre-flight checklist
 
+> **✅ COMPLETE 2026-05-01.** Site launched. Sections A through D landed before launch day; the rest tracked through to the launch itself. See [`LAUNCH-COMPLETE.md`](./LAUNCH-COMPLETE.md) for the full record. Outstanding items as of launch:
+>
+> - **F (email approval):** approval pass deferred — emails went live via the 2026-05-01 paste-in (47 emails into 11 sequences, all DRAFT first, then activated after spot-checks). Bernadette can review live and edit any in Kartra at any time without breaking the system.
+> - **G (existing customer CSV):** still pending Bernadette upload, doesn't block new sign-ups.
+> - **H (BAAPS / Educator of the Year wording):** awarding body confirmed as **Beauty & Aesthetics Awards** (not BAAPS). Wired into `lib/credentials.ts` accordingly. Status remains "Nominee" until ceremony date.
+>
+> Original checklist preserved below for the historical record.
+
 This is everything that needs your eyes, your account, or your sign-off before launch. Designed to take **about 60 minutes total**, in any order. Most items are paste, click, or yes/no.
 
 If anything is unclear, ping Giles. Don't guess on Kartra naming — wrong names break automation silently.
