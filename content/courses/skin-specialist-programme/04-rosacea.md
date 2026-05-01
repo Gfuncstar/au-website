@@ -10,7 +10,7 @@ Rosacea is the condition that fails on protocols more often than any other. Most
 
 This module assumes the consultation framework is in place. We're now using it to work through rosacea properly.
 
-If you've taken **Rosacea Beyond Redness** (£79), this extends. If you haven't, this module is self-contained.
+If you've taken **Rosacea Beyond Redness** (£150), this extends. If you haven't, this module is self-contained.
 
 ## What this module covers
 

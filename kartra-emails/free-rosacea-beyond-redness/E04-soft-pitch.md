@@ -12,7 +12,7 @@ status: draft-for-review
 
 **Subject:** `If the mini was useful, here's the full version`
 
-**Preheader:** `Rosacea Beyond Redness, the full course. Twelve sections, lifetime access, £79.`
+**Preheader:** `Rosacea Beyond Redness, the full course. Twelve sections, lifetime access, £150.`
 
 ---
 
@@ -34,7 +34,7 @@ the escalation criteria for ocular and phymatous progression, and
 walks through the clinical reasoning behind it. NICE-aligned end
 to end, with case studies that read in twenty minutes or less.
 
-It's £79, lifetime access. No subscription. No drip. You buy it
+It's £150, lifetime access. No subscription. No drip. You buy it
 once and it sits with you while your practice grows.
 
 **[ TAKE A LOOK INSIDE → ]**

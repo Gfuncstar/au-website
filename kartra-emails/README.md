@@ -25,7 +25,7 @@ post-purchase welcomes (one per paid course, single email):
 | Folder | Trigger | Files | Upsells to |
 |---|---|---|---|
 | `free-acne-decoded/` | `Acne Mini Opted In` tag | E01-E07 + README | Acne Decoded, £79 |
-| `free-rosacea-beyond-redness/` | `Rosacea Mini Opted In` tag | E01-E07 + README | Rosacea Beyond Redness, £79 |
+| `free-rosacea-beyond-redness/` | `Rosacea Mini Opted In` tag | E01-E07 + README | Rosacea Beyond Redness, £150 |
 | `free-skin-specialist-mini/` | `Skin Specialist Mini Opted In` tag | E01-E07 + README | The Skin Specialist Programme, £399 |
 | `free-2-day-rag/` | `Taster 2Day Opted In` tag | E01-E07 + README | The RAG Pathway, £499 |
 | `free-3-day-startup/` | `5K_Prelaunch_Start` tag | E01-E07 + README | The 5K+ Formula, £1,199 |

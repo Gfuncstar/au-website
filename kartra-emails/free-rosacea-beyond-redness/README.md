@@ -1,9 +1,9 @@
-# Free Rosacea Beyond Redness Mini → Rosacea Beyond Redness (£79) — nurture sequence
+# Free Rosacea Beyond Redness Mini → Rosacea Beyond Redness (£150) — nurture sequence
 
 **Trigger tag (Kartra):** `Rosacea Mini Opted In` *(verify exact name per BERNADETTE-PREFLIGHT.md §B.2)*
 **Total emails:** 7
 **Total span:** 13 days
-**End-state:** subscribers either purchase the full Rosacea Beyond Redness course (£79) or fall through quietly without churn.
+**End-state:** subscribers either purchase the full Rosacea Beyond Redness course (£150) or fall through quietly without churn.
 
 ## Cadence
 
@@ -13,7 +13,7 @@
 | E2 | 2  | Lesson 2 nudge + clinical hook ("rosacea is not a redness problem") |
 | E3 | 4  | Lesson 3 nudge + the barrier-first framework |
 | E4 | 6  | Soft pitch: here's the full Rosacea Beyond Redness |
-| E5 | 8  | Objection: is £79 worth it for one condition? |
+| E5 | 8  | Objection: is £150 worth it for one condition? |
 | E6 | 10 | Practitioner outcome story (what changes after the full course) |
 | E7 | 13 | Decision frame: stop guessing |
 

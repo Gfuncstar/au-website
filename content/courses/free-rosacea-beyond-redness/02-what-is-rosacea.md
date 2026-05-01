@@ -72,6 +72,6 @@ If this taster has clicked, the full **Rosacea Beyond Redness** course expands w
 - Ocular rosacea + when to refer to ophthalmology
 - Certificate of Completion for CPD evidence
 
-It's £79, lifetime access, no upsells.
+It's £150, lifetime access, no upsells.
 
 The next lesson in this Mini is short, just a clear pointer to the full course if you want to keep going.

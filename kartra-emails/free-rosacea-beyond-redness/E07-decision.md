@@ -33,7 +33,7 @@ read confidently, the subtype assessment becomes second nature, and
 the practitioner-grapevine starts sending you the clients whose
 last anti-redness regimen quietly stopped working.
 
-Rosacea Beyond Redness is the bridge between the two. £79, lifetime
+Rosacea Beyond Redness is the bridge between the two. £150, lifetime
 access, yours after the first time you make the work pay back the
 cost.
 

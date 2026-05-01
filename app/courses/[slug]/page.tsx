@@ -733,6 +733,46 @@ export default async function CourseDetailPage({
         )}
 
         {/* ============================================================
+            SAMPLE LESSON VIDEO — only on courses that have one.
+            Editorial chrome around a real native HTML5 player so a
+            visitor can preview the inside-the-course teaching before
+            they enrol. Drives conversion on courses where Bernadette
+            actually has filmed lesson content (currently: Rosacea).
+            ============================================================ */}
+        {course.samplePreviewVideoSrc && !isWaitlist && (
+          <PosterBlock tone="cream" contained>
+            <ScrollReveal className="max-w-4xl mx-auto">
+              <Eyebrow className="mb-5">Inside the course</Eyebrow>
+              <h2
+                className="font-display font-black text-au-charcoal leading-[1.05] mb-6"
+                style={{
+                  fontSize: "clamp(1.5rem, 4vw, 2.25rem)",
+                  letterSpacing: "var(--tracking-tight-display)",
+                }}
+              >
+                {course.samplePreviewVideoCaption ?? "Watch a sample lesson"}
+                <span style={{ color: "var(--color-au-pink)" }}>.</span>
+              </h2>
+              <figure className="relative w-full aspect-video bg-au-charcoal overflow-hidden rounded-[5px]">
+                <video
+                  src={course.samplePreviewVideoSrc}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-contain bg-au-charcoal"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </figure>
+              <p className="mt-5 text-au-charcoal/75 text-[0.95rem] leading-relaxed max-w-2xl">
+                Six minutes from inside the course. Same teaching style,
+                same NICE-aligned framing as every chapter.
+              </p>
+            </ScrollReveal>
+          </PosterBlock>
+        )}
+
+        {/* ============================================================
             INSIDE THE LESSON, preview of the native lesson player so
             paid-course visitors can see what the inside-the-portal
             experience looks like before they enrol. Hidden on free

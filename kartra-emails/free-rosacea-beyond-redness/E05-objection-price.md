@@ -10,7 +10,7 @@ status: draft-for-review
 
 # E5 — Price objection (Day 8)
 
-**Subject:** `Is £79 worth it for one condition?`
+**Subject:** `Is £150 worth it for one condition?`
 
 **Preheader:** `The honest answer, with the maths laid out.`
 
@@ -20,7 +20,7 @@ status: draft-for-review
 
 Hi {first_name},
 
-A question that comes up: is £79 a lot to spend on one condition?
+A question that comes up: is £150 a lot to spend on one condition?
 
 Two ways to answer that.
 

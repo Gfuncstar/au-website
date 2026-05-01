@@ -1,4 +1,4 @@
-# Rosacea Beyond Redness (£79) — post-purchase welcome
+# Rosacea Beyond Redness (£150) — post-purchase welcome
 
 **Trigger tag (Kartra):** `Rosacea Purchased`
 **Total emails:** 1 (post-purchase welcome only — cart abandonment, completion and win-back sequences are out of scope for launch)

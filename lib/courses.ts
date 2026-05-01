@@ -137,6 +137,15 @@ export type Course = {
    *  Certificate of Completion. Drives a chip on the catalogue card
    *  and a one-line strip on the detail page. */
   isCpdEvidence?: boolean;
+  /** Optional path to a sample lesson video served from /public,
+   *  e.g. `/video/lessons/_MISFILED_VIDEO_ROSACEA_M03_*.mp4`. When
+   *  set, the public sales page renders a "Watch a sample lesson"
+   *  block with a real video player so visitors can preview the
+   *  inside-the-course experience before they enrol. */
+  samplePreviewVideoSrc?: string;
+  /** Optional one-line caption above the sample video. Falls back
+   *  to "Watch a sample lesson" when unset. */
+  samplePreviewVideoCaption?: string;
 };
 
 export const COURSES: readonly Course[] = [
@@ -910,6 +919,10 @@ export const COURSES: readonly Course[] = [
       },
     ],
     price: 150,
+    samplePreviewVideoSrc:
+      "/video/lessons/_MISFILED_VIDEO_ROSACEA_M03_PathophysiologySkinScience_LESSON_AP.mp4",
+    samplePreviewVideoCaption:
+      "Watch a sample lesson — Pathophysiology & Skin Science",
     ctaText: "View course",
     kartraUrl:
       "https://aestheticsunlock.kartra.com/checkout/dd04088c684f5a9082eaa98f6dcb289b",

@@ -46,9 +46,9 @@ If any of those are you, the door's open.
 
 ## How to enrol
 
-The full course is **£79**, lifetime access, no upsells inside the course. Same approach taught here, expanded across **12 sections** with the full pathway.
+The full course is **£150**, lifetime access, no upsells inside the course. Same approach taught here, expanded across **12 sections** with the full pathway.
 
-**[Take Rosacea Beyond Redness, £79 →](/courses/rosacea-beyond-redness)**
+**[Take Rosacea Beyond Redness, £150 →](/courses/rosacea-beyond-redness)**
 
 If now isn't the right time, that's also OK. The Mini stands on its own. The science you've learned in Lesson 2 is yours to keep.
 

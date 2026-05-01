@@ -245,7 +245,7 @@ export const MOCK_LEAD: Lead = {
       id: "T_2026_01_19_rosacea",
       product_name: "Rosacea Beyond Redness",
       transaction_type: "sale",
-      amount_cents: 7900,
+      amount_cents: 15000,
       currency: "GBP",
       status: "success",
       occurred_at: "2026-01-19T09:15:00Z",
