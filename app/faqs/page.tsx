@@ -22,12 +22,13 @@ import { BRAND } from "@/lib/credentials";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Everything you might be wondering about Aesthetics Unlocked, courses, payments, certificates, NMC revalidation, lifetime access, and more.",
+    "Everything you might be wondering about Aesthetics Unlocked courses by Bernadette Tobin RN MSc, Educator of the Year 2026 Nominee. Payments, certificates, NMC revalidation, lifetime access, and more.",
   alternates: { canonical: "/faqs" },
   openGraph: {
-    title: "Frequently Asked Questions, Aesthetics Unlocked®",
+    title:
+      "Frequently Asked Questions, Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
     description:
-      "Common questions about Aesthetics Unlocked courses, eligibility, certification, lifetime access, and Bernadette Tobin's teaching approach.",
+      "Common questions about Aesthetics Unlocked courses, eligibility, certification, lifetime access, and Bernadette Tobin's teaching approach. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
     url: "/faqs",
     type: "website",
   },
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FAQs, Aesthetics Unlocked®",
     description:
-      "Courses, certification, NMC revalidation, access, and Bernadette's teaching approach, answered.",
+      "Courses, certification, NMC revalidation, access, and Bernadette's teaching approach, answered. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
   },
 };
 

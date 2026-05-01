@@ -25,12 +25,13 @@ import { BRAND } from "@/lib/credentials";
 export const metadata: Metadata = {
   title: "Standards we teach against",
   description:
-    "Every Aesthetics Unlocked course is anchored to UK regulators and professional bodies, NICE, JCCP, CPSA, MHRA, CQC, NMC, RCN, ASA. Here's who they are and how AU teaches against them.",
+    "Every Aesthetics Unlocked course is anchored to UK regulators and professional bodies, NICE, JCCP, CPSA, MHRA, CQC, NMC, RCN, ASA. Taught by Bernadette Tobin RN MSc, Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards.",
   alternates: { canonical: "/standards" },
   openGraph: {
-    title: "Standards we teach against, Aesthetics Unlocked®",
+    title:
+      "Standards we teach against, Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
     description:
-      "Every AU course is anchored to UK regulators, NICE, JCCP, CPSA, MHRA, CQC, NMC, RCN, ASA.",
+      "Every Aesthetics Unlocked course is anchored to UK regulators, NICE, JCCP, CPSA, MHRA, CQC, NMC, RCN, ASA. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
     url: "/standards",
     type: "website",
   },
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Standards we teach against, Aesthetics Unlocked®",
     description:
-      "Eight UK regulators, one defensible practice. NICE, JCCP, CPSA, MHRA, CQC, NMC, RCN, ASA.",
+      "Eight UK regulators, one defensible practice. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
   },
 };
 

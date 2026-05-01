@@ -28,12 +28,13 @@ import { BRAND } from "@/lib/credentials";
 export const metadata: Metadata = {
   title: "Our reviews",
   description:
-    "Aesthetics Unlocked reviews, grouped by course. Read what UK aesthetic nurses, doctors and clinic owners say about each programme, from free tasters to the full clinical decoders, the RAG Pathway, and the 5K+ Formula.",
+    "Aesthetics Unlocked reviews, grouped by course. What UK aesthetic nurses, doctors and clinic owners say about each programme by Bernadette Tobin RN MSc, Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards.",
   alternates: { canonical: "/testimonials" },
   openGraph: {
-    title: "Our reviews, Aesthetics Unlocked®",
+    title:
+      "Our reviews, Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
     description:
-      "What UK aesthetic practitioners say about each Aesthetics Unlocked course.",
+      "What UK aesthetic practitioners say about each course by Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
     url: "/testimonials",
     type: "website",
   },
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Our reviews, Aesthetics Unlocked®",
     description:
-      "What UK aesthetic practitioners say about each Aesthetics Unlocked course.",
+      "What UK aesthetic practitioners say about each Aesthetics Unlocked course. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
   },
 };
 

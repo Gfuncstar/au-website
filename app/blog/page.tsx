@@ -25,12 +25,12 @@ import { BRAND, FOUNDER } from "@/lib/credentials";
 export const metadata: Metadata = {
   title: "Journal, unlocking the aesthetics arena",
   description:
-    "A clinical journal for UK aesthetic practitioners. Ingredient science, treatments, regulation, peer-reviewed studies, and the claims that don't survive scrutiny. Three pieces a week from Bernadette Tobin RN, MSc.",
+    "A clinical journal for UK aesthetic practitioners. Ingredient science, treatments, regulation, peer-reviewed studies, and the claims that don't survive scrutiny. Three pieces a week from Bernadette Tobin RN MSc, Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Journal, Aesthetics Unlocked",
+    title: "Journal, Aesthetics Unlocked · Educator of the Year 2026 Nominee",
     description:
-      "Clinical reads for UK aesthetic practitioners. Sourced, referenced, written for working clinicians.",
+      "Clinical reads for UK aesthetic practitioners by Educator of the Year 2026 Nominee Bernadette Tobin RN MSc. Sourced, referenced, written for working clinicians.",
     url: "/blog",
     type: "website",
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Journal, Aesthetics Unlocked",
     description:
-      "Clinical reads for UK aesthetic practitioners. Sourced, referenced, written for working clinicians.",
+      "Clinical reads for UK aesthetic practitioners by Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
   },
 };
 

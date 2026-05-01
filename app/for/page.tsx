@@ -20,12 +20,13 @@ import { BRAND } from "@/lib/credentials";
 export const metadata: Metadata = {
   title: "For UK practitioners, by nation and city",
   description:
-    "Aesthetics education tailored to UK nation-level regulation (England, Scotland, Wales, Northern Ireland) and key practitioner-density cities (London, Manchester, Birmingham, Edinburgh).",
+    "Aesthetics education tailored to UK nation-level regulation (England, Scotland, Wales, Northern Ireland) and key practitioner-density cities. Taught by Bernadette Tobin RN MSc, Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards.",
   alternates: { canonical: "/for" },
   openGraph: {
-    title: "For UK practitioners, Aesthetics Unlocked®",
+    title:
+      "For UK practitioners, Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
     description:
-      "Tailored aesthetics education for every UK nation and major city, the regulatory map, the practitioner landscape, and the courses I'd start with.",
+      "Tailored aesthetics education for every UK nation and major city. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
     url: "/for",
     type: "website",
   },
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "For UK practitioners, by nation & city",
     description:
-      "Tailored aesthetics education for England, Scotland, Wales, Northern Ireland, and London, Manchester, Birmingham, Edinburgh.",
+      "Tailored aesthetics education for England, Scotland, Wales, Northern Ireland, and London, Manchester, Birmingham, Edinburgh. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
   },
 };
 

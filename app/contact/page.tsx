@@ -27,12 +27,13 @@ import { LOGIN_URL } from "@/lib/links";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Aesthetics Unlocked, the strategic education platform for UK aesthetic practitioners. Email hello@aunlock.co.uk and we reply within two working days.",
+    "Get in touch with Aesthetics Unlocked, education for UK aesthetic practitioners by Bernadette Tobin RN MSc, Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards. Email hello@aunlock.co.uk and we reply within two working days.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact, Aesthetics Unlocked®",
+    title:
+      "Contact, Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
     description:
-      "Get in touch with Aesthetics Unlocked. Email hello@aunlock.co.uk.",
+      "Get in touch with Aesthetics Unlocked. Email hello@aunlock.co.uk. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
     url: "/contact",
     type: "website",
   },
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact, Aesthetics Unlocked®",
     description:
-      "Get in touch with Aesthetics Unlocked. Email hello@aunlock.co.uk.",
+      "Get in touch with Aesthetics Unlocked. Email hello@aunlock.co.uk. By Educator of the Year 2026 Nominee Bernadette Tobin RN MSc.",
   },
 };
 
