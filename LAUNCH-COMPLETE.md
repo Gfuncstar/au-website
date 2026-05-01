@@ -128,7 +128,7 @@ The narrative "value framing" in each E05 still tracks at the new prices — no 
 Replaced `[Postal address pending]` placeholder across **69 files** (all 47 sequence emails, 6 master templates, 6 READMEs, etc.) with the registered business address:
 
 ```
-17A Friars Lane, Braintree, Essex CM7 9BL
+17a Friars Lane, Braintree, Essex CM7 9BL
 ```
 
 UK PECR-compliant. Source files now correct end-to-end.

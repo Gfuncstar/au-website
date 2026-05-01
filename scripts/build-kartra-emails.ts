@@ -374,7 +374,7 @@ ${ctaBlock}
                 Aesthetics Awards.
               </p>
               <p style="margin:0 0 12px 0;font-family:'Lato',Helvetica,Arial,sans-serif;font-size:12px;line-height:1.5;color:${WHITE};opacity:0.55;">
-                Aesthetics Unlocked, [Postal address pending]<br />
+                Aesthetics Unlocked, 17a Friars Lane, Braintree, Essex CM7 9BL<br />
                 Replies welcome at
                 <a href="mailto:hello@aunlock.co.uk" style="color:${WHITE};text-decoration:underline;">hello@aunlock.co.uk</a>.
               </p>
