@@ -22,72 +22,27 @@ For each of the five paid courses below, paste the actual Kartra checkout page U
 
 ---
 
-## B. Verify five Kartra mappings *(15 min)*
+## B + C. Kartra mappings ✅ DONE (2026-04-30)
 
-The site maps each course slug to a list NAME and a tag NAME inside Kartra (the API uses names, not numeric IDs). Five entries currently have a `// TODO: confirm` flag because the original dashboard listing was ambiguous. For each, log into Kartra and confirm the exact name, **letter-for-letter**, that exists in your account.
+All eight `// TODO: confirm` blocks closed. Bernadette created the missing lists and tags in her Kartra dashboard and confirmed the existing names. The 5K Formula waitlist now has its own dedicated `5K Waitlist Opted In` tag, separate from the 3-Day Mini's `5K_Prelaunch_Start`, so the two funnels can fire their own nurture sequences without colliding.
 
-Reply with either ✅ (correct as written) or the exact corrected name.
+Final mapping state (synced into `lib/kartra-mappings.ts`):
 
-### B.1 `free-3-day-startup`
-Currently mapped to:
-- List: **`5K Formula Prelaunch Trigger`**
-- Tag: **`5K_Prelaunch_Start`**
+| Course | Opt-in list | Opt-in tag | Purchase list | Purchase tag |
+|---|---|---|---|---|
+| `free-2-day-rag` | Free 2-Day Taster | Taster 2Day Opted In | — | — |
+| `free-3-day-startup` | 5K Formula Prelaunch Trigger | 5K_Prelaunch_Start | — | — |
+| `free-acne-decoded` | Acne Decoded Mini | Acne Mini Opted In | — | — |
+| `free-rosacea-beyond-redness` | Rosacea Beyond Redness Mini | Rosacea Mini Opted In | — | — |
+| `free-clinical-audit` | England Aesthetic Compliance Audit | Compliance Audit Opted In | — | — |
+| `free-skin-specialist-mini` | The Skin Specialist Mini | Skin Specialist Mini Opted In | — | — |
+| `acne-decoded` | — | — | ACNE DECODED | Acne Decoded Purchased |
+| `rosacea-beyond-redness` | — | — | Rosacea Beyond Redness Buyers | Rosacea Purchased |
+| `skin-specialist-programme` | — | — | Skin Specialist Programme Buyers | Skin Specialist Purchased |
+| `rag-pathway` | From Regulation to Reputation™ Waitlist | RAG Pathway Opted In | RAG Pathway | RAG Pathway Purchased |
+| `5k-formula` | The 5K Formula Waitlist | 5K Waitlist Opted In | 12-Week Business Program | 12 Week Purchased |
 
-Question: should the 3-Day Mini opt-in feed the prelaunch sequence, or the standalone "Clarity to Cash" funnel? Whatever the active path is, give us its exact list and tag names.
-
-### B.2 `free-acne-decoded`
-Currently planned as:
-- List: **`Acne Decoded Mini`**
-- Tag: **`Acne Mini Opted In`**
-
-Does this list/tag exist in Kartra? If yes, confirm. If no, it needs creating before launch.
-
-### B.3 `free-rosacea-beyond-redness`
-Currently planned as:
-- List: **`Rosacea Beyond Redness Mini`**
-- Tag: **`Rosacea Mini Opted In`**
-
-Same question — exists, or needs creating?
-
-### B.4 `rag-pathway`
-Currently mapped to:
-- Opt-in list: **`From Regulation to Reputation™ Waitlist`**
-- Opt-in tag: **`RAG Pathway Opted In`**
-- Purchase list: **`RAG Pathway`**
-- Purchase tag: **`RAG Pathway Purchased`**
-
-Confirm the opt-in list — is the trademark symbol present in the actual Kartra name, or just text "Waitlist"?
-
-### B.5 `5k-formula`
-Currently mapped to:
-- Opt-in list: **`The 5K Formula Waitlist`**
-- Opt-in tag: **`5K_Prelaunch_Start`** *(reused from B.1, no dedicated waitlist tag exists yet)*
-- Purchase list: **`12-Week Business Program`**
-- Purchase tag: **`12 Week Purchased`**
-
-Recommendation: create a dedicated **`5K Waitlist Opted In`** tag in Kartra so the waitlist sequence isn't sharing a tag with the prelaunch one. Worth doing? If yes, create it and we'll point B.5 at the new tag.
-
----
-
-## C. Create two new Kartra lists/tags *(10 min)*
-
-Two paid courses are new since the last Kartra audit and don't have lists/tags yet. Create them in Kartra → Communications → Lists / Tags.
-
-### C.1 The Skin Specialist™ Programme
-
-Create:
-- List: **`Skin Specialist Programme Buyers`** *(paid customers)*
-- Tag: **`Skin Specialist Purchased`** *(applied on payment)*
-- Tag: **`Skin Specialist Abandoned Cart`** *(applied to abandoned-checkout)*
-- Tag: **`Skin Specialist Enrolled`** *(applied when they sign in)*
-- Tag: **`Skin Specialist Complete`** *(applied on course completion — manual or by sequence)*
-
-### C.2 The Skin Specialist™ Mini *(free taster)*
-
-Create:
-- List: **`The Skin Specialist Mini`** *(free leads)*
-- Tag: **`Skin Specialist Mini Opted In`** *(applied on opt-in via the form)*
-- Tag: **`Skin Specialist Mini Complete`** *(applied on completion)*
+Section closed. No further action.
 
 ---
 
