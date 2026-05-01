@@ -272,7 +272,11 @@ If unset, the bypass code path returns false and normal auth applies — fully o
 - ✅ **SMTP wired and live** *(2026-04-30)*. Resend account created, `aunlock.co.uk` verified with DKIM + SPF, custom SMTP enabled in Supabase, branded magic-link template pasted, OTP length set to 6, end-to-end smoke-tested. The handoff doc at `supabase/email-templates/MAGIC_LINK_HANDOFF.md` is now historical reference; both fixes it described are done.
 - ❌ **`NEXT_PUBLIC_PLAUSIBLE_DOMAIN` env var** not set in Vercel. Until set, all Plausible tracking calls silently no-op. Set to `aestheticsunlocked.co.uk` once domain is signed up.
 - ❌ **Member backfill not yet run.** Existing Kartra customers won't have entitlements on first sign-in until `npm run backfill -- /path/to/kartra-export.csv` is run. See `BACKFILL-FORMAT.md` for the column-mapping spec.
-- ❌ **Kartra checkout URLs** are still placeholders (`courseKartraPlaceholder("<slug>")` returns a stub URL). Each paid course needs its real Kartra checkout URL pasted into `lib/courses.ts`. See `BERNADETTE-PREFLIGHT.md` §A.
+- ⚠️ **Kartra checkout URLs (4 of 5 wired, 2026-04-30):**
+  Real Kartra checkout URLs now live in `lib/courses.ts` for Acne Decoded
+  (£150), Rosacea Beyond Redness (£150), The RAG Pathway (£499), and
+  The 5K+ Formula™ (£799). **Skin Specialist Programme (£399) is still
+  on the placeholder.** That's the only remaining paid-course CTA gap.
 - ❌ **Stripe webhooks**: code references `assignTag()` / `removeTag()` for purchase/refund events but no Stripe → IPN bridge is documented if direct Stripe checkout is added.
 - 🟡 **`AU_PREVIEW_TOKEN`** env var not set. Optional, only needed if you want to use the preview-link mechanism.
 

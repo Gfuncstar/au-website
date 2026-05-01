@@ -10,17 +10,17 @@ If anything is unclear, ping Giles. Don't guess on Kartra naming — wrong names
 
 For each of the five paid courses below, paste the actual Kartra checkout page URL into Giles. He drops them into the codebase and pushes.
 
-| Course | Slug | Price | Need: paste the Kartra checkout URL |
+| Course | Slug | Price | Status |
 |---|---|---|---|
-| Acne Decoded | `acne-decoded` | £79 | |
-| Rosacea Beyond Redness | `rosacea-beyond-redness` | £79 | |
-| The Skin Specialist™ Programme | `skin-specialist-programme` | £399 | |
-| The RAG Pathway *(From Regulation to Reputation™)* | `rag-pathway` | £499 *(confirm price)* | |
-| The 5K+ Formula™ | `5k-formula` | £1,199 | |
+| Acne Decoded | `acne-decoded` | £150 | ✅ wired 2026-04-30 |
+| Rosacea Beyond Redness | `rosacea-beyond-redness` | £150 | ✅ wired 2026-04-30 |
+| The Skin Specialist™ Programme | `skin-specialist-programme` | £399 | ❌ **still pending** |
+| The RAG Pathway *(From Regulation to Reputation™)* | `rag-pathway` | £499 | ✅ wired 2026-04-30 |
+| The 5K+ Formula™ | `5k-formula` | £799 | ✅ wired 2026-04-30 |
 
 **Where to find each URL:** Kartra → Products → \<product name\> → Checkout pages → copy the public link. Use the FINAL checkout URL, not a draft.
 
-Also confirm: is the RAG Pathway price still £499, or has it changed since last conversation?
+Only Skin Specialist Programme is left. Once you paste that, every paid course's Enrol button on the holding site goes straight to a working Kartra checkout.
 
 ---
 

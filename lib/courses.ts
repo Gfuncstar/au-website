@@ -782,7 +782,8 @@ export const COURSES: readonly Course[] = [
     ],
     price: 150,
     ctaText: "View course",
-    kartraUrl: courseKartraPlaceholder("acne-decoded"),
+    kartraUrl:
+      "https://aestheticsunlock.kartra.com/checkout/ecf0494c1d91f575fecb6f538677d092",
     tone: "charcoal",
     category: "Clinical",
     format: "Self-paced · 11 sections",
@@ -910,7 +911,8 @@ export const COURSES: readonly Course[] = [
     ],
     price: 150,
     ctaText: "View course",
-    kartraUrl: courseKartraPlaceholder("rosacea-beyond-redness"),
+    kartraUrl:
+      "https://aestheticsunlock.kartra.com/checkout/dd04088c684f5a9082eaa98f6dcb289b",
     tone: "pink-soft",
     category: "Clinical",
     format: "Self-paced · 12 sections",
@@ -1366,7 +1368,8 @@ export const COURSES: readonly Course[] = [
       },
     ],
     ctaText: "Enrol now",
-    kartraUrl: courseKartraPlaceholder("rag-pathway"),
+    kartraUrl:
+      "https://aestheticsunlock.kartra.com/checkout/7d315ceba7aa1d59433b325d988e36f5",
     tone: "pink",
     category: "Regulatory",
     format: "8 modules · 4 weeks · educator-led",
@@ -1522,7 +1525,8 @@ export const COURSES: readonly Course[] = [
       },
     ],
     ctaText: "Enrol now",
-    kartraUrl: courseKartraPlaceholder("5k-formula"),
+    kartraUrl:
+      "https://aestheticsunlock.kartra.com/checkout/900cf0c28a41d0b353b08063563124a4",
     tone: "black",
     category: "Business",
     format: "12 modules · 10 weeks · educator-led",
