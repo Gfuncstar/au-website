@@ -30,6 +30,7 @@ import {
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import { COURSES } from "@/lib/courses";
+import { BRAND } from "@/lib/credentials";
 
 export const metadata: Metadata = {
   title: "Courses",
@@ -71,6 +72,32 @@ const MARKS: Record<string, React.ReactNode> = {
 };
 
 export default function CoursesIndexPage() {
+  const siteUrl = `https://${BRAND.domain}`;
+
+  // ItemList structured data for the course catalogue. Helps search
+  // engines understand the page is a list of courses, and surface
+  // individual course names in rich result previews.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${siteUrl}/courses#page`,
+    name: "Aesthetics Unlocked Courses",
+    url: `${siteUrl}/courses`,
+    description:
+      "Every course in the Aesthetics Unlocked catalogue, free tasters, NICE-aligned clinical decoders, regulatory and business programmes.",
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Course catalogue",
+      numberOfItems: COURSES.length,
+      itemListElement: COURSES.map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${siteUrl}/courses/${c.slug}`,
+        name: c.title,
+      })),
+    },
+  };
+
   return (
     <>
       <Nav forceLight />
@@ -134,6 +161,11 @@ export default function CoursesIndexPage() {
         />
       </main>
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }

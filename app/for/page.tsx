@@ -15,6 +15,7 @@ import { Eyebrow } from "@/components/Eyebrow";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import { LOCATIONS, getLocationsByKind } from "@/lib/locations";
+import { BRAND } from "@/lib/credentials";
 
 export const metadata: Metadata = {
   title: "For UK practitioners, by nation and city",
@@ -39,6 +40,32 @@ export const metadata: Metadata = {
 export default function ForIndexPage() {
   const nations = getLocationsByKind("nation");
   const cities = getLocationsByKind("city");
+  const siteUrl = `https://${BRAND.domain}`;
+
+  // CollectionPage + ItemList for the geo landing index. Nations and
+  // cities are listed in two separate logical groups but combined into
+  // a single ItemList for crawlers, keyed by position. Search engines
+  // use this to surface "Aesthetics education in <city>" style results.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${siteUrl}/for#page`,
+    name: "Aesthetics Unlocked, by UK nation and city",
+    url: `${siteUrl}/for`,
+    description:
+      "Aesthetics education tailored to UK nation-level regulation and key practitioner-density cities.",
+    mainEntity: {
+      "@type": "ItemList",
+      name: "UK geographic coverage",
+      numberOfItems: LOCATIONS.length,
+      itemListElement: LOCATIONS.map((l, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${siteUrl}/for/${l.slug}`,
+        name: l.name,
+      })),
+    },
+  };
 
   return (
     <>
@@ -180,8 +207,11 @@ export default function ForIndexPage() {
         </PosterBlock>
       </main>
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }
-
-void LOCATIONS;

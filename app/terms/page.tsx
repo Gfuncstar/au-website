@@ -10,9 +10,22 @@ import { LegalPage, type LegalSection } from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description:
-    "Terms of use governing access to Aesthetics Unlocked® courses, content, and the AU members portal.",
+    "Terms of use governing access to Aesthetics Unlocked® courses, content, and the Aesthetics Unlocked members portal.",
   alternates: { canonical: "/terms" },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: "Terms & Conditions, Aesthetics Unlocked®",
+    description:
+      "Terms of use governing access to Aesthetics Unlocked® courses and the members portal.",
+    url: "/terms",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms & Conditions, Aesthetics Unlocked®",
+    description:
+      "Terms of use governing access to Aesthetics Unlocked® courses and the members portal.",
+  },
 };
 
 const SECTIONS: LegalSection[] = [

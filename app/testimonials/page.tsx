@@ -23,6 +23,7 @@ import { RevealHeadline } from "@/components/RevealHeadline";
 import { CTAPoster } from "@/components/CTAPoster";
 import { TESTIMONIALS } from "@/lib/testimonials";
 import { COURSES, getCourse } from "@/lib/courses";
+import { BRAND } from "@/lib/credentials";
 
 export const metadata: Metadata = {
   title: "Our reviews",
@@ -35,6 +36,12 @@ export const metadata: Metadata = {
       "What UK aesthetic practitioners say about each Aesthetics Unlocked course.",
     url: "/testimonials",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our reviews, Aesthetics Unlocked®",
+    description:
+      "What UK aesthetic practitioners say about each Aesthetics Unlocked course.",
   },
 };
 
@@ -52,6 +59,53 @@ export default function TestimonialsPage() {
     }
   }
   const groupedCourses = COURSES.filter((c) => byCourse.has(c.slug));
+  const siteUrl = `https://${BRAND.domain}`;
+
+  // Review-rich CollectionPage. Every published testimonial becomes a
+  // structured Review attached to its Course, so the snippet can show
+  // alongside individual course pages in search results.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${siteUrl}/testimonials#page`,
+    name: "Aesthetics Unlocked reviews",
+    url: `${siteUrl}/testimonials`,
+    description:
+      "Reviews from UK aesthetic practitioners on each Aesthetics Unlocked course.",
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Practitioner reviews",
+      numberOfItems: TESTIMONIALS.length,
+      itemListElement: TESTIMONIALS.map((t, i) => {
+        const course = getCourse(t.courseSlug);
+        return {
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "Review",
+            reviewBody: t.quote,
+            author: {
+              "@type": "Person",
+              name: t.name,
+              jobTitle: t.role,
+              ...(t.location ? { address: t.location } : {}),
+            },
+            itemReviewed: {
+              "@type": "Course",
+              name: course?.title ?? t.courseSlug,
+              url: `${siteUrl}/courses/${t.courseSlug}`,
+            },
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: 5,
+              bestRating: 5,
+              worstRating: 1,
+            },
+          },
+        };
+      }),
+    },
+  };
 
   return (
     <>
@@ -240,6 +294,11 @@ export default function TestimonialsPage() {
         />
       </main>
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }

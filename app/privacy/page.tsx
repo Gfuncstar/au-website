@@ -15,6 +15,19 @@ export const metadata: Metadata = {
     "How Aesthetics Unlocked® handles your personal data under UK GDPR and the Data Protection Act 2018.",
   alternates: { canonical: "/privacy" },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: "Privacy Policy, Aesthetics Unlocked®",
+    description:
+      "How Aesthetics Unlocked® handles your personal data under UK GDPR and the Data Protection Act 2018.",
+    url: "/privacy",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy, Aesthetics Unlocked®",
+    description:
+      "How Aesthetics Unlocked® handles your personal data under UK GDPR.",
+  },
 };
 
 const SECTIONS: LegalSection[] = [

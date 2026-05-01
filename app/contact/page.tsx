@@ -27,7 +27,7 @@ import { LOGIN_URL } from "@/lib/links";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Aesthetics Unlocked, the strategic education platform for UK aesthetic practitioners. Email hello@aunlock.co.uk.",
+    "Get in touch with Aesthetics Unlocked, the strategic education platform for UK aesthetic practitioners. Email hello@aunlock.co.uk and we reply within two working days.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact, Aesthetics Unlocked®",
@@ -36,9 +36,70 @@ export const metadata: Metadata = {
     url: "/contact",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact, Aesthetics Unlocked®",
+    description:
+      "Get in touch with Aesthetics Unlocked. Email hello@aunlock.co.uk.",
+  },
 };
 
 export default function ContactPage() {
+  const siteUrl = `https://${BRAND.domain}`;
+
+  // ContactPage with embedded Organization, plus a BreadcrumbList so
+  // crawlers can place the page in the site hierarchy. Email is the
+  // primary contact channel (no phone number listed by design).
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": `${siteUrl}/contact#page`,
+        name: "Contact Aesthetics Unlocked",
+        url: `${siteUrl}/contact`,
+        description:
+          "Contact Aesthetics Unlocked, the strategic education platform for UK aesthetic practitioners.",
+        mainEntity: {
+          "@type": "Organization",
+          name: BRAND.name,
+          url: siteUrl,
+          email: BRAND.email,
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: BRAND.email,
+            contactType: "customer support",
+            availableLanguage: "English",
+            hoursAvailable: {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+              ],
+              opens: "09:00",
+              closes: "17:30",
+            },
+          },
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Contact",
+            item: `${siteUrl}/contact`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
       <Nav forceLight />
@@ -159,6 +220,11 @@ export default function ContactPage() {
         />
       </main>
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }

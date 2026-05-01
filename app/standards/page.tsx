@@ -20,6 +20,7 @@ import { CTAPoster } from "@/components/CTAPoster";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import { STANDARDS } from "@/lib/standards";
+import { BRAND } from "@/lib/credentials";
 
 export const metadata: Metadata = {
   title: "Standards we teach against",
@@ -42,6 +43,32 @@ export const metadata: Metadata = {
 };
 
 export default function StandardsIndexPage() {
+  const siteUrl = `https://${BRAND.domain}`;
+
+  // ItemList for the regulator/professional-body roster. Each row links
+  // through to /standards/[slug] for the deep dive, so the structured
+  // data mirrors that affordance for crawlers.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${siteUrl}/standards#page`,
+    name: "UK aesthetics regulators and professional bodies",
+    url: `${siteUrl}/standards`,
+    description:
+      "The eight UK regulators and professional bodies every Aesthetics Unlocked course is anchored to. NICE, JCCP, CPSA, MHRA, CQC, NMC, RCN, ASA.",
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Regulators and professional bodies",
+      numberOfItems: STANDARDS.length,
+      itemListElement: STANDARDS.map((s, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${siteUrl}/standards/${s.slug}`,
+        name: `${s.abbrev}, ${s.name}`,
+      })),
+    },
+  };
+
   return (
     <>
       <Nav forceLight />
@@ -137,6 +164,11 @@ export default function StandardsIndexPage() {
         />
       </main>
       <Footer />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </>
   );
 }

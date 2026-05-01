@@ -14,6 +14,19 @@ export const metadata: Metadata = {
     "What cookies Aesthetics Unlocked® uses, what they do, and how to control them.",
   alternates: { canonical: "/cookies" },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: "Cookie Policy, Aesthetics Unlocked®",
+    description:
+      "What cookies Aesthetics Unlocked® uses, what they do, and how to control them.",
+    url: "/cookies",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cookie Policy, Aesthetics Unlocked®",
+    description:
+      "What cookies Aesthetics Unlocked® uses, what they do, and how to control them.",
+  },
 };
 
 const SECTIONS: LegalSection[] = [
