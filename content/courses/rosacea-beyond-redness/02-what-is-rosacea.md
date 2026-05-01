@@ -4,6 +4,7 @@ order: 2
 icon: lens
 duration: "8 min"
 summary: "Rosacea defined as a chronic, neurovascular and immune-mediated condition, and why phenotype-led thinking matters."
+audioIntro: "/audio/lessons/ROSACEA_M02_WhatIsRosacea_AUDIO_whatis.m4a"
 ---
 
 Rosacea is a **chronic, inflammatory skin condition** primarily affecting the central face, characterised by persistent erythema, episodic flushing, visible blood vessels, inflammatory lesions, and heightened skin sensitivity. It is a **relapsing–remitting condition**, meaning symptoms fluctuate over time and can worsen without appropriate management.

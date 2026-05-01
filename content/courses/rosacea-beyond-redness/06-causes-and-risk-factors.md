@@ -4,6 +4,7 @@ order: 6
 icon: branching
 duration: "9 min"
 summary: "The seven interacting drivers of rosacea, why no single mechanism explains a flare on its own, and how that changes the consultation."
+audioIntro: "/audio/lessons/ROSACEA_M06_CausesRiskFactors_AUDIO_causes.m4a"
 ---
 
 Rosacea has no single cause. It develops from a combination of biological predisposition and environmental triggers that, over time, push the skin's vascular, immune and barrier systems into a state of chronic over-reactivity.

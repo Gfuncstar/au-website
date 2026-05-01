@@ -4,6 +4,7 @@ order: 13
 icon: signpost
 duration: "20 min"
 summary: "Vision, intentional positioning, strategic planning, and client lifetime cycle planning, moving from survival mode to purposeful, scalable business leadership."
+audioIntro: "/audio/lessons/5K12_M11_LongTermStrategy_AUDIO_overview.m4a"
 ---
 
 Long-term strategy is the **backbone** of a sustainable, profitable, and future-proof aesthetics business. While many practitioners focus on day-to-day operations or short-term wins, such as filling next week's diary or running reactive promotions, long-term success is built through intentional planning, structured decision-making, and a clear understanding of where the business is heading.

@@ -4,6 +4,7 @@ order: 5
 icon: chart
 duration: "22 min"
 summary: "Identify your most profitable treatments, build a signature service, price with confidence, and simplify your menu for faster decisions and stronger profit."
+audioIntro: "/audio/lessons/5K12_M03_Leveraging_AUDIO_overview.m4a"
 ---
 
 This module is about **leveraging what you already have**, refining your treatment menu, creating a signature offer, pricing with confidence, and simplifying your services so clients say yes faster and your income grows sustainably.

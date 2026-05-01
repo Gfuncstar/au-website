@@ -36,6 +36,16 @@ export type LessonMeta = {
    *  for the catalog. Missing/unknown values fall back to a generic
    *  numbered circle. */
   icon?: string;
+  /** Optional path to a Bernadette audio intro (m4a/mp3) served from
+   *  /public, e.g. `/audio/lessons/ACNE_M01_Introduction_AUDIO_intro17s.m4a`.
+   *  When set, AudioIntroPill renders a real, playable pill. When
+   *  unset, it falls back to the "Coming soon" placeholder. */
+  audioIntro?: string;
+  /** Optional path to the lesson video (mp4) served from /public,
+   *  e.g. `/video/lessons/ACNE_M07_TreatmentPathways_LESSON_acne75.mp4`.
+   *  When set, VideoPlaceholder renders the real video player. When
+   *  unset, it keeps the editorial "Video coming soon" placeholder. */
+  videoSrc?: string;
 };
 
 /** A "Part" — editorial divider rendered before its `startOrder`
@@ -254,6 +264,8 @@ export function getCourseLessonsMeta(courseSlug: string): LessonMeta[] {
       summary: (data.summary as string) ?? "",
       isCertificate: (data.isCertificate as boolean) ?? false,
       icon: data.icon as string | undefined,
+      audioIntro: data.audioIntro as string | undefined,
+      videoSrc: data.videoSrc as string | undefined,
     } satisfies LessonMeta;
   });
   lessons.sort((a, b) => a.order - b.order);
@@ -278,6 +290,8 @@ export async function getLesson(
     summary: (data.summary as string) ?? "",
     isCertificate: (data.isCertificate as boolean) ?? false,
     icon: data.icon as string | undefined,
+    audioIntro: data.audioIntro as string | undefined,
+    videoSrc: data.videoSrc as string | undefined,
     html,
   };
 }

@@ -4,6 +4,7 @@ order: 3
 icon: cross-section
 duration: "6 min"
 summary: "The pilosebaceous unit explained, and how normal physiology becomes dysregulated."
+videoSrc: "/video/lessons/ACNE_M03_AnatomyPhysiology_SLIDES_NOAUDIO_acneslides2.mp4"
 ---
 
 Acne is a disorder of the **pilosebaceous unit**, the functional structure of the skin consisting of:

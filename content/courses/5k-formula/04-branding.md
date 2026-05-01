@@ -4,6 +4,7 @@ order: 4
 icon: people
 duration: "18 min"
 summary: "Why branding is your silent sales tool, from emotional storytelling to building trust, reputation, and an online presence that converts."
+videoSrc: "/video/lessons/5K12_M02_Branding_TALKINGHEAD_branding3.mp4"
 ---
 
 In aesthetics, **clients buy trust before treatment**. With so many practitioners offering similar services, your brand becomes your differentiator. Before they ever book, your branding shapes how they perceive your professionalism, your results, and whether you're the practitioner who understands their goals.

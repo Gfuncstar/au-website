@@ -4,6 +4,7 @@ order: 1
 icon: doorway
 duration: "3 min"
 summary: "Why Acne Decoded exists, who it's for, and what you'll walk away with."
+audioIntro: "/audio/lessons/ACNE_M01_Introduction_AUDIO_intro17s.m4a"
 ---
 
 Welcome to the **Acne Decoded** course.

@@ -4,6 +4,7 @@ order: 3
 icon: cross-section
 duration: "12 min"
 summary: "What's happening beneath the redness, vessels, nerves, immune system, barrier, sebaceous glands, and Demodex."
+videoSrc: "/video/lessons/_MISFILED_VIDEO_ROSACEA_M03_PathophysiologySkinScience_LESSON_AP.mp4"
 ---
 
 Rosacea is **not a surface-level skin issue**. Its visible symptoms are the end result of deep structural and functional changes involving the blood vessels, immune system, nervous system, sebaceous units, and skin barrier. Understanding these systems, and how they interact, is essential for safe and effective management.

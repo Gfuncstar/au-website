@@ -4,6 +4,7 @@ order: 7
 icon: document-stack
 duration: "18 min"
 summary: "How social proof systems, ethical storytelling, lead nurture sequences, and strategic hooks turn your content into a trust-building, booking-driving machine."
+audioIntro: "/audio/lessons/5K12_M05_AuthorityContent_AUDIO_overview.m4a"
 ---
 
 Building authority through content is a process of **demonstrated expertise, consistent signalling, and social validation**, not self-promotion. In high-end and aesthetic industries, where decisions involve identity, risk, and long-term consequences, content functions as a critical interface between professional knowledge and public trust.

@@ -4,6 +4,7 @@ order: 11
 icon: clipboard
 duration: "20 min"
 summary: "Streamlined booking frameworks, client management and record keeping, workflows and SOPs, and the automation tools that free you to focus on what you do best."
+audioIntro: "/audio/lessons/5K12_M09_OrganiseOperations_AUDIO_overview.m4a"
 ---
 
 Operations are the **backbone** of a successful aesthetics business. Even the most skilled practitioner will struggle to grow if the daily systems are chaotic, inconsistent, or reactive. Organised operations create efficiency, professionalism, consistency, and profitability.

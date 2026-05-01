@@ -4,6 +4,7 @@ order: 10
 icon: branching
 duration: "18 min"
 summary: "Reframing sales as professional guidance, the mindset shift from suggestion to recommendation, and the Two-Plan Method for confident, ethical consultation conversion."
+audioIntro: "/audio/lessons/5K12_M08_SalesSkills_AUDIO_overview.m4a"
 ---
 
 Refining your sales skills in aesthetics is **not** about becoming pushy or persuasive, it is about learning how to communicate with clarity, confidence, and empathy so clients feel safe, understood, and guided. In a high-trust industry like aesthetics, sales success comes from **connection, expertise, and emotional intelligence**, not hard selling.

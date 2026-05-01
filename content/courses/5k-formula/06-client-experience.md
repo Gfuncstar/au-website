@@ -4,6 +4,8 @@ order: 6
 icon: clipboard
 duration: "18 min"
 summary: "The five stages of the client journey, CX design principles, complaint-handling with the HEART framework, and practical improvements to implement this week."
+audioIntro: "/audio/lessons/5K12_M04_ClientExperience_AUDIO_overview.m4a"
+videoSrc: "/video/lessons/5K12_M04_ClientExperience_LESSON_luxuryjourney.mp4"
 ---
 
 Every detail of your client's experience, from their first DM to their follow-up aftercare, shapes whether they **return, refer, and remain loyal**. This module teaches practitioners how to design a seamless, emotionally positive journey that turns every client into a long-term advocate.

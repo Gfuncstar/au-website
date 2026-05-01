@@ -4,6 +4,7 @@ order: 2
 icon: lens
 duration: "9 min"
 summary: "A science-led definition, the four mechanisms behind its development, and why hygiene has nothing to do with it."
+audioIntro: "/audio/lessons/ACNE_M02_WhatIsAcne_AUDIO_UKspecific.m4a"
 ---
 
 ## Understanding acne at a deeper level

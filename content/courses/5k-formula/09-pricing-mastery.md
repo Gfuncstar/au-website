@@ -4,6 +4,7 @@ order: 9
 icon: scales
 duration: "20 min"
 summary: "Understanding your value, pricing psychology backed by research, the 3 P's model, ethical upselling, and the Two-Plan Method for confident recommendation delivery."
+audioIntro: "/audio/lessons/5K12_M07_PricingMastery_AUDIO_overview.m4a"
 ---
 
 Pricing mastery in aesthetics is **not** about charging more for the sake of revenue. It is the ability to price services in a way that reflects value, expertise, risk, and outcomes, while maintaining trust and ethical standards. In aesthetic practice, pricing decisions directly influence patient confidence, perceived quality, and long-term loyalty.

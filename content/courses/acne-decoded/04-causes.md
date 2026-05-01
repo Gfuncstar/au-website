@@ -4,6 +4,7 @@ order: 4
 icon: branching
 duration: "10 min"
 summary: "The seven interacting drivers of acne, hormones, sebum, keratinisation, bacteria, inflammation, genetics, and lifestyle."
+audioIntro: "/audio/lessons/ACNE_M04_Causes_AUDIO_immuneresponse.m4a"
 ---
 
 Acne develops as a result of multiple interacting causes, rather than a single trigger. Understanding these causes allows practitioners to identify why acne is occurring in each individual and to design more effective, ethical treatment plans.

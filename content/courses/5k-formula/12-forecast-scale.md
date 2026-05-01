@@ -4,6 +4,7 @@ order: 12
 icon: chart
 duration: "22 min"
 summary: "Understanding and tracking monthly revenue, average client spend, conversion rates, treatment demand trends, and peak versus quiet periods to build predictable, scalable growth."
+audioIntro: "/audio/lessons/5K12_M10_ForecastScale_AUDIO_overview.m4a"
 ---
 
 Forecast and Scale is a strategic growth module designed to help aesthetics business owners move from **reactive income to predictable, scalable profitability**. This module teaches practitioners how to understand their numbers, anticipate future demand, plan for growth, and implement systems that allow the business to expand without sacrificing quality, client experience, or wellbeing.

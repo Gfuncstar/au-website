@@ -1,11 +1,13 @@
 /**
- * VideoPlaceholder — placeholder hero for the lesson player while Mux
- * is not yet wired. Charcoal 16:9 frame with a soft pink wash, brand
- * monogram, animated play disc, and a corner chapter tag so it carries
- * editorial weight rather than reading as a flat empty rectangle.
+ * VideoPlaceholder — lesson video frame.
  *
- * Pulse animation on the play ring + soft glow on hover. Pure
- * presentational — clicking does nothing for v1.
+ * When `src` is set, renders a real <video> player wrapped in the
+ * same charcoal 16:9 chrome (brand mark + chapter tag + lesson title)
+ * so the look is consistent across "video ready" and "coming soon"
+ * lessons.
+ *
+ * When `src` is unset, falls back to the editorial pulsing-disc
+ * placeholder so chapters without a video still reserve the slot.
  */
 
 "use client";
@@ -13,16 +15,46 @@
 import { motion } from "framer-motion";
 
 interface VideoPlaceholderProps {
+  /** Path to the lesson video under /public, e.g.
+   *  `/video/lessons/ACNE_M07_TreatmentPathways_LESSON_acne75.mp4`.
+   *  When unset, the component renders the "Video coming soon"
+   *  placeholder. */
+  src?: string;
   duration?: string;
   lessonTitle: string;
   chapterNumber: number;
 }
 
 export function VideoPlaceholder({
+  src,
   duration,
   lessonTitle,
   chapterNumber,
 }: VideoPlaceholderProps) {
+  // Real-video mode: native HTML5 player wrapped in the editorial chrome.
+  if (src) {
+    return (
+      <motion.figure
+        initial={{ opacity: 0, scale: 0.985 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full aspect-video bg-au-charcoal overflow-hidden rounded-[5px]"
+        aria-label={`Lesson video, ${lessonTitle}`}
+      >
+        <video
+          src={src}
+          controls
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-contain bg-au-charcoal"
+        >
+          Your browser does not support the video tag.
+        </video>
+      </motion.figure>
+    );
+  }
+
   return (
     <motion.figure
       initial={{ opacity: 0, scale: 0.985 }}

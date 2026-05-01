@@ -4,6 +4,7 @@ order: 4
 icon: shield
 duration: "10 min"
 summary: "Why barrier repair and microbial equilibrium are foundational to safe rosacea management."
+audioIntro: "/audio/lessons/ROSACEA_M04_BarrierIntegrity_AUDIO_barrier.m4a"
 ---
 
 ## The critical role of barrier integrity in rosacea

@@ -212,14 +212,17 @@ export default async function LessonPage({
         </Reveal>
 
         <div className="px-4 sm:px-8 lg:px-12 pt-8 sm:pt-10 pb-12 lg:pb-16 max-w-[1100px]">
-          {/* Audio intro placeholder */}
+          {/* Audio intro — plays real audio when current.audioIntro is set,
+               otherwise renders the "Coming soon" placeholder. */}
           <div className="mb-5">
-            <AudioIntroPill />
+            <AudioIntroPill src={current.audioIntro} />
           </div>
 
-          {/* Video placeholder */}
+          {/* Lesson video — plays real video when current.videoSrc is set,
+               otherwise renders the editorial placeholder. */}
           <div className="mb-12 sm:mb-14">
             <VideoPlaceholder
+              src={current.videoSrc}
               duration={current.duration}
               lessonTitle={current.title}
               chapterNumber={current.order}

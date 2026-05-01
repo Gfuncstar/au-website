@@ -4,6 +4,7 @@ order: 5
 icon: clipboard
 duration: "13 min"
 summary: "A four-step consultation workflow for recognising rosacea, ruling out look-alikes, and staying within scope."
+audioIntro: "/audio/lessons/ROSACEA_M05_ClinicalAssessment_AUDIO_assessment.m4a"
 ---
 
 Accurate clinical assessment is fundamental in the safe and effective management of rosacea. As aestheticians, your role is **not to medically diagnose**, but to recognise characteristic signs, identify patterns, and determine whether treatment is appropriate within your scope of practice.

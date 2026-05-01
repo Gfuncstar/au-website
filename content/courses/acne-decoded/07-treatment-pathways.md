@@ -4,6 +4,8 @@ order: 7
 icon: signpost
 duration: "14 min"
 summary: "AHAs vs BHAs, how each fits acne pathophysiology, and the at-home routine that supports, never sabotages, barrier health."
+audioIntro: "/audio/lessons/ACNE_M07_TreatmentPathways_AUDIO_athometreatments.mp3"
+videoSrc: "/video/lessons/ACNE_M07_TreatmentPathways_LESSON_acne75.mp4"
 ---
 
 Before we move on to the treatment of acne, it is very important you understand what AHAs and BHAs are and how they can play a part in the management of acne and other skin conditions.

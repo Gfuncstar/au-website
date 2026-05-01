@@ -4,6 +4,7 @@ order: 8
 icon: shield
 duration: "20 min"
 summary: "Pre-booking and retention frameworks, cancellation and no-show systems, and the client buyer journey, so your diary stays full without constant marketing."
+audioIntro: "/audio/lessons/5K12_M06_BecomingFullyBooked_AUDIO_overview.m4a"
 ---
 
 Keeping clients returning consistently is the foundation of a **stable, fully booked aesthetics business**. Pre-booking and retention are not about "convincing" clients to come back, they are about creating clarity, consistency, and confidence so the client naturally stays on their long-term plan.

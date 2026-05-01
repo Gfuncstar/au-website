@@ -4,6 +4,8 @@ order: 14
 icon: medal
 duration: "20 min"
 summary: "How small, consistent actions across referrals, identity, mindset, and standards compound over time into a fully booked, trusted, and resilient aesthetics business."
+audioIntro: "/audio/lessons/5K12_M12_CompoundEffect_AUDIO_overview_v1.m4a"
+videoSrc: "/video/lessons/5K12_M12_CompoundEffect_LESSON_identitygrowth.mp4"
 ---
 
 In aesthetics, success is rarely built through one viral post, one busy month, or one standout result. It's built through **small, intentional actions repeated consistently**, in how you treat clients, communicate, set boundaries, deliver results, and lead your business. The Compound Effect is where your business shifts from effort-led growth to inevitable growth.

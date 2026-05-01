@@ -4,6 +4,7 @@ order: 1
 icon: doorway
 duration: "3 min"
 summary: "Why Rosacea Beyond Redness exists, who it's for, and what you'll walk away with."
+audioIntro: "/audio/lessons/ROSACEA_M01_Introduction_AUDIO_intro95s.m4a"
 ---
 
 Welcome to this course on rosacea.
