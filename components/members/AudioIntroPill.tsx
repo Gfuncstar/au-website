@@ -1,21 +1,23 @@
 /**
- * AudioIntroPill — Bernadette's m4a chapter intros.
+ * AudioIntroPill — Bernadette's audio intro at the top of every
+ * lesson that has one. Promoted from a small pill to a full-width
+ * card so it's the first thing a member sees when a chapter opens.
  *
  * Real-audio mode (when `src` is set):
- *   • Tap to play / pause
- *   • While playing, the leading "▶" icon swaps for a live voice-level
- *     monitor — five animated bars driven by the Web Audio API's
- *     AnalyserNode, so it visibly responds to her voice.
- *   • Duration counts up as she speaks.
+ *   • Big square pink play / pause tile on the left
+ *   • Editorial heading + duration
+ *   • A wide voice-level meter (24 bars) driven by the Web Audio API's
+ *     AnalyserNode, so it visibly responds to Bernadette's voice
+ *   • Live `mm:ss` counter while playing
+ *   • Whole card is the click target so it's hard to miss
  *
  * No-audio mode (when `src` is unset):
- *   • Renders nothing. Lessons without an intro keep their layout
- *     clean rather than showing a "coming soon" stub.
+ *   • Renders nothing.
  */
 
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 interface AudioIntroPillProps {
   /** Path to the audio file under /public, e.g.
@@ -27,7 +29,7 @@ interface AudioIntroPillProps {
   duration?: string;
 }
 
-const BAR_COUNT = 5;
+const BAR_COUNT = 24;
 
 function formatTime(seconds: number): string {
   if (!isFinite(seconds) || seconds < 0) return "0:00";
@@ -49,7 +51,18 @@ export function AudioIntroPill({ src, duration }: AudioIntroPillProps) {
   const [currentTime, setCurrentTime] = useState<string>("0:00");
   const [levels, setLevels] = useState<number[]>(() => Array(BAR_COUNT).fill(0));
 
-  // Set up the audio element + bind metadata + ended events.
+  // A stable "ghost" waveform for the paused state — varied heights
+  // so the bar still feels intentional and previews what playback
+  // will look like, but dim and static.
+  const idleLevels = useMemo<number[]>(() => {
+    return Array.from({ length: BAR_COUNT }, (_, i) => {
+      const phase = (i / BAR_COUNT) * Math.PI * 4;
+      // Sinewave + slight offset → smooth varied shape, no randomness
+      // (avoids hydration mismatch).
+      return 0.25 + Math.abs(Math.sin(phase)) * 0.45;
+    });
+  }, []);
+
   useEffect(() => {
     if (!src) return;
     const audio = new Audio(src);
@@ -79,8 +92,6 @@ export function AudioIntroPill({ src, duration }: AudioIntroPillProps) {
     };
   }, [src]);
 
-  // Lazily initialise Web Audio graph on first play (browsers require
-  // a user gesture before AudioContext is allowed to start).
   const ensureGraph = () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -93,7 +104,7 @@ export function AudioIntroPill({ src, duration }: AudioIntroPillProps) {
     const ctx = new Ctor();
     const source = ctx.createMediaElementSource(audio);
     const analyser = ctx.createAnalyser();
-    analyser.fftSize = 64;
+    analyser.fftSize = 128;
     analyser.smoothingTimeConstant = 0.7;
     source.connect(analyser);
     analyser.connect(ctx.destination);
@@ -103,8 +114,6 @@ export function AudioIntroPill({ src, duration }: AudioIntroPillProps) {
     dataRef.current = new Uint8Array(analyser.frequencyBinCount);
   };
 
-  // Sample the analyser into BAR_COUNT bars (averaged across slices)
-  // and drive the level state every animation frame while playing.
   const startMeter = () => {
     const analyser = analyserRef.current;
     const data = dataRef.current;
@@ -158,48 +167,75 @@ export function AudioIntroPill({ src, duration }: AudioIntroPillProps) {
   if (!src) return null;
 
   const totalDuration = duration ?? intrinsicDuration ?? "—";
-  const displayTime = playing ? `${currentTime} / ${totalDuration}` : totalDuration;
+  const meterValues = playing ? levels : idleLevels;
 
   return (
     <button
       type="button"
       onClick={handleClick}
-      aria-label={playing ? "Pause audio intro" : "Play audio intro"}
+      aria-label={playing ? "Pause audio intro" : "Play audio intro from Bernadette"}
       aria-pressed={playing}
-      className="inline-flex items-center gap-3 bg-au-white border border-au-charcoal/15 rounded-[5px] px-4 py-2.5 text-au-charcoal hover:border-au-pink hover:text-au-pink transition-colors group cursor-pointer"
+      className="block w-full text-left bg-au-cream/90 border border-au-charcoal/15 rounded-[5px] p-4 sm:p-5 lg:p-6 hover:border-au-pink transition-colors cursor-pointer"
     >
-      {/* Icon slot — flips between ▶ / ❚❚ / live voice meter */}
-      <span
-        aria-hidden="true"
-        className="relative inline-flex w-7 h-7 items-center justify-center rounded-[3px] bg-au-pink text-au-charcoal overflow-hidden"
-      >
-        {playing ? (
-          <span className="flex items-end gap-[2px] h-full w-full px-1 py-1">
-            {levels.map((lvl, i) => (
+      <div className="flex items-center gap-4 sm:gap-5 lg:gap-6">
+        {/* Big play / pause tile */}
+        <span
+          aria-hidden="true"
+          className="shrink-0 inline-flex items-center justify-center rounded-[5px] bg-au-pink text-au-charcoal w-14 h-14 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] text-[1.25rem] sm:text-[1.4rem] lg:text-[1.6rem] leading-none"
+        >
+          {playing ? "❚❚" : "▶"}
+        </span>
+
+        {/* Eyebrow + headline + waveform */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-baseline justify-between gap-3 mb-1.5">
+            <p
+              className="font-section font-semibold uppercase tracking-[0.18em] leading-none"
+              style={{
+                fontSize: "clamp(0.625rem, 1.4vw, 0.75rem)",
+                color: "var(--color-au-pink)",
+              }}
+            >
+              Audio intro · {totalDuration}
+            </p>
+            {playing && (
+              <p className="font-display font-bold tabular-nums text-au-charcoal text-[0.8rem] sm:text-[0.9rem] leading-none">
+                {currentTime}
+              </p>
+            )}
+          </div>
+
+          <p className="font-display font-bold text-au-charcoal leading-snug mb-3 sm:mb-4"
+             style={{ fontSize: "clamp(0.95rem, 2.4vw, 1.2rem)" }}>
+            {playing
+              ? "Bernadette is talking — listen along."
+              : "Listen first — Bernadette sets up this chapter."}
+          </p>
+
+          {/* Voice-level meter — wide bars, scaled levels */}
+          <div
+            className="flex items-end gap-[3px] sm:gap-1 h-4 sm:h-5 lg:h-6"
+            aria-hidden="true"
+          >
+            {meterValues.map((lvl, i) => (
               <span
                 key={i}
-                className="flex-1 bg-au-charcoal"
+                className={
+                  playing
+                    ? "flex-1 bg-au-charcoal"
+                    : "flex-1 bg-au-charcoal/35"
+                }
                 style={{
-                  // Floor + scaled level so the bars never collapse to a thin line
-                  height: `${Math.max(15, Math.min(100, lvl * 140 + 15))}%`,
-                  transition: "height 60ms linear",
+                  height: `${Math.max(12, Math.min(100, lvl * 130 + 12))}%`,
+                  transition: playing
+                    ? "height 60ms linear"
+                    : "height 200ms ease-out",
                 }}
               />
             ))}
-          </span>
-        ) : (
-          <span className="text-[0.75rem]">▶</span>
-        )}
-      </span>
-
-      <span className="flex flex-col items-start min-w-0">
-        <span className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6rem] text-au-mid leading-none">
-          Audio intro
-        </span>
-        <span className="font-display font-bold text-[0.85rem] leading-tight tabular-nums">
-          {displayTime}
-        </span>
-      </span>
+          </div>
+        </div>
+      </div>
     </button>
   );
 }
