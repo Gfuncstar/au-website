@@ -95,7 +95,9 @@ export const COURSE_KARTRA: Record<string, CourseKartraMapping> = {
     purchaseListName: "Hyperpigmentation Decoded Buyers",
     purchaseTagName: "Hyperpigmentation Purchased",
     abandonedCartTagName: "Hyperpigmentation Abandoned Cart",
-    enrolledTagName: "Hyperpigmentation Enrolled",
+    // No enrolledTagName: matching Acne Decoded's pattern, member-area
+    // access is gated by Kartra's "Accessing your product contents →
+    // Kartra membership" setting on the product, not by an Enrolled tag.
     completedTagName: "Hyperpigmentation Complete",
   },
   "skin-specialist-programme": {
