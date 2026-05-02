@@ -63,6 +63,11 @@ export const COURSE_KARTRA: Record<string, CourseKartraMapping> = {
     optInTagName: "Rosacea Mini Opted In",
     completedTagName: "Rosacea Mini Complete",
   },
+  "free-hyperpigmentation-decoded": {
+    optInListName: "Hyperpigmentation Decoded Mini",
+    optInTagName: "Hyperpigmentation Mini Opted In",
+    completedTagName: "Hyperpigmentation Mini Complete",
+  },
   "free-clinical-audit": {
     optInListName: "England Aesthetic Compliance Audit",
     optInTagName: "Compliance Audit Opted In",
@@ -85,6 +90,13 @@ export const COURSE_KARTRA: Record<string, CourseKartraMapping> = {
     abandonedCartTagName: "Rosacea Abandoned Cart",
     enrolledTagName: "Rosacea Enrolled",
     completedTagName: "Rosacea Complete",
+  },
+  "hyperpigmentation-decoded": {
+    purchaseListName: "Hyperpigmentation Decoded Buyers",
+    purchaseTagName: "Hyperpigmentation Purchased",
+    abandonedCartTagName: "Hyperpigmentation Abandoned Cart",
+    enrolledTagName: "Hyperpigmentation Enrolled",
+    completedTagName: "Hyperpigmentation Complete",
   },
   "skin-specialist-programme": {
     purchaseListName: "Skin Specialist Programme Buyers",

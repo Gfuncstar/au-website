@@ -485,6 +485,88 @@ export const COURSES: readonly Course[] = [
     isCpdEvidence: false,
   },
   {
+    slug: "free-hyperpigmentation-decoded",
+    kartraMembershipName: "Hyperpigmentation Decoded Mini",
+    upsellsTo: "hyperpigmentation-decoded",
+    eyebrow: "Free · 3 lessons",
+    title: "Hyperpigmentation Decoded, The Mini",
+    summary:
+      "A free 3-lesson taster. Read the five hyperpigmentation patterns on sight, and walk away with the consultation card.",
+    body: "Free, twenty-minute taster of the full Hyperpigmentation Decoded course. Three short lessons that reframe hyperpigmentation from a single condition into five distinct presentations, and show you why depth changes the plan more than any tyrosinase inhibitor. Comes with the Hyperpigmentation Consultation Card, the one-page reference you can use in clinic from the next appointment forward. NICE-aligned. Honest. Yours to keep.",
+    voiceQuote:
+      "Hyperpigmentation is rarely a skin problem. Read the face correctly and the plan writes itself.",
+    bullets: [
+      "The five hyperpigmentation presentations on sight",
+      "Why surface treatment alone often misses",
+      "The seven-question hyperpigmentation consultation",
+    ],
+    stats: ["3 lessons", "Self-paced", "Free"],
+    modules: [
+      {
+        num: "01",
+        title: "Welcome",
+        body: "Why this short course exists, who it's for, and what you'll walk away with.",
+      },
+      {
+        num: "02",
+        title: "The five presentations on sight",
+        body: "The face-reading framework. Five distinct patterns, side by side, with the tells that separate them. Why depth changes the plan more than any active.",
+      },
+      {
+        num: "03",
+        title: "The seven consultation questions, plus your card",
+        body: "The seven questions every hyperpigmentation consultation should answer, and a printable one-page card you can use in clinic from the next appointment forward.",
+      },
+    ],
+    ctaText: "Get instant access",
+    kartraUrl: courseKartraPlaceholder("free-hyperpigmentation-decoded"),
+    tone: "pink-soft",
+    category: "Free taster",
+    format: "3 lessons · self-paced",
+    availability: "available",
+    bgImage: "/backgrounds/cream-halftone.png",
+    promise:
+      "Twenty minutes. Read the five hyperpigmentation patterns on sight, and walk into the next consultation with a one-page card that runs the right history in fifteen minutes.",
+    transformations: [
+      {
+        before:
+          "Treating hyperpigmentation as one condition with one protocol.",
+        after:
+          "Recognising five distinct presentations and matching the right pathway to each.",
+      },
+      {
+        before:
+          "Consultations that miss the systemic driver behind the pigment.",
+        after:
+          "A seven-question history that surfaces the real cause before any product or procedure is recommended.",
+      },
+    ],
+    whyBernadette:
+      "I'm an Advanced Nurse Practitioner, MSc Advanced Practice, NMC registered. My clinic, Visage Aesthetics, Best Non-Surgical Aesthetics Clinic 2026 (Essex), sees hyperpigmentation every week of the year. The Mini distils the opening of the full Hyperpigmentation Decoded course, same NICE-aligned framework, no protocols borrowed from social media.",
+    includes: [
+      "Three short lessons (~20 minutes total)",
+      "Lifetime access, revisit any time",
+      "The Hyperpigmentation Consultation Card (printable, one page)",
+      "A clear next step if you want the full clinical pathway",
+    ],
+    faqs: [
+      {
+        q: "Is this really free?",
+        a: "Yes. Three lessons, fully free. No credit card. The framework in Lesson 2 and the consultation card are yours to keep, whether you ever take the paid course or not.",
+      },
+      {
+        q: "Will it sell me on the paid course?",
+        a: "Lesson 3 is a clear pointer to the full course if you want to keep going, but no pressure. Many practitioners take the Mini, do the work, and never enrol in the paid programme.",
+      },
+      {
+        q: "Do I get a certificate?",
+        a: "The Mini doesn't include a Certificate of Completion, that sits with the full Hyperpigmentation Decoded course. The Mini is designed as a clarity reset, not a CPD module.",
+      },
+    ],
+    weeklyHours: "≈ 20 min total",
+    isCpdEvidence: false,
+  },
+  {
     slug: "free-clinical-audit",
     kartraMembershipName: "The England Aesthetic Compliance Audit",
     upsellsTo: "rag-pathway",
@@ -773,7 +855,7 @@ export const COURSES: readonly Course[] = [
           "Moderate inflammatory: sequencing decisions",
           "Severe / scarring risk: escalation triggers",
           "Hormonal adult acne: assessment + collaboration",
-          "Post-acne pigmentation case",
+          "Post-acne hyperpigmentation case",
           "When to refer to dermatology / GP",
         ],
       },
@@ -987,6 +1069,192 @@ export const COURSES: readonly Course[] = [
     weeklyHours: "≈ 1 hr/wk · 6 wks",
     isCpdEvidence: true,
   },
+  {
+    slug: "hyperpigmentation-decoded",
+    kartraMembershipName: "Hyperpigmentation Decoded",
+    freeTasterSlug: "free-hyperpigmentation-decoded",
+    eyebrow: "Clinical · £150",
+    title: "Hyperpigmentation Decoded",
+    summary:
+      "Read hyperpigmentation on sight. Treat it without setting off rebound. Hold the result through summer.",
+    body: "Most hyperpigmentation plans fail in the same place. The plan was right for the surface and wrong for the depth. Or right for the topical and wrong for the hormone. Or right at week four and wrong by June. Hyperpigmentation Decoded is the framework that holds across all five presentations, the consultation that surfaces the right plan in fifteen minutes, and the post-procedure protocol that stops the boomerang client. NICE-aligned. UK clinic-ready. £150. No upsells.",
+    voiceQuote:
+      "Hyperpigmentation is rarely a skin problem. The face is the messenger. The plan that holds is the one that finds where the message is coming from.",
+    bullets: [
+      "Five-presentation face-reading framework",
+      "Chromophore depth assessment",
+      "NICE-aligned topical sequencing",
+      "Procedure-rebound prevention",
+    ],
+    stats: ["8 modules", "Self-paced", "£150"],
+    modules: [
+      {
+        num: "01",
+        title: "The five presentations of hyperpigmentation, on sight",
+        body: "The face-reading framework. Five distinct patterns, the visual clues that separate them, and the protocol implications of each.",
+        topics: [
+          "Post-inflammatory hyperpigmentation, including the post-acne and post-procedure subset",
+          "Melasma and its three distribution patterns (centrofacial, malar, mandibular)",
+          "Solar lentigines and photo-induced epidermal pigment",
+          "Dermal and mixed pigment, including drug-induced",
+          "Post-inflammatory erythema and the conditions that get treated as pigment and shouldn't be",
+          "Sorting a new client into the right protocol track inside the first thirty seconds",
+        ],
+      },
+      {
+        num: "02",
+        title: "The chromophore map",
+        body: "Where the pigment actually sits, and why depth changes everything about the plan.",
+        topics: [
+          "Eumelanin and pheomelanin, and how each responds to different wavelengths",
+          "Epidermal versus dermal pigment, and what a Wood's lamp actually tells you",
+          "The mixed-depth client and the two-phase plan",
+          "Fitzpatrick reading and its limits",
+          "Explaining depth to the client in plain language",
+        ],
+      },
+      {
+        num: "03",
+        title: "The hormonal axis of melasma",
+        body: "Melasma is rarely a skin problem. The systemic drivers and the practitioner conversations that surface them.",
+        topics: [
+          "Pregnancy, the combined oral contraceptive, HRT and the melasma flare timeline",
+          "Perimenopause and the unstable-oestrogen window",
+          "Thyroid involvement and when to refer",
+          "Stress and sleep load: what is treatable from inside the clinic and what isn't",
+          "The fifteen-minute history that surfaces the real driver",
+        ],
+      },
+      {
+        num: "04",
+        title: "UV, visible light, and the photodamage timeline",
+        body: "Why SPF alone is rarely enough, and how to build a year-round plan that survives June.",
+        topics: [
+          "The cumulative photodamage clock and what you see at forty",
+          "Visible light and melasma: tinted SPF, iron oxides, why broad spectrum often isn't",
+          "Summer protocol versus winter protocol",
+          "Sun-recovery rebuild after a long-haul break",
+          "The client conversation that gets the SPF actually used",
+        ],
+      },
+      {
+        num: "05",
+        title: "Active sequencing",
+        body: "The topical layer, sequenced for tolerance, not potency.",
+        topics: [
+          "Tyrosinase inhibitors: hydroquinone, kojic, azelaic, tranexamic acid (topical), arbutin, niacinamide",
+          "Exfoliants: AHAs, BHAs, PHAs. Sequencing and tolerance first",
+          "Retinoids: when they help pigment, when they trigger PIH, when to delay",
+          "Antioxidants: vitamin C, resveratrol, polyphenols, their real role in a hyperpigmentation plan",
+          "The eight-week rebuild for an over-exfoliated barrier",
+        ],
+      },
+      {
+        num: "06",
+        title: "In-clinic modalities",
+        body: "Matching the modality to the presentation. Peels, microneedling, laser and IPL, in order of operations.",
+        topics: [
+          "Chemical peels: which acids for which depth, melasma cautions, the post-peel window",
+          "Microneedling: depths and intervals, when it triggers PIH",
+          "Laser and IPL: a clear map of which device belongs to which presentation",
+          "Why melasma and IPL is usually the wrong combination",
+          "Combination protocols and the order of operations",
+        ],
+      },
+      {
+        num: "07",
+        title: "Preventing rebound",
+        body: "The post-procedure window where most hyperpigmentation plans collapse.",
+        topics: [
+          "PIH risk profile by Fitzpatrick, by ethnicity, by season",
+          "The two-week protective protocol after any procedure",
+          "The five rebound triggers (sun, exfoliant restart, retinoid restart, hormonal flare, mechanical trauma)",
+          "Recovery scripts for each rebound trigger",
+          "The 'we have made it worse' conversation, and how to lead it without losing the client",
+        ],
+      },
+      {
+        num: "08",
+        title: "The consultation script and the twelve-week timeline",
+        body: "The consultation, the follow-up cadence, and the expectation conversation that holds the client through the slow middle.",
+        topics: [
+          "The seven-question hyperpigmentation consultation, fully scripted",
+          "The twelve-week timeline: what to see at week 4, 8 and 12, and what to say if you don't",
+          "Photo protocol: lighting, framing, frequency",
+          "The 'your timeline is going to be longer' conversation for dermal and hormonal pigment",
+          "Follow-up cadence and the touchpoint emails that keep the client compliant",
+          "Knowledge check and Certificate of Completion",
+        ],
+      },
+    ],
+    price: 150,
+    ctaText: "View course",
+    kartraUrl: courseKartraPlaceholder("hyperpigmentation-decoded"),
+    tone: "charcoal",
+    category: "Clinical",
+    format: "Self-paced · 8 modules",
+    availability: "available",
+    bgImage: "/backgrounds/pink-grunge-mid.png",
+    promise:
+      "Stop the rebound. Stop the disappointed-at-week-four client. Run hyperpigmentation consultations that hold across the five presentations and through the UV year.",
+    transformations: [
+      {
+        before:
+          "Treating every hyperpigmentation client with a tyrosinase inhibitor and a vitamin C serum.",
+        after:
+          "Reading the depth, the driver and the presentation, and matching the plan to each.",
+      },
+      {
+        before:
+          "Plans that look right in November and collapse in June.",
+        after:
+          "A summer-versus-winter protocol that holds the gain through the UV year.",
+      },
+      {
+        before:
+          "Clients who come back darker than they started after a peel or laser.",
+        after:
+          "A two-week post-procedure protocol that prevents rebound on every Fitzpatrick.",
+      },
+      {
+        before:
+          "The 'I don't know why this hasn't worked' conversation at week eight.",
+        after:
+          "A twelve-week timeline the client signs up to at the consultation, with the touchpoints that keep them in.",
+      },
+    ],
+    whyBernadette:
+      "I hold an MSc Advanced Practice (Level 7), I'm NMC registered, I lecture postgraduate clinicians, and I run an award-winning aesthetics clinic, Visage Aesthetics, which won Best Non-Surgical Aesthetics Clinic 2026 (Essex). Hyperpigmentation is the presentation my clinic sees most weeks of the year. I built Hyperpigmentation Decoded on the same NICE-aligned framework my own clinic uses, sequenced for any practitioner who already knows the basics and wants the layer above.",
+    includes: [
+      "8 modules covering presentation, depth, drivers and treatment",
+      "The five-pattern face-reading framework",
+      "The Hyperpigmentation Consultation Card (printable, one page)",
+      "Twelve-week protocol templates for the five presentations",
+      "Post-procedure rebound-prevention scripts",
+      "Lifetime access, including future updates",
+      "Self-paced, knowledge check, Certificate of Completion",
+    ],
+    faqs: [
+      {
+        q: "Is this CPD-accredited?",
+        a: "Hyperpigmentation Decoded is designed to count toward CPD evidence and is appropriate as reflective practice for NMC revalidation. The Certificate of Completion at the end gives you the documentation to attach to your portfolio.",
+      },
+      {
+        q: "Will this teach me to use a laser?",
+        a: "No. This is clinical reasoning around hyperpigmentation, depth and driver assessment, modality matching and when to refer. Hands-on technical training requires a separate insured pathway.",
+      },
+      {
+        q: "Do I need to be a nurse to take it?",
+        a: "No. The course is designed for any practitioner working with skin who wants the clinical reasoning behind hyperpigmentation decisions, including aestheticians, beauty therapists, advanced facialists and prescribing clinicians.",
+      },
+      {
+        q: "Is it really £150 with no upsells?",
+        a: "Yes. £150 one-time, lifetime access, no upsells inside the course. Bernadette's stance is that clinical education should be priced honestly.",
+      },
+    ],
+    weeklyHours: "≈ 1 hr/wk · 4 wks",
+    isCpdEvidence: true,
+  },
 
   /* ============================================================
      PREMIUM CLINICAL — multi-condition specialist programme
@@ -1000,14 +1268,14 @@ export const COURSES: readonly Course[] = [
     price: 399,
     summary:
       "From single-condition uncertainty to multi-condition skin specialism. A 10-module clinical-reasoning programme, NICE-aligned, evidence-led.",
-    body: "The course Bernadette wishes had existed when she was learning. A self-paced 10-module clinical programme that takes a generalist beauty or aesthetic practitioner to a confident, multi-condition skin specialist, anchored in NICE-aligned clinical reasoning rather than borrowed protocols. Covers the consultation framework, acne, rosacea, pigmentation, barrier dysfunction, photodamage, scarring, treatment planning, and the documentation that makes every plan defensible. Self-paced. Lifetime access. £399. Certificate of Completion for CPD evidence.",
+    body: "The course Bernadette wishes had existed when she was learning. A self-paced 10-module clinical programme that takes a generalist beauty or aesthetic practitioner to a confident, multi-condition skin specialist, anchored in NICE-aligned clinical reasoning rather than borrowed protocols. Covers the consultation framework, acne, rosacea, hyperpigmentation, barrier dysfunction, photodamage, scarring, treatment planning, and the documentation that makes every plan defensible. Self-paced. Lifetime access. £399. Certificate of Completion for CPD evidence.",
     voiceQuote:
       "Most skin plans don't fail because the practitioner is careless. They fail because the consultation skipped the question that would have changed the plan.",
     bullets: [
       "The structured skin consultation",
       "Multi-condition treatment planning",
       "NICE-aligned clinical reasoning",
-      "Pigmentation, barrier, photodamage, scarring",
+      "Hyperpigmentation, barrier, photodamage, scarring",
       "Defensible documentation",
       "Treatment escalation & referral pathways",
     ],
@@ -1047,7 +1315,7 @@ export const COURSES: readonly Course[] = [
           "Hormonal acne in adult women",
           "Severity grading + escalation triggers",
           "AHAs, BHAs, retinoids, sequencing",
-          "Post-acne pigmentation + scarring risk",
+          "Post-acne hyperpigmentation + scarring risk",
           "When to refer to GP / dermatology",
         ],
       },
@@ -1066,7 +1334,7 @@ export const COURSES: readonly Course[] = [
       },
       {
         num: "05",
-        title: "Module 5: Pigmentation disorders",
+        title: "Module 5: Hyperpigmentation disorders",
         body: "Melasma, post-inflammatory hyperpigmentation (PIH), sun damage. Skin-tone-aware approach with realistic outcomes and ethical bleaching alternatives.",
         topics: [
           "Melanin biology + Fitzpatrick assessment",
@@ -1106,7 +1374,7 @@ export const COURSES: readonly Course[] = [
       {
         num: "08",
         title: "Module 8: Scarring & post-inflammatory change",
-        body: "Atrophic, hypertrophic, keloid scars + post-inflammatory pigmentation/erythema. Classification, treatment options, realistic outcomes.",
+        body: "Atrophic, hypertrophic, keloid scars + post-inflammatory hyperpigmentation/erythema. Classification, treatment options, realistic outcomes.",
         topics: [
           "Scar classification (ice-pick, boxcar, rolling, hypertrophic)",
           "PIH vs PIE, different problems, different solutions",
@@ -1125,7 +1393,7 @@ export const COURSES: readonly Course[] = [
           "Active sequencing rules",
           "Stacking peels, microneedling, light",
           "Recovery timelines + downtime planning",
-          "Risk hierarchy (post-inflammatory pigmentation, barrier crash, infection)",
+          "Risk hierarchy (post-inflammatory hyperpigmentation, barrier crash, infection)",
           "Documentation across multi-modal plans",
         ],
       },
@@ -1158,7 +1426,7 @@ export const COURSES: readonly Course[] = [
         before:
           "Confident in one or two conditions. Unsure or improvising on the rest.",
         after:
-          "Multi-condition clinical reasoning across acne, rosacea, pigmentation, barrier, photodamage, and scarring, anchored in NICE-aligned thinking.",
+          "Multi-condition clinical reasoning across acne, rosacea, hyperpigmentation, barrier, photodamage, and scarring, anchored in NICE-aligned thinking.",
       },
       {
         before:
@@ -1194,7 +1462,7 @@ export const COURSES: readonly Course[] = [
     faqs: [
       {
         q: "How is this different from Acne Decoded and Rosacea Beyond Redness?",
-        a: "The £150 decoders are deep dives on a single condition. The Skin Specialist Programme is the integrated, multi-condition pathway, including the consultation framework, pigmentation, barrier dysfunction, photodamage, and scarring (none of which are covered in the single-condition courses). If you've already taken Acne Decoded or Rosacea Beyond Redness, this extends, it doesn't repeat.",
+        a: "The £150 decoders are deep dives on a single condition. The Skin Specialist Programme is the integrated, multi-condition pathway, including the consultation framework, hyperpigmentation, barrier dysfunction, photodamage, and scarring (none of which are covered in the single-condition courses). If you've already taken Acne Decoded or Rosacea Beyond Redness, this extends, it doesn't repeat.",
       },
       {
         q: "Is this CPD-accredited?",
@@ -1309,7 +1577,7 @@ export const COURSES: readonly Course[] = [
       },
       {
         q: "How is this different from the Acne or Rosacea Mini?",
-        a: "The Acne and Rosacea Minis are condition-specific tasters. The Skin Specialist Mini is the consultation framework that sits underneath every condition, applicable whether you treat acne, rosacea, pigmentation, or anything else. Take all three if it helps; they don't repeat.",
+        a: "The Acne and Rosacea Minis are condition-specific tasters. The Skin Specialist Mini is the consultation framework that sits underneath every condition, applicable whether you treat acne, rosacea, hyperpigmentation, or anything else. Take all three if it helps; they don't repeat.",
       },
     ],
     weeklyHours: "≈ 30 min total",

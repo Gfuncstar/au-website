@@ -82,3 +82,17 @@ export const NMC_REGISTER_URL =
  */
 export const courseKartraPlaceholder = (slug: string): string =>
   TODO_KARTRA(`course_${slug.replace(/-/g, "_")}`);
+
+/* ============================================================
+   COURSE ASSET FOLDERS — Dropbox source folders Bernadette drops
+   raw materials (videos, photos, slides, PDFs) into. The site
+   reads finished assets from /public, but the source-of-truth
+   lives in these Dropbox folders so the team has one canonical
+   place per course.
+   ============================================================ */
+
+/** Hyperpigmentation Decoded asset source folder. Hard-coded per Giles
+ *  on 2026-05-02. Bernadette drops raw lesson materials here, which
+ *  are then exported and committed into /public on the site. */
+export const HYPERPIGMENTATION_DECODED_ASSETS_URL =
+  "https://www.dropbox.com/scl/fo/o1v4m95kn55h9p2ypab53/AEckzVhtVba-1Cmz2B6XRic?rlkey=ti1enwi6qhp26ewd05rsgjrxk&dl=0";
