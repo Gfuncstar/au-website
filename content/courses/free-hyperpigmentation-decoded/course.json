@@ -1,0 +1,11 @@
+{
+  "$comment": "Free taster Mini course. Three short lessons that read the five hyperpigmentation patterns on sight and run the seven-question consultation. Lessons live in NN-<slug>.md files alongside this file.",
+  "parts": [
+    {
+      "eyebrow": "The Mini",
+      "title": "Twenty minutes, three lessons",
+      "body": "Read the five hyperpigmentation patterns on sight. Walk away with the consultation card.",
+      "startOrder": 1
+    }
+  ]
+}

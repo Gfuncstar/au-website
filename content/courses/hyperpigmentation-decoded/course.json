@@ -1,0 +1,29 @@
+{
+  "$comment": "Course-level metadata. Lessons live in NN-<slug>.md files alongside this file. The `parts` array drives the editorial dividers on the course overview chapter ledger; each entry's `startOrder` matches the `order` field in the first lesson of that arc. Edit here, not inside lesson markdown.",
+  "parts": [
+    {
+      "eyebrow": "Part 01",
+      "title": "Reading hyperpigmentation",
+      "body": "The five presentations on sight, the chromophore map, and the consultation that surfaces the real driver.",
+      "startOrder": 1
+    },
+    {
+      "eyebrow": "Part 02",
+      "title": "What's actually driving it",
+      "body": "Hormonal axis of melasma, UV and visible light, and how to build a year-round plan that holds.",
+      "startOrder": 4
+    },
+    {
+      "eyebrow": "Part 03",
+      "title": "Treatment, in chair",
+      "body": "Active sequencing, in-clinic modalities, preventing rebound, and the twelve-week consultation timeline.",
+      "startOrder": 6
+    },
+    {
+      "eyebrow": "Part 04",
+      "title": "Applied practice",
+      "body": "Real cases, NICE-aligned summary, knowledge check and your certificate.",
+      "startOrder": 10
+    }
+  ]
+}
