@@ -1189,8 +1189,7 @@ export const COURSES: readonly Course[] = [
     ],
     price: 150,
     ctaText: "View course",
-    kartraUrl:
-      "https://app.kartra.com/button/tc/eda1eb947a92384a4e5c4e4384d96470",
+    kartraUrl: courseKartraPlaceholder("hyperpigmentation-decoded"),
     tone: "charcoal",
     category: "Clinical",
     format: "Self-paced · 8 modules",
