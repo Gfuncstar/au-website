@@ -19,6 +19,8 @@ import { COURSES, getCourse, getCourseByMembershipName } from "@/lib/courses";
 import { getCourseLessonsMeta, hasNativeCourse } from "@/lib/courseLessons";
 import {
   aggregateProgress,
+  countLessonsThisWeek,
+  findResumeTarget,
   getMemberLessonProgress,
 } from "@/lib/lessonProgress.server";
 import { formatDateLong, formatDate, formatGBP } from "@/lib/format";
@@ -62,15 +64,56 @@ export default async function MembersHomePage() {
   // has access to never inflates the totals). MOCK mode = empty, which
   // renders zeros honestly.
   const progressRows = await getMemberLessonProgress();
-  const progress = aggregateProgress(
-    progressRows,
-    ownedCourses
-      .filter((c) => hasNativeCourse(c.slug))
-      .map((c) => ({
-        slug: c.slug,
-        lessonSlugs: getCourseLessonsMeta(c.slug).map((l) => l.slug),
-      })),
-  );
+  const ownedCoursesWithLessons = ownedCourses
+    .filter((c) => hasNativeCourse(c.slug))
+    .map((c) => ({
+      slug: c.slug,
+      lessonSlugs: getCourseLessonsMeta(c.slug).map((l) => l.slug),
+    }));
+  const progress = aggregateProgress(progressRows, ownedCoursesWithLessons);
+  const resumeTarget = findResumeTarget(progressRows, ownedCoursesWithLessons);
+  const lessonsThisWeek = countLessonsThisWeek(progressRows);
+
+  // Recently studied — top 3 most-recent completions, joined to lesson +
+  // course titles for display. Shown as a small list under the hero so
+  // members can jump back into a lesson they finished without trawling
+  // the catalogue. Falls back to nothing if they have no progress yet.
+  const recentlyStudied = progressRows.slice(0, 3).flatMap((row) => {
+    const course = getCourse(row.courseSlug);
+    const lesson = getCourseLessonsMeta(row.courseSlug).find(
+      (l) => l.slug === row.lessonSlug,
+    );
+    if (!course || !lesson) return [];
+    return [
+      {
+        courseSlug: row.courseSlug,
+        courseTitle: course.title,
+        lessonSlug: lesson.slug,
+        lessonTitle: lesson.title,
+        completedAt: row.completedAt,
+      },
+    ];
+  });
+
+  // Smart "Continue learning" destination — when we know which lesson
+  // the member should resume into, link straight there. Otherwise fall
+  // back to the courses launchpad.
+  const continueHref = resumeTarget
+    ? `/members/courses/${resumeTarget.courseSlug}/${resumeTarget.lessonSlug}`
+    : "/members/courses";
+
+  // "Last studied yesterday" / "today" / "3 days ago" copy.
+  const lastStudiedLabel = (() => {
+    if (progressRows.length === 0) return null;
+    const date = new Date(progressRows[0].completedAt);
+    const days = Math.floor(
+      (Date.now() - date.getTime()) / (24 * 60 * 60 * 1000),
+    );
+    if (days <= 0) return "today";
+    if (days === 1) return "yesterday";
+    if (days < 7) return `${days} days ago`;
+    return date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  })();
 
   return (
     <div className="space-y-10 sm:space-y-14">
@@ -109,9 +152,28 @@ export default async function MembersHomePage() {
           </p>
         )}
 
+        {/* Quiet engagement signal — "X chapters this week. Last
+            studied yesterday." Only renders if there's any progress
+            history; otherwise the welcome hero stays clean for new
+            members. Subtle white/55 type, not a celebrated streak. */}
+        {(lessonsThisWeek > 0 || lastStudiedLabel) && (
+          <p className="mt-3 font-section font-semibold uppercase tracking-[0.14em] text-[0.6875rem] text-au-white/55">
+            {lessonsThisWeek > 0 && (
+              <>
+                <span className="text-au-pink">{lessonsThisWeek}</span>{" "}
+                {lessonsThisWeek === 1 ? "chapter" : "chapters"} this week
+              </>
+            )}
+            {lessonsThisWeek > 0 && lastStudiedLabel && (
+              <span className="mx-2 text-au-white/30">·</span>
+            )}
+            {lastStudiedLabel && <>Last studied {lastStudiedLabel}</>}
+          </p>
+        )}
+
         {ownedCourses.length > 0 && (
           <Link
-            href="/members/courses"
+            href={continueHref}
             className="group mt-5 sm:mt-7 inline-flex items-center gap-2 bg-au-pink hover:bg-au-white hover:text-au-charcoal text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-6 sm:px-7 py-3 sm:py-3.5 min-h-[44px] sm:min-h-[48px] text-[0.875rem] sm:text-[0.9375rem] transition-colors"
           >
             <span>Continue learning</span>
@@ -124,6 +186,69 @@ export default async function MembersHomePage() {
           </Link>
         )}
       </section>
+
+      {/* ============================================================
+          Recently studied — last 3 lessons the member completed,
+          across all their courses. Links straight back into the
+          lesson player. Different from "Continue learning" (which
+          jumps to the next un-done lesson) — this is history, not
+          a forward signpost. Hidden when the member has no progress
+          history yet, so a fresh account doesn't see an empty rail.
+          ============================================================ */}
+      {recentlyStudied.length > 0 && (
+        <Reveal delay={0.05}>
+          <section>
+            <header className="mb-4 flex items-baseline justify-between gap-4 border-b border-au-charcoal/10 pb-3">
+              <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.7rem] text-au-mid">
+                Recently studied
+              </p>
+              <Link
+                href="/members/courses"
+                className="font-section font-semibold uppercase tracking-[0.1em] text-[0.6875rem] text-au-pink hover:text-au-charcoal transition-colors"
+              >
+                All courses →
+              </Link>
+            </header>
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              {recentlyStudied.map((row) => (
+                <li
+                  key={`${row.courseSlug}:${row.lessonSlug}`}
+                  className="bg-au-pink-soft/30 rounded-[4px] p-4"
+                >
+                  <Link
+                    href={`/members/courses/${row.courseSlug}/${row.lessonSlug}`}
+                    className="block group"
+                  >
+                    <p className="font-section font-semibold uppercase tracking-[0.14em] text-[0.625rem] text-au-mid mb-2">
+                      {row.courseTitle}
+                    </p>
+                    <p className="font-display font-bold text-au-charcoal text-[0.9375rem] sm:text-[1rem] leading-snug group-hover:text-au-pink transition-colors">
+                      {row.lessonTitle}
+                    </p>
+                    <p className="font-sans text-[0.6875rem] text-au-mid/85 mt-2">
+                      Finished{" "}
+                      {(() => {
+                        const date = new Date(row.completedAt);
+                        const days = Math.floor(
+                          (Date.now() - date.getTime()) /
+                            (24 * 60 * 60 * 1000),
+                        );
+                        if (days <= 0) return "today";
+                        if (days === 1) return "yesterday";
+                        if (days < 7) return `${days} days ago`;
+                        return date.toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "short",
+                        });
+                      })()}
+                    </p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </Reveal>
+      )}
 
       {/* ============================================================
           At-a-glance status, sits just below the personal greeting

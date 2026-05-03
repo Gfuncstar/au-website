@@ -16,6 +16,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 export type ProgressRow = {
   courseSlug: string;
   lessonSlug: string;
+  completedAt: string;
 };
 
 export async function getMemberLessonProgress(): Promise<ProgressRow[]> {
@@ -29,14 +30,63 @@ export async function getMemberLessonProgress(): Promise<ProgressRow[]> {
 
   const { data, error } = await supabase
     .from("lesson_progress")
-    .select("course_slug, lesson_slug")
-    .eq("member_id", user.id);
+    .select("course_slug, lesson_slug, completed_at")
+    .eq("member_id", user.id)
+    .order("completed_at", { ascending: false });
   if (error || !data) return [];
 
   return data.map((r) => ({
     courseSlug: r.course_slug as string,
     lessonSlug: r.lesson_slug as string,
+    completedAt: r.completed_at as string,
   }));
+}
+
+/**
+ * Resume target across all courses a member owns. Returns the lesson
+ * the member should land on when they tap "Continue learning":
+ * the lesson immediately after the most recently completed one in
+ * that course's order. Falls back to the most recently completed
+ * lesson itself when the member has finished the whole course.
+ *
+ * Returns null when the member has no completion history yet — in
+ * that case the caller should route them to the courses launchpad.
+ */
+export type ResumeTarget = {
+  courseSlug: string;
+  lessonSlug: string;
+  completedAt: string;
+};
+
+export function findResumeTarget(
+  rows: ProgressRow[],
+  ownedCourseLessonsInOrder: { slug: string; lessonSlugs: readonly string[] }[],
+): ResumeTarget | null {
+  if (rows.length === 0) return null;
+  const mostRecent = rows[0];
+  const course = ownedCourseLessonsInOrder.find(
+    (c) => c.slug === mostRecent.courseSlug,
+  );
+  if (!course) {
+    return mostRecent;
+  }
+  const idx = course.lessonSlugs.indexOf(mostRecent.lessonSlug);
+  if (idx === -1 || idx === course.lessonSlugs.length - 1) {
+    return mostRecent;
+  }
+  return {
+    courseSlug: course.slug,
+    lessonSlug: course.lessonSlugs[idx + 1],
+    completedAt: mostRecent.completedAt,
+  };
+}
+
+/** Number of lessons completed in the last 7 days. */
+export function countLessonsThisWeek(rows: ProgressRow[]): number {
+  const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  return rows.filter(
+    (r) => new Date(r.completedAt).getTime() >= sevenDaysAgo,
+  ).length;
 }
 
 export type CourseWithLessons = {
