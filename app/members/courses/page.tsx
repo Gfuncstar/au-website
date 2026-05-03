@@ -17,7 +17,8 @@ import { FreeBadge } from "@/components/FreeBadge";
 import { StatusBadge } from "@/components/members/StatusBadge";
 import { MembersStatusStrip } from "@/components/members/MembersStatusStrip";
 import { Reveal } from "@/components/members/Reveal";
-import { COURSES, getCourseByMembershipName } from "@/lib/courses";
+import { StartFreeCourseButton } from "@/components/members/StartFreeCourseButton";
+import { COURSES, getCourseByMembershipName, type Course } from "@/lib/courses";
 import { hasNativeCourse } from "@/lib/courseLessons";
 import { formatDate } from "@/lib/format";
 
@@ -38,10 +39,19 @@ export default async function CoursesPage() {
 
   const ownedSlugs = new Set(owned.map((x) => x.course.slug));
 
-  const recommendations = COURSES.filter((c) => !ownedSlugs.has(c.slug)).slice(
-    0,
-    3,
-  );
+  // Show every catalogue course the member doesn't already own. Free
+  // tasters first (one-tap value, lowest friction), then paid courses
+  // available now, then anything on a waitlist. Within each group keep
+  // the COURSES ordering (which the catalogue page also uses) so the
+  // launchpad and the marketing surface stay coherent.
+  const tier = (c: Course): number => {
+    if (c.availability === "waitlist") return 2;
+    if (c.price === undefined) return 0;
+    return 1;
+  };
+  const recommendations = COURSES.filter(
+    (c) => !ownedSlugs.has(c.slug),
+  ).sort((a, b) => tier(a) - tier(b));
 
   return (
     <div className="space-y-8 sm:space-y-12">
@@ -61,6 +71,15 @@ export default async function CoursesPage() {
         <p className="mt-3 sm:mt-4 text-[0.9375rem] sm:text-[1.0625rem] text-au-white/75 max-w-[60ch] leading-relaxed">
           Everything you have access to, and what&apos;s next.
         </p>
+        {recommendations.length > 0 && (
+          <Link
+            href="#more-to-explore"
+            className="mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-[5px] font-display font-bold uppercase tracking-[0.05em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
+          >
+            Browse the full library
+            <span aria-hidden="true">↓</span>
+          </Link>
+        )}
       </section>
 
       <MembersStatusStrip lead={lead} />
@@ -136,20 +155,41 @@ export default async function CoursesPage() {
       </Reveal>
 
       {/* ============================================================
-          You might also like, restrained upsell, never blocking
+          The rest of the library, surfaced as a real upsell channel
+          rather than a polite three-tile recommendations strip.
+          - Free tasters: one-tap "Add to my dashboard" via the
+            existing /api/members/enrol-free route.
+          - Paid: "Enrol now" → Kartra checkout.
+          - Waitlist: "Join the waitlist" → Kartra waitlist URL.
+          Each tile keeps a secondary "Browse course" link so the
+          member can read the sales page first if they want to.
           ============================================================ */}
       {recommendations.length > 0 && (
         <Reveal delay={0.15}>
-        <section>
+        <section id="more-to-explore" className="scroll-mt-24">
           <header className="mb-6 border-b border-au-charcoal/10 pb-4">
-            <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.7rem] text-au-mid">
-              You might also like
+            <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.7rem] text-au-pink mb-2">
+              More to explore
+            </p>
+            <h2
+              className="font-display font-black text-au-charcoal leading-[1] mb-2"
+              style={{
+                fontSize: "clamp(1.375rem, 3.5vw, 2rem)",
+                letterSpacing: "var(--tracking-tight-display)",
+              }}
+            >
+              The rest of the library.
+            </h2>
+            <p className="text-[0.9375rem] text-au-body max-w-[60ch] leading-relaxed">
+              Free tasters add to your dashboard in one tap. Paid courses
+              open in checkout, then land here the moment payment clears.
             </p>
           </header>
 
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {recommendations.map((c) => {
               const isFree = c.price === undefined;
+              const isWaitlist = c.availability === "waitlist";
               return (
                 <li
                   key={c.slug}
@@ -160,33 +200,56 @@ export default async function CoursesPage() {
                       slug={c.slug}
                       className="shrink-0 w-10 h-10"
                     />
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <p className="font-section font-semibold uppercase tracking-[0.1em] text-[0.625rem] text-au-mid mb-1">
                         {c.category}
-                        {c.availability === "waitlist" && " · Waitlist"}
+                        {isWaitlist && " · Waitlist"}
+                        {isFree && !isWaitlist && " · Free taster"}
                       </p>
                       <h3 className="font-display font-bold text-au-charcoal text-[1rem] leading-tight">
                         {c.title}
                       </h3>
                     </div>
+                    {isFree ? (
+                      <FreeBadge className="shrink-0 w-12 h-12" />
+                    ) : (
+                      <span className="shrink-0 font-display font-black text-au-charcoal text-[0.9375rem] tabular-nums">
+                        £{c.price?.toLocaleString("en-GB")}
+                      </span>
+                    )}
                   </div>
-                  <p className="text-[0.8125rem] text-au-body leading-relaxed mb-4 flex-1">
+                  <p className="text-[0.8125rem] text-au-body leading-relaxed mb-5 flex-1">
                     {c.summary}
                   </p>
-                  <div className="flex items-center justify-between gap-3 mt-auto">
+                  <div className="mt-auto flex flex-col gap-3">
+                    {isWaitlist ? (
+                      <Link
+                        href={c.kartraUrl}
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-[5px] font-display font-bold uppercase tracking-[0.05em] text-[0.8125rem] bg-au-charcoal text-au-white hover:bg-au-pink hover:text-au-charcoal transition-colors"
+                      >
+                        Join the waitlist
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    ) : isFree ? (
+                      <StartFreeCourseButton
+                        courseSlug={c.slug}
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-[5px] font-display font-bold uppercase tracking-[0.05em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-charcoal hover:text-au-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                      />
+                    ) : (
+                      <Link
+                        href={c.kartraUrl}
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-[5px] font-display font-bold uppercase tracking-[0.05em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-charcoal hover:text-au-white transition-colors"
+                      >
+                        Enrol now
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    )}
                     <Link
                       href={`/courses/${c.slug}`}
-                      className="font-section font-semibold uppercase tracking-[0.1em] text-[0.6875rem] text-au-pink hover:text-au-charcoal transition-colors"
+                      className="self-center font-section font-semibold uppercase tracking-[0.1em] text-[0.6875rem] text-au-mid hover:text-au-pink transition-colors"
                     >
                       Browse course →
                     </Link>
-                    {c.price === undefined ? (
-                      <FreeBadge className="w-12 h-12" />
-                    ) : (
-                      <span className="font-display font-black text-au-charcoal text-[0.875rem] tabular-nums">
-                        £{c.price.toLocaleString("en-GB")}
-                      </span>
-                    )}
                   </div>
                 </li>
               );
