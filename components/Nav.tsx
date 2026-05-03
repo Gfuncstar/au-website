@@ -235,17 +235,16 @@ export function Nav({ forceLight = false }: Props) {
           )}
         </nav>
 
-        {/* Mobile auth-status icon — sits to the left of the burger so
-            members can see at a glance whether they're signed in. The
-            icon itself changes based on session state: a person
-            silhouette when signed out (tap → /login), a dashboard glyph
-            when signed in (tap → /members). Same line-art language as
-            the rest of the nav icons. Same h-12 w-12 tap target as the
-            burger so both feel like one row of controls. The signed-in
-            state also picks up the AU pink accent so it pops a little
-            more, matching the "active" visual treatment used elsewhere. */}
-        {/* Mobile right-side cluster: auth icon + burger packed together
-            so the icon sits flush next to the burger instead of being
+        {/* Mobile auth-status pill — sits to the left of the burger so
+            members can see at a glance whether they're signed in. Reads
+            "MEMBERS LOG-IN" when signed out (tap → /login) and "MY
+            DASHBOARD" when signed in (tap → /members). Per Giles' "needs
+            to say members login my dashboard" call — earlier icon-only
+            version was too cryptic on first contact. Pink fill, crisp
+            3px corners (no pills), uppercase tracked Oswald to match
+            the rest of the nav rail. */}
+        {/* Mobile right-side cluster: auth pill + burger packed together
+            so the pill sits flush next to the burger instead of being
             distributed by the parent's justify-between. */}
         <div className="md:hidden flex items-center gap-2">
         <Link
@@ -253,51 +252,9 @@ export function Nav({ forceLight = false }: Props) {
           aria-label={
             signedIn ? "Go to your dashboard" : "Sign in to your dashboard"
           }
-          className="h-7 w-7 flex items-center justify-center z-10 rounded-[3px] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
+          className="h-8 inline-flex items-center px-3 z-10 rounded-[3px] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white font-section font-semibold uppercase tracking-[0.12em] text-[0.6875rem] whitespace-nowrap transition-colors"
         >
-          {signedIn ? (
-            // Dashboard glyph — frame with one active (filled) tile.
-            // Mirrors components/NavIcons.tsx → MembersAreaIcon so the
-            // header icon and the drawer's "Members' area" row share
-            // the same visual language.
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              className="w-3.5 h-3.5"
-            >
-              <rect x="3" y="4" width="18" height="16" rx="0.5" />
-              <line x1="3" y1="9" x2="21" y2="9" />
-              <rect
-                x="6"
-                y="12"
-                width="5"
-                height="5"
-                fill="currentColor"
-                stroke="currentColor"
-              />
-              <rect x="13" y="12" width="5" height="5" />
-            </svg>
-          ) : (
-            // Person silhouette — same shape as PersonIcon in NavIcons.
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              className="w-3.5 h-3.5"
-            >
-              <circle cx="12" cy="9" r="4" />
-              <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-            </svg>
-          )}
+          {signedIn ? "My dashboard" : "Members log-in"}
         </Link>
 
         {/* Mobile menu trigger */}
