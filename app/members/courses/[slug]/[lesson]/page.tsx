@@ -38,6 +38,7 @@ import {
 } from "@/components/members/CourseChapterStrip";
 import { VideoPlaceholder } from "@/components/members/VideoPlaceholder";
 import { LessonNavFooter } from "@/components/members/LessonNavFooter";
+import { LessonRating } from "@/components/members/LessonRating";
 import { Reveal } from "@/components/members/Reveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import { LessonIcon } from "@/components/members/LessonIcon";
@@ -238,6 +239,11 @@ export default async function LessonPage({
               dangerouslySetInnerHTML={{ __html: current.html }}
             />
           </Reveal>
+
+          {/* Lesson rating — sits between the body and the up-next
+              card, so members rate the lesson when its content is
+              still fresh in mind, before they move on. */}
+          <LessonRating courseSlug={slug} lessonSlug={current.slug} />
 
           {/* Up next card */}
           <UpNextCard courseSlug={slug} next={next} />
