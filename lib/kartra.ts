@@ -134,7 +134,27 @@ async function kartraRequest(
     (json as { message?: string; error?: string })?.message ??
     (json as { message?: string; error?: string })?.error ??
     "Unknown Kartra error";
+  // Surface the full Kartra payload in server logs so we can diagnose
+  // ambiguous failures (e.g. "lead already exists" vs a genuine system
+  // error). The route handlers only see the short error string.
+  // eslint-disable-next-line no-console
+  console.error("[lib/kartra] non-success response:", JSON.stringify(json));
   return { ok: false, error: `Kartra: ${message}` };
+}
+
+/**
+ * Best-effort detector for "this is a no-op, the lead/tag/list state
+ * we asked for already exists." Kartra surfaces this as an error
+ * response, but for our purposes (always idempotent opt-ins) it's a
+ * successful no-op.
+ */
+function isAlreadyExistsError(error: string): boolean {
+  const e = error.toLowerCase();
+  return (
+    e.includes("already") ||
+    e.includes("duplicate") ||
+    e.includes("exists")
+  );
 }
 
 /* ============================================================
@@ -227,7 +247,17 @@ export async function addLead(
   }
 
   const result = await kartraRequest(params);
-  if (!result.ok) return result;
+  if (!result.ok) {
+    // "Already exists" is the expected response when an existing
+    // member opts in to a free taster they've previously seen, or
+    // when an already-tagged lead opts into a list they're already
+    // on. Kartra dedupes by email regardless, so the database state
+    // we wanted is already in place. Treat as a successful no-op.
+    if (isAlreadyExistsError(result.error)) {
+      return { ok: true, data: {} };
+    }
+    return result;
+  }
 
   // Kartra returns per-action results inside data.actions[]. Pull the
   // lead_id from the create_lead action if present.
