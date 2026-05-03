@@ -31,6 +31,7 @@ export default async function SetPasswordPage() {
       heading="Set your password."
       intro="Pick a password you'll remember. At least 10 characters. You'll use this every time you sign in from now on."
       noticeFlag="password_set"
+      requireConsent
     />
   );
 }

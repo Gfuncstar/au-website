@@ -15,6 +15,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, type FormEvent } from "react";
+import { CURRENT_TERMS_VERSION } from "@/lib/terms";
 
 const MIN_PASSWORD_LENGTH = 10;
 
@@ -27,6 +28,16 @@ interface Props {
   intro: string;
   /** "password_reset" or "password_set" — drives the toast on /login. */
   noticeFlag: "password_reset" | "password_set";
+  /**
+   * When true, render a required "I agree to the Terms and Privacy
+   * Policy" checkbox below the confirm field, block submit until it
+   * is ticked, and persist the consent (timestamp + version) on the
+   * members row via /api/auth/update-password.
+   *
+   * Set on /set-password (first-time members). Left off on
+   * /reset-password (existing members already consented at sign-up).
+   */
+  requireConsent?: boolean;
 }
 
 export function PasswordSetForm({
@@ -34,9 +45,11 @@ export function PasswordSetForm({
   heading,
   intro,
   noticeFlag,
+  requireConsent = false,
 }: Props) {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
+  const [accepted, setAccepted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -50,13 +63,22 @@ export function PasswordSetForm({
       setError("The two passwords don't match.");
       return;
     }
+    if (requireConsent && !accepted) {
+      setError("Please tick the box to agree to the Terms and Privacy Policy.");
+      return;
+    }
     setError("");
     setSubmitting(true);
     try {
       const res = await fetch("/api/auth/update-password", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({
+          password,
+          ...(requireConsent && accepted
+            ? { acceptedTerms: true, termsVersion: CURRENT_TERMS_VERSION }
+            : {}),
+        }),
       });
       const json = (await res.json()) as { ok: boolean; error?: string };
       if (!json.ok) {
@@ -168,6 +190,46 @@ export function PasswordSetForm({
                   />
                 </div>
               </label>
+
+              {requireConsent && (
+                <label
+                  htmlFor="accept-terms"
+                  className="flex items-start gap-3 cursor-pointer select-none"
+                >
+                  <input
+                    id="accept-terms"
+                    type="checkbox"
+                    required
+                    checked={accepted}
+                    onChange={(e) => {
+                      setAccepted(e.target.checked);
+                      if (error) setError("");
+                    }}
+                    className="mt-[3px] h-[18px] w-[18px] shrink-0 rounded-[3px] border-2 border-au-pink/40 bg-transparent accent-[var(--color-au-pink)] focus:outline-none focus:ring-2 focus:ring-au-pink"
+                  />
+                  <span className="text-[0.875rem] sm:text-[0.9375rem] text-au-white/85 leading-relaxed">
+                    I agree to the{" "}
+                    <Link
+                      href="/terms"
+                      target="_blank"
+                      rel="noopener"
+                      className="text-au-pink underline underline-offset-4 hover:text-au-white transition-colors"
+                    >
+                      Terms
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="/privacy"
+                      target="_blank"
+                      rel="noopener"
+                      className="text-au-pink underline underline-offset-4 hover:text-au-white transition-colors"
+                    >
+                      Privacy Policy
+                    </Link>
+                    .
+                  </span>
+                </label>
+              )}
 
               {error && (
                 <p
