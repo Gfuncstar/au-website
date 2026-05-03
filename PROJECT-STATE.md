@@ -1,8 +1,10 @@
 # Aesthetics Unlocked, project state
 
-> **✅ LAUNCHED 2026-05-01.** DNS flipped, SSL provisioned, sequences active, search-engine verified. Site is live at https://www.aestheticsunlocked.co.uk. See [`LAUNCH-COMPLETE.md`](./LAUNCH-COMPLETE.md) for the launch-day record of what shipped, what was cleaned up, and what's outstanding post-launch. This document is the ongoing state-of-build; the launch-complete doc is the historical record.
+> **✅ LAUNCHED 2026-05-01.** DNS flipped, SSL provisioned, sequences active, search-engine verified. Site is live at https://www.aestheticsunlocked.co.uk. See [`LAUNCH-COMPLETE.md`](./LAUNCH-COMPLETE.md) for the launch-day record. The first post-launch sprint was 2026-05-03; that day's full record is in [`2026-05-03-SESSION-LOG.md`](./2026-05-03-SESSION-LOG.md).
 
-**Last updated:** 1 May 2026, end of launch day. Latest pushed commit: `ee6003d` (Search Console verification token wired). Today's commits: `0f24de9` (structured data + twitter cards + login noindex), `e123317` (Educator of the Year 2026 amplification across 6 pages), `ee6003d` (Search Console token).
+**Last updated:** 3 May 2026, end of post-launch sprint. Latest pushed commit: `2f3715f` (Certificate of Completion PDF download). Earlier the same day: SEO audit + fixes (`5f1fd43`), auth flow polish + Terms updates (`fccdce2`, `b3264c1`, `bcf26f8`, `19aec74`), members-area upgrades (`a64c81e`, `5d0c945`, `612933c`, `94818e1`, `2c7caa3`, `fe167b5`, `02a2a12`).
+
+**Three Supabase migrations pending manual apply** (see §11): `0003_terms_consent.sql`, `0004_lesson_ratings.sql`, `0005_lesson_notes.sql`. Until applied, the matching features (Terms consent capture, lesson ratings, lesson notes) work in the UI but writes soft-fail.
 
 This document is the **state-of-build** snapshot. It documents what's live, what works, what's pending, and where every piece lives. Use it before changing anything.
 
@@ -10,6 +12,7 @@ For Next.js project-context Claude needs, see [`CLAUDE.md`](./CLAUDE.md).
 For getting-to-production setup, see [`SETUP.md`](./SETUP.md).
 For repo overview + conventions, see [`README.md`](./README.md).
 For the launch-day record, see [`LAUNCH-COMPLETE.md`](./LAUNCH-COMPLETE.md).
+For the 2026-05-03 post-launch sprint record, see [`2026-05-03-SESSION-LOG.md`](./2026-05-03-SESSION-LOG.md).
 
 ---
 
@@ -299,6 +302,35 @@ If unset, the bypass code path returns false and normal auth applies — fully o
   and The 5K+ Formula™ (£799). No paid-course CTA gaps left.
 - ❌ **Stripe webhooks**: code references `assignTag()` / `removeTag()` for purchase/refund events but no Stripe → IPN bridge is documented if direct Stripe checkout is added.
 - 🟡 **`AU_PREVIEW_TOKEN`** env var not set. Optional, only needed if you want to use the preview-link mechanism.
+
+### Database migrations to apply (added 2026-05-03)
+
+Three migrations are committed in `supabase/migrations/` but need a manual run in Supabase. Until applied, the related features render in the UI but writes soft-fail (no crashes, just no persistence).
+
+| Migration | What it adds | Feature it unblocks |
+|---|---|---|
+| `0003_terms_consent.sql` | `terms_accepted_at`, `terms_version` columns on `members` | Terms-acceptance checkbox at first-time sign-in (`/set-password`) |
+| `0004_lesson_ratings.sql` | New `lesson_ratings` table + RLS + touch trigger | Per-lesson 5-star rating + comment widget |
+| `0005_lesson_notes.sql` | New `lesson_notes` table + RLS + touch trigger | Per-lesson private notes widget |
+
+How to apply: Supabase dashboard → SQL Editor → paste each file's contents → Run. Or `supabase db push` if the CLI is linked.
+
+### Members area features shipped 2026-05-03
+
+All live in production. Most need the migrations above to actually persist data:
+
+- ✅ Smart "Continue learning" — resumes the exact next lesson across all owned courses (`/members`)
+- ✅ Weekly stats line — "X chapters this week · Last studied yesterday" under the welcome heading (`/members`)
+- ✅ Recently Studied — last 3 completed lessons as tiles (`/members`)
+- ✅ Per-course progress bar on every course tile (`/members` and `/members/courses`)
+- ✅ "Chapters complete" + "Courses complete" tiles in the status strip (now 6 tiles)
+- ✅ Per-lesson 5-star rating + comment *(needs `0004_lesson_ratings.sql`)*
+- ✅ Per-lesson private notes *(needs `0005_lesson_notes.sql`)*
+- ✅ Search across every owned course (lesson title + course title + summary, instant client-side filter)
+- ✅ Certificate of Completion PDF download (course overview page when fully complete)
+- ✅ Terms-acceptance checkbox at `/set-password` *(needs `0003_terms_consent.sql`)*
+
+Detail and rationale: [`2026-05-03-SESSION-LOG.md`](./2026-05-03-SESSION-LOG.md).
 
 ### Pre-launch redirects (in repo, dormant until DNS flip)
 
