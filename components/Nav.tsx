@@ -250,7 +250,7 @@ export function Nav({ forceLight = false }: Props) {
           aria-label={
             signedIn ? "Go to your dashboard" : "Sign in to your dashboard"
           }
-          className="h-10 w-10 flex items-center justify-center z-10 rounded-[3px] border border-[var(--color-au-pink)]/60 text-[var(--color-au-pink)] hover:bg-[var(--color-au-pink)] hover:text-au-charcoal hover:border-[var(--color-au-pink)] transition-colors"
+          className="h-7 w-7 flex items-center justify-center z-10 rounded-[3px] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
         >
           {signedIn ? (
             // Dashboard glyph — frame with one active (filled) tile.
@@ -265,7 +265,7 @@ export function Nav({ forceLight = false }: Props) {
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
-              className="w-5 h-5"
+              className="w-3.5 h-3.5"
             >
               <rect x="3" y="4" width="18" height="16" rx="0.5" />
               <line x1="3" y1="9" x2="21" y2="9" />
@@ -289,7 +289,7 @@ export function Nav({ forceLight = false }: Props) {
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
-              className="w-5 h-5"
+              className="w-3.5 h-3.5"
             >
               <circle cx="12" cy="9" r="4" />
               <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
