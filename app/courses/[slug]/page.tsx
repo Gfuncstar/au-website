@@ -1196,6 +1196,7 @@ export default async function CourseDetailPage({
         }
         ctaText={primaryCtaText}
         isWaitlist={isWaitlist}
+        courseSlug={course.slug}
       />
 
       <script

@@ -16,6 +16,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 type Props = {
   /** Short title shown on the bar — usually the course title. */
@@ -29,6 +30,10 @@ type Props = {
   ctaText: string;
   /** Whether the course is on a waitlist. */
   isWaitlist: boolean;
+  /** Course slug — required for the signed-in free-taster shortcut so
+   *  the bar can call /api/members/enrol-free directly. Without it the
+   *  bar falls back to the normal Link behaviour. */
+  courseSlug?: string;
 };
 
 export function StickyEnrolBar({
@@ -37,8 +42,63 @@ export function StickyEnrolBar({
   href,
   ctaText,
   isWaitlist,
+  courseSlug,
 }: Props) {
   const [visible, setVisible] = useState(false);
+
+  // Auth-aware shortcut. When a signed-in member sees a free taster
+  // they don't own, the bar fires /api/members/enrol-free directly
+  // instead of jumping them to the opt-in form (which would just ask
+  // for an email we already have). For paid + waitlist courses we
+  // never apply this shortcut — those flows still go through Kartra.
+  const [signedIn, setSignedIn] = useState<boolean | null>(null);
+  const [enrolling, setEnrolling] = useState(false);
+  const [enrolError, setEnrolError] = useState(false);
+
+  const isFreeCourse = !isWaitlist && price === undefined;
+  const useEnrolShortcut = signedIn === true && isFreeCourse && Boolean(courseSlug);
+
+  useEffect(() => {
+    if (!isFreeCourse) return; // No need to check auth for paid courses.
+    const supabase = createSupabaseBrowserClient();
+    if (!supabase) {
+      setSignedIn(false);
+      return;
+    }
+    let cancelled = false;
+    supabase.auth.getUser().then(({ data }) => {
+      if (!cancelled) setSignedIn(Boolean(data.user));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [isFreeCourse]);
+
+  async function handleEnrol() {
+    if (!courseSlug) return;
+    setEnrolling(true);
+    setEnrolError(false);
+    try {
+      const res = await fetch("/api/members/enrol-free", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ courseSlug }),
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        redirectTo?: string;
+      };
+      if (!res.ok || !data.ok) {
+        setEnrolling(false);
+        setEnrolError(true);
+        return;
+      }
+      window.location.href = data.redirectTo ?? `/members/courses/${courseSlug}`;
+    } catch {
+      setEnrolling(false);
+      setEnrolError(true);
+    }
+  }
 
   // Show after the visitor has scrolled ~80% of the first viewport
   // height — far enough that the hero CTA is gone, close enough that
@@ -90,16 +150,35 @@ export function StickyEnrolBar({
               letterSpacing: "var(--tracking-tight-display)",
             }}
           >
-            {priceLabel}
+            {useEnrolShortcut ? "In your dashboard" : priceLabel}
           </p>
         </div>
-        <Link
-          href={href}
-          className="shrink-0 inline-flex items-center gap-1.5 bg-[var(--color-au-pink)] hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-4 py-3 min-h-[44px] text-[0.8125rem] transition-colors"
-        >
-          <span>{ctaText}</span>
-          <span aria-hidden="true">→</span>
-        </Link>
+        {useEnrolShortcut ? (
+          <button
+            type="button"
+            onClick={handleEnrol}
+            disabled={enrolling}
+            className="shrink-0 inline-flex items-center gap-1.5 bg-[var(--color-au-pink)] hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-4 py-3 min-h-[44px] text-[0.8125rem] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            aria-label={`Add ${title} to your dashboard`}
+          >
+            <span>
+              {enrolling
+                ? "Adding…"
+                : enrolError
+                  ? "Try again"
+                  : "Add to my dashboard"}
+            </span>
+            {!enrolling && <span aria-hidden="true">→</span>}
+          </button>
+        ) : (
+          <Link
+            href={href}
+            className="shrink-0 inline-flex items-center gap-1.5 bg-[var(--color-au-pink)] hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-4 py-3 min-h-[44px] text-[0.8125rem] transition-colors"
+          >
+            <span>{ctaText}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        )}
       </div>
     </div>
   );
