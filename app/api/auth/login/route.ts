@@ -1,22 +1,23 @@
 /**
- * POST /api/auth/login — sends a Supabase magic-link email to the
- * member. Two-step auth flow:
- *   1) Member submits email on /login → POST here → Supabase emails
- *      a magic-link
- *   2) Member clicks the link → lands at /api/auth/callback → session
- *      cookies set → redirect to /members (or `next` param)
+ * POST /api/auth/login — signs a member in with email + password.
+ *
+ * On success, Supabase's server client writes the session cookies via
+ * the cookie handler in `createSupabaseServerClient`, so by the time
+ * we return the browser is signed in. The page does a hard navigation
+ * to /members afterwards so the SSR layer reads the new cookies.
  *
  * Returns:
- *   200 { ok: true }                     — link sent
- *   400 { ok: false, error: "..." }      — bad input
- *   500 { ok: false, error: "..." }      — Supabase error or not configured
+ *   200 { ok: true }
+ *   400 { ok: false, error: "invalid_email|invalid_password|invalid_json" }
+ *   401 { ok: false, error: "invalid_credentials|email_not_confirmed" }
+ *   500 { ok: false, error: "auth_not_configured|<supabase msg>" }
  */
 
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export async function POST(request: NextRequest) {
-  let payload: { email?: unknown; next?: unknown } = {};
+  let payload: { email?: unknown; password?: unknown } = {};
   try {
     payload = await request.json();
   } catch {
@@ -27,10 +28,17 @@ export async function POST(request: NextRequest) {
   }
 
   const email = typeof payload.email === "string" ? payload.email.trim() : "";
-  const next = typeof payload.next === "string" ? payload.next : "/members";
+  const password = typeof payload.password === "string" ? payload.password : "";
+
   if (!email || !email.includes("@")) {
     return NextResponse.json(
       { ok: false, error: "invalid_email" },
+      { status: 400 },
+    );
+  }
+  if (!password) {
+    return NextResponse.json(
+      { ok: false, error: "invalid_password" },
       { status: 400 },
     );
   }
@@ -43,24 +51,22 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const origin = new URL(request.url).origin;
-  const emailRedirectTo = `${origin}/api/auth/callback?next=${encodeURIComponent(next)}`;
-
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: {
-      emailRedirectTo,
-      // We don't auto-create accounts here — the IPN webhook is the
-      // only path that establishes a member. If the email isn't on
-      // file as a member yet, the magic-link will still send (so
-      // existing-customer-not-yet-synced doesn't fail) but the
-      // entitlement check on /members/courses/<slug> will bounce
-      // them to the public sales page.
-      shouldCreateUser: true,
-    },
-  });
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
+    const msg = error.message.toLowerCase();
+    if (msg.includes("invalid login credentials")) {
+      return NextResponse.json(
+        { ok: false, error: "invalid_credentials" },
+        { status: 401 },
+      );
+    }
+    if (msg.includes("email not confirmed")) {
+      return NextResponse.json(
+        { ok: false, error: "email_not_confirmed" },
+        { status: 401 },
+      );
+    }
     return NextResponse.json(
       { ok: false, error: error.message },
       { status: 500 },

@@ -33,10 +33,70 @@
 
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getCourseByMembershipName } from "@/lib/courses";
 import { trackServer } from "@/lib/analytics";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 const IPN_SECRET = process.env.KARTRA_IPN_SECRET ?? "";
+
+/**
+ * Creates a Supabase auth.users entry for `email` if one doesn't
+ * already exist. Pre-confirms the email (the user proves ownership
+ * by completing the password-setup link in the next step). Returns
+ * true if the row was newly created — that's the signal to send the
+ * "set your password" email.
+ */
+async function ensureAuthUser(
+  admin: SupabaseClient,
+  email: string,
+): Promise<{ created: boolean }> {
+  const { error } = await admin.auth.admin.createUser({
+    email,
+    email_confirm: true,
+  });
+  if (error) {
+    if (error.message.toLowerCase().includes("already")) {
+      return { created: false };
+    }
+    // Any other error — log to server output, don't break the IPN.
+    console.error("[ipn] createUser failed", { email, error: error.message });
+    return { created: false };
+  }
+  return { created: true };
+}
+
+/**
+ * Sends the AU-branded "set your password" email by triggering
+ * Supabase's reset-password flow. The link lands on /api/auth/callback
+ * which exchanges it for a recovery session and redirects to
+ * /set-password. Failure is logged but does not break the IPN.
+ */
+async function sendSetPasswordEmail(
+  request: NextRequest,
+  email: string,
+): Promise<void> {
+  try {
+    const supabase = await createSupabaseServerClient();
+    if (!supabase) return;
+    const origin = new URL(request.url).origin;
+    const redirectTo = `${origin}/api/auth/callback?next=/set-password`;
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo,
+    });
+    if (error) {
+      console.error("[ipn] resetPasswordForEmail failed", {
+        email,
+        error: error.message,
+      });
+    }
+  } catch (err) {
+    console.error("[ipn] sendSetPasswordEmail threw", {
+      email,
+      err: String(err),
+    });
+  }
+}
 
 export async function POST(request: NextRequest) {
   // 1) Shared-secret check
@@ -162,6 +222,15 @@ export async function POST(request: NextRequest) {
           { email: payload.lead.email.toLowerCase(), ...grantPayload },
           { onConflict: "email,course_slug" },
         );
+
+        // Password-auth flow: every paying member needs an auth.users
+        // row so they can sign in. Create one (pre-confirmed) and
+        // email them a "set your password" link. Existing-account
+        // case is detected and skipped silently.
+        const { created } = await ensureAuthUser(supabase, payload.lead.email);
+        if (created) {
+          await sendSetPasswordEmail(request, payload.lead.email);
+        }
       }
 
       // Conversion event — fire even if existingMember was null. The

@@ -225,6 +225,19 @@ export function Nav({ forceLight = false }: Props) {
         aria-hidden={!open}
       >
         <div className="px-[35px] py-4 flex flex-col">
+          {/* MEMBERS LOG-IN — promoted to the very top of the drawer so
+              returning members hit it without scrolling past the
+              full nav. Pink-filled per the AU brand: pink is the
+              activating accent across the site. */}
+          <Link
+            href={LOGIN_URL}
+            onClick={() => setOpen(false)}
+            className="mb-6 inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-[3px] font-section font-semibold uppercase tracking-[0.15em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
+          >
+            Members log-in
+            <span aria-hidden="true">→</span>
+          </Link>
+
           {/* COURSES, collapsible accordion. Default collapsed. Burger-menu
               style: display-font heading, dividers between sections. */}
           <section className="border-b border-au-white/15 first:border-t">
@@ -786,20 +799,8 @@ export function Nav({ forceLight = false }: Props) {
             </div>
           </section>
 
-          {/* MEMBERS LOG-IN, promoted from the Connect list to a
-              top-level CTA button. Pink-filled per the AU brand: pink
-              is the activating accent across the site. */}
-          <Link
-            href={LOGIN_URL}
-            onClick={() => setOpen(false)}
-            className="mt-8 inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-[3px] font-section font-semibold uppercase tracking-[0.15em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
-          >
-            Members log-in
-            <span aria-hidden="true">→</span>
-          </Link>
-
           {/* CREDENTIAL STRIP, drives home the educator's authority. */}
-          <section className="pt-8">
+          <section className="mt-8 pt-8 border-t border-au-white/15">
             <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.625rem] text-au-white/55 mb-2">
               Built and taught by
             </p>
