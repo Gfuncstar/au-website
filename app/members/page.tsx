@@ -17,6 +17,10 @@ import { StartFreeCourseButton } from "@/components/members/StartFreeCourseButto
 import { CourseTileProgress } from "@/components/members/CourseTileProgress";
 import { COURSES, getCourse, getCourseByMembershipName } from "@/lib/courses";
 import { getCourseLessonsMeta, hasNativeCourse } from "@/lib/courseLessons";
+import {
+  aggregateProgress,
+  getMemberLessonProgress,
+} from "@/lib/lessonProgress.server";
 import { formatDateLong, formatDate, formatGBP } from "@/lib/format";
 
 /** Resolve the right destination for a course: the native lesson
@@ -50,6 +54,22 @@ export default async function MembersHomePage() {
   const recommendations = COURSES.filter((c) => !ownedSlugSet.has(c.slug)).slice(
     0,
     3,
+  );
+
+  // Aggregate progress totals for the status strip. Fetch lesson_progress
+  // rows once server-side, then count chapters/courses against owned
+  // courses (so a stray completion from a course the member no longer
+  // has access to never inflates the totals). MOCK mode = empty, which
+  // renders zeros honestly.
+  const progressRows = await getMemberLessonProgress();
+  const progress = aggregateProgress(
+    progressRows,
+    ownedCourses
+      .filter((c) => hasNativeCourse(c.slug))
+      .map((c) => ({
+        slug: c.slug,
+        lessonSlugs: getCourseLessonsMeta(c.slug).map((l) => l.slug),
+      })),
   );
 
   return (
@@ -109,7 +129,7 @@ export default async function MembersHomePage() {
           At-a-glance status, sits just below the personal greeting
           ============================================================ */}
       <Reveal delay={0.05}>
-        <MembersStatusStrip lead={lead} />
+        <MembersStatusStrip lead={lead} progress={progress} />
       </Reveal>
 
       {/* ============================================================

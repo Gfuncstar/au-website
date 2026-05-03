@@ -14,12 +14,20 @@
 
 import Link from "next/link";
 import type { Lead } from "@/lib/kartra/types";
+import type { ProgressTotals } from "@/lib/lessonProgress.server";
 
 interface Props {
   lead: Lead;
+  /**
+   * Optional pre-computed totals from `aggregateProgress`. When
+   * provided, the strip renders two extra cells ("Chapters complete"
+   * and "Courses complete") and switches the grid from 4-up to 6-up.
+   * When omitted, falls back to the original 4-cell layout.
+   */
+  progress?: ProgressTotals;
 }
 
-export function MembersStatusStrip({ lead }: Props) {
+export function MembersStatusStrip({ lead, progress }: Props) {
   const activeCourses = lead.memberships.filter((m) => m.active).length;
   const purchases = lead.transactions.filter(
     (t) => t.status === "success" && t.transaction_type !== "refund",
@@ -37,11 +45,15 @@ export function MembersStatusStrip({ lead }: Props) {
     year: "numeric",
   });
 
+  // Layout: 2-up on mobile so each cell stays readable. When the
+  // progress cells are present (6 total) we go to 3-up at sm+; when
+  // they're not (4 total) we keep the original 4-up at sm+.
+  const gridClasses = progress
+    ? "grid grid-cols-2 sm:grid-cols-3 gap-px bg-au-charcoal/15 rounded-[5px] overflow-hidden"
+    : "grid grid-cols-2 sm:grid-cols-4 gap-px bg-au-charcoal/15 rounded-[5px] overflow-hidden";
+
   return (
-    <section
-      aria-label="Account at a glance"
-      className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-au-charcoal/15 rounded-[5px] overflow-hidden"
-    >
+    <section aria-label="Account at a glance" className={gridClasses}>
       <Cell
         icon={<CoursesIcon />}
         value={String(activeCourses)}
@@ -49,6 +61,30 @@ export function MembersStatusStrip({ lead }: Props) {
         sub={`of ${lead.memberships.length} held`}
         href="/members/courses"
       />
+      {progress && (
+        <Cell
+          icon={<ChaptersIcon />}
+          value={String(progress.chaptersCompleted)}
+          label="Chapters complete"
+          sub={
+            progress.chaptersTotal > 0
+              ? `of ${progress.chaptersTotal} total`
+              : "—"
+          }
+        />
+      )}
+      {progress && (
+        <Cell
+          icon={<CompleteIcon />}
+          value={String(progress.coursesCompleted)}
+          label="Courses complete"
+          sub={
+            progress.coursesTotal > 0
+              ? `of ${progress.coursesTotal} owned`
+              : "—"
+          }
+        />
+      )}
       <Cell
         icon={<BillingIcon />}
         value={lifetimeSpend}
@@ -212,6 +248,47 @@ function BillingIcon() {
       <path d="M 14.8 9 C 14.8 7.6 13.7 6.5 12 6.5 C 10.3 6.5 9.2 7.6 9.2 9 V 17 H 15.5" />
       {/* Crossbar */}
       <line x1="8.2" y1="13" x2="13.2" y2="13" />
+    </svg>
+  );
+}
+
+/** ChaptersIcon — stack of horizontal lines with a tick on the top
+ *  one. Reads as "lessons read, completing as I go". */
+function ChaptersIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={ICON_BASE}
+      aria-hidden="true"
+    >
+      <line x1="4" y1="6" x2="13" y2="6" />
+      <path d="M 16 5 L 18 7 L 21 4" />
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="18" x2="16" y2="18" />
+    </svg>
+  );
+}
+
+/** CompleteIcon — trophy outline. Reads as "course completed". */
+function CompleteIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={ICON_BASE}
+      aria-hidden="true"
+    >
+      <path d="M 8 4 L 16 4 L 15.5 11 C 15.5 13.2 14 14.5 12 14.5 C 10 14.5 8.5 13.2 8.5 11 Z" />
+      <path d="M 8 5 C 5.5 6 5.5 9.5 8.5 11" />
+      <path d="M 16 5 C 18.5 6 18.5 9.5 15.5 11" />
+      <line x1="12" y1="14.5" x2="12" y2="18" />
+      <line x1="9" y1="20" x2="15" y2="20" />
+      <line x1="12" y1="18" x2="12" y2="20" />
     </svg>
   );
 }

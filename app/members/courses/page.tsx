@@ -21,6 +21,10 @@ import { StartFreeCourseButton } from "@/components/members/StartFreeCourseButto
 import { CourseTileProgress } from "@/components/members/CourseTileProgress";
 import { COURSES, getCourseByMembershipName, type Course } from "@/lib/courses";
 import { getCourseLessonsMeta, hasNativeCourse } from "@/lib/courseLessons";
+import {
+  aggregateProgress,
+  getMemberLessonProgress,
+} from "@/lib/lessonProgress.server";
 import { formatDate } from "@/lib/format";
 
 export default async function CoursesPage() {
@@ -54,6 +58,20 @@ export default async function CoursesPage() {
     (c) => !ownedSlugs.has(c.slug),
   ).sort((a, b) => tier(a) - tier(b));
 
+  // Aggregate progress totals for the status strip (mirrors the
+  // /members dashboard so both surfaces show the same numbers).
+  const progressRows = await getMemberLessonProgress();
+  const progress = aggregateProgress(
+    progressRows,
+    owned
+      .map(({ course }) => course)
+      .filter((c) => hasNativeCourse(c.slug))
+      .map((c) => ({
+        slug: c.slug,
+        lessonSlugs: getCourseLessonsMeta(c.slug).map((l) => l.slug),
+      })),
+  );
+
   return (
     <div className="space-y-8 sm:space-y-12">
       <section className="bg-au-charcoal text-au-white -mx-4 sm:-mx-8 lg:-mx-12 -mt-5 sm:-mt-8 lg:-mt-10 px-4 sm:px-8 lg:px-12 py-8 sm:py-10 lg:py-12">
@@ -83,7 +101,7 @@ export default async function CoursesPage() {
         )}
       </section>
 
-      <MembersStatusStrip lead={lead} />
+      <MembersStatusStrip lead={lead} progress={progress} />
 
       {/* ============================================================
           Owned courses
