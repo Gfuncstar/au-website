@@ -170,9 +170,13 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 py-10 sm:py-12 border-b border-au-white/15">
           {FOOTER_LINKS.map((col) => (
             <nav key={col.title} aria-label={col.title}>
-              <h2 className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] text-au-white/50 mb-4">
+              {/* Footer column label. Coded as <p>, not <h2>, so it
+                  doesn't dilute the page heading hierarchy on every
+                  route — the column purpose is already conveyed via
+                  aria-label on the parent <nav>. */}
+              <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] text-au-white/50 mb-4">
                 {col.title}
-              </h2>
+              </p>
               <ul className="flex flex-col gap-3">
                 {col.items.map((item) => (
                   <li key={item.href}>

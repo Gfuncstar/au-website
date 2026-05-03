@@ -51,11 +51,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Aesthetics Unlocked® · UK Aesthetics Education · Educator of the Year 2026 Nominee",
+      "UK Aesthetics Training & Compliance Courses | Aesthetics Unlocked",
     template: "%s · Aesthetics Unlocked®",
   },
   description:
-    "UK aesthetics education by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee. NICE-aligned clinical, regulatory and business courses.",
+    "UK aesthetics training, compliance and clinic strategy by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee. NICE-aligned CPD for practitioners.",
   keywords: [
     // Core brand + educator
     "aesthetics education UK",

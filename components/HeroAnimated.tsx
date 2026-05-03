@@ -211,8 +211,13 @@ export function HeroAnimated() {
             </li>
           </motion.ul>
 
-          {/* Headline, line-by-line cascade */}
-          <h1
+          {/* Typographic poster — the brand identity. Visually unchanged.
+              Demoted from <h1> to <div role="presentation"> so the real
+              H1 below it can carry the search head-term ("UK aesthetics
+              training") without disturbing the visual hierarchy. The
+              poster is decorative; Google reads the H1 underneath. */}
+          <div
+            role="presentation"
             className="mt-7 sm:mt-9 font-display font-black text-au-white"
             style={{
               fontSize: "var(--text-hero)",
@@ -240,7 +245,19 @@ export function HeroAnimated() {
             >
               unlocked.
             </motion.span>
-          </h1>
+          </div>
+
+          {/* SEO H1. Carries the head-term ("UK aesthetics training")
+              that the title and metadata promise. Sits as a refined
+              sub-headline between the poster and the body copy — small
+              enough not to fight the poster, large enough to read
+              naturally on the page. */}
+          <motion.h1
+            variants={itemVariants}
+            className="mt-6 sm:mt-7 max-w-2xl font-section font-semibold uppercase text-[0.8125rem] sm:text-[0.875rem] tracking-[0.22em] text-au-white/80"
+          >
+            UK aesthetics training, regulatory compliance &amp; clinic strategy.
+          </motion.h1>
 
           {/* Hero description, first-person, written in Bernadette's voice
               per Giles' "rewrite in first person, quietly upsell" call.

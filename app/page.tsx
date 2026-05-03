@@ -44,52 +44,149 @@ import {
   CoursesIllustration,
 } from "@/components/SectionIllustration";
 import { BRAND, AWARDS, PERSON_AWARDS_JSONLD } from "@/lib/credentials";
+import { COURSES } from "@/lib/courses";
+import { FAQ } from "@/components/FAQ";
+import { GENERAL_FAQS } from "@/lib/faqs";
+
+/**
+ * Homepage FAQ — 6 highest-intent questions selected from the
+ * site-wide GENERAL_FAQS catalogue. Picked for: regulatory legitimacy
+ * ("Is Aesthetics Unlocked regulated?"), audience qualification
+ * ("Do I need to be a nurse or doctor?"), CPD recognition, certificate
+ * status, lifetime access, and the core "who is this for". The full
+ * list lives at /faqs and is linked beneath the section.
+ *
+ * The same array drives the visible accordion AND the FAQPage JSON-LD
+ * below, so Google sees exactly what visitors see.
+ */
+const HOMEPAGE_FAQ_QUESTIONS = [
+  "Who is Aesthetics Unlocked for?",
+  "Is Aesthetics Unlocked regulated?",
+  "Do I need to be a nurse or doctor to take a course?",
+  "Will I get a certificate?",
+  "Can I count this toward CPD or NMC revalidation?",
+  "How long do I have access for?",
+] as const;
+
+const HOMEPAGE_FAQS = HOMEPAGE_FAQ_QUESTIONS
+  .map((q) => GENERAL_FAQS.flatMap((g) => g.items).find((i) => i.q === q))
+  .filter((x): x is NonNullable<typeof x> => Boolean(x));
 import { Fragment } from "react";
 
 export const metadata: Metadata = {
   title:
-    "Aesthetics Unlocked® · UK Aesthetics Education · Educator of the Year 2026 Nominee",
+    "UK Aesthetics Training & Compliance Courses | Aesthetics Unlocked",
   description:
-    "UK aesthetics education by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee. NICE-aligned clinical, regulatory and business courses.",
+    "UK aesthetics training, compliance and clinic strategy by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee. NICE-aligned CPD for practitioners.",
   alternates: { canonical: "/" },
   openGraph: {
     title:
-      "Aesthetics Unlocked® · UK Aesthetics Education · Educator of the Year 2026 Nominee",
+      "UK Aesthetics Training & Compliance Courses | Aesthetics Unlocked",
     description:
-      "Education for UK aesthetic practitioners by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee. The only platform built by a working clinician, NHS leader, and clinic owner.",
+      "Aesthetics training, regulatory compliance and clinic strategy for UK practitioners. Built by Bernadette Tobin RN, MSc, working clinic owner and NHS leader.",
     url: "/",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Aesthetics Unlocked® · Educator of the Year 2026 Nominee",
+      "UK Aesthetics Training & Compliance Courses · Aesthetics Unlocked",
     description:
-      "UK aesthetics education by Bernadette Tobin RN, MSc, working clinic owner, NHS leader, MSc Advanced Practice. NICE-aligned, JCCP-aware.",
+      "NICE-aligned, JCCP-aware aesthetics training by Bernadette Tobin RN, MSc, working clinic owner, NHS leader, MSc Advanced Practice.",
   },
 };
 
 export default function Home() {
+  const SITE = `https://${BRAND.domain}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": `https://${BRAND.domain}/#organization`,
+        "@id": `${SITE}/#organization`,
         name: BRAND.name,
-        url: `https://${BRAND.domain}`,
+        url: SITE,
         email: BRAND.email,
         award: AWARDS.find((a) => a.business === "Aesthetics Unlocked")?.long,
-        founder: { "@id": `https://${BRAND.domain}/#person` },
+        founder: { "@id": `${SITE}/#person` },
+        sameAs: [BRAND.instagram.url],
       },
       {
         "@type": "Person",
-        "@id": `https://${BRAND.domain}/#person`,
+        "@id": `${SITE}/#person`,
         name: "Bernadette Tobin",
         honorificSuffix: "RN, MSc",
         jobTitle: "Founder, Aesthetics Unlocked",
-        worksFor: { "@id": `https://${BRAND.domain}/#organization` },
+        worksFor: { "@id": `${SITE}/#organization` },
         award: PERSON_AWARDS_JSONLD,
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE}/#website`,
+        url: SITE,
+        name: BRAND.name,
+        publisher: { "@id": `${SITE}/#organization` },
+        inLanguage: "en-GB",
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE}/#breadcrumbs`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE}/`,
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${SITE}/#faq`,
+        mainEntity: HOMEPAGE_FAQS.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${SITE}/#course-list`,
+        name: "Aesthetics Unlocked Courses",
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        numberOfItems: COURSES.length,
+        itemListElement: COURSES.map((c, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "Course",
+            "@id": `${SITE}/courses/${c.slug}#course`,
+            url: `${SITE}/courses/${c.slug}`,
+            name: c.title,
+            description: c.summary,
+            provider: { "@id": `${SITE}/#organization` },
+            inLanguage: "en-GB",
+            educationalCredentialAwarded: "Certificate of completion",
+            hasCourseInstance: [
+              {
+                "@type": "CourseInstance",
+                courseMode: "online",
+                courseWorkload: "PT1H",
+              },
+            ],
+            offers: [
+              {
+                "@type": "Offer",
+                category: c.price ? "Paid" : "Free",
+                price: c.price ? c.price.toFixed(2) : "0.00",
+                priceCurrency: "GBP",
+                availability: "https://schema.org/InStock",
+                url: `${SITE}/courses/${c.slug}`,
+              },
+            ],
+          },
+        })),
       },
     ],
   };
@@ -303,6 +400,47 @@ export default function Home() {
           </span>
           .
         </QuotePoster>
+
+        {/* ============================================================
+            COMMON QUESTIONS, six high-intent items pulled from the
+            site-wide FAQ catalogue. Sits as a final answer-resolution
+            beat before the closing CTA — and emits FAQPage JSON-LD
+            so Google can lift the answers into PAA / FAQ rich
+            results. Full list at /faqs.
+            ============================================================ */}
+        <PosterBlock tone="white" contained>
+          <ScrollReveal className="max-w-4xl mb-8 sm:mb-10">
+            <Eyebrow>Common questions</Eyebrow>
+          </ScrollReveal>
+          <RevealHeadline
+            className="font-display font-black text-au-charcoal mb-10 sm:mb-12 max-w-3xl"
+            style={{
+              fontSize: "var(--text-poster)",
+              lineHeight: "var(--leading-poster)",
+              letterSpacing: "var(--tracking-tight-display)",
+            }}
+            lines={[
+              <Fragment key="0">Answers, before</Fragment>,
+              <Fragment key="1">
+                you{" "}
+                <span style={{ color: "var(--color-au-pink)" }}>enrol</span>.
+              </Fragment>,
+            ]}
+          />
+          <div className="max-w-3xl">
+            <FAQ items={HOMEPAGE_FAQS} />
+            <p className="mt-8 text-[0.9375rem] text-au-charcoal/70">
+              More questions? Read every answer at{" "}
+              <Link
+                href="/faqs"
+                className="text-au-charcoal underline decoration-au-pink decoration-2 underline-offset-4 hover:text-[var(--color-au-pink)]"
+              >
+                the full FAQ
+              </Link>
+              .
+            </p>
+          </div>
+        </PosterBlock>
 
         {/* ============================================================
             FINAL CTA, solid black, AU primary.
