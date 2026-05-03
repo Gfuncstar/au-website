@@ -232,6 +232,71 @@ export function Nav({ forceLight = false }: Props) {
           )}
         </nav>
 
+        {/* Mobile auth-status icon — sits to the left of the burger so
+            members can see at a glance whether they're signed in. The
+            icon itself changes based on session state: a person
+            silhouette when signed out (tap → /login), a dashboard glyph
+            when signed in (tap → /members). Same line-art language as
+            the rest of the nav icons. Same h-12 w-12 tap target as the
+            burger so both feel like one row of controls. The signed-in
+            state also picks up the AU pink accent so it pops a little
+            more, matching the "active" visual treatment used elsewhere. */}
+        <Link
+          href={signedIn ? "/members" : LOGIN_URL}
+          aria-label={
+            signedIn ? "Go to your dashboard" : "Sign in to your dashboard"
+          }
+          className={`md:hidden h-12 w-12 flex items-center justify-center -mr-1 z-10 transition-colors ${
+            signedIn
+              ? "text-[var(--color-au-pink)] hover:text-au-white"
+              : "text-au-white/90 hover:text-[var(--color-au-pink)]"
+          }`}
+        >
+          {signedIn ? (
+            // Dashboard glyph — frame with one active (filled) tile.
+            // Mirrors components/NavIcons.tsx → MembersAreaIcon so the
+            // header icon and the drawer's "Members' area" row share
+            // the same visual language.
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="w-7 h-7"
+            >
+              <rect x="3" y="4" width="18" height="16" rx="0.5" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <rect
+                x="6"
+                y="12"
+                width="5"
+                height="5"
+                fill="currentColor"
+                stroke="currentColor"
+              />
+              <rect x="13" y="12" width="5" height="5" />
+            </svg>
+          ) : (
+            // Person silhouette — same shape as PersonIcon in NavIcons.
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="w-7 h-7"
+            >
+              <circle cx="12" cy="9" r="4" />
+              <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
+            </svg>
+          )}
+        </Link>
+
         {/* Mobile menu trigger */}
         <button
           type="button"
