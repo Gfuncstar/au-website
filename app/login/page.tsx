@@ -199,7 +199,35 @@ function LoginForm() {
         </button>
       </form>
 
-      <p className="mt-9 font-section font-semibold uppercase tracking-[0.1em] text-[0.625rem] text-au-white/45">
+      {/* Not-a-member path — for visitors who clicked "Members log-in"
+          before they actually have an account. Aesthetics Unlocked
+          membership is created when someone buys a course or grabs a
+          free taster (Kartra → IPN → public.members), so the right
+          destination here is /courses, not a self-serve sign-up form. */}
+      <div className="mt-9 pt-8 border-t border-au-white/10">
+        <p className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] text-au-pink mb-3">
+          Not a member yet?
+        </p>
+        <p className="text-[0.9375rem] sm:text-[1rem] text-au-white/85 leading-relaxed mb-5 max-w-[44ch]">
+          Aesthetics Unlocked membership starts the moment you enrol on a
+          course. Free tasters are one-tap. Paid courses give you lifetime
+          access and a members&apos; area login by email.
+        </p>
+        <Link
+          href="/courses"
+          className="group inline-flex items-center gap-2 font-display font-bold uppercase tracking-[0.05em] text-[0.8125rem] sm:text-[0.875rem] text-au-pink hover:text-au-white transition-colors"
+        >
+          <span>Browse the courses</span>
+          <span
+            aria-hidden="true"
+            className="inline-block transition-transform group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </Link>
+      </div>
+
+      <p className="mt-10 font-section font-semibold uppercase tracking-[0.1em] text-[0.625rem] text-au-white/45">
         Trouble signing in?{" "}
         <a
           href="mailto:hello@aunlock.co.uk"
