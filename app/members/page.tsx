@@ -14,8 +14,9 @@ import { FreeBadge } from "@/components/FreeBadge";
 import { MembersStatusStrip } from "@/components/members/MembersStatusStrip";
 import { Reveal } from "@/components/members/Reveal";
 import { StartFreeCourseButton } from "@/components/members/StartFreeCourseButton";
+import { CourseTileProgress } from "@/components/members/CourseTileProgress";
 import { COURSES, getCourse, getCourseByMembershipName } from "@/lib/courses";
-import { hasNativeCourse } from "@/lib/courseLessons";
+import { getCourseLessonsMeta, hasNativeCourse } from "@/lib/courseLessons";
 import { formatDateLong, formatDate, formatGBP } from "@/lib/format";
 
 /** Resolve the right destination for a course: the native lesson
@@ -157,6 +158,14 @@ export default async function MembersHomePage() {
                   <p className="text-[0.9375rem] text-au-body leading-relaxed mb-4">
                     {course.summary}
                   </p>
+                )}
+                {course && hasNativeCourse(course.slug) && (
+                  <CourseTileProgress
+                    courseSlug={course.slug}
+                    lessonSlugs={getCourseLessonsMeta(course.slug).map(
+                      (l) => l.slug,
+                    )}
+                  />
                 )}
                 <Link
                   href={course ? courseHref(course.slug) : "/members/courses"}

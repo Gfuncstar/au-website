@@ -18,8 +18,9 @@ import { StatusBadge } from "@/components/members/StatusBadge";
 import { MembersStatusStrip } from "@/components/members/MembersStatusStrip";
 import { Reveal } from "@/components/members/Reveal";
 import { StartFreeCourseButton } from "@/components/members/StartFreeCourseButton";
+import { CourseTileProgress } from "@/components/members/CourseTileProgress";
 import { COURSES, getCourseByMembershipName, type Course } from "@/lib/courses";
-import { hasNativeCourse } from "@/lib/courseLessons";
+import { getCourseLessonsMeta, hasNativeCourse } from "@/lib/courseLessons";
 import { formatDate } from "@/lib/format";
 
 export default async function CoursesPage() {
@@ -128,6 +129,14 @@ export default async function CoursesPage() {
                   <p className="text-[0.9375rem] text-au-body leading-relaxed mb-5 flex-1">
                     {course.summary}
                   </p>
+                )}
+                {course && hasNativeCourse(course.slug) && (
+                  <CourseTileProgress
+                    courseSlug={course.slug}
+                    lessonSlugs={getCourseLessonsMeta(course.slug).map(
+                      (l) => l.slug,
+                    )}
+                  />
                 )}
                 <div className="flex items-center justify-between gap-4 mt-auto">
                   <Link
