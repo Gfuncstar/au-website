@@ -102,6 +102,123 @@ This step is complete. Both the URL configuration and the SMTP wiring
 are live. The detail below stays as a reference for future setup work
 or for re-doing this on a fresh Supabase project.
 
+> ⚠️ **2026-05-02 — known deliverability issue with Resend → Outlook/Hotmail.**
+> A Hotmail member's first-ever sign-in code took ~20 minutes to land
+> (classic Microsoft greylisting of new senders). Resend → Microsoft is
+> reliable for repeat recipients but unreliable for first-touch on the
+> world's most popular consumer mailbox. Migration runbook to fix this
+> below in **Step 4b** — keep Resend for marketing, switch auth-only
+> emails to Postmark.
+
+## Step 4b — migrate auth-only email to Postmark (recommended, ~30 min + ~£12/mo)
+
+**Why split providers:** marketing emails and transactional (sign-in /
+receipt) emails are different jobs. Marketing has higher spam-complaint
+and bounce rates, which damages sender reputation. If both flow through
+one provider on one sender domain, the marketing reputation drags down
+the auth reputation and sign-in codes start hitting spam. The
+industry-standard fix is to isolate: Postmark for auth-only,
+Resend stays for everything else.
+
+**Why Postmark specifically:** purpose-built for transactional. Their
+Outlook/Hotmail deliverability is the best in the industry — sub-10
+second delivery to Microsoft mailboxes in 99% of cases.
+
+### 1. Sign up at Postmark (5 min)
+
+1. Go to [postmarkapp.com](https://postmarkapp.com), create an account.
+2. Pick the **10k Emails / month, $15** plan. Auth volume is well below
+   this — overhead for receipts + the occasional re-send.
+3. Inside the new account, the default server is fine. Rename it to
+   `aunlock-auth` so it's obvious in dashboards.
+
+### 2. Verify the `aunlock.co.uk` sending domain at Postmark (10 min)
+
+Postmark's domain verification adds DKIM + Return-Path records. These
+sit alongside the Resend records already on `aunlock.co.uk` — different
+DKIM selectors mean both providers coexist cleanly without touching
+Kartra's existing records.
+
+1. **Postmark → Sending Domains → Add Domain** → enter `aunlock.co.uk`.
+2. Postmark shows **DKIM** + **Return-Path** records to add at GoDaddy.
+3. At GoDaddy DNS, **only ADD records, never replace existing ones**:
+   - DKIM TXT on the selector Postmark provides (typically
+     `<selector>._domainkey.aunlock.co.uk`)
+   - Return-Path CNAME on `pm-bounces.aunlock.co.uk` (or whatever
+     subdomain Postmark suggests)
+   - Do **NOT** touch the existing Resend DKIM, Kartra DKIM, or apex MX
+     — they stay exactly as they are.
+4. Back in Postmark → **Verify** until both records show green.
+   DNS propagation: usually under 5 minutes at GoDaddy.
+
+### 3. Create a Postmark Server API Token (1 min)
+
+1. Postmark → **Servers → aunlock-auth → API Tokens → Create Token**.
+2. Name it `supabase-auth-smtp`, scope it Send-only.
+3. Copy the token value (starts `<long string>`). Save somewhere safe —
+   you only see it once.
+
+### 4. Update Supabase Auth → SMTP Settings (3 min)
+
+Supabase dashboard → **Project Settings → Auth → SMTP Settings**.
+Replace the existing Resend SMTP values with Postmark's:
+
+```
+Sender email:   hello@aunlock.co.uk
+Sender name:    Aesthetics Unlocked
+Host:           smtp.postmarkapp.com
+Port:           587
+Username:       <your Postmark Server API Token>
+Password:       <same — Postmark uses the token as both username and password>
+Minimum interval: 60 seconds
+```
+
+Click **Save**. The change is live the moment Supabase accepts it.
+
+### 5. Smoke-test (2 min)
+
+1. Open an incognito browser, go to `/login`.
+2. Enter a Hotmail or Outlook address you control.
+3. Email should land in Primary inbox within 10 seconds. Code works as
+   before.
+4. Send to a Gmail address too — should land equally fast.
+
+### 6. Keep Resend for everything else
+
+Don't delete Resend or change anything else. Resend continues serving:
+- All Kartra-driven nurture sequences
+- Broadcast emails Bernadette sends
+- Any future transactional volume that isn't auth (e.g. course-update
+  notifications)
+
+The split is intentional and is the long-term setup.
+
+### 7. Update Resend's role in this doc
+
+After migration, edit "What's live in Supabase right now" further down
+to read **smtp.postmarkapp.com** instead of `smtp.resend.com`.
+
+## Step 4c — extend session lifetime so members rarely re-auth (5 min)
+
+By default Supabase issues a short-lived access token (1 hr) and a
+long-lived refresh token. The refresh token's expiry is what actually
+controls how often a member sees the OTP screen — set it generously
+so a successful first sign-in keeps them in for ~3 months.
+
+1. Supabase dashboard → **Authentication → Sessions** (or
+   **Project Settings → Auth → Sessions** depending on UI version).
+2. Set:
+   - **Inactivity timeout**: `0` (never expire from inactivity), or
+     `90 days` if you prefer a hard ceiling.
+   - **Time-based session timeout**: `90 days` (or `0` = never).
+3. **JWT expiry** can stay at default (3600s / 1 hr) — the access
+   token auto-refreshes, members never see the 1-hr boundary.
+4. Save.
+
+Combined with the Postmark migration above, the front-door experience
+becomes: a new member hits sign-in once, gets the code in <10 seconds,
+and then doesn't see the OTP again for ~3 months.
+
 ### What's live in Supabase right now
 
 In **Authentication → URL Configuration**:
