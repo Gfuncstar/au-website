@@ -26,6 +26,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
 
 /* ============================================================
@@ -124,6 +125,17 @@ const itemVariants: Variants = {
 };
 
 export function HeroAnimated() {
+  // Fade the scroll indicator out as soon as the visitor starts to
+  // scroll past the hero — it's only useful before they realise
+  // there's more below.
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section className="relative bg-au-black text-au-white h-screen-safe overflow-hidden">
       {/* 1. Bernadette background video, loops silently, plays inline on
@@ -269,6 +281,51 @@ export function HeroAnimated() {
                 visitors: see the courses or get to know Bernadette. */}
           </motion.div>
         </div>
+      </motion.div>
+
+      {/* SCROLL INDICATOR — absolute-positioned at the bottom-RIGHT of
+          the hero in AU pink. A thin vertical line with a chevron
+          underneath, both gently bouncing on a loop so the eye is
+          drawn to the cue without it shouting. Sits flush in the
+          bottom-right corner so it never overlaps the headline or
+          CTAs which all anchor left. Fades out once the visitor
+          begins to scroll. Hidden from screen readers (decorative,
+          the next section is announced via headings). */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute right-5 sm:right-8 bottom-3 sm:bottom-6 z-10 flex flex-col items-center gap-1 pointer-events-none"
+        animate={{ opacity: scrolled ? 0 : 0.85 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0 }}
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{
+            duration: 1.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="flex flex-col items-center gap-1.5"
+        >
+          <span
+            aria-hidden="true"
+            className="block w-px h-7 sm:h-9 bg-[var(--color-au-pink)]"
+          />
+          <svg
+            width="14"
+            height="9"
+            viewBox="0 0 14 9"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-[var(--color-au-pink)]"
+            aria-hidden="true"
+          >
+            <polyline points="1 1 7 7 13 1" />
+          </svg>
+        </motion.div>
       </motion.div>
     </section>
   );

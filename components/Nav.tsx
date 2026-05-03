@@ -124,9 +124,12 @@ export function Nav({ forceLight = false }: Props) {
       setScrolled(true);
       return;
     }
+    // Flip to the solid charcoal header almost immediately on scroll
+    // so the logo never overlaps the hero eyebrow / awards strip / type
+    // underneath. 60px is just past the inertia of a fingertip nudge,
+    // so the bar feels intentional rather than twitchy.
     const onScroll = () => {
-      const threshold = window.innerHeight * 0.8;
-      setScrolled(window.scrollY > threshold);
+      setScrolled(window.scrollY > 60);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
