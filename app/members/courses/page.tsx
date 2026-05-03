@@ -19,6 +19,10 @@ import { MembersStatusStrip } from "@/components/members/MembersStatusStrip";
 import { Reveal } from "@/components/members/Reveal";
 import { StartFreeCourseButton } from "@/components/members/StartFreeCourseButton";
 import { CourseTileProgress } from "@/components/members/CourseTileProgress";
+import {
+  MembersSearch,
+  type SearchableLesson,
+} from "@/components/members/MembersSearch";
 import { COURSES, getCourseByMembershipName, type Course } from "@/lib/courses";
 import { getCourseLessonsMeta, hasNativeCourse } from "@/lib/courseLessons";
 import {
@@ -72,6 +76,21 @@ export default async function CoursesPage() {
       })),
   );
 
+  // Searchable index of every lesson in every owned course with native
+  // content. Title + summary only — keeps the client payload small
+  // and the search instant. Body-level search would need to go
+  // server-side and is a v2 problem.
+  const searchableLessons: SearchableLesson[] = owned.flatMap(({ course }) => {
+    if (!hasNativeCourse(course.slug)) return [];
+    return getCourseLessonsMeta(course.slug).map((lesson) => ({
+      courseSlug: course.slug,
+      courseTitle: course.title,
+      lessonSlug: lesson.slug,
+      lessonTitle: lesson.title,
+      lessonSummary: lesson.summary || "",
+    }));
+  });
+
   return (
     <div className="space-y-8 sm:space-y-12">
       <section className="bg-au-charcoal text-au-white -mx-4 sm:-mx-8 lg:-mx-12 -mt-5 sm:-mt-8 lg:-mt-10 px-4 sm:px-8 lg:px-12 py-8 sm:py-10 lg:py-12">
@@ -102,6 +121,13 @@ export default async function CoursesPage() {
       </section>
 
       <MembersStatusStrip lead={lead} progress={progress} />
+
+      {/* Search across every lesson in every course the member owns.
+          Sits above the enrolled-courses grid so a member who knows
+          what they're looking for finds it in one tap rather than
+          scanning tiles. Hidden when the member has no owned courses
+          with native lessons. */}
+      <MembersSearch lessons={searchableLessons} />
 
       {/* ============================================================
           Owned courses
