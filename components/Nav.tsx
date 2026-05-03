@@ -241,16 +241,16 @@ export function Nav({ forceLight = false }: Props) {
             burger so both feel like one row of controls. The signed-in
             state also picks up the AU pink accent so it pops a little
             more, matching the "active" visual treatment used elsewhere. */}
+        {/* Mobile right-side cluster: auth icon + burger packed together
+            so the icon sits flush next to the burger instead of being
+            distributed by the parent's justify-between. */}
+        <div className="md:hidden flex items-center gap-2">
         <Link
           href={signedIn ? "/members" : LOGIN_URL}
           aria-label={
             signedIn ? "Go to your dashboard" : "Sign in to your dashboard"
           }
-          className={`md:hidden h-12 w-12 flex items-center justify-center -mr-1 z-10 transition-colors ${
-            signedIn
-              ? "text-[var(--color-au-pink)] hover:text-au-white"
-              : "text-au-white/90 hover:text-[var(--color-au-pink)]"
-          }`}
+          className="h-10 w-10 flex items-center justify-center z-10 rounded-[3px] border border-[var(--color-au-pink)]/60 text-[var(--color-au-pink)] hover:bg-[var(--color-au-pink)] hover:text-au-charcoal hover:border-[var(--color-au-pink)] transition-colors"
         >
           {signedIn ? (
             // Dashboard glyph — frame with one active (filled) tile.
@@ -265,7 +265,7 @@ export function Nav({ forceLight = false }: Props) {
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
-              className="w-7 h-7"
+              className="w-5 h-5"
             >
               <rect x="3" y="4" width="18" height="16" rx="0.5" />
               <line x1="3" y1="9" x2="21" y2="9" />
@@ -289,7 +289,7 @@ export function Nav({ forceLight = false }: Props) {
               strokeLinecap="round"
               strokeLinejoin="round"
               aria-hidden="true"
-              className="w-7 h-7"
+              className="w-5 h-5"
             >
               <circle cx="12" cy="9" r="4" />
               <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" />
@@ -304,7 +304,7 @@ export function Nav({ forceLight = false }: Props) {
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden h-12 w-12 flex flex-col items-center justify-center gap-[5px] -mr-2 z-10"
+          className="h-12 w-12 flex flex-col items-center justify-center gap-[5px] -mr-2 z-10"
         >
           <span
             className={`h-[2px] w-7 transition-all ${barColour} ${
@@ -322,6 +322,7 @@ export function Nav({ forceLight = false }: Props) {
             }`}
           />
         </button>
+        </div>
       </div>
     </header>
 
