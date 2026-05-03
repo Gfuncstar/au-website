@@ -813,3 +813,21 @@ body {
     height: 1.5rem;
   }
 }
+
+/* ==========================================================================
+   Global keyboard focus ring.
+
+   Tailwind's reset clears the browser's default focus outline, leaving
+   keyboard users with no visible signal of which element is selected. A
+   site-wide :focus-visible rule restores it in the AU brand pink so any
+   tab-through is legible without re-styling every component. Mouse and
+   touch interactions don't trigger :focus-visible, so the ring only
+   appears when it's actually useful (keyboard navigation, screen-reader
+   focus, etc.). WCAG 2.1 SC 2.4.7 compliance.
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--color-au-pink);
+  outline-offset: 2px;
+  border-radius: 3px;
+}

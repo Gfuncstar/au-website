@@ -139,7 +139,7 @@ export function CourseCard({
   const t = tones[tone];
 
   return (
-    <article className="group relative isolate overflow-hidden rounded-[5px] flex flex-col h-full">
+    <article className="group relative isolate overflow-hidden rounded-[5px] flex flex-col h-full w-full min-w-0 max-w-full">
       {/* ============================================================
           MAIN BODY, bgImage as the dominant backdrop with a tone wash.
           ============================================================ */}

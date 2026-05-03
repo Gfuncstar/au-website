@@ -27,7 +27,6 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Button } from "@/components/Button";
-import { LOGIN_URL } from "@/lib/links";
 
 /* ============================================================
    Small animated award icons for the hero awards rail.
@@ -264,16 +263,10 @@ export function HeroAnimated() {
             <Button href="/about" variant="glass" size="sm">
               About me
             </Button>
-            {/* Members login, internal /login page (custom on-brand
-                sign-in). Matches the Members link in the Nav. */}
-            <Button
-              href={LOGIN_URL}
-              variant="glass"
-              size="sm"
-              arrow={false}
-            >
-              Members log-in
-            </Button>
+            {/* Members log-in lives on the persistent header (pink box
+                icon on mobile, "Members log-in" link on desktop) so the
+                hero stays focused on the two primary actions for new
+                visitors: see the courses or get to know Bernadette. */}
           </motion.div>
         </div>
       </motion.div>

@@ -134,23 +134,23 @@ export function StickyEnrolBar({
           : "translate-y-full pointer-events-none",
       ].join(" ")}
     >
-      <div className="px-[35px] py-3 flex items-center gap-3">
+      <div className="px-4 sm:px-[35px] py-3 flex items-center gap-2 sm:gap-3">
         <div className="min-w-0 flex-1">
           <p
-            className="font-display font-bold text-au-white text-[0.875rem] leading-tight truncate"
+            className="font-display font-bold text-au-white text-[0.8125rem] sm:text-[0.875rem] leading-tight line-clamp-2"
             style={{ letterSpacing: "var(--tracking-tight-display)" }}
           >
             {title}
           </p>
           <p
-            className="font-display font-black leading-none mt-0.5"
+            className="font-display font-black leading-none mt-1"
             style={{
-              fontSize: "0.9375rem",
+              fontSize: "0.8125rem",
               color: "var(--color-au-pink)",
               letterSpacing: "var(--tracking-tight-display)",
             }}
           >
-            {useEnrolShortcut ? "In your dashboard" : priceLabel}
+            {useEnrolShortcut ? "Free, signed in" : priceLabel}
           </p>
         </div>
         {useEnrolShortcut ? (
@@ -158,7 +158,7 @@ export function StickyEnrolBar({
             type="button"
             onClick={handleEnrol}
             disabled={enrolling}
-            className="shrink-0 inline-flex items-center gap-1.5 bg-[var(--color-au-pink)] hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-4 py-3 min-h-[44px] text-[0.8125rem] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="shrink-0 inline-flex items-center gap-1 sm:gap-1.5 bg-[var(--color-au-pink)] hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-3 sm:px-4 py-3 min-h-[44px] text-[0.75rem] sm:text-[0.8125rem] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             aria-label={`Add ${title} to your dashboard`}
           >
             <span>
@@ -166,14 +166,14 @@ export function StickyEnrolBar({
                 ? "Adding…"
                 : enrolError
                   ? "Try again"
-                  : "Add to my dashboard"}
+                  : "Add to dashboard"}
             </span>
             {!enrolling && <span aria-hidden="true">→</span>}
           </button>
         ) : (
           <Link
             href={href}
-            className="shrink-0 inline-flex items-center gap-1.5 bg-[var(--color-au-pink)] hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-4 py-3 min-h-[44px] text-[0.8125rem] transition-colors"
+            className="shrink-0 inline-flex items-center gap-1 sm:gap-1.5 bg-[var(--color-au-pink)] hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-3 sm:px-4 py-3 min-h-[44px] text-[0.75rem] sm:text-[0.8125rem] transition-colors"
           >
             <span>{ctaText}</span>
             <span aria-hidden="true">→</span>

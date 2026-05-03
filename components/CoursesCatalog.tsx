@@ -351,7 +351,7 @@ export function CoursesCatalog({ courses, marks }: Props) {
           ============================================================ */}
       {visible.length > 0 ? (
         <div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
           aria-live="polite"
           aria-label={`${visible.length} ${
             visible.length === 1 ? "course" : "courses"
