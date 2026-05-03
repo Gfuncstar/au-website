@@ -12,6 +12,7 @@
  * charcoal text whenever there's a failed payment.
  */
 
+import Link from "next/link";
 import type { Lead } from "@/lib/kartra/types";
 
 interface Props {
@@ -46,6 +47,7 @@ export function MembersStatusStrip({ lead }: Props) {
         value={String(activeCourses)}
         label="Active courses"
         sub={`of ${lead.memberships.length} held`}
+        href="/members/courses"
       />
       <Cell
         icon={<BillingIcon />}
@@ -75,18 +77,27 @@ interface CellProps {
   label: string;
   sub?: string;
   attention?: boolean;
+  /**
+   * Optional destination. When provided, the cell renders as a Link
+   * with a subtle hover lift so it reads as clickable. When omitted,
+   * it stays a plain status tile.
+   */
+  href?: string;
 }
 
-function Cell({ icon, value, label, sub, attention = false }: CellProps) {
-  return (
-    <div
-      className={
-        "p-3.5 sm:p-5 flex items-start justify-between gap-3 transition-colors " +
-        (attention
-          ? "bg-au-pink-soft text-au-charcoal"
-          : "bg-au-charcoal text-au-white")
-      }
-    >
+function Cell({ icon, value, label, sub, attention = false, href }: CellProps) {
+  const baseClasses =
+    "p-3.5 sm:p-5 flex items-start justify-between gap-3 transition-colors " +
+    (attention
+      ? "bg-au-pink-soft text-au-charcoal"
+      : "bg-au-charcoal text-au-white");
+
+  const interactiveClasses = href
+    ? " hover:bg-au-black hover:text-au-pink cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-au-pink"
+    : "";
+
+  const inner = (
+    <>
       <div className="min-w-0 flex-1">
         <p
           className="font-display font-black tabular-nums leading-none"
@@ -122,8 +133,18 @@ function Cell({ icon, value, label, sub, attention = false }: CellProps) {
       >
         {icon}
       </span>
-    </div>
+    </>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className={baseClasses + interactiveClasses}>
+        {inner}
+      </Link>
+    );
+  }
+
+  return <div className={baseClasses}>{inner}</div>;
 }
 
 /* ============================================================
