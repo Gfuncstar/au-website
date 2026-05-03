@@ -27,6 +27,7 @@ import { useEffect, useState } from "react";
 import { BRAND, FOUNDER } from "@/lib/credentials";
 import { COURSES } from "@/lib/courses";
 import { LOGIN_URL, NMC_REGISTER_URL, BOOK_AMAZON_URL } from "@/lib/links";
+import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import {
   CoursesIcon,
   MembersAreaIcon,
@@ -65,6 +66,42 @@ export function Nav({ forceLight = false }: Props) {
   const [referencesOpen, setReferencesOpen] = useState(false);
   const [insightsOpen, setInsightsOpen] = useState(false);
   const [connectOpen, setConnectOpen] = useState(false);
+
+  // Auth-aware nav state. Starts unknown (null) so SSR matches the
+  // initial client render and avoids a hydration warning. Once the
+  // browser Supabase client resolves the session, we flip the CTA
+  // from "Members log-in" → "Dashboard" and reveal a "Sign out" link.
+  // While unknown, we render the signed-out state (the safer default
+  // for visitors who land mid-render).
+  const [signedIn, setSignedIn] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const supabase = createSupabaseBrowserClient();
+    if (!supabase) {
+      setSignedIn(false);
+      return;
+    }
+    let cancelled = false;
+    supabase.auth.getUser().then(({ data }) => {
+      if (!cancelled) setSignedIn(Boolean(data.user));
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!cancelled) setSignedIn(Boolean(session?.user));
+    });
+    return () => {
+      cancelled = true;
+      sub.subscription.unsubscribe();
+    };
+  }, []);
+
+  async function handleSignOut() {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } finally {
+      // Hard redirect so server components re-render with no session.
+      window.location.href = "/";
+    }
+  }
 
   // When the drawer closes, reset every accordion so the next open is
   // collapsed-by-default.
@@ -169,12 +206,30 @@ export function Nav({ forceLight = false }: Props) {
               {l.label}
             </Link>
           ))}
-          <Link
-            href={LOGIN_URL}
-            className={`text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${membersColour}`}
-          >
-            Members log-in
-          </Link>
+          {signedIn ? (
+            <>
+              <Link
+                href="/members"
+                className={`text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${membersColour}`}
+              >
+                Dashboard
+              </Link>
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className={`text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${membersColour}`}
+              >
+                Sign out
+              </button>
+            </>
+          ) : (
+            <Link
+              href={LOGIN_URL}
+              className={`text-[0.75rem] uppercase tracking-[0.15em] transition-colors ${membersColour}`}
+            >
+              Members log-in
+            </Link>
+          )}
         </nav>
 
         {/* Mobile menu trigger */}
@@ -225,18 +280,44 @@ export function Nav({ forceLight = false }: Props) {
         aria-hidden={!open}
       >
         <div className="px-[35px] py-4 flex flex-col">
-          {/* MEMBERS LOG-IN — promoted to the very top of the drawer so
-              returning members hit it without scrolling past the
-              full nav. Pink-filled per the AU brand: pink is the
-              activating accent across the site. */}
-          <Link
-            href={LOGIN_URL}
-            onClick={() => setOpen(false)}
-            className="mb-6 inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-[3px] font-section font-semibold uppercase tracking-[0.15em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
-          >
-            Members log-in
-            <span aria-hidden="true">→</span>
-          </Link>
+          {/* DASHBOARD / MEMBERS LOG-IN — promoted to the very top of
+              the drawer so signed-in members get straight back to
+              their dashboard, and returning members get straight to
+              sign-in, without scrolling past the full nav. Pink-filled
+              per the AU brand: pink is the activating accent across
+              the site. The label flips based on session state once the
+              browser-side auth check resolves. */}
+          {signedIn ? (
+            <>
+              <Link
+                href="/members"
+                onClick={() => setOpen(false)}
+                className="mb-3 inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-[3px] font-section font-semibold uppercase tracking-[0.15em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
+              >
+                Go to dashboard
+                <span aria-hidden="true">→</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  handleSignOut();
+                }}
+                className="mb-6 inline-flex items-center justify-center gap-2 w-full py-3 px-6 rounded-[3px] font-section font-semibold uppercase tracking-[0.15em] text-[0.75rem] border border-au-white/25 text-au-white hover:bg-au-white/10 transition-colors"
+              >
+                Sign out
+              </button>
+            </>
+          ) : (
+            <Link
+              href={LOGIN_URL}
+              onClick={() => setOpen(false)}
+              className="mb-6 inline-flex items-center justify-center gap-2 w-full py-4 px-6 rounded-[3px] font-section font-semibold uppercase tracking-[0.15em] text-[0.8125rem] bg-[var(--color-au-pink)] text-au-charcoal hover:bg-au-white transition-colors"
+            >
+              Members log-in
+              <span aria-hidden="true">→</span>
+            </Link>
+          )}
 
           {/* COURSES, collapsible accordion. Default collapsed. Burger-menu
               style: display-font heading, dividers between sections. */}
