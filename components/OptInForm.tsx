@@ -21,9 +21,10 @@
 
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { track } from "@/lib/analytics";
+import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 type Props = {
   /** Course slug — must match a slug in lib/courses.ts. */
@@ -52,6 +53,71 @@ export function OptInForm({
   const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  // Auth-aware branching. When a member is signed in we already know
+  // their email, so we skip the form entirely and offer one-click
+  // "add this course to your dashboard". Starts as null to match SSR
+  // and avoid a hydration warning; the public form stays rendered
+  // until the browser-side check resolves.
+  const [signedIn, setSignedIn] = useState<boolean | null>(null);
+  const [signedInFirstName, setSignedInFirstName] = useState<string | null>(
+    null,
+  );
+
+  useEffect(() => {
+    const supabase = createSupabaseBrowserClient();
+    if (!supabase) {
+      setSignedIn(false);
+      return;
+    }
+    let cancelled = false;
+    supabase.auth.getUser().then(({ data }) => {
+      if (cancelled) return;
+      const user = data.user;
+      setSignedIn(Boolean(user));
+      const meta = user?.user_metadata as { first_name?: string } | undefined;
+      if (meta?.first_name) setSignedInFirstName(meta.first_name);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  async function handleEnrol() {
+    setStatus("submitting");
+    setErrorMsg(null);
+    track("opt_in_submit", { course: courseSlug, signed_in: true });
+    try {
+      const res = await fetch("/api/members/enrol-free", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ courseSlug }),
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+        redirectTo?: string;
+      };
+      if (!res.ok || !data.ok) {
+        setStatus("error");
+        setErrorMsg(
+          data.error === "not_signed_in"
+            ? "Your session has expired. Refresh the page and sign in again."
+            : "Couldn't add the course. Try again, or email hello@aunlock.co.uk.",
+        );
+        return;
+      }
+      track("opt_in_success", { course: courseSlug, signed_in: true });
+      // Hard nav so the /members layout re-renders with the new
+      // membership row visible.
+      window.location.href = data.redirectTo ?? `/members/courses/${courseSlug}`;
+    } catch {
+      setStatus("error");
+      setErrorMsg(
+        "Network error, check your connection and try again, or email hello@aunlock.co.uk.",
+      );
+    }
+  }
 
   const dark = tone === "dark";
   const labelClasses = `font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] mb-2 block ${
@@ -107,6 +173,70 @@ export function OptInForm({
         "Network error, check your connection and try again, or email hello@aunlock.co.uk.",
       );
     }
+  }
+
+  /* ============================================================
+     SIGNED-IN STATE — skip the form. The member is already a
+     known account, so we just need a confirmation tap that drops
+     them on the lesson. Same Kartra list/tag fires under the
+     hood via /api/members/enrol-free.
+     ============================================================ */
+  if (signedIn === true && status !== "success") {
+    const submitting = status === "submitting";
+    return (
+      <div
+        className={`max-w-md p-6 sm:p-7 border rounded-[5px] ${
+          dark
+            ? "bg-au-white/5 border-au-white/15"
+            : "bg-au-white border-au-charcoal/15"
+        }`}
+      >
+        <p
+          className="font-section font-semibold uppercase tracking-[0.18em] text-[0.6875rem] mb-3"
+          style={{ color: "var(--color-au-pink)" }}
+        >
+          {signedInFirstName
+            ? `Welcome back, ${signedInFirstName}`
+            : "Welcome back"}
+        </p>
+        <h3
+          className={`font-display font-black mb-3 ${
+            dark ? "text-au-white" : "text-au-charcoal"
+          }`}
+          style={{
+            fontSize: "clamp(1.5rem, 4vw, 2rem)",
+            letterSpacing: "var(--tracking-tight-display)",
+          }}
+        >
+          Add {courseTitle} to your dashboard.
+        </h3>
+        <p
+          className={`leading-relaxed mb-5 ${
+            dark ? "text-au-white/85" : "text-au-charcoal/80"
+          }`}
+        >
+          We know it&rsquo;s you, no email needed. One tap and Lesson 1
+          is open in front of you.
+        </p>
+        <button
+          type="button"
+          onClick={handleEnrol}
+          disabled={submitting}
+          className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-[5px] font-display font-bold uppercase tracking-[0.05em] text-[0.875rem] bg-[var(--color-au-pink)] text-au-white hover:bg-au-black disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+        >
+          {submitting ? "Adding…" : "Add to my dashboard"}
+          {!submitting && <span aria-hidden="true">→</span>}
+        </button>
+        {errorMsg && (
+          <p
+            role="alert"
+            className="mt-4 text-[0.875rem] text-[var(--color-au-pink)]"
+          >
+            {errorMsg}
+          </p>
+        )}
+      </div>
+    );
   }
 
   /* ============================================================
