@@ -100,7 +100,7 @@ export function CourseOverviewChapters({
                   </p>
                 )}
               </div>
-              {resumeLesson && (
+              {resumeLesson && !allDone && (
                 <Link
                   href={`/members/courses/${courseSlug}/${resumeLesson.slug}`}
                   className="shrink-0 bg-au-pink hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-7 py-3.5 min-h-[48px] text-[0.8125rem] transition-colors inline-flex items-center gap-2 self-start sm:self-auto"
@@ -108,6 +108,16 @@ export function CourseOverviewChapters({
                   {completedCount === 0 ? "Begin lesson 1" : "Resume lesson"}{" "}
                   <span aria-hidden="true">→</span>
                 </Link>
+              )}
+              {allDone && (
+                <a
+                  href={`/api/members/certificate/${courseSlug}`}
+                  className="shrink-0 bg-au-pink hover:bg-au-white text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-7 py-3.5 min-h-[48px] text-[0.8125rem] transition-colors inline-flex items-center gap-2 self-start sm:self-auto"
+                  download
+                >
+                  Download certificate{" "}
+                  <span aria-hidden="true">↓</span>
+                </a>
               )}
             </div>
 
