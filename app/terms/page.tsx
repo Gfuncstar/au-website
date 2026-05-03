@@ -55,7 +55,7 @@ const SECTIONS: LegalSection[] = [
   },
   {
     heading: "Governing law",
-    body: "These terms are governed by the laws of England and Wales. Any disputes go to the courts of England and Wales.",
+    body: "These terms are governed by the laws of England and Wales. Any disputes go to the courts of England and Wales. If you are a consumer resident in Scotland or Northern Ireland, you may also have rights under the law of your country and may bring proceedings in the courts there. Nothing in these terms limits the statutory rights you have as a consumer where you live.",
   },
 ];
 
@@ -70,8 +70,8 @@ export default function TermsPage() {
           .
         </span>,
       ]}
-      intro="The agreement between you and Aesthetics Unlocked® when you use this site or buy a course. Working draft, replaced with solicitor-reviewed copy before launch."
-      lastUpdated="Working draft · April 2026"
+      intro="The agreement between you and Aesthetics Unlocked® when you use this site or buy a course."
+      lastUpdated="April 2026"
       sections={SECTIONS}
     />
   );
