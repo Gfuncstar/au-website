@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     template: "%s · Aesthetics Unlocked®",
   },
   description:
-    "Education for UK aesthetic practitioners by Bernadette Tobin RN MSc, working clinic owner, NHS clinical leader, and Educator of the Year 2026 Nominee at the Beauty & Aesthetics Awards. NICE-aligned, JCCP-aware, evidence-led courses on regulation, profit, and clinical practice.",
+    "UK aesthetics education by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee. NICE-aligned clinical, regulatory and business courses.",
   keywords: [
     // Core brand + educator
     "aesthetics education UK",

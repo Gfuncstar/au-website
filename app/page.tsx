@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   title:
     "Aesthetics Unlocked® · UK Aesthetics Education · Educator of the Year 2026 Nominee",
   description:
-    "UK aesthetics education by Bernadette Tobin RN MSc, a working clinic owner, NHS clinical leader, MSc Advanced Practice clinician, published author, and Educator of the Year 2026 Nominee. NICE-aligned clinical decoders, JCCP-aware regulation courses, and the clinic-owner profit framework most aesthetics training never teaches.",
+    "UK aesthetics education by Bernadette Tobin RN, MSc, Educator of the Year 2026 Nominee. NICE-aligned clinical, regulatory and business courses.",
   alternates: { canonical: "/" },
   openGraph: {
     title:
