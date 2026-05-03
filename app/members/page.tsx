@@ -90,10 +90,10 @@ export default async function MembersHomePage() {
 
         {ownedCourses.length > 0 && (
           <Link
-            href={courseHref(ownedCourses[0].slug)}
+            href="/members/courses"
             className="group mt-5 sm:mt-7 inline-flex items-center gap-2 bg-au-pink hover:bg-au-white hover:text-au-charcoal text-au-charcoal font-display font-bold uppercase tracking-[0.05em] rounded-[5px] px-6 sm:px-7 py-3 sm:py-3.5 min-h-[44px] sm:min-h-[48px] text-[0.875rem] sm:text-[0.9375rem] transition-colors"
           >
-            <span>Continue learning</span>
+            <span>View all our courses</span>
             <span
               aria-hidden="true"
               className="inline-block transition-transform group-hover:translate-x-1"
