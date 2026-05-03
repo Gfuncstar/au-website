@@ -39,6 +39,7 @@ import {
 import { VideoPlaceholder } from "@/components/members/VideoPlaceholder";
 import { LessonNavFooter } from "@/components/members/LessonNavFooter";
 import { LessonRating } from "@/components/members/LessonRating";
+import { LessonNote } from "@/components/members/LessonNote";
 import { Reveal } from "@/components/members/Reveal";
 import { RevealHeadline } from "@/components/RevealHeadline";
 import { LessonIcon } from "@/components/members/LessonIcon";
@@ -239,6 +240,11 @@ export default async function LessonPage({
               dangerouslySetInnerHTML={{ __html: current.html }}
             />
           </Reveal>
+
+          {/* Private note — sits before the rating so the reflective
+              jotting moment comes first, the ratings/feedback
+              moment second. */}
+          <LessonNote courseSlug={slug} lessonSlug={current.slug} />
 
           {/* Lesson rating — sits between the body and the up-next
               card, so members rate the lesson when its content is
