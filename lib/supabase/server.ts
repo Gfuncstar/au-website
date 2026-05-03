@@ -15,6 +15,11 @@ import {
   isSupabaseConfigured,
 } from "./env";
 
+/** One year, in seconds. Long enough that members effectively stay
+ *  signed in until they explicitly sign out. The matching value also
+ *  lives in middleware.ts — keep them in sync. */
+const AUTH_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
+
 export async function createSupabaseServerClient() {
   if (!isSupabaseConfigured()) return null;
   const cookieStore = await cookies();
@@ -26,7 +31,15 @@ export async function createSupabaseServerClient() {
       setAll(cookiesToSet) {
         try {
           for (const { name, value, options } of cookiesToSet) {
-            cookieStore.set(name, value, options);
+            cookieStore.set(name, value, {
+              ...options,
+              // Override Supabase's default cookie lifetime so the
+              // browser keeps the auth cookie around long enough that
+              // members "stay signed in until they sign out". The
+              // refresh-token TTL on the Supabase project also needs
+              // to match (set in the Supabase dashboard).
+              maxAge: AUTH_COOKIE_MAX_AGE_SECONDS,
+            });
           }
         } catch {
           // setAll fails inside Server Components — that's expected.

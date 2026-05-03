@@ -23,6 +23,11 @@ import {
   isSupabaseConfigured,
 } from "@/lib/supabase/env";
 
+/** One year, in seconds. Long enough that members effectively stay
+ *  signed in until they explicitly sign out. Matched in
+ *  lib/supabase/server.ts — keep them in sync. */
+const AUTH_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
+
 const PROTECTED_PREFIX = "/members";
 
 /** Preview-link mechanism. Anyone hitting any URL with
@@ -83,7 +88,14 @@ export async function middleware(request: NextRequest) {
         }
         response = NextResponse.next({ request });
         for (const { name, value, options } of cookiesToSet) {
-          response.cookies.set(name, value, options);
+          // Override Supabase's default cookie maxAge so the auth
+          // cookie persists for a year — combined with a long
+          // refresh-token TTL on the Supabase project, this gives
+          // members "stay signed in until they sign out" behaviour.
+          response.cookies.set(name, value, {
+            ...options,
+            maxAge: AUTH_COOKIE_MAX_AGE_SECONDS,
+          });
         }
       },
     },
